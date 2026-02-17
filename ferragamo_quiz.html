@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferragamo – Code of Ethics Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --nero: #1a1a1a;
+    --oro: #B8922A;
+    --oro-light: #D4AF6A;
+    --panna: #FAF7F2;
+    --rosso: #C0392B;
+    --grigio: #6a6a6a;
+    --grigio-light: #e8e4de;
+    --verde: #2D7A4F;
+    --bianco: #ffffff;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--panna);
+    color: var(--nero);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--nero);
+    padding: 40px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: 'F';
+    position: absolute;
+    right: -20px;
+    top: -30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 260px;
+    color: rgba(184,146,42,0.08);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 16px; }
+  .header-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--oro);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    color: var(--bianco);
+    font-weight: 400;
+    line-height: 1.2;
+  }
+  .header h1 span { color: var(--oro); font-style: italic; }
+  .header-sub {
+    font-size: 11px;
+    color: #888;
+    margin-top: 10px;
+    letter-spacing: 1px;
+  }
+
+  /* PROGRESS */
+  .progress-wrap {
+    background: var(--nero);
+    padding: 0 40px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .progress-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--oro);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  .progress-text {
+    font-size: 11px;
+    color: #888;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    min-width: 70px;
+    text-align: right;
+  }
+
+  /* MAIN */
+  .main { max-width: 780px; margin: 0 auto; padding: 40px 24px 60px; }
+
+  /* QUESTION CARD */
+  .question-card {
+    background: var(--bianco);
+    border-radius: 2px;
+    padding: 36px 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    display: none;
+    animation: fadeSlide 0.4s ease forwards;
+    position: relative;
+  }
+  .question-card.active { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .q-num {
+    background: var(--nero);
+    color: var(--oro);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  .q-type {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--grigio);
+    font-weight: 600;
+    border: 1px solid var(--grigio-light);
+    padding: 4px 10px;
+  }
+  .q-type.tf { border-color: var(--oro); color: var(--oro); }
+  .q-type.mc { border-color: var(--nero); color: var(--nero); }
+
+  .q-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--nero);
+    margin-bottom: 28px;
+    font-weight: 400;
+  }
+
+  /* OPTIONS */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 1.5px solid var(--grigio-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    background: var(--panna);
+    user-select: none;
+  }
+  .option:hover:not(.disabled) {
+    border-color: var(--oro);
+    background: #fdf9f0;
+  }
+  .option.selected {
+    border-color: var(--oro);
+    background: #fdf9f0;
+  }
+  .option.correct {
+    border-color: var(--verde);
+    background: #f0faf5;
+  }
+  .option.wrong {
+    border-color: var(--rosso);
+    background: #fdf0ef;
+  }
+  .option.disabled { cursor: default; pointer-events: none; }
+
+  .opt-indicator {
+    width: 28px;
+    height: 28px;
+    border: 1.5px solid var(--grigio-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--grigio);
+  }
+  .option.selected .opt-indicator { border-color: var(--oro); color: var(--oro); background: #fff8ec; }
+  .option.correct .opt-indicator { border-color: var(--verde); color: var(--verde); background: #edfaf4; }
+  .option.wrong .opt-indicator { border-color: var(--rosso); color: var(--rosso); background: #fdecea; }
+
+  .opt-label {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--nero);
+    flex: 1;
+  }
+  .opt-icon { font-size: 16px; flex-shrink: 0; }
+
+  /* T/F special layout */
+  .tf-options { flex-direction: row; gap: 14px; }
+  .tf-options .option { flex: 1; justify-content: center; flex-direction: column; text-align: center; padding: 20px; gap: 8px; }
+  .tf-options .opt-indicator { display: none; }
+  .tf-icon { font-size: 28px; }
+  .tf-label { font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* FEEDBACK */
+  .feedback {
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-left: 3px solid;
+    font-size: 12.5px;
+    line-height: 1.7;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .feedback.show { display: block; }
+  .feedback.correct-fb { border-color: var(--verde); background: #f2fbf7; color: #1a5e38; }
+  .feedback.wrong-fb { border-color: var(--rosso); background: #fdf2f1; color: #922b21; }
+  .feedback strong { font-weight: 700; }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .btn-primary { background: var(--nero); color: var(--bianco); }
+  .btn-primary:hover { background: var(--oro); }
+  .btn-ghost { background: transparent; color: var(--grigio); border: 1.5px solid var(--grigio-light); }
+  .btn-ghost:hover { border-color: var(--nero); color: var(--nero); }
+  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  /* RESULTS */
+  #results {
+    display: none;
+    text-align: center;
+    padding: 20px 0 40px;
+    animation: fadeSlide 0.5s ease forwards;
+  }
+  .result-header {
+    background: var(--nero);
+    padding: 50px 40px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top, rgba(184,146,42,0.15) 0%, transparent 70%);
+  }
+  .result-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 90px;
+    color: var(--oro);
+    line-height: 1;
+    font-weight: 600;
+    position: relative;
+  }
+  .result-score sup { font-size: 36px; vertical-align: super; }
+  .result-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #888;
+    text-transform: uppercase;
+    margin-top: 8px;
+    position: relative;
+  }
+  .result-verdict {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--bianco);
+    margin-top: 20px;
+    font-style: italic;
+    position: relative;
+  }
+  .review-list { text-align: left; margin-bottom: 28px; }
+  .review-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--grigio-light);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .review-item:last-child { border-bottom: none; }
+  .review-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 700;
+  }
+  .review-dot.ok { background: var(--verde); color: white; }
+  .review-dot.ko { background: var(--rosso); color: white; }
+  .review-q { font-family: 'Cormorant Garamond', serif; font-size: 16px; margin-bottom: 4px; }
+  .review-ans { font-size: 11.5px; color: var(--grigio); }
+  .review-ans span { font-weight: 700; }
+  .btn-restart { margin-top: 10px; }
+
+  @media (max-width: 600px) {
+    .question-card { padding: 24px 20px; }
+    .header { padding: 28px 20px 24px; }
+    .progress-wrap { padding: 0 20px 20px; }
+    .main { padding: 28px 16px 48px; }
+    .tf-options { flex-direction: row; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-label">Business Ethics · Assessment</div>
+  <div class="gold-line"></div>
+  <h1>Ferragamo – <span>Code of Ethics</span></h1>
+  <div class="header-sub">10 Questions &nbsp;·&nbsp; True / False &nbsp;&amp;&nbsp; Multiple Choice</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-text" id="progressText">0 / 10</div>
+</div>
+
+<div class="main">
+
+  <!-- ── QUESTION 1 ── T/F -->
+  <div class="question-card active" data-q="1" data-correct="false">
+    <div class="q-badge">
+      <div class="q-num">1</div>
+      <div class="q-type tf">True / False</div>
+    </div>
+    <div class="q-text">The Ferragamo Code of Ethics applies exclusively to employees and corporate bodies of the parent company, Salvatore Ferragamo S.p.A.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb1"></div>
+  </div>
+
+  <!-- ── QUESTION 2 ── T/F -->
+  <div class="question-card" data-q="2" data-correct="true">
+    <div class="q-badge">
+      <div class="q-num">2</div>
+      <div class="q-type tf">True / False</div>
+    </div>
+    <div class="q-text">Ferragamo has obtained the SA8000 certification, demonstrating a formal commitment to social accountability in its labour practices.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb2"></div>
+  </div>
+
+  <!-- ── QUESTION 3 ── T/F -->
+  <div class="question-card" data-q="3" data-correct="false">
+    <div class="q-badge">
+      <div class="q-num">3</div>
+      <div class="q-type tf">True / False</div>
+    </div>
+    <div class="q-text">According to the Code, economic interest may justify deviations from the principles of correctness and honesty when the financial stakes are sufficiently high.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb3"></div>
+  </div>
+
+  <!-- ── QUESTION 4 ── T/F -->
+  <div class="question-card" data-q="4" data-correct="true">
+    <div class="q-badge">
+      <div class="q-num">4</div>
+      <div class="q-type tf">True / False</div>
+    </div>
+    <div class="q-text">Ferragamo signed the Fashion Pact in 2019 and has set a target of 100% renewable energy across all its locations by 2030.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb4"></div>
+  </div>
+
+  <!-- ── QUESTION 5 ── T/F -->
+  <div class="question-card" data-q="5" data-correct="false">
+    <div class="q-badge">
+      <div class="q-num">5</div>
+      <div class="q-type tf">True / False</div>
+    </div>
+    <div class="q-text">The Ethics Committee is appointed directly by the CEO of Salvatore Ferragamo S.p.A.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb5"></div>
+  </div>
+
+  <!-- ── QUESTION 6 ── MC -->
+  <div class="question-card" data-q="6" data-correct="b">
+    <div class="q-badge">
+      <div class="q-num">6</div>
+      <div class="q-type mc">Multiple Choice</div>
+    </div>
+    <div class="q-text">What is the consequence for a supplier who violates the principles established in the Ferragamo Code of Ethics?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">The supplier receives a formal written warning and a 90-day remediation plan.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The violation constitutes grounds for termination of the contractual relationship.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The supplier is referred to an independent arbitration panel for resolution.</div></div>
+    </div>
+    <div class="feedback" id="fb6"></div>
+  </div>
+
+  <!-- ── QUESTION 7 ── MC -->
+  <div class="question-card" data-q="7" data-correct="c">
+    <div class="q-badge">
+      <div class="q-num">7</div>
+      <div class="q-type mc">Multiple Choice</div>
+    </div>
+    <div class="q-text">By what year does Ferragamo aim to reduce its Scope 1, 2, and 3 greenhouse gas emissions by 42%, compared to the 2019 baseline?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">2025</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">2030</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">2029</div></div>
+    </div>
+    <div class="feedback" id="fb7"></div>
+  </div>
+
+  <!-- ── QUESTION 8 ── MC -->
+  <div class="question-card" data-q="8" data-correct="a">
+    <div class="q-badge">
+      <div class="q-num">8</div>
+      <div class="q-type mc">Multiple Choice</div>
+    </div>
+    <div class="q-text">According to the Code, which of the following best describes Ferragamo's approach to personal data management?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Data is collected only for identified, explicit, and legitimate purposes and retained for the strictly necessary period.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Data may be retained indefinitely to support future marketing and product development activities.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Data collection is unrestricted provided that subjects have signed a general consent form at the point of purchase.</div></div>
+    </div>
+    <div class="feedback" id="fb8"></div>
+  </div>
+
+  <!-- ── QUESTION 9 ── MC -->
+  <div class="question-card" data-q="9" data-correct="b">
+    <div class="q-badge">
+      <div class="q-num">9</div>
+      <div class="q-type mc">Multiple Choice</div>
+    </div>
+    <div class="q-text">Which of the following statements correctly describes the scope of Ferragamo's non-discrimination policy?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">It applies only to internal hiring processes and promotions within the Group.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">It covers both internal relations and transactions with third parties, including age, ethnicity, gender identity, sexual orientation, and disability.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">It applies exclusively to employees working in countries where anti-discrimination laws are enforced.</div></div>
+    </div>
+    <div class="feedback" id="fb9"></div>
+  </div>
+
+  <!-- ── QUESTION 10 ── MC -->
+  <div class="question-card" data-q="10" data-correct="c">
+    <div class="q-badge">
+      <div class="q-num">10</div>
+      <div class="q-type mc">Multiple Choice</div>
+    </div>
+    <div class="q-text">Which legislative framework is explicitly referenced in the Code as the basis for Ferragamo's Organizational Policy and its integration with the Code of Ethics?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">EU Directive 2022/2464 (CSRD)</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Italian Law No. 262/2005 on market abuse</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Italian Legislative Decree No. 231/2001 on corporate criminal liability</div></div>
+    </div>
+    <div class="feedback" id="fb10"></div>
+  </div>
+
+  <!-- NAV -->
+  <div class="nav" id="nav">
+    <button class="btn btn-ghost" id="prevBtn" onclick="navigate(-1)" disabled>← Previous</button>
+    <button class="btn btn-primary" id="nextBtn" onclick="navigate(1)" disabled>Next →</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="result-header">
+      <div class="result-score" id="scoreDisplay"><sup></sup><span id="scoreNum">0</span><sup>/10</sup></div>
+      <div class="result-label">Final Score</div>
+      <div class="result-verdict" id="verdict"></div>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+    <button class="btn btn-primary btn-restart" onclick="restartQuiz()">↺ &nbsp; Restart Quiz</button>
+  </div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    q: 1, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Code applies to all — employees, collaborators, corporate bodies, and is contractually extended to third parties including suppliers, consultants, and agents.',
+      wrong: '<strong>Incorrect.</strong> The Code applies to all — employees, collaborators, corporate bodies, and is contractually extended to third parties including suppliers, consultants, and agents.'
+    }
+  },
+  {
+    q: 2, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Code explicitly states that the Company has obtained the SA8000 certification and discloses related workforce data on its website.',
+      wrong: '<strong>Incorrect.</strong> The Code explicitly states that the Company has obtained the SA8000 certification and discloses related workforce data on its website.'
+    }
+  },
+  {
+    q: 3, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Code is explicit: "The pursuit of mere economic interest can never justify conduct contrary to the principles of correctness and honesty."',
+      wrong: '<strong>Incorrect.</strong> The Code is explicit: "The pursuit of mere economic interest can never justify conduct contrary to the principles of correctness and honesty."'
+    }
+  },
+  {
+    q: 4, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> Principle 7 on Environmental Protection states both commitments clearly: Fashion Pact (2019) and 100% renewable energy by 2030.',
+      wrong: '<strong>Incorrect.</strong> Principle 7 on Environmental Protection states both commitments clearly: Fashion Pact (2019) and 100% renewable energy by 2030.'
+    }
+  },
+  {
+    q: 5, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Ethics Committee is appointed by the <em>Board of Directors</em>, not the CEO — an important governance distinction ensuring independence.',
+      wrong: '<strong>Incorrect.</strong> The Ethics Committee is appointed by the <em>Board of Directors</em>, not the CEO — an important governance distinction ensuring independence.'
+    }
+  },
+  {
+    q: 6, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Code states clearly: "Violation of the principles established herein constitutes a breach that will entail the termination of the relationship in place."',
+      wrong: '<strong>Incorrect.</strong> The Code does not provide for warnings or arbitration — violation constitutes immediate grounds for contract termination.'
+    }
+  },
+  {
+    q: 7, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> The target is a 42% reduction in Scope 1+2+3 GHG emissions by <em>2029</em>, compared to the 2019 baseline.',
+      wrong: '<strong>Incorrect.</strong> The target year is <em>2029</em> (not 2025 or 2030) for the 42% GHG reduction. The 2030 target applies to renewable energy.'
+    }
+  },
+  {
+    q: 8, type: 'mc', correct: 'a',
+    explanation: {
+      correct: '<strong>Correct.</strong> This reflects the GDPR-aligned approach stated in the Code: data is collected for identified, explicit, and legitimate purposes only, retained for the strictly necessary period.',
+      wrong: '<strong>Incorrect.</strong> The Code mandates a GDPR-aligned approach: data collected only for identified, explicit, legitimate purposes and retained for the strictly necessary period.'
+    }
+  },
+  {
+    q: 9, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Principle 6 (Non-Discrimination) explicitly applies to both internal relations and transactions with third parties, covering a broad list of protected characteristics.',
+      wrong: '<strong>Incorrect.</strong> Principle 6 applies broadly — to both internal relations and external transactions — and covers age, race, gender identity, sexual orientation, disability, and political opinions.'
+    }
+  },
+  {
+    q: 10, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> Legislative Decree No. 231/2001 (corporate criminal liability) is explicitly referenced as the legal framework integrated with the Code of Ethics.',
+      wrong: '<strong>Incorrect.</strong> The Code explicitly references Legislative Decree No. 231/2001, which governs the administrative liability of companies for crimes committed by their personnel — not the CSRD or market abuse law.'
+    }
+  }
+];
+
+let current = 0;
+let answers = {};
+const cards = document.querySelectorAll('.question-card');
+
+function updateProgress() {
+  const answered = Object.keys(answers).length;
+  document.getElementById('progressFill').style.width = (answered / 10 * 100) + '%';
+  document.getElementById('progressText').textContent = answered + ' / 10';
+}
+
+function navigate(dir) {
+  cards[current].classList.remove('active');
+  current += dir;
+  if (current < 0) current = 0;
+  if (current >= 10) { showResults(); return; }
+  cards[current].classList.add('active');
+  updateNavButtons();
+}
+
+function updateNavButtons() {
+  const prev = document.getElementById('prevBtn');
+  const next = document.getElementById('nextBtn');
+  prev.disabled = current === 0;
+  const answered = answers[current + 1] !== undefined;
+  if (current === 9 && answered) {
+    next.textContent = 'See Results →';
+    next.disabled = false;
+  } else {
+    next.textContent = 'Next →';
+    next.disabled = !answered;
+  }
+}
+
+function selectOption(card, option) {
+  const qNum = parseInt(card.dataset.q);
+  const val = option.dataset.val;
+  const correct = card.dataset.correct;
+  if (answers[qNum] !== undefined) return;
+
+  answers[qNum] = val;
+  const isCorrect = val === correct;
+  const fb = document.getElementById('fb' + qNum);
+  const qData = questions[qNum - 1];
+
+  // Mark all options
+  card.querySelectorAll('.option').forEach(o => {
+    o.classList.add('disabled');
+    if (o.dataset.val === correct) o.classList.add('correct');
+    if (o.dataset.val === val && !isCorrect) o.classList.add('wrong');
+    if (o.dataset.val === val && isCorrect) o.classList.add('correct');
+  });
+
+  fb.innerHTML = isCorrect ? qData.explanation.correct : qData.explanation.wrong;
+  fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+
+  updateProgress();
+  updateNavButtons();
+}
+
+// Attach listeners
+cards.forEach(card => {
+  card.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => selectOption(card, opt));
+  });
+});
+
+function showResults() {
+  document.getElementById('nav').style.display = 'none';
+  cards.forEach(c => c.style.display = 'none');
+  const resultsEl = document.getElementById('results');
+  resultsEl.style.display = 'block';
+
+  let score = 0;
+  questions.forEach(q => {
+    if (answers[q.q] === q.correct) score++;
+  });
+
+  document.getElementById('scoreNum').textContent = score;
+
+  const verdicts = [
+    [0,3, "Keep studying — revisit the Code carefully."],
+    [4,5, "Fair understanding — some principles need review."],
+    [6,7, "Good grasp of the fundamentals."],
+    [8,9, "Excellent — strong command of the Code."],
+    [10,10, "Perfect score — outstanding mastery."]
+  ];
+  let verdict = '';
+  for (const [min, max, label] of verdicts) {
+    if (score >= min && score <= max) { verdict = label; break; }
+  }
+  document.getElementById('verdict').textContent = verdict;
+
+  const reviewList = document.getElementById('reviewList');
+  questions.forEach(q => {
+    const userAns = answers[q.q];
+    const isOk = userAns === q.correct;
+    const item = document.createElement('div');
+    item.className = 'review-item';
+
+    const card = document.querySelector(`[data-q="${q.q}"]`);
+    const qText = card.querySelector('.q-text').textContent.trim().substring(0, 80) + '…';
+
+    let displayAns = userAns;
+    if (q.type === 'tf') {
+      displayAns = userAns === 'true' ? 'True' : 'False';
+    } else {
+      displayAns = 'Option ' + userAns.toUpperCase();
+    }
+    let displayCorrect = q.correct;
+    if (q.type === 'tf') {
+      displayCorrect = q.correct === 'true' ? 'True' : 'False';
+    } else {
+      displayCorrect = 'Option ' + q.correct.toUpperCase();
+    }
+
+    item.innerHTML = `
+      <div class="review-dot ${isOk ? 'ok' : 'ko'}">${isOk ? '✓' : '✗'}</div>
+      <div>
+        <div class="review-q">Q${q.q}: ${qText}</div>
+        <div class="review-ans">
+          Your answer: <span style="color:${isOk ? 'var(--verde)' : 'var(--rosso)'}">${displayAns}</span>
+          ${!isOk ? `&nbsp;·&nbsp; Correct: <span style="color:var(--verde)">${displayCorrect}</span>` : ''}
+        </div>
+      </div>
+    `;
+    reviewList.appendChild(item);
+  });
+}
+
+function restartQuiz() {
+  answers = {};
+  current = 0;
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('reviewList').innerHTML = '';
+  document.getElementById('nav').style.display = 'flex';
+
+  cards.forEach((card, i) => {
+    card.style.display = '';
+    card.classList.remove('active');
+    card.querySelectorAll('.option').forEach(o => {
+      o.classList.remove('selected', 'correct', 'wrong', 'disabled');
+    });
+    const qNum = parseInt(card.dataset.q);
+    const fb = document.getElementById('fb' + qNum);
+    if (fb) { fb.className = 'feedback'; fb.innerHTML = ''; }
+  });
+
+  cards[0].classList.add('active');
+  updateProgress();
+  updateNavButtons();
+}
+
+updateNavButtons();
+</script>
+</body>
+</html>
