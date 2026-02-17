@@ -5,26 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EDU — Fair Academy</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --green:      #1D4D35;
-      --green-mid:  #2A6B4A;
-      --green-pale: #EAF2EC;
-      --gold:       #C49A2B;
-      --gold-light: #E8C55A;
-      --cream:      #F8F5EF;
-      --ink:        #181614;
-      --ink-soft:   #5C5750;
-      --border:     #D9D3C7;
+      --green:      #3A3A3A;
+      --green-mid:  #4A4A4A;
+      --green-pale: #F0F0F0;
+      --gold:       #F47920;
+      --gold-light: #F9A55A;
+      --cream:      #F5F5F5;
+      --ink:        #1E1E1E;
+      --ink-soft:   #666666;
+      --border:     #DCDCDC;
       --white:      #FFFFFF;
-      --shadow:     0 4px 40px rgba(29,77,53,0.10);
+      --shadow:     0 4px 40px rgba(0,0,0,0.08);
     }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Lato', sans-serif;
       background: var(--cream);
       color: var(--ink);
       min-height: 100vh;
@@ -56,20 +56,22 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Libre Baskerville', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--green);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      font-weight: 900;
+      color: var(--white);
     }
     .logo-text {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 17px;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
       color: var(--white);
+      font-weight: 900;
       letter-spacing: 0.5px;
     }
     .logo-text span {
-      color: var(--gold-light);
-      font-style: italic;
+      color: rgba(255,255,255,0.75);
+      font-weight: 300;
+      font-style: normal;
     }
     .header-tag {
       font-size: 10px;
@@ -108,10 +110,10 @@
       margin-bottom: 16px;
     }
     .hero h1 {
-      font-family: 'Libre Baskerville', serif;
-      font-size: clamp(32px, 5vw, 56px);
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
       color: var(--white);
-      font-weight: 400;
+      font-weight: 900;
       line-height: 1.15;
       max-width: 700px;
       margin-bottom: 20px;
@@ -119,6 +121,7 @@
     .hero h1 em {
       color: var(--gold-light);
       font-style: italic;
+      font-weight: 300;
     }
     .hero-sub {
       font-size: 15px;
@@ -138,10 +141,10 @@
       gap: 4px;
     }
     .hero-meta-item .val {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Lato', sans-serif;
       font-size: 22px;
       color: var(--gold-light);
-      font-weight: 700;
+      font-weight: 900;
     }
     .hero-meta-item .lbl {
       font-size: 11px;
@@ -167,9 +170,9 @@
       padding-bottom: 16px;
     }
     .section-title {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Lato', sans-serif;
       font-size: 22px;
-      font-weight: 400;
+      font-weight: 700;
       color: var(--green);
     }
     .section-count {
@@ -221,10 +224,10 @@
       margin-bottom: 8px;
     }
     .course-name {
-      font-family: 'Libre Baskerville', serif;
-      font-size: 20px;
+      font-family: 'Lato', sans-serif;
+      font-size: 18px;
       color: var(--white);
-      font-weight: 400;
+      font-weight: 700;
       line-height: 1.3;
     }
     .course-body {
@@ -254,20 +257,20 @@
       border: 1px solid transparent;
     }
     .course-link.materials {
-      background: var(--green-pale);
-      color: var(--green);
-      border-color: #C2D9C9;
+      background: #F0F0F0;
+      color: #3A3A3A;
+      border-color: #DCDCDC;
     }
     .course-link.materials:hover {
-      background: #d5eadb;
+      background: #E4E4E4;
     }
     .course-link.tests {
-      background: #FDF6E3;
-      color: #7A5C10;
-      border-color: #EDD88A;
+      background: #FEF0E6;
+      color: #C05A10;
+      border-color: #F9C4A0;
     }
     .course-link.tests:hover {
-      background: #faefc4;
+      background: #fde0c8;
     }
     .course-link.empty {
       background: #F2F0ED;
@@ -295,8 +298,9 @@
       box-shadow: var(--shadow);
     }
     .upcoming-title {
-      font-family: 'Libre Baskerville', serif;
+      font-family: 'Lato', sans-serif;
       font-size: 18px;
+      font-weight: 700;
       color: var(--green);
       margin-bottom: 8px;
     }
@@ -367,7 +371,7 @@
   <header>
     <div class="logo">
       <div class="logo-mark">FA</div>
-      <div class="logo-text">Fair <span>Academy</span></div>
+      <div class="logo-text">FAIR <span>academy</span></div>
     </div>
     <div class="header-tag">Education Portal</div>
   </header>
@@ -379,7 +383,7 @@
     <h1>Academic <em>Course</em><br>Materials</h1>
     <p class="hero-sub">
       Course materials, tests, and resources for university students and professionals.
-      A shared space for learning — beyond Google Drive.
+      A shared space for learning, open access.
     </p>
     <div class="hero-meta">
       <div class="hero-meta-item">
@@ -416,11 +420,11 @@
         <div class="course-body">
           <p class="course-desc">Ethical frameworks, corporate governance, supplier codes of conduct, and sustainability accountability for business professionals.</p>
           <div class="course-links">
-            <a href="edu-buseth-materials/" class="course-link materials">
+            <a href="edu-buseth-materials/index.html" class="course-link materials">
               <span>📄 Course Materials</span>
               <span class="link-badge">Open →</span>
             </a>
-            <a href="edu-buseth-test/" class="course-link tests">
+            <a href="edu-buseth-test/index.html" class="course-link tests">
               <span>✏️ Tests &amp; Quizzes</span>
               <span class="link-badge">Open →</span>
             </a>
