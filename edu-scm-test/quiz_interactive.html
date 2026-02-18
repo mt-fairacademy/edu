@@ -1,0 +1,499 @@
+<!--
+  Supply Chain Management & ESG Interactive Quiz
+  Fair Academy — 2026
+  (Professional design, English only, instant feedback & score)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Management & ESG — Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #faf7f2;
+      color: #222;
+      margin: 0; padding: 0;
+    }
+    header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 32px 20px 24px 20px;
+      border-bottom: 3px solid #b8922a;
+    }
+    header .main-title {
+      font-size: 2.4rem; font-weight: 700; letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    header .subtitle {
+      font-size: 1.04rem;
+      color: #d0bd7f;
+      font-weight: 500;
+    }
+    #main {
+      max-width: 750px;
+      margin: 32px auto 76px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 32px rgba(0,0,0,0.09);
+      padding: 36px 20px 42px;
+    }
+    .progress-bar-bg {
+      height: 8px; width: 100%;
+      background: #efeadb;
+      border-radius: 5px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; background: #b8922a;
+      border-radius: 5px; width: 0%;
+      transition: width 0.6s;
+    }
+    .question-section { margin-bottom: 36px; }
+    .question-num {
+      font-weight: bold; font-size: 1.05rem;
+      color: #b8922a;
+    }
+    .question-text {
+      font-size: 1.24rem;
+      margin: 10px 0 18px 0;
+      line-height: 1.45;
+    }
+    .answers { display: flex; flex-direction: column; gap: 18px; }
+    .answer {
+      background: #faf7f2;
+      border: 1.5px solid #ece4d6;
+      border-radius: 9px;
+      padding: 11px 18px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .18s, border .18s;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .answer:hover:not(.disabled) { background: #f3e1af; border-color: #b8922a; }
+    .answer.selected { background: #ffecc1; border-color: #b8922a; }
+    .answer.correct { background: #dbf7e5; border-color: #297a46; color: #297a46; }
+    .answer.wrong { background: #f8e1dc; border-color: #c0392b; color: #c0392b; }
+    .answer.disabled { cursor: not-allowed; opacity: 0.75; }
+    .feedback {
+      margin-top: 18px;
+      background: #f3f3e2;
+      border-left: 5px solid #b8922a;
+      padding: 15px 20px;
+      border-radius: 7px;
+      font-size: 1.07rem;
+      display: none;
+      animation: fadeIn 0.3s;
+    }
+    .feedback.show { display: block; }
+    .feedback.correct { border-left-color: #297a46; color: #297a46; }
+    .feedback.wrong { border-left-color: #c0392b; color: #c0392b; }
+    .actions {
+      margin-top: 34px; display: flex; justify-content: flex-end; gap: 16px;
+    }
+    button {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Montserrat', Arial, sans-serif;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 26px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.19s;
+      letter-spacing: 1px;
+    }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    button.secondary {
+      background: #b8922a;
+      color: #1a1a1a;
+      margin-right: auto;
+    }
+    .result-section {
+      text-align: center;
+      padding: 46px 10px 20px;
+    }
+    .final-score {
+      font-size: 2.5rem; color: #b8922a; font-weight: bold; margin-bottom: 6px;
+    }
+    .verdict {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+    .review-list { text-align: left; margin: 5px auto 36px; max-width: 96%; }
+    .review-item {
+      background: #faf7f2;
+      border-left: 4px solid #ece4d6;
+      margin-bottom: 10px;
+      padding: 11px 20px;
+      border-radius: 7px;
+      font-size: 1rem;
+    }
+    .review-ok { border-left-color: #297a46; color: #297a46; }
+    .review-ko { border-left-color: #c0392b; color: #c0392b; }
+    @media (max-width: 600px) {
+      #main { padding: 11px 3px 22px; }
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  </style>
+</head>
+<body>
+<header>
+  <div class="main-title">Supply Chain Management & ESG — Assessment</div>
+  <div class="subtitle">20 Questions · Multiple Choice · Passing: 13/20 (65%)</div>
+</header>
+<div id="main">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <!-- Quiz content is injected here by JS -->
+  <div id="quiz"></div>
+</div>
+<script>
+const questions = [
+  {
+    question: "According to principle 3.1, if there is a conflict between the Code and local law, what must a supplier do?",
+    choices: [
+      "Always apply the Ferragamo Code provisions above all.",
+      "Apply the stricter standard between the Code and the local law, reporting the divergence to the Group.",
+      "Apply the local law, which has superior force as legislation.",
+      "Suspend activities until further instructions from the Group."
+    ],
+    correct: 1,
+    explanation: "Suppliers must apply the higher standard between the Code and local law, and report divergences."
+  },
+  {
+    question: "Which of the following is explicitly forbidden by principle 3.2 on anti-corruption?",
+    choices: [
+      "Exchanging product samples between supplier and client.",
+      "Offering a gift beyond normal courtesy to obtain favorable treatment.",
+      "Organizing a team-building event with Ferragamo employees.",
+      "Requesting a business reference before starting supplies."
+    ],
+    correct: 1,
+    explanation: "Gifts exceeding normal courtesy that aim to gain improper advantage are strictly forbidden."
+  },
+  {
+    question: "Regarding principle 3.4 (Intellectual Property): what is CORRECT about Ferragamo designs/specs?",
+    choices: [
+      "The supplier may share specs with other clients if it helps product quality.",
+      "After business ends, materials may be kept as R&D reference.",
+      "Suppliers must use them only for production and cease use immediately at contract end.",
+      "Suppliers can share with sub-suppliers without authorization if needed for production."
+    ],
+    correct: 2,
+    explanation: "Materials are exclusive industrial secrets and must not be used or kept after the business ends."
+  },
+  {
+    question: "Principle 3.7 ('Made in Italy') requires suppliers to...",
+    choices: [
+      "Produce exclusively in Italy for all Ferragamo products.",
+      "Oppose counterfeiting and ensure correct 'Made in Italy' labeling, contributing to local prosperity.",
+      "Use only Italian raw materials.",
+      "Certify production processes with '100% Made in Italy' mark."
+    ],
+    correct: 1,
+    explanation: "Suppliers should oppose counterfeiting and label honestly, but there's no requirement for exclusive Italian production."
+  },
+  {
+    question: "According to principle 3.9 (Child Labour), which scenario is ALLOWED?",
+    choices: [
+      "A 15-year-old works part-time on weekends in a workshop.",
+      "A 17-year-old who finished compulsory schooling working daytime, in non-dangerous activity.",
+      "A 16-year-old works 4 hours night shift under adult supervision.",
+      "A 15-year-old on school internship for 20 hours/week, administrative work."
+    ],
+    correct: 1,
+    explanation: "Employment of under 16 is prohibited; 17-year-olds who finished schooling can work in non-dangerous daytime roles."
+  },
+  {
+    question: "Which is cited as modern slavery or forced labor under principle 3.10?",
+    choices: [
+      "Requiring a trial period before permanent status.",
+      "Retaining worker identity documents as employment condition.",
+      "Using a renewable fixed-term job contract in first year.",
+      "Requesting worker availability for paid overtime."
+    ],
+    correct: 1,
+    explanation: "Retaining identity documents as a condition of employment is explicitly listed as modern slavery."
+  },
+  {
+    question: "Principle 3.11 prohibits discrimination on the basis of (pick the most complete answer):",
+    choices: [
+      "Only age, gender, and physical disability.",
+      "Age, ethnicity, nationality, political/union opinions, religious belief, sexual orientation, gender identity, physical and psychological disabilities.",
+      "Gender, nationality, and religious belief, per ILO C111.",
+      "All personal characteristics, including work capacity and education."
+    ],
+    correct: 1,
+    explanation: "The Code covers all mentioned categories in the most complete list."
+  },
+  {
+    question: "Regarding remuneration (principle 3.15), the Code requires:",
+    choices: [
+      "Wages at least equal to minimum legal requirements.",
+      "Wages are freely agreed by contract.",
+      "Wages compliant with law AND adequate to allow basic needs, maintaining dignity.",
+      "Wages must include at least 10% in-kind benefits."
+    ],
+    correct: 2,
+    explanation: "Remuneration must ensure living wages, not just minimum wage."
+  },
+  {
+    question: "Which is NOT required by principle 3.17 (Regular Working Conditions)?",
+    choices: [
+      "Written and understandable contract for employees.",
+      "Insurance, welfare, and social contributions.",
+      "Worker access to their registered contract information.",
+      "A company welfare plan beyond legal minimums."
+    ],
+    correct: 3,
+    explanation: "Integrative company welfare is NOT a required minimum; it's optional."
+  },
+  {
+    question: "According to principle 3.19 on animal respect: in case of slaughter, animals must...",
+    choices: [
+      "Be treated under CITES rules for protected species.",
+      "Not suffer, per European Commission and OIE guidance.",
+      "Be slaughtered only by certified veterinary staff.",
+      "Be slaughtered per the production country’s national rules."
+    ],
+    correct: 1,
+    explanation: "The Code mandates no suffering, referencing EU and OIE standards."
+  },
+  {
+    question: "In energy management (principle 3.20), what MUST suppliers do?",
+    choices: [
+      "Use renewable energy exclusively within 3 years of signing.",
+      "Track energy consumption by source and actively reduce GHG emissions.",
+      "Obtain ISO 50001 within first supply year.",
+      "Offset emissions by buying carbon credits."
+    ],
+    correct: 1,
+    explanation: "It mandates measuring/tracking consumption by source and reducing GHG emissions."
+  },
+  {
+    question: "Waste management (principle 3.21): Which is OBLIGATORY for suppliers?",
+    choices: [
+      "Zero hazardous waste production in 2 years.",
+      "Have information on treatment, transport & destination of waste at all production phases.",
+      "Recycle or reuse at least 50% of waste.",
+      "Contract out hazardous waste only to certified suppliers."
+    ],
+    correct: 1,
+    explanation: "Suppliers must retain/manage data about waste handling and traceability."
+  },
+  {
+    question: "Principle 3.24 on chemical safety refers to:",
+    choices: [
+      "Only the EU REACH regulation.",
+      "REACH and Ferragamo Group’s own Restricted Substances List (RSL).",
+      "Only the national regulations of the production country.",
+      "Only ILO chemical risk standards."
+    ],
+    correct: 1,
+    explanation: "Both REACH and Ferragamo’s own RSL apply."
+  },
+  {
+    question: "Traceability (principle 3.25) requires suppliers to provide the Group on request with:",
+    choices: [
+      "A complete list of all their customers and suppliers.",
+      "Production and processing locations for materials/products.",
+      "Financial data for each production order.",
+      "ISO 9001 certificates for every production phase."
+    ],
+    correct: 1,
+    explanation: "Location information for production and processing is key for traceability."
+  },
+  {
+    question: "According to section 5 (Monitoring Activities), which is CORRECT about monitoring?",
+    choices: [
+      "Ferragamo can audit only direct suppliers, not sub-suppliers.",
+      "Audits can be conducted by the Group or third-parties, for all supply chain actors.",
+      "Suppliers can refuse on-site visits with less than 30 days’ notice.",
+      "Monitoring is limited to documentation; site visits require written supplier consent."
+    ],
+    correct: 1,
+    explanation: "Audits may be conducted by Ferragamo or third parties, for all supply chain actors."
+  },
+  {
+    question: "Under what conditions may Ferragamo terminate a supply relationship (section 6)?",
+    choices: [
+      "Only in case of human rights section violation.",
+      "Only if a third-party audit is failed.",
+      "For repeated/serious violations, failure of improvement plan, or refusal to cooperate with monitoring.",
+      "Automatically after three reports to the Ethics Committee."
+    ],
+    correct: 2,
+    explanation: "Serious/repeated violations, failed corrective plan, and audit refusal are all grounds for termination."
+  },
+  {
+    question: "To report a Code violation, suppliers must contact:",
+    choices: [
+      "Their Ferragamo purchasing manager.",
+      "The Ethics Committee (email/postal addresses provided in the Code).",
+      "The Ministry of Labour in their country.",
+      "Ferragamo headquarters in Florence by registered mail."
+    ],
+    correct: 1,
+    explanation: "Reports go to the Ethics Committee as defined in section 7."
+  },
+  {
+    question: "What’s the difference between provisions in normal vs. italic in the Code?",
+    choices: [
+      "Italics only apply to first-level suppliers.",
+      "Normal text = mandatory provisions; italics = recommendations/best practices.",
+      "Italics = only environmental/animal-welfare provisions.",
+      "No formal difference, italics are stylistic only."
+    ],
+    correct: 1,
+    explanation: "Normal text: obligations; italics: recommended practices."
+  },
+  {
+    question: "Why is the Supplier Code of Conduct relevant for CSRD?",
+    choices: [
+      "It’s required as a mandatory CSRD sustainability report annex.",
+      "It demonstrates supply chain due diligence processes required for CSRD value chain reporting.",
+      "It substitutes the sustainability report for companies <500 employees.",
+      "It is recognized by CSRD as equal to ESRS for human rights."
+    ],
+    correct: 1,
+    explanation: "CSRD requires due diligence and screening for the entire value chain; Codes are key to showing this."
+  },
+  {
+    question: "Which principle most directly relates to the Digital Product Passport (DPP) of EU sustainable product strategy?",
+    choices: [
+      "3.18 (Environmental Protection)",
+      "3.24 (Product Chemical Safety)",
+      "3.25 (Traceability of Materials and Products)",
+      "3.7 (Made in Italy)"
+    ],
+    correct: 2,
+    explanation: "3.25 Traceability is key for DPP compliance."
+  }
+];
+
+const passingScore = 13;
+
+let current = 0;
+let answers = {};
+const quizContainer = document.getElementById('quiz');
+
+function htmlEscape(str) {
+  return str.replace(/[&<>"']/g,
+    m => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[m])
+  );
+}
+
+function renderQuiz() {
+  const q = questions[current];
+  let html = '';
+  html += `<div class="question-section">`;
+  html += `<div class="question-num">Question ${current+1} of ${questions.length}</div>`;
+  html += `<div class="question-text">${htmlEscape(q.question)}</div>`;
+  html += `<div class="answers">`;
+  q.choices.forEach((ch, i) => {
+    const selected = answers[current] === i ? 'selected' : '';
+    const disabled = answers[current] !== undefined ? 'disabled' : '';
+    html += `<div class="answer ${selected} ${disabled}" onclick="selectAnswer(${i})">${String.fromCharCode(65+i)}. ${htmlEscape(ch)}</div>`;
+  });
+  html += `</div>`;
+  html += `<div class="feedback" id="feedback"></div>`;
+  html += `</div>`;
+  html += `<div class="actions">`;
+  if (current > 0)
+    html += `<button class="secondary" onclick="prevQ()">Back</button>`;
+  html += `<button ${answers[current] === undefined ? 'disabled' : ''} onclick="nextQ()">Next</button>`;
+  html += `</div>`;
+  quizContainer.innerHTML = html;
+  updateProgress();
+  if (answers[current] !== undefined) showFeedback();
+}
+function selectAnswer(selectedIdx) {
+  if (answers[current] !== undefined) return;
+  answers[current] = selectedIdx;
+  renderQuiz();
+  showFeedback();
+}
+function showFeedback() {
+  const fb = document.getElementById('feedback');
+  const q = questions[current];
+  const selected = answers[current];
+  const isCorrect = selected === q.correct;
+  fb.innerHTML = (isCorrect ? "✔️ Correct! " : "✘ Incorrect. ") + q.explanation;
+  fb.className = 'feedback show ' + (isCorrect ? 'correct' : 'wrong');
+  showAnswerColors();
+}
+function showAnswerColors() {
+  const q = questions[current];
+  document.querySelectorAll('.answer').forEach((el, i) => {
+    el.classList.add('disabled');
+    if (i === q.correct) el.classList.add('correct');
+    if (answers[current] === i && i !== q.correct) el.classList.add('wrong');
+  });
+}
+function nextQ() {
+  if (current < questions.length - 1) {
+    current++;
+    renderQuiz();
+  } else {
+    showResults();
+  }
+}
+function prevQ() {
+  if (current > 0) {
+    current--;
+    renderQuiz();
+  }
+}
+function updateProgress() {
+  const perc = ((current) / questions.length) * 100;
+  document.getElementById('progressFill').style.width = `${((Object.keys(answers).length)/questions.length)*100}%`;
+}
+function showResults() {
+  let score = 0;
+  questions.forEach((q, i) => { if (answers[i] === q.correct) score++; });
+  let verdict = '';
+  if (score >= 18) verdict = 'Excellent — Full mastery of the material';
+  else if (score >= 15) verdict = 'Good — Solid understanding, some gaps';
+  else if (score >= 13) verdict = 'Sufficient — You acquired essential knowledge';
+  else if (score >= 10) verdict = 'Insufficient — Requires further study';
+  else verdict = 'Not sufficient — Review the material carefully';
+
+  let html = `<div class="result-section">`;
+  html += `<div class="final-score">${score} / ${questions.length}</div>`;
+  html += `<div class="verdict">${verdict}</div>`;
+  html += `<button onclick="restartQuiz()">Restart Quiz</button>`;
+  html += `<div style="height:36px"></div>`;
+  html += `<div class="review-list">`;
+  questions.forEach((q,i) => {
+    const ok = answers[i] === q.correct;
+    html += `<div class="review-item ${ok ? 'review-ok':'review-ko'}">Q${i+1}. `;
+    html += htmlEscape(q.question.substring(0,60))+'...<br/>';
+    html += `<strong>Your answer:</strong> ${answers[i] !== undefined ? String.fromCharCode(65+answers[i]) : '-'} `;
+    html += ok ? "✔️" : `<span style="color:#c0392b">✘ (Correct: ${String.fromCharCode(65+q.correct)})</span>`;
+    html += `</div>`;
+  });
+  html += `</div></div>`;
+  quizContainer.innerHTML = html;
+  document.getElementById('progressFill').style.width = "100%";
+}
+function restartQuiz() {
+  current = 0; answers = {};
+  renderQuiz();
+}
+window.selectAnswer = selectAnswer;
+window.nextQ = nextQ;
+window.prevQ = prevQ;
+window.restartQuiz = restartQuiz;
+renderQuiz();
+</script>
+</body>
+</html>
