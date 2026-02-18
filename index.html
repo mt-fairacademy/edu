@@ -3,34 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css"> <!-- Assume styles.css contains necessary styling -->
-    <title>Fair Academy Education Portal</title>
+    <title>Fair Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f4f4f4;
+        }
+        header {
+            background: #c20000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .course-list {
+            margin: 20px 0;
+        }
+        a {
+            display: block;
+            padding: 10px;
+            background: #e7e7e7;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #333;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #d5d5d5;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to the Fair Academy Education Portal</h1>
+        <h1>Fair Academy</h1>
     </header>
-    <main>
-        <section class="courses">
-            <div class="course-card">
-                <h2>Business Ethics</h2>
-                <p>Explore the principles of ethical business practices.</p>
-                <a href="edu-buseth-materials/index.html">Learn More</a>
-            </div>
-            <div class="course-card">
-                <h2>Entrepreneurship</h2>
-                <p>Discover the skills needed to start and manage a business.</p>
-                <a href="edu-buseth-test/index.html">Learn More</a>
-            </div>
-            <div class="course-card">
-                <h2>Supply Chain Management ESG</h2>
-                <p>Understand sustainable practices in supply chains.</p>
-                <a href="edu-scm-test/quiz_interactive.html">Learn More</a>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Fair Academy</p>
-    </footer>
+    <div class="course-list">
+        <h2>Available Courses</h2>
+        <a href="edu-scm-test/quiz_interactive.html">Supply Chain Management</a>
+        <a href="edu-scm-test/quiz_interactive.html">ESG</a>
+        <!-- Add more course links here as needed -->
+    </div>
 </body>
 </html>
