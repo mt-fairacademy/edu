@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Management & ESG Quiz</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Assuming styles are separated -->
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Supply Chain Management & ESG Quiz</h1>
+        <form id="quiz-form">
+            <div class="question" data-question="1">
+                <p>1. True or False: Supply Chain Management has no impact on ESG factors.</p>
+                <label><input type="radio" name="q1" value="true"> True</label>
+                <label><input type="radio" name="q1" value="false"> False</label>
+                <p class="explanation hidden">Explanation: Supply Chain Management can greatly affect ESG factors...</p>
+            </div>
+            <div class="question" data-question="2">
+                <p>2. Multiple Choice: Which of the following is NOT a component of ESG?</p>
+                <label><input type="radio" name="q2" value="a"> A. Environmental Impact</label>
+                <label><input type="radio" name="q2" value="b"> B. Social Responsibility</label>
+                <label><input type="radio" name="q2" value="c"> C. Governance Practices</label>
+                <label><input type="radio" name="q2" value="d"> D. Financial Profitability</label>
+                <p class="explanation hidden">Explanation: Financial Profitability is an outcome rather than a component...</p>
+            </div>
+            <!-- Add more questions similarly -->
+            <button type="submit">Submit</button>
+        </form>
+        <div id="results" class="hidden"></div>
+    </div>
+    <script src="script.js"></script> <!-- Assuming scripts are separated -->
+</body>
+</html>
