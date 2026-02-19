@@ -165,6 +165,83 @@
       header, .hero, footer { padding-left: 10px; padding-right: 10px; }
       main { padding-left: 4px; padding-right: 4px; }
     }
+    <head>
+  ...
+  <style>
+    /* Put your CSS here: */
+    .main-area { margin-bottom: 2.5rem; }
+    .course-list {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .course-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 3px 16px rgba(184,146,42,0.11);
+      padding: 25px 18px 22px 18px;
+      min-width: 280px;
+      width: 320px;
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.3em 0.9em;
+      font-size: 0.97em;
+      font-weight: bold;
+      border-radius: 7px;
+      margin-bottom: 13px;
+    }
+    .badge-active {
+      background: #B8922A;
+      color: #fff;
+    }
+    .badge-soon {
+      background: #bdbdbd;
+      color: #fff;
+    }
+    .course-link {
+      background: #faf7f2;
+      color: #1a1a1a;
+      border: 1px solid #B8922A;
+      border-radius: 8px;
+      font-size: 1.03rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 11px 22px;
+      transition: background .14s, color .14s, border .14s;
+      display: inline-block;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .course-link:hover:not(.disabled) {
+      background: #B8922A;
+      color: #fff;
+      border-color: #b8922a;
+    }
+    .course-link.disabled,
+    .course-link[aria-disabled="true"] {
+      pointer-events: none;
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    /* Add any additional CSS here, for example: */
+    .internal-menu {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+    .internal-menu .course-link {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
   </style>
 </head>
 <body>
