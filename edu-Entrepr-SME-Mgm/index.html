@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrepreneurship SME Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #4a4a4a; }
+        .back-link { margin-top: 20px; display: inline-block; background-color: #007bff; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; }
+        .protected-content { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Entrepreneurship SME Management</h1>
+    <p>Please enter the password to access the content:</p>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button id="submitPassword">Submit</button>
+
+    <div class="protected-content" id="contentArea">
+        <h2>Level Materials</h2>
+        <h3>Level 1</h3>
+        <iframe src="https://drive.google.com/file/d/L1_ID/preview" width="600" height="500"></iframe>
+        <h3>Level 2</h3>
+        <iframe src="https://drive.google.com/file/d/L2_ID/preview" width="600" height="500"></iframe>
+        <h3>Level 3</h3>
+        <iframe src="https://drive.google.com/file/d/L3_ID/preview" width="600" height="500"></iframe>
+        <h3>Level 4</h3>
+        <iframe src="https://drive.google.com/file/d/L4_ID/preview" width="600" height="500"></iframe>
+        <h3>Level 5</h3>
+        <iframe src="https://drive.google.com/file/d/L5_ID/preview" width="600" height="500"></iframe>
+    </div>
+
+    <a href="javascript:void(0);" class="back-link" onclick="document.location.href='previous_page.html';">Back</a>
+
+    <script>
+        document.getElementById('submitPassword').onclick = function() {
+            var password = document.getElementById('passwordInput').value;
+            if (password === 'fairacademy') {
+                document.getElementById('contentArea').style.display = 'block';
+                alert('Access granted!');
+            } else {
+                alert('Incorrect password!');
+            }
+        };
+    </script>
+</body>
+</html>
