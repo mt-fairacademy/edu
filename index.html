@@ -3,36 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restored Course Index</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Courses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .course-card {
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .course-card.active {
+            border: 2px solid green;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+        .course-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Course Index</h1>
-        <nav>
-            <ul>
-                <li><a href="#course1">Course 1</a></li>
-                <li><a href="#course2">Course 2</a></li>
-                <li><a href="#course3">Course 3</a></li>
-            </ul>
-        </nav>
+        <h1>Available Courses</h1>
     </header>
-    <main>
-        <section id="course1">
-            <h2>Course 1</h2>
-            <p>Description of Course 1.</p>
-        </section>
-        <section id="course2">
-            <h2>Course 2</h2>
-            <p>Description of Course 2.</p>
-        </section>
-        <section id="course3">
-            <h2>Course 3</h2>
-            <p>Description of Course 3.</p>
-        </section>
-    </main>
+    <div class="course-container">
+        <div class="course-card active">
+            <h2>Business Ethics</h2>
+            <p>Learn the foundational principles of ethical business practices.</p>
+        </div>
+        <div class="course-card active">
+            <h2>Supply Chain Management</h2>
+            <p>Explore the complexities of supply chain logistics and management.</p>
+        </div>
+        <div class="course-card active">
+            <h2>Sustainability Management</h2>
+            <p>Understand how to manage resources sustainably in business.</p>
+        </div>
+        <div class="course-card">
+            <h2>Sustainable Business</h2>
+            <p>Study business strategies that promote sustainability.</p>
+        </div>
+        <div class="course-card">
+            <h2>Startup & Innovation</h2>
+            <p>Learn how to launch and grow innovative startups.</p>
+        </div>
+        <div class="course-card">
+            <h2>Circular Economy</h2>
+            <p>Discover the principles of a circular economy and its impact on business.</p>
+        </div>
+    </div>
     <footer>
-        <p>&copy; 2026 mt-fairacademy</p>
+        <p>&copy; 2026 mt-fairacademy. All rights reserved.</p>
     </footer>
 </body>
 </html>
