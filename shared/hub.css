@@ -45,7 +45,7 @@ header {
   background: var(--header-bg);
   color: #fff;
   padding: 32px 20px 22px 20px;
-  text-align: left;
+  text-align: center;
   max-width: 900px;
   margin: 0 auto;
 }
