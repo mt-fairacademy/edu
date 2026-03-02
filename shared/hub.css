@@ -182,3 +182,61 @@ footer {
   header, .hero, footer { padding-left: 10px; padding-right: 10px; }
   main { padding-left: 4px; padding-right: 4px; }
 }
+/* Dropdown styling to match .course-link button look */
+.internal-menu select {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #faf7f2;
+  color: #1a1a1a;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+
+  font-size: 1.03rem;
+  font-weight: 600;
+  padding: 11px 44px 11px 22px; /* extra right padding for arrow */
+
+  cursor: pointer;
+
+  /* Remove default native styling differences as much as possible */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+    linear-gradient(135deg, var(--gold) 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%,
+    0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+
+  transition: background .14s, color .14s, border-color .14s, box-shadow .14s;
+}
+
+.internal-menu select:hover {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+
+  /* Make the arrow visible on gold background */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+}
+
+.internal-menu select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(184, 146, 42, 0.25);
+}
+
+.internal-menu select:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
