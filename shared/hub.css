@@ -50,6 +50,10 @@ header {
   margin: 0 auto;
 }
 
+.hero-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
 .hero-title {
   font-size: 2.1rem;
   font-weight: 700;
