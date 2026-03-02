@@ -333,12 +333,19 @@
       <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
     </div>
     <div class="course-card">
-  <span class="badge badge-active">Active</span>
-  <h3>Supply Chain Management & ESG</h3>
-  <p>Sustainable procurement, logistics, CSRD compliance, and digital traceability for supply chain professionals.</p>
-  <a href="edu-scm-test/password-gate.html" class="course-link"><strong>Test & Quizzes</strong></a>
-  <a href="edu-scm-test/quiz.html" class="course-link"><strong>Materials</strong></a>
+      <span class="badge badge-active">Active</span>
+      <h3>Supply Chain Management &amp; ESG</h3>
+      <p>Sustainable procurement, logistics, CSRD compliance, and digital traceability for supply chain professionals.</p>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/scm/password-gate.html?to=test-1.html">Test 1 — Supplier Code of Conduct</option>
+          <option value="courses/scm/password-gate.html?to=quiz-1.html">Quiz 1 — SCM Key Concepts</option>
+          <option value="courses/scm/password-gate.html?to=test-2.html">Test 2 — ESG &amp; CSRD</option>
+          <option value="courses/scm/password-gate.html?to=materials.html">Materials</option>
+        </select>
       </div>
+    </div>
     <!-- Sustainability Management & Reporting (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-active">Coming soon</span>
