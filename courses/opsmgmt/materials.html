@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materials — Operations Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --nero: #1a1a1a;
+      --oro:  #B8922A;
+      --panna: #FAF7F2;
+      --grigio: #6a6a6a;
+      --grigio-light: #e8e4de;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--panna);
+      color: var(--nero);
+      min-height: 100vh;
+    }
+    .page-header {
+      background: var(--nero);
+      padding: 40px 40px 32px;
+    }
+    .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 16px; }
+    .header-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--oro);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 4vw, 38px);
+      color: #fff;
+      font-weight: 400;
+    }
+    .page-header h1 span { color: var(--oro); font-style: italic; }
+    .page-header p {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .section { margin-bottom: 48px; }
+    .section-title {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--oro);
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .material-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .material-item {
+      background: #fff;
+      border: 1px solid var(--grigio-light);
+      border-radius: 2px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+    .material-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .material-info { flex: 1; }
+    .material-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 3px;
+    }
+    .material-desc {
+      font-size: 0.82rem;
+      color: var(--grigio);
+    }
+    .material-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .badge-soon { background: #f0ede8; color: #aaa; }
+    .badge-ready { background: #edfaf4; color: #2D7A4F; }
+    .back-link {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 0.83rem;
+      color: #aaa;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--nero); }
+    @media (max-width: 600px) {
+      .page-header { padding: 28px 20px 24px; }
+      .content { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-label">Operations Management · Course Materials</div>
+  <div class="gold-line"></div>
+  <h1>Operations Management</h1>
+  <p>Readings, frameworks, and reference documents</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="section-title">Readings &amp; Case Studies</div>
+    <ul class="material-list">
+      <li class="material-item">
+        <div class="material-icon">📄</div>
+        <div class="material-info">
+          <div class="material-name">Course Reading 1</div>
+          <div class="material-desc">Core reading material — coming soon</div>
+        </div>
+        <span class="material-badge badge-soon">Coming Soon</span>
+      </li>
+      <li class="material-item">
+        <div class="material-icon">📄</div>
+        <div class="material-info">
+          <div class="material-name">Course Reading 2</div>
+          <div class="material-desc">Supplementary reading — coming soon</div>
+        </div>
+        <span class="material-badge badge-soon">Coming Soon</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Assessments</div>
+    <ul class="material-list">
+      <li class="material-item">
+        <div class="material-icon">✅</div>
+        <div class="material-info">
+          <div class="material-name">Test 1</div>
+          <div class="material-desc">Multiple Choice · Placeholder assessment</div>
+        </div>
+        <a href="password-gate.html?to=test-1.html" style="text-decoration:none;">
+          <span class="material-badge badge-ready">Open</span>
+        </a>
+      </li>
+      <li class="material-item">
+        <div class="material-icon">📝</div>
+        <div class="material-info">
+          <div class="material-name">Quiz 1</div>
+          <div class="material-desc">Multiple Choice &amp; True/False · Placeholder quiz</div>
+        </div>
+        <a href="password-gate.html?to=quiz-1.html" style="text-decoration:none;">
+          <span class="material-badge badge-ready">Open</span>
+        </a>
+      </li>
+      <li class="material-item">
+        <div class="material-icon">🔜</div>
+        <div class="material-info">
+          <div class="material-name">Test 2</div>
+          <div class="material-desc">Coming soon</div>
+        </div>
+        <span class="material-badge badge-soon">Coming Soon</span>
+      </li>
+    </ul>
+  </div>
+
+  <a href="../../index.html" class="back-link">← Back to course hub</a>
+
+</div><!-- /.content -->
+</body>
+</html>
