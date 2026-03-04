@@ -78,8 +78,8 @@
 <script>
 window.QUIZ_QUESTIONS = [
   {
-    q: 1, type: 'mc', correct: 'b',
-    explanation: {
+{ q: 1, type:'mc', correct:'b', explanation:{ correct:'...', wrong:'...' } }
+  explanation: {
       correct: '<strong>Correct.</strong> The Triple Bottom Line (TBL) framework measures business performance across three dimensions: Profit (economic), People (social), and Planet (environmental).',
       wrong:   '<strong>Incorrect.</strong> The TBL framework balances economic, social, and environmental dimensions — not just profit or environment alone.'
     }
@@ -101,9 +101,298 @@ window.QUIZ_QUESTIONS = [
 ];
 
 window.QUIZ_VERDICTS = [
-  [0, 1, 'Keep reviewing — these fundamentals are essential for this course.'],
-  [2, 2, 'Good effort — you have a solid understanding of the key concepts.'],
-  [3, 3, 'Excellent — you have a strong command of the fundamentals!']
+  <script>
+window.QUIZ_QUESTIONS = [
+  // -----------------------
+  // Part 1: Multiple Choice
+  // -----------------------
+  {
+    q: 1, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Operations Management is the activity of managing resources that create and deliver services and products.',
+      wrong:   '<strong>Incorrect.</strong> Operations Management focuses on managing resources and processes that create and deliver products/services.'
+    }
+  },
+  {
+    q: 2, type: 'mc', correct: 'd',
+    explanation: {
+      correct: '<strong>Correct.</strong> In SIPOC, <em>Outputs</em> describe what is produced by the process and delivered onward to customers.',
+      wrong:   '<strong>Incorrect.</strong> In SIPOC, <em>Outputs</em> describe what the process produces.'
+    }
+  },
+  {
+    q: 3, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> In the Business Model Canvas, the <em>Value Proposition</em> is the “bundle” of value offered to a customer segment.',
+      wrong:   '<strong>Incorrect.</strong> The Value Proposition describes the bundle of products/services that create value for the customer.'
+    }
+  },
+  {
+    q: 4, type: 'mc', correct: 'a',
+    explanation: {
+      correct: '<strong>Correct.</strong> In Porter’s Value Chain, Operations is a <em>Primary Activity</em> directly involved in creating the product/service.',
+      wrong:   '<strong>Incorrect.</strong> In Porter’s Value Chain, Operations is a Primary Activity (not a support activity).'
+    }
+  },
+  {
+    q: 5, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> LEGO’s “clutch power” depends on high-precision molding with extremely tight tolerances (micrometer-level).',
+      wrong:   '<strong>Incorrect.</strong> LEGO’s clutch power comes from manufacturing precision and tight tolerances in molding.'
+    }
+  },
+  {
+    q: 6, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> An Order Winner is a factor that causes a customer to choose your offering over a competitor.',
+      wrong:   '<strong>Incorrect.</strong> Order Winners are differentiators that win the business, not just minimum requirements.'
+    }
+  },
+  {
+    q: 7, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Prêt A Manger is built on freshness (made daily) and fast, sincere service.',
+      wrong:   '<strong>Incorrect.</strong> Prêt A Manger’s success is based on freshness and quick service—not preservatives or vending automation.'
+    }
+  },
+  {
+    q: 8, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Vertical integration increases control over the supply chain and can protect unique technology/capabilities.',
+      wrong:   '<strong>Incorrect.</strong> Vertical integration generally increases control, rather than outsourcing risks.'
+    }
+  },
+  {
+    q: 9, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The “Line of Fit” is the balance between market requirements and operations resources/capabilities.',
+      wrong:   '<strong>Incorrect.</strong> Strategic fit is about aligning operations capabilities with what the market requires.'
+    }
+  },
+  {
+    q: 10, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Productivity is typically measured as <em>Outputs / Inputs</em>.',
+      wrong:   '<strong>Incorrect.</strong> Productivity is Outputs divided by Inputs (how efficiently resources become results).'
+    }
+  },
+  {
+    q: 11, type: 'mc', correct: 'd',
+    explanation: {
+      correct: '<strong>Correct.</strong> Visibility describes how much of the process the customer experiences (high visibility = more customer contact).',
+      wrong:   '<strong>Incorrect.</strong> Visibility is about customer contact—how much of the process the customer sees/experiences.'
+    }
+  },
+  {
+    q: 12, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The innovation S-Curve shows how a technology’s performance evolves over its life cycle (slow → rapid → plateau).',
+      wrong:   '<strong>Incorrect.</strong> The S-Curve models technology performance over time, often ending in a plateau.'
+    }
+  },
+  {
+    q: 13, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Incremental innovation means small, continuous improvements to existing products/processes.',
+      wrong:   '<strong>Incorrect.</strong> Incremental innovation is continuous improvement (often linked to Kaizen), not a full breakthrough.'
+    }
+  },
+  {
+    q: 14, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Empathy phase in Design Thinking is used to understand users’ needs and pain points through observation and research.',
+      wrong:   '<strong>Incorrect.</strong> Empathy is about understanding the human/user needs before designing solutions.'
+    }
+  },
+  {
+    q: 15, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> A Skunkworks team is separated from bureaucracy to enable faster and more radical innovation.',
+      wrong:   '<strong>Incorrect.</strong> Skunkworks teams exist to accelerate innovation by giving autonomy outside normal bureaucracy.'
+    }
+  },
+  {
+    q: 16, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Efficiency is “doing things right,” i.e., using the least resources for a given output.',
+      wrong:   '<strong>Incorrect.</strong> Efficiency is about minimizing resource use; effectiveness is about achieving the right goals.'
+    }
+  },
+  {
+    q: 17, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Hayes & Wheelwright Stage 4 means operations are a strategic leader providing competitive advantage (“externally supportive”).',
+      wrong:   '<strong>Incorrect.</strong> Moving toward Stage 4 means operations become a competitive weapon and strategic advantage.'
+    }
+  },
+  {
+    q: 18, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Triple Bottom Line measures People (social), Planet (environmental), and Profit (financial) performance.',
+      wrong:   '<strong>Incorrect.</strong> Triple Bottom Line refers to People, Planet, and Profit (social, environmental, financial).'
+    }
+  },
+  {
+    q: 19, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Product as a Service is an innovative model aligned with circular economy principles (value from use/performance, not ownership).',
+      wrong:   '<strong>Incorrect.</strong> PaaS is a circular-economy-oriented business model focused on access/performance rather than ownership.'
+    }
+  },
+  {
+    q: 20, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> In a polar/spider diagram, points further from the center represent higher performance or higher requirements on that dimension.',
+      wrong:   '<strong>Incorrect.</strong> Further from the center indicates “more” on that axis (higher performance/requirement).'
+    }
+  },
+
+  // -----------------------
+  // Part 2: True / False
+  // (numbered as Q21–Q40)
+  // -----------------------
+  {
+    q: 21, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Operations Management applies to services and digital operations as well as manufacturing.',
+      wrong:   '<strong>Incorrect.</strong> Operations Management is relevant to both services and manufacturing, not only physical goods.'
+    }
+  },
+  {
+    q: 22, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Business Model Canvas maps how a firm creates, delivers, and captures value (including how it makes money).',
+      wrong:   '<strong>Incorrect.</strong> The BMC is used to map the logic of how a firm creates and captures value (including revenue/profit logic).'
+    }
+  },
+  {
+    q: 23, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> SIPOC provides a high-level “bird’s eye” view of a process from suppliers to customers.',
+      wrong:   '<strong>Incorrect.</strong> SIPOC is a high-level mapping tool showing suppliers, inputs, process, outputs, and customers.'
+    }
+  },
+  {
+    q: 24, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> In Porter’s Value Chain, Procurement is a <em>Support Activity</em>, not a primary activity.',
+      wrong:   '<strong>Incorrect.</strong> Procurement is classified as a <em>Support Activity</em> in Porter’s Value Chain.'
+    }
+  },
+  {
+    q: 25, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> The statement reflects a sustainability practice described in the LEGO case framing for operations and waste reduction.',
+      wrong:   '<strong>Incorrect.</strong> In the LEGO case framing, recycling scrap back into production is presented as a sustainability practice.'
+    }
+  },
+  {
+    q: 26, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Order Qualifiers are minimum requirements; Order Winners are what make customers choose you.',
+      wrong:   '<strong>Incorrect.</strong> Order Qualifiers are minimum requirements; Order Winners are the differentiators that win the order.'
+    }
+  },
+  {
+    q: 27, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> Prêt A Manger is known for avoiding many additives/preservatives and focusing on freshness.',
+      wrong:   '<strong>Incorrect.</strong> Prêt A Manger’s operational model emphasizes fresh food and avoiding many additives/preservatives.'
+    }
+  },
+  {
+    q: 28, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Efficiency is “doing things right.” Effectiveness is “doing the right things.”',
+      wrong:   '<strong>Incorrect.</strong> Efficiency is “doing things right,” while effectiveness is “doing the right things.”'
+    }
+  },
+  {
+    q: 29, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Radical innovation is generally higher risk than incremental innovation.',
+      wrong:   '<strong>Incorrect.</strong> Radical innovation is usually higher risk; incremental innovation is typically lower risk.'
+    }
+  },
+  {
+    q: 30, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> User personas help clarify customer goals, behaviors, and obstacles.',
+      wrong:   '<strong>Incorrect.</strong> User personas are used to understand the target user’s goals, needs, and obstacles.'
+    }
+  },
+  {
+    q: 31, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Vertical integration typically increases control over technology and key activities.',
+      wrong:   '<strong>Incorrect.</strong> Vertical integration generally increases control, not decreases it.'
+    }
+  },
+  {
+    q: 32, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> High variety usually prevents standardization and raises complexity—often increasing unit costs.',
+      wrong:   '<strong>Incorrect.</strong> Higher variety increases complexity and tends to increase unit costs.'
+    }
+  },
+  {
+    q: 33, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Four Vs are Volume, Variety, Variation, and Visibility.',
+      wrong:   '<strong>Incorrect.</strong> The Four Vs framework includes Volume, Variety, Variation, and Visibility.'
+    }
+  },
+  {
+    q: 34, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> The plateau phase means performance improvements slow down (maturity/limits), not rapid improvement.',
+      wrong:   '<strong>Incorrect.</strong> In the plateau stage, improvement slows; rapid improvement is in the steep middle part of the curve.'
+    }
+  },
+  {
+    q: 35, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> A customer journey map tracks the customer experience across touchpoints—not internal warehouse movements.',
+      wrong:   '<strong>Incorrect.</strong> Customer journey maps track the customer’s experience, not internal logistics paths.'
+    }
+  },
+  {
+    q: 36, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> Strategic fit means operations capabilities align with (and can meet) market needs.',
+      wrong:   '<strong>Incorrect.</strong> Strategic fit means your operations can meet what the market requires.'
+    }
+  },
+  {
+    q: 37, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Triple Bottom Line includes profit along with people and planet.',
+      wrong:   '<strong>Incorrect.</strong> Sustainability in operations includes profit as part of People–Planet–Profit.'
+    }
+  },
+  {
+    q: 38, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> Design Thinking is a human-centered approach to innovation and problem-solving.',
+      wrong:   '<strong>Incorrect.</strong> Design Thinking is defined as a human-centered approach to innovation.'
+    }
+  },
+  {
+    q: 39, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> If output increases with the same input, productivity improves (Outputs/Inputs rises).',
+      wrong:   '<strong>Incorrect.</strong> Productivity improves when you produce more output with the same input (or same output with less input).'
+    }
+  },
+  {
+    q: 40, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Stage 1 firms see operations as internally neutral/necessary, not as a competitive weapon.',
+      wrong:   '<strong>Incorrect.</strong> In Hayes & Wheelwright, Stage 1 treats operations as internally neutral/necessary—not a competitive weapon.'
+    }
+  }
+];
+</script>
 ];
 </script>
 <script src="../../shared/quiz.js"></script>
