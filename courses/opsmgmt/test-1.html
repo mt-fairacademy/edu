@@ -530,33 +530,6 @@
 
 </div><!-- /.quiz-main -->
 
-<script>
-window.QUIZ_QUESTIONS = [
-  {
-    q: 1, type: 'mc', correct: 'b',
-    explanation: {
-      correct: '<strong>Correct.</strong> Operations Management is the activity of managing resources that create and deliver services and products.',
-      wrong:   '<strong>Incorrect.</strong> Operations Management focuses on managing resources and processes that create and deliver products/services.'
-    }
-  },
-  {
-    q: 2, type: 'mc', correct: 'd',
-    explanation: {
-      correct: '<strong>Correct.</strong> In SIPOC, Outputs describe what the process produces and delivers onward to the customer.',
-      wrong:   '<strong>Incorrect.</strong> In SIPOC, Outputs are the results produced by the process (not suppliers, inputs, or the process itself).'
-    }
-  },
-  {
-    q: 3, type: 'mc', correct: 'b',
-    explanation: {
-      correct: '<strong>Correct.</strong> In the Business Model Canvas, the Value Proposition is the bundle of value offered to a customer segment.',
-      wrong:   '<strong>Incorrect.</strong> The Value Proposition describes the bundle of products/services that create value for the customer.'
-    }
-  }
-    // keep going with Q4...Q40
-];
-
-window.QUIZ_VERDICTS = [
   <script>
 window.QUIZ_QUESTIONS = [
   // -----------------------
@@ -848,9 +821,14 @@ window.QUIZ_QUESTIONS = [
     }
   }
 ];
-</script>
+window.QUIZ_VERDICTS = [
+  [0, 19, 'Keep reviewing — focus on the core frameworks and case applications.'],
+  [20, 27, 'Good progress — review weak areas and re-try the test.'],
+  [28, 34, 'Pass — solid understanding of Operations Management fundamentals.'],
+  [35, 40, 'Excellent — strong command of tools, strategy, and indicators.']
 ];
 </script>
+
 <script src="../../shared/quiz.js"></script>
 </body>
 </html>
