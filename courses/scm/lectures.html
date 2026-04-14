@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Notes — Supply Chain Management &amp; ESG</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --nero: #1a1a1a;
+      --oro: #B8922A;
+      --panna: #FAF7F2;
+      --grigio: #6a6a6a;
+      --grigio-light: #e8e4de;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--panna);
+      color: var(--nero);
+      min-height: 100vh;
+    }
+    .page-header {
+      background: var(--nero);
+      padding: 40px 40px 32px;
+    }
+    .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 16px; }
+    .header-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--oro);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(24px, 4vw, 38px);
+      color: #fff;
+      font-weight: 400;
+    }
+    .page-header h1 span { color: var(--oro); font-style: italic; }
+    .page-header p {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+      letter-spacing: 1px;
+    }
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+    }
+    .section { margin-bottom: 56px; }
+    .section-title {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--oro);
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .schedule-table th {
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 600;
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .schedule-table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--grigio-light);
+      vertical-align: middle;
+    }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: #fff; }
+    .topic-num-cell {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--oro);
+      letter-spacing: 1px;
+      width: 48px;
+    }
+    .topic-link {
+      font-weight: 600;
+      color: var(--nero);
+      text-decoration: none;
+    }
+    .topic-link:hover { color: var(--oro); text-decoration: underline; }
+    .topic-sub {
+      font-size: 0.78rem;
+      color: var(--grigio);
+      margin-top: 3px;
+    }
+    .assess-link {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: #edfaf4;
+      color: #2D7A4F;
+      border-radius: 4px;
+      padding: 4px 10px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .assess-link:hover { background: #2D7A4F; color: #fff; }
+    .assess-link + .assess-link { margin-top: 4px; display: block; }
+    .topic-section {
+      background: #fff;
+      border: 1px solid var(--grigio-light);
+      border-radius: 4px;
+      margin-bottom: 32px;
+      overflow: hidden;
+      scroll-margin-top: 24px;
+    }
+    .topic-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--nero);
+      padding: 20px 28px;
+    }
+    .topic-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--oro);
+      flex-shrink: 0;
+    }
+    .topic-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2.4vw, 24px);
+      color: #fff;
+      font-weight: 400;
+    }
+    .topic-body {
+      padding: 28px 28px 32px;
+    }
+    .topic-body h3 {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--oro);
+      font-weight: 700;
+      margin: 24px 0 12px;
+    }
+    .topic-body h3:first-child { margin-top: 0; }
+    .topic-body p {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 12px;
+    }
+    .topic-body ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+    }
+    .topic-body li {
+      font-size: 0.91rem;
+      line-height: 1.7;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    .topic-body strong { color: var(--nero); }
+    .topic-footer {
+      border-top: 1px solid var(--grigio-light);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .topic-footer-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 600;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 0.83rem;
+      color: #aaa;
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--nero); }
+    @media (max-width: 600px) {
+      .page-header { padding: 28px 20px 24px; }
+      .content { padding: 32px 16px 60px; }
+      .topic-header { padding: 16px 18px; }
+      .topic-body { padding: 20px 18px 24px; }
+      .topic-footer { padding: 12px 18px; }
+      .schedule-table th, .schedule-table td { padding: 10px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-label">Supply Chain Management &amp; ESG · Study Notes</div>
+  <div class="gold-line"></div>
+  <h1>Supply Chain Management &amp; <span>ESG</span></h1>
+  <p>Lecture notes and readings to prepare for quizzes and tests</p>
+</div>
+
+<div class="content">
+
+  <!-- ── Schedule overview ── -->
+  <div class="section">
+    <div class="section-title">Course Schedule</div>
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Topic</th>
+          <th>Assessment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="topic-num-cell">01</td>
+          <td>
+            <a href="#topic-1" class="topic-link">Supply Chain Management Fundamentals</a>
+            <div class="topic-sub">Network structure · Key processes · KPIs</div>
+          </td>
+          <td>
+            <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="topic-num-cell">02</td>
+          <td>
+            <a href="#topic-2" class="topic-link">Supplier Code of Conduct</a>
+            <div class="topic-sub">Labor standards · Human rights · Ferragamo Supplier Code</div>
+          </td>
+          <td>
+            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="topic-num-cell">03</td>
+          <td>
+            <a href="#topic-3" class="topic-link">ESG, CSRD &amp; Digital Traceability</a>
+            <div class="topic-sub">CSRD · ESRS · Digital Product Passport · Scope emissions</div>
+          </td>
+          <td>
+            <a href="password-gate.html?to=test-2.html" class="assess-link">Test 2</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ── Topic 1 ── -->
+  <div id="topic-1" class="topic-section">
+    <div class="topic-header">
+      <span class="topic-num">01</span>
+      <h2>Supply Chain Management Fundamentals</h2>
+    </div>
+    <div class="topic-body">
+
+      <h3>What Is a Supply Chain?</h3>
+      <p>A supply chain is the entire network of entities — including raw material providers, manufacturers, logistics companies, distributors, and retailers — involved in creating and delivering a product or service to the end customer. Managing this network effectively is the core challenge of supply chain management (SCM).</p>
+
+      <h3>Key SCM Processes</h3>
+      <ul>
+        <li><strong>Procurement / Sourcing:</strong> identifying, selecting, and managing suppliers of raw materials and components. Strategic sourcing aims for the best quality, price, and reliability.</li>
+        <li><strong>Production / Manufacturing:</strong> transforming inputs into finished goods. Operations management focuses on efficiency, quality, and flexibility.</li>
+        <li><strong>Inventory Management:</strong> balancing the cost of holding stock against the risk of stockouts. Methods include Just-in-Time (JIT), Economic Order Quantity (EOQ), and safety stock calculations.</li>
+        <li><strong>Logistics and Distribution:</strong> moving goods from production to customers efficiently. Includes transportation, warehousing, and last-mile delivery.</li>
+        <li><strong>Demand Planning:</strong> forecasting future customer demand to align production and inventory levels.</li>
+      </ul>
+
+      <h3>Supply Chain Performance KPIs</h3>
+      <ul>
+        <li><strong>Lead Time:</strong> time from order placement to delivery. Shorter lead times improve responsiveness.</li>
+        <li><strong>Inventory Turnover:</strong> how many times inventory is sold/replaced in a period. High turnover signals efficiency.</li>
+        <li><strong>Order Fill Rate:</strong> percentage of orders fulfilled completely and on time. Target: as close to 100% as possible.</li>
+        <li><strong>Perfect Order Rate:</strong> orders delivered on time, in full, undamaged, with correct documentation.</li>
+        <li><strong>Total Supply Chain Cost:</strong> sum of procurement, production, inventory, logistics, and customer service costs.</li>
+      </ul>
+
+      <h3>Supply Chain Risk and Resilience</h3>
+      <p>Supply chains face disruptions from geopolitical events, natural disasters, supplier failures, and demand shocks (e.g., COVID-19 pandemic). Resilience strategies include: supplier diversification, dual sourcing, regional supply chains, strategic stockpiles, and digital visibility tools that provide real-time tracking across the chain.</p>
+
+      <h3>Sustainable Supply Chains</h3>
+      <p>A sustainable supply chain integrates environmental and social considerations into procurement, production, and logistics decisions. This includes: reducing carbon emissions in transportation, ensuring ethical labor practices across all tiers of suppliers, minimizing packaging waste, and using renewable energy in warehousing and manufacturing.</p>
+
+    </div>
+    <div class="topic-footer">
+      <span class="topic-footer-label">Practice:</span>
+      <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — SCM Key Concepts</a>
+    </div>
+  </div>
+
+  <!-- ── Topic 2 ── -->
+  <div id="topic-2" class="topic-section">
+    <div class="topic-header">
+      <span class="topic-num">02</span>
+      <h2>Supplier Code of Conduct</h2>
+    </div>
+    <div class="topic-body">
+
+      <h3>What Is a Supplier Code of Conduct?</h3>
+      <p>A Supplier Code of Conduct (SCoC) is a document that sets out the ethical, social, and environmental standards that a company requires its suppliers and business partners to meet. It is a key tool for ensuring responsible sourcing and extending a company's values throughout its supply chain.</p>
+      <p>As global supply chains grow more complex, companies face increasing regulatory and reputational pressure to ensure that labor rights, environmental standards, and anti-corruption rules are respected — not just within their own operations, but across all tiers of their supplier network.</p>
+
+      <h3>Core Areas of a Supplier Code of Conduct</h3>
+      <ul>
+        <li><strong>Labor Standards:</strong> suppliers must comply with minimum wage laws, reasonable working hours (typically ≤ 60 hours/week including overtime), and freedom of association (right to organize and collectively bargain).</li>
+        <li><strong>No Child Labor:</strong> prohibition on employing anyone below the minimum legal working age (ILO standards: no work under age 15; no hazardous work under age 18).</li>
+        <li><strong>No Forced Labor:</strong> all work must be voluntary; no debt bondage, human trafficking, or retention of identity documents.</li>
+        <li><strong>Health &amp; Safety:</strong> suppliers must provide a safe working environment, personal protective equipment, and training to prevent occupational accidents and illness.</li>
+        <li><strong>Environmental Responsibility:</strong> compliance with environmental laws, management of hazardous substances, waste reduction, and progressively reducing environmental impact.</li>
+        <li><strong>Anti-Corruption &amp; Fair Business:</strong> no bribery, no kickbacks, no facilitation payments; compliance with anti-corruption laws (e.g., UK Bribery Act, FCPA).</li>
+        <li><strong>Data Privacy &amp; Security:</strong> protection of confidential business and personal data.</li>
+      </ul>
+
+      <h3>The Ferragamo Supplier Code of Conduct</h3>
+      <p>The Salvatore Ferragamo Supplier Code of Conduct sets binding requirements for all suppliers to the Group, reflecting the company's commitment to responsible luxury. Key elements include:</p>
+      <ul>
+        <li>Compliance with all applicable national and international laws and regulations.</li>
+        <li>Prohibition of child labor, forced labor, and all forms of discrimination.</li>
+        <li>Requirement for safe and healthy working conditions in all facilities.</li>
+        <li>Environmental management: suppliers must minimize pollution, manage waste responsibly, and work toward reducing their carbon footprint.</li>
+        <li>Transparency and traceability: suppliers must be willing to undergo audits and provide documentation of compliance.</li>
+        <li>Cascading obligation: suppliers are expected to apply the same standards to their own sub-suppliers.</li>
+      </ul>
+
+      <h3>Supplier Auditing and Verification</h3>
+      <p>Codes of conduct are only effective if compliance is verified. Auditing methods include:</p>
+      <ul>
+        <li><strong>Self-assessment questionnaires (SAQ):</strong> suppliers complete structured questionnaires about their practices.</li>
+        <li><strong>Third-party audits:</strong> independent bodies (e.g., Bureau Veritas, SGS, ELEVATE) conduct on-site inspections.</li>
+        <li><strong>Social compliance certifications:</strong> standards such as SA8000 (social accountability) or SMETA (Sedex Members Ethical Trade Audit) provide recognized frameworks.</li>
+        <li><strong>Corrective action plans:</strong> when violations are found, suppliers must implement corrective action within agreed timelines or risk losing the contract.</li>
+      </ul>
+
+    </div>
+    <div class="topic-footer">
+      <span class="topic-footer-label">Practice:</span>
+      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Supplier Code of Conduct</a>
+    </div>
+  </div>
+
+  <!-- ── Topic 3 ── -->
+  <div id="topic-3" class="topic-section">
+    <div class="topic-header">
+      <span class="topic-num">03</span>
+      <h2>ESG, CSRD &amp; Digital Traceability</h2>
+    </div>
+    <div class="topic-body">
+
+      <h3>ESG in the Supply Chain</h3>
+      <p>ESG stands for Environmental, Social, and Governance — the three pillars used to evaluate a company's non-financial performance and its impact on society. Investors, regulators, and customers increasingly use ESG scores to assess risk and sustainability credentials.</p>
+      <ul>
+        <li><strong>Environmental:</strong> greenhouse gas emissions (Scope 1, 2, 3), water consumption, energy mix, waste management, deforestation risk.</li>
+        <li><strong>Social:</strong> labor standards, living wages, diversity &amp; inclusion, community relations, health &amp; safety performance.</li>
+        <li><strong>Governance:</strong> board independence, anti-corruption policies, executive pay, tax transparency, shareholder rights.</li>
+      </ul>
+      <p><strong>Scope 3 emissions</strong> — indirect emissions from a company's value chain (including suppliers and customers) — often account for 70–90% of a company's total carbon footprint and are therefore the central challenge of sustainable supply chains.</p>
+
+      <h3>CSRD — Corporate Sustainability Reporting Directive</h3>
+      <p>The CSRD is an EU regulation that entered into force in 2023, phasing in from 2024. It requires large companies (and eventually SMEs listed on EU regulated markets) to publish detailed sustainability reports covering their environmental, social, and governance impacts.</p>
+      <ul>
+        <li>Replaces and significantly expands the earlier NFRD (Non-Financial Reporting Directive).</li>
+        <li>Covers approximately 50,000 companies in the EU — a major expansion from the ~11,000 covered by the NFRD.</li>
+        <li>Reports must be audited by an independent third party.</li>
+        <li><strong>Double materiality:</strong> companies must report both on how sustainability issues affect their business (financial materiality) AND on how their business affects society and the environment (impact materiality).</li>
+      </ul>
+
+      <h3>ESRS — European Sustainability Reporting Standards</h3>
+      <p>The ESRS are the reporting standards developed by EFRAG (European Financial Reporting Advisory Group) to implement the CSRD. They cover:</p>
+      <ul>
+        <li><strong>Cross-cutting standards:</strong> general requirements and general disclosures.</li>
+        <li><strong>Environmental standards (E1–E5):</strong> climate change, pollution, water &amp; marine resources, biodiversity, resource use &amp; circular economy.</li>
+        <li><strong>Social standards (S1–S4):</strong> own workforce, workers in the value chain, affected communities, consumers &amp; end-users.</li>
+        <li><strong>Governance standards (G1):</strong> business conduct.</li>
+      </ul>
+
+      <h3>Digital Product Passport (DPP)</h3>
+      <p>The Digital Product Passport is a key element of the EU's Ecodesign for Sustainable Products Regulation (ESPR). It is a digital record that travels with a product throughout its lifecycle, containing information on:</p>
+      <ul>
+        <li>Materials composition and origin.</li>
+        <li>Manufacturing processes and locations.</li>
+        <li>Environmental performance data (carbon footprint, recyclability, repairability).</li>
+        <li>Instructions for repair, reuse, and end-of-life disposal.</li>
+      </ul>
+      <p>DPPs will be mandatory for several product categories (starting with batteries, textiles, electronics) from 2026–2030. For fashion and luxury companies, DPPs will require deep supply chain transparency and traceability — knowing where every material comes from, how it was processed, and what its environmental impact is.</p>
+      <p><strong>Technology enablers:</strong> QR codes, RFID tags, blockchain, and cloud-based platforms are key tools for implementing DPPs at scale.</p>
+
+    </div>
+    <div class="topic-footer">
+      <span class="topic-footer-label">Practice:</span>
+      <a href="password-gate.html?to=test-2.html" class="assess-link">Test 2 — ESG &amp; CSRD</a>
+    </div>
+  </div>
+
+  <a href="../../index.html" class="back-link">← Back to course hub</a>
+
+</div><!-- /.content -->
+</body>
+</html>
