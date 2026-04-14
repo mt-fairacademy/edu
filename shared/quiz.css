@@ -327,6 +327,28 @@ body {
 .review-ans span { font-weight: 700; }
 .btn-restart { margin-top: 10px; }
 
+/* ── BREADCRUMB ── */
+.breadcrumb {
+  background: #fff;
+  border-bottom: 1px solid var(--grigio-light);
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.breadcrumb-link {
+  color: var(--oro);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-link:hover { text-decoration: underline; }
+.breadcrumb-sep { color: #ccc; }
+.breadcrumb-current { color: var(--grigio); }
+
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   .question-card { padding: 24px 20px; }
@@ -334,4 +356,5 @@ body {
   .progress-wrap { padding: 0 20px 20px; }
   .quiz-main     { padding: 28px 16px 48px; }
   .tf-options    { flex-direction: row; }
+  .breadcrumb    { padding: 10px 20px; }
 }
