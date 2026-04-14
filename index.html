@@ -1,158 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script type='text/javascript' src='https://mt-fairacademy.netlify.app/OhyQRZ3qX3OQw-ezLVk9NHwS_wX_-93b2b0U0ZMLRgZ4C5bIpBOYHnhv6DFLEU87Su65LhAgghwK0zswfFZuh_WCm3LXY6zXVaIyZMuF_9c7fhIECybb12Gijhd8Qmtba0ueRSzcwTAaCcKqeePRJEgR9AB-VyOYhvAO28XxLxVPvcoed5pmeWn03kKNGjvgHPGW7js5fp58x2Uy77YIrIQqthLtdY0J0tBOJVfEAUEboYha72n2Z0ddHJ-IxaVKARuV094347tz66Pb3A7wU2h2B_9jMZkHbV18yocIDomIU6oBnt0m52ukcq0EcbR57PxJm6FrQuhv8JpaoBOu6Zh9FiGuwhIa6Bj5ykv5hKGcf-oauj2re3XWt8W_m8DXlYIgPC_TDXh-mdXVdJnrhn-GbpnDyngiDWru5y-kC_nWPlGvfro1Hj8nbTHMFNJOTV_oukTBqmd4mXdGuzBQsUtsYarg3RxwD-a8TB0'></script>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>EDU — Fair Academy Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --header-bg: #1a1a1a;
-      --gold: #B8922A;
-      --bg: #FAF7F2;
-      --card-bg: #fff;
-      --card-shadow: 0 4px 32px rgba(184,146,42,0.13);
-      --card-border: #e8e4de;
-    }
-    body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background: var(--bg);
-      margin: 0;
-      color: #1a1a1a;
-    }
-    header {
-      background: var(--header-bg);
-      color: #fff;
-      padding: 36px 0 24px 0;
-      text-align: center;
-      border-bottom: 3px solid var(--gold);
-    }
-    .logo {
-      font-size: 2.2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 6px;
-      display: inline-block;
-    }
-    .tagline {
-      font-size: 1.08rem;
-      color: var(--gold);
-      letter-spacing: 2px;
-      font-weight: 500;
-      margin-bottom: 16px;
-      display: block;
-    }
-    .hero {
-      background: var(--header-bg);
-      color: #fff;
-      padding: 32px 20px 22px 20px;
-      text-align: left;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .hero-title {
-      font-size: 2.1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .hero-desc {
-      font-size: 1.13rem;
-      color: rgba(255,255,255,0.86);
-      max-width: 700px;
-      line-height: 1.5;
-    }
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 52px 20px 96px;
-    }
-    .main-area { margin-bottom: 2.5rem; }
-    .course-list {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    .course-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      box-shadow: var(--card-shadow);
-      border: 1px solid var(--card-border);
-      padding: 25px 18px 22px 18px;
-      min-width: 280px;
-      width: 320px;
-      flex: 1 1 320px;
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-      transition: box-shadow .22s, transform .18s;
-      position: relative;
-      margin-bottom: 20px;
-    }
-    .course-card:hover {
-      box-shadow: 0 8px 48px rgba(184,146,42,0.23);
-      transform: translateY(-6px);
-    }
-    .badge {
-      display: inline-block;
-      padding: 0.3em 0.9em;
-      font-size: 0.97em;
-      font-weight: bold;
-      border-radius: 7px;
-      margin-bottom: 13px;
-    }
-    .badge-active {
-      background: #B8922A;
-      color: #fff;
-    }
-    .badge-soon {
-      background: #bdbdbd;
-      color: #fff;
-    }
-    .course-link {
-      background: #faf7f2;
-      color: var(--header-bg);
-      border: 1px solid var(--gold);
-      border-radius: 8px;
-      font-size: 1.03rem;
-      font-weight: 600;
-      text-decoration: none;
-      padding: 11px 22px;
-      transition: background .14s, color .14s, border .14s;
-      display: block;
-      box-sizing: border-box;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-    }
-    .course-link:hover:not(.disabled) {
-      background: var(--gold);
-      color: #fff;
-      border-color: #b8922a;
-    }
-    .course-link.disabled,
-    .course-link[aria-disabled="true"] {
-      color: #AAA;
-      border-color: #e8e4de;
-      background: #F2F0ED;
-      pointer-events: none;
-      cursor: default;
-      opacity: 0.6;
-    }
-    footer {
-      background: var(--header-bg);
-      color: rgba(255,255,255,0.66);
-      padding: 36px 0;
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 52px;
-      border-top: 3px solid var(--gold);
-    }
-    @media (max-width: 700px) {
-      .course-list { flex-direction: column; }
-      header, .hero, footer { padding-left: 10px; padding-right: 10px; }
-      main { padding-left: 4px; padding-right: 4px; }
-    }
-  </style>
+ <link rel="stylesheet" href="shared/hub.css">
 </head>
 <body>
   <header>
@@ -174,24 +27,34 @@
     <!-- Business Ethics & Corporate Conduct (Active) -->
     <div class="course-card">
       <span class="badge badge-active">Active</span>
-      <h3>Business Ethics & Corporate Conduct</h3>
+      <h3>Business Ethics &amp; Corporate Conduct</h3>
       <p>Explore ethical frameworks and codes of conduct for business professionals, with real quizzes and materials.</p>
       <div class="internal-menu">
-  <select onchange="if(this.value) window.location.href=this.value">
-    <option value="">Select…</option>
-    <option value="edu-buseth-test/password-gate.html">Test 1</option>
-    <option value="edu-buseth-test/test2-password.html">Test 2</option>
-    <option value="edu-buseth-test/quiz1-password.html">Quiz 1</option>
-  </select>
-</div>
-      <a class='course-link' href='/edu-buseth-test/password-gate'>Tests & Quizzes →</a>
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/buseth/password-gate.html?to=test-1.html">Test 1 — Ferragamo Code of Ethics</option>
+          <option value="courses/buseth/password-gate.html?to=quiz-1.html">Quiz 1 — Ethical Frameworks</option>
+          <option value="courses/buseth/password-gate.html?to=quiz-2.html">Quiz 2 — True/False</option>
+          <option value="courses/buseth/password-gate.html?to=test-2.html">Test 2 — Corporate Governance</option>
+          <option value="courses/buseth/lectures.html">📚 Study Notes</option>
+          <option value="courses/buseth/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- Sustainable Fashion (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Sustainable Fashion</h3>
       <p>Ethical production, environmental impact, and innovation in the fashion industry. Course coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/susfashion/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/susfashion/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/susfashion/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/susfashion/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
@@ -201,24 +64,53 @@
   <div class="course-list">
     <!-- Entrepreneurship & Small Business Management (Coming Soon) -->
     <div class="course-card">
-      <span class="badge badge-soon">Coming Soon</span>
+      <span class="badge badge-active">Active</span>
       <h3>Entrepreneurship & Small Business Management</h3>
-      <p>Startup fundamentals, growth strategies, and business planning for SMEs. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <p>Startup fundamentals, growth strategies, and business planning for SMEs.</p>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/entre-smb/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/entre-smb/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/entre-smb/password-gate.html?to=quiz-6.html">Quiz 6 — Startup</option>
+          <option value="courses/entre-smb/password-gate.html?to=quiz-7.html">Quiz 7 — Customer’s Problem</option>
+          <option value="courses/entre-smb/password-gate.html?to=quiz-8.html">Quiz 8 — Problem Definition</option>
+          <option value="courses/entre-smb/password-gate.html?to=quiz-9.html">Quiz 9 — Marketing</option>
+          <option value="courses/entre-smb/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/entre-smb/lectures.html">📚 Study Notes</option>
+          <option value="courses/entre-smb/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- Entrepreneurship and Business Plan (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Entrepreneurship and Business Plan</h3>
       <p>Everything you need to create, evaluate, and present a business plan. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/entre-bp/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/entre-bp/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/entre-bp/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/entre-bp/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- Fashion Business & Startup (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Fashion Business & Startup</h3>
       <p>Strategies and skills for launching and scaling your fashion business. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/fashion-startup/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/fashion-startup/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/fashion-startup/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/fashion-startup/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
@@ -226,34 +118,66 @@
 <div class="main-area">
   <h2>Sustainability Management</h2>
   <div class="course-list">
-    <!-- Operations Management (Coming Soon) -->
+    <!-- Operations Management -->
+    <div class="course-card">
+<span class="badge badge-active badge-gold">Active</span>
+      <h3>Operations Management</h3>
+      <p>Optimization, efficiency, and management best practices.</p>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/opsmgmt/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/opsmgmt/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/opsmgmt/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/opsmgmt/lectures.html">📚 Study Notes</option>
+          <option value="courses/opsmgmt/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
+    </div>
+    <div class="course-card">
+      <span class="badge badge-active">Active</span>
+      <h3>Supply Chain Management &amp; ESG</h3>
+      <p>Sustainable procurement, logistics, CSRD compliance, and digital traceability for supply chain professionals.</p>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/scm/password-gate.html?to=test-1.html">Test 1 — Supplier Code of Conduct</option>
+          <option value="courses/scm/password-gate.html?to=quiz-1.html">Quiz 1 — SCM Key Concepts</option>
+          <option value="courses/scm/password-gate.html?to=test-2.html">Test 2 — ESG &amp; CSRD</option>
+          <option value="courses/scm/lectures.html">📚 Study Notes</option>
+          <option value="courses/scm/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
+    </div>
+    <!-- Sustainability Management & Reporting (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
-      <h3>Operations Management</h3>
-      <p>Optimization, efficiency, and management best practices. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
-    </div>
-    <!-- Supply Chain Management & ESG (Active) -->
-    <div class="course-card">
-      <span class="badge badge-active">Active</span>
-      <h3>Supply Chain Management & ESG</h3>
-      <p>Sustainable procurement, logistics, CSRD compliance, and digital traceability for supply chain professionals.</p>
-      <a href="edu-scm-test/password-gate.html" class="course-link" aria-label="Supply Chain Management & ESG — Test">Test →</a>
-      <a href="edu-scm-test/quiz.html" class="course-link" aria-label="Supply Chain Management & ESG — Quiz">Quiz →</a>
-    </div>
-    <!-- Sustainability Management & Reporting (Active or Coming Soon?) -->
-    <div class="course-card">
-      <span class="badge badge-active">Active</span>
       <h3>Sustainability Management & Reporting</h3>
-      <p>Practical tools and strategies for measuring, managing, and reporting on sustainability. (Adjust if not yet active.)</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <p>Practical tools and strategies for measuring, managing, and reporting on sustainability.</p>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/susreport/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/susreport/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/susreport/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/susreport/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- Green Supply Chain Management (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Green Supply Chain Management</h3>
       <p>Innovative solutions and strategies to green your supply chain. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/greenscm/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/greenscm/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/greenscm/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/greenscm/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>
@@ -266,21 +190,45 @@
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Circular Economy</h3>
       <p>Principles and strategies for building a circular economy. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/circ/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/circ/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/circ/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/circ/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- Circular Business Models (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>Circular Business Models</h3>
       <p>Designing and implementing circular business models for sustainability. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/circbm/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/circbm/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/circbm/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/circbm/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
     <!-- DPP - Digital Product Passport (Coming Soon) -->
     <div class="course-card">
       <span class="badge badge-soon">Coming Soon</span>
       <h3>DPP - Digital Product Passport</h3>
       <p>Traceability, compliance, and innovations in digital product passports. Coming soon!</p>
-      <a class="course-link disabled" href="#" tabindex="-1" aria-disabled="true">Tests & Quizzes</a>
+      <div class="internal-menu">
+        <select onchange="if(this.value) window.location.href=this.value">
+          <option value="">Select…</option>
+          <option value="courses/dpp/password-gate.html?to=test-1.html">Test 1 — Fundamentals</option>
+          <option value="courses/dpp/password-gate.html?to=quiz-1.html">Quiz 1 — Key Concepts</option>
+          <option value="courses/dpp/password-gate.html?to=test-2.html">Test 2 — Coming Soon</option>
+          <option value="courses/dpp/password-gate.html?to=materials.html">Materials</option>
+        </select>
+      </div>
     </div>
   </div>
 </div>

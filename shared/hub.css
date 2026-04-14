@@ -1,0 +1,247 @@
+:root {
+  --header-bg: #1a1a1a;
+  --gold: #B8922A;
+  --bg: #FAF7F2;
+  --card-bg: #fff;
+  --card-shadow: 0 3px 16px rgba(184,146,42,0.11);
+  --card-border: #e8e4de;
+  --section-border: #dcdcdc;
+}
+
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  color: #1a1a1a;
+}
+
+/* Header / hero */
+header {
+  background: var(--header-bg);
+  color: #fff;
+  padding: 36px 0 24px 0;
+  text-align: center;
+  border-bottom: 3px solid var(--gold);
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.tagline {
+  font-size: 1.08rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.hero {
+  background: var(--header-bg);
+  color: #fff;
+  padding: 32px 20px 22px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.hero-desc {
+  font-size: 1.13rem;
+  color: rgba(255,255,255,0.86);
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 52px 20px 96px;
+}
+
+/* Areas / lists (this matches your current HTML) */
+.main-area {
+  margin-bottom: 2.5rem;
+}
+
+.course-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Cards */
+.course-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border);
+  padding: 25px 18px 22px 18px;
+  min-width: 280px;
+  width: 320px;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 20px;
+  transition: box-shadow .22s, transform .18s;
+}
+
+.course-card:hover {
+  box-shadow: 0 8px 48px rgba(184,146,42,0.23);
+  transform: translateY(-6px);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.3em 0.9em;
+  font-size: 0.97em;
+  font-weight: bold;
+  border-radius: 7px;
+  margin-bottom: 13px;
+}
+
+.badge-active {
+  background: var(--gold);
+  color: #fff;
+}
+
+.badge-soon {
+  background: #bdbdbd;
+  color: #fff;
+}
+
+/* Links */
+.course-link {
+  background: #faf7f2;
+  color: #1a1a1a;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  font-size: 1.03rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 11px 22px;
+  transition: background .14s, color .14s, border .14s;
+  display: inline-block;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.course-link:hover:not(.disabled) {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+}
+
+.course-link.disabled,
+.course-link[aria-disabled="true"] {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dropdown container */
+.internal-menu {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+/* If you still use anchors inside internal-menu anywhere */
+.internal-menu .course-link {
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  display: block;
+  margin-top: 10px;
+}
+
+footer {
+  background: var(--header-bg);
+  color: rgba(255,255,255,0.66);
+  padding: 36px 0;
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 52px;
+  border-top: 3px solid var(--gold);
+}
+
+@media (max-width: 700px) {
+  header, .hero, footer { padding-left: 10px; padding-right: 10px; }
+  main { padding-left: 4px; padding-right: 4px; }
+}
+/* Dropdown styling to match .course-link button look */
+.internal-menu select {
+  width: 100%;
+  box-sizing: border-box;
+
+  background: #faf7f2;
+  color: #1a1a1a;
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+
+  font-size: 1.03rem;
+  font-weight: 600;
+  padding: 11px 44px 11px 22px; /* extra right padding for arrow */
+
+  cursor: pointer;
+
+  /* Remove default native styling differences as much as possible */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Custom arrow */
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gold) 50%),
+    linear-gradient(135deg, var(--gold) 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%,
+    0 0;
+  background-size: 6px 6px, 6px 6px, 100% 100%;
+  background-repeat: no-repeat;
+
+  transition: background .14s, color .14s, border-color .14s, box-shadow .14s;
+}
+
+.internal-menu select:hover {
+  background: var(--gold);
+  color: #fff;
+  border-color: var(--gold);
+
+  /* Make the arrow visible on gold background */
+  background-image:
+    linear-gradient(45deg, transparent 50%, #fff 50%),
+    linear-gradient(135deg, #fff 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+}
+
+.internal-menu select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(184, 146, 42, 0.25);
+}
+
+.internal-menu select:disabled {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
