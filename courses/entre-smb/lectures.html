@@ -46,11 +46,71 @@
       margin-top: 10px;
       letter-spacing: 1px;
     }
-    .content {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 24px 96px;
+    /* ── Two-column layout ── */
+    .lectures-layout {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - 120px);
     }
+    .lectures-sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: #fff;
+      border-right: 1px solid var(--grigio-light);
+      padding: 24px 0 40px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 700;
+      padding: 0 20px 14px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .sidebar-link {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--nero);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
+    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
+    .sidebar-link.is-active .sidebar-num { color: var(--oro); }
+    .sidebar-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--oro);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      min-width: 20px;
+    }
+    .sidebar-footer {
+      padding: 16px 20px 0;
+      border-top: 1px solid var(--grigio-light);
+      margin-top: auto;
+    }
+    .lectures-main {
+      flex: 1;
+      min-width: 0;
+      padding: 40px 36px 80px;
+    }
+    .panel[hidden] { display: none; }
     .section { margin-bottom: 56px; }
     .section-title {
       font-size: 10px;
@@ -62,6 +122,8 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--grigio-light);
     }
+
+    /* ── Schedule table ── */
     .schedule-table {
       width: 100%;
       border-collapse: collapse;
@@ -83,7 +145,7 @@
       vertical-align: middle;
     }
     .schedule-table tr:last-child td { border-bottom: none; }
-    .schedule-table tr:hover td { background: #fff; }
+    .schedule-table tr:hover td { background: #faf7f2; }
     .topic-num-cell {
       font-size: 11px;
       font-weight: 700;
@@ -95,6 +157,12 @@
       font-weight: 600;
       color: var(--nero);
       text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
     }
     .topic-link:hover { color: var(--oro); text-decoration: underline; }
     .topic-sub {
@@ -117,13 +185,13 @@
     }
     .assess-link:hover { background: #2D7A4F; color: #fff; }
     .assess-link + .assess-link { margin-top: 4px; display: block; }
+
+    /* ── Topic panels ── */
     .topic-section {
       background: #fff;
       border: 1px solid var(--grigio-light);
       border-radius: 4px;
-      margin-bottom: 32px;
       overflow: hidden;
-      scroll-margin-top: 24px;
     }
     .topic-header {
       display: flex;
@@ -174,6 +242,7 @@
       margin-bottom: 5px;
     }
     .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
     .topic-footer {
       border-top: 1px solid var(--grigio-light);
       padding: 14px 28px;
@@ -191,7 +260,6 @@
     }
     .back-link {
       display: inline-block;
-      margin-top: 32px;
       font-size: 0.83rem;
       color: #aaa;
       text-decoration: none;
@@ -216,48 +284,22 @@
     .breadcrumb-sep { color: #ccc; }
     .breadcrumb-current { color: var(--grigio); }
 
-    /* ── TABLE OF CONTENTS ── */
-    .toc-section {
-      background: #fff;
-      border: 1px solid var(--grigio-light);
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin-bottom: 40px;
-    }
-    .toc-title {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--grigio);
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list { list-style: none; padding: 0; margin: 0; }
-    .toc-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list li:last-child { border-bottom: none; }
-    .toc-num { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 24px; }
-    .toc-list a { color: var(--nero); text-decoration: none; font-size: 0.93rem; font-weight: 500; }
-    .toc-list a:hover { color: var(--oro); text-decoration: underline; }
+    /* ── Glossary ── */
+    .glossary-term { font-weight: 700; color: var(--nero); }
+    .glossary-def { font-size: 0.9rem; color: #444; margin-bottom: 10px; line-height: 1.6; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .page-header { padding: 28px 20px 24px; }
-      .content { padding: 32px 16px 60px; }
+      .lectures-layout { flex-direction: column; }
+      .lectures-sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .lectures-main { padding: 24px 16px 60px; }
       .topic-header { padding: 16px 18px; }
       .topic-body { padding: 20px 18px 24px; }
       .topic-footer { padding: 12px 18px; }
       .schedule-table th, .schedule-table td { padding: 10px 8px; }
       .breadcrumb { padding: 10px 20px; }
-      .toc-section { padding: 20px 18px; }
     }
-  </style>
+      </style>
 </head>
 <body>
 
@@ -276,23 +318,32 @@
   <span class="breadcrumb-current">Study Notes</span>
 </nav>
 
-<div class="content">
+<div class="lectures-layout">
 
-  <!-- ── Table of Contents ── -->
-  <div class="toc-section">
-    <div class="toc-title">Table of Contents</div>
-    <ul class="toc-list">
-      <li><span class="toc-num">01</span><a href="#topic-1">What Is Entrepreneurship?</a></li>
-      <li><span class="toc-num">02</span><a href="#topic-2">The Startup Mindset</a></li>
-      <li><span class="toc-num">03</span><a href="#topic-3">Understanding the Customer's Problem</a></li>
-      <li><span class="toc-num">04</span><a href="#topic-4">Problem Definition &amp; Ideation</a></li>
-      <li><span class="toc-num">05</span><a href="#topic-5">Marketing for Startups &amp; SMEs</a></li>
-      <li><span class="toc-num">06</span><a href="#topic-6">Business Structures — Startups &amp; Franchises</a></li>
-      <li><span class="toc-num">07</span><a href="#topic-7">Business Planning</a></li>
+  <!-- ── Left Sidebar ── -->
+  <nav class="lectures-sidebar" aria-label="Study notes navigation">
+    <div class="sidebar-label">Contents</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" class="sidebar-link is-active" data-panel="overview">Course Schedule</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-1"><span class="sidebar-num">01</span>What Is Entrepreneurship?</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>The Startup Mindset</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-3"><span class="sidebar-num">03</span>Understanding the Customer's Problem</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-4"><span class="sidebar-num">04</span>Problem Definition &amp; Ideation</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-5"><span class="sidebar-num">05</span>Marketing for Startups &amp; SMEs</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-6"><span class="sidebar-num">06</span>Business Structures — Startups &amp; Franchises</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-7"><span class="sidebar-num">07</span>Business Planning</a></li>
+      <li><a href="#" class="sidebar-link sidebar-link--ref" data-panel="reference">Glossary &amp; Resources</a></li>
     </ul>
-  </div>
+    <div class="sidebar-footer">
+      <a href="../../index.html" class="back-link">← Back to course hub</a>
+    </div>
+  </nav>
 
-  <!-- ── Schedule overview ── -->
+  <!-- ── Main content area ── -->
+  <main class="lectures-main">
+    <!-- ── Overview panel (default) ── -->
+    <div id="panel-overview" class="panel">
+      <!-- ── Schedule overview ── -->
   <div class="section">
     <div class="section-title">Course Schedule</div>
     <table class="schedule-table">
@@ -307,7 +358,7 @@
         <tr>
           <td class="topic-num-cell">01</td>
           <td>
-            <a href="#topic-1" class="topic-link">What Is Entrepreneurship?</a>
+            <a data-panel="topic-1" class="topic-link">What Is Entrepreneurship?</a>
             <div class="topic-sub">Definitions · Types of entrepreneur · SME criteria</div>
           </td>
           <td>
@@ -318,7 +369,7 @@
         <tr>
           <td class="topic-num-cell">02</td>
           <td>
-            <a href="#topic-2" class="topic-link">The Startup Mindset</a>
+            <a data-panel="topic-2" class="topic-link">The Startup Mindset</a>
             <div class="topic-sub">Lean Startup · MVP · Pivot</div>
           </td>
           <td>
@@ -328,7 +379,7 @@
         <tr>
           <td class="topic-num-cell">03</td>
           <td>
-            <a href="#topic-3" class="topic-link">Understanding the Customer's Problem</a>
+            <a data-panel="topic-3" class="topic-link">Understanding the Customer's Problem</a>
             <div class="topic-sub">Problem-solution fit · Customer discovery · Jobs-to-be-done</div>
           </td>
           <td>
@@ -338,7 +389,7 @@
         <tr>
           <td class="topic-num-cell">04</td>
           <td>
-            <a href="#topic-4" class="topic-link">Problem Definition &amp; Ideation</a>
+            <a data-panel="topic-4" class="topic-link">Problem Definition &amp; Ideation</a>
             <div class="topic-sub">Design thinking · Value proposition · Root cause analysis</div>
           </td>
           <td>
@@ -348,7 +399,7 @@
         <tr>
           <td class="topic-num-cell">05</td>
           <td>
-            <a href="#topic-5" class="topic-link">Marketing for Startups &amp; SMEs</a>
+            <a data-panel="topic-5" class="topic-link">Marketing for Startups &amp; SMEs</a>
             <div class="topic-sub">4Ps · 4Is model · Digital marketing · CAC &amp; LTV · Future trends</div>
           </td>
           <td>
@@ -358,7 +409,7 @@
         <tr>
           <td class="topic-num-cell">06</td>
           <td>
-            <a href="#topic-6" class="topic-link">Business Structures — Startups &amp; Franchises</a>
+            <a data-panel="topic-6" class="topic-link">Business Structures — Startups &amp; Franchises</a>
             <div class="topic-sub">Franchise model · Società Benefit · Why businesses fail</div>
           </td>
           <td></td>
@@ -366,7 +417,7 @@
         <tr>
           <td class="topic-num-cell">07</td>
           <td>
-            <a href="#topic-7" class="topic-link">Business Planning</a>
+            <a data-panel="topic-7" class="topic-link">Business Planning</a>
             <div class="topic-sub">Business Model Canvas · 5 Cs of Credit · The pitch</div>
           </td>
           <td></td>
@@ -374,446 +425,497 @@
       </tbody>
     </table>
   </div>
-
-  <!-- ── Topic 1 ── -->
-  <div id="topic-1" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">01</span>
-      <h2>What Is Entrepreneurship?</h2>
     </div>
-    <div class="topic-body">
 
-      <h3>Defining Entrepreneurship</h3>
-      <p>Entrepreneurship is the process of designing, launching, and running a new business venture, typically in response to an identified opportunity, while taking on financial and personal risk in pursuit of profit, growth, or social impact. An entrepreneur is someone who organizes, manages, and assumes the risks of a business or enterprise.</p>
-      <p>Modern definitions emphasize <strong>value creation</strong>: entrepreneurs create value for customers, employees, and society — not merely profit for themselves.</p>
+    <!-- ── Topic 1 panel ── -->
+    <div id="panel-topic-1" class="panel" hidden>
+      <div id="topic-1" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">01</span>
+            <h2>What Is Entrepreneurship?</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>Types of Entrepreneur</h3>
-      <ul>
-        <li><strong>Lifestyle entrepreneur:</strong> builds a business to support a desired lifestyle rather than to scale rapidly. Prioritizes independence and quality of life over growth.</li>
-        <li><strong>Serial entrepreneur:</strong> starts multiple businesses over time, often selling one venture before beginning another. Focuses on the process of creation rather than running a single company long-term.</li>
-        <li><strong>Social entrepreneur:</strong> applies entrepreneurial thinking to address social or environmental problems. Profit is secondary to mission impact.</li>
-        <li><strong>Intrapreneur:</strong> acts as an entrepreneur within an established organization — driving innovation from the inside.</li>
-        <li><strong>Tech/Startup entrepreneur:</strong> builds a scalable technology-driven business, typically with the goal of rapid growth and investment rounds.</li>
-      </ul>
+            <h3>Defining Entrepreneurship</h3>
+            <p>Entrepreneurship is the process of designing, launching, and running a new business venture, typically in response to an identified opportunity, while taking on financial and personal risk in pursuit of profit, growth, or social impact. An entrepreneur is someone who organizes, manages, and assumes the risks of a business or enterprise.</p>
+            <p>Modern definitions emphasize <strong>value creation</strong>: entrepreneurs create value for customers, employees, and society — not merely profit for themselves.</p>
 
-      <h3>Small and Medium-Sized Enterprises (SMEs)</h3>
-      <p>The EU defines SMEs by three criteria (the enterprise must meet at least two):</p>
-      <ul>
-        <li><strong>Micro:</strong> fewer than 10 employees; annual turnover or balance sheet ≤ €2 million.</li>
-        <li><strong>Small:</strong> fewer than 50 employees; annual turnover or balance sheet ≤ €10 million.</li>
-        <li><strong>Medium:</strong> fewer than 250 employees; annual turnover ≤ €50 million OR balance sheet ≤ €43 million.</li>
-      </ul>
-      <p>SMEs represent 99% of all businesses in the EU, employ about two-thirds of the private sector workforce, and generate over half of the EU's GDP. They are the backbone of the European economy.</p>
+            <h3>Types of Entrepreneur</h3>
+            <ul>
+              <li><strong>Lifestyle entrepreneur:</strong> builds a business to support a desired lifestyle rather than to scale rapidly. Prioritizes independence and quality of life over growth.</li>
+              <li><strong>Serial entrepreneur:</strong> starts multiple businesses over time, often selling one venture before beginning another. Focuses on the process of creation rather than running a single company long-term.</li>
+              <li><strong>Social entrepreneur:</strong> applies entrepreneurial thinking to address social or environmental problems. Profit is secondary to mission impact.</li>
+              <li><strong>Intrapreneur:</strong> acts as an entrepreneur within an established organization — driving innovation from the inside.</li>
+              <li><strong>Tech/Startup entrepreneur:</strong> builds a scalable technology-driven business, typically with the goal of rapid growth and investment rounds.</li>
+            </ul>
 
-      <h3>Innovation and Entrepreneurship</h3>
-      <p>Joseph Schumpeter described entrepreneurship as a force of <strong>"creative destruction"</strong> — new innovations displace existing products, processes, and firms. He identified four types of innovation:</p>
-      <ul>
-        <li><strong>Product innovation:</strong> new or significantly improved goods or services.</li>
-        <li><strong>Process innovation:</strong> new or improved methods of production or delivery.</li>
-        <li><strong>Market innovation:</strong> entering new markets or repositioning existing products.</li>
-        <li><strong>Organizational innovation:</strong> new business models or management practices.</li>
-      </ul>
+            <h3>Small and Medium-Sized Enterprises (SMEs)</h3>
+            <p>The EU defines SMEs by three criteria (the enterprise must meet at least two):</p>
+            <ul>
+              <li><strong>Micro:</strong> fewer than 10 employees; annual turnover or balance sheet ≤ €2 million.</li>
+              <li><strong>Small:</strong> fewer than 50 employees; annual turnover or balance sheet ≤ €10 million.</li>
+              <li><strong>Medium:</strong> fewer than 250 employees; annual turnover ≤ €50 million OR balance sheet ≤ €43 million.</li>
+            </ul>
+            <p>SMEs represent 99% of all businesses in the EU, employ about two-thirds of the private sector workforce, and generate over half of the EU's GDP. They are the backbone of the European economy.</p>
 
+            <h3>Innovation and Entrepreneurship</h3>
+            <p>Joseph Schumpeter described entrepreneurship as a force of <strong>"creative destruction"</strong> — new innovations displace existing products, processes, and firms. He identified four types of innovation:</p>
+            <ul>
+              <li><strong>Product innovation:</strong> new or significantly improved goods or services.</li>
+              <li><strong>Process innovation:</strong> new or improved methods of production or delivery.</li>
+              <li><strong>Market innovation:</strong> entering new markets or repositioning existing products.</li>
+              <li><strong>Organizational innovation:</strong> new business models or management practices.</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
+            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Fundamentals</a>
+          </div>
+        </div>
     </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
-      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Fundamentals</a>
+
+    <!-- ── Topic 2 panel ── -->
+    <div id="panel-topic-2" class="panel" hidden>
+      <div id="topic-2" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">02</span>
+            <h2>The Startup Mindset</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>What Is a Startup?</h3>
+            <p>A startup is a young company founded to develop a unique product or service, bring it to market, and scale it rapidly. Unlike a traditional small business (which may serve a local market), startups are designed for growth — often aiming to achieve scale nationally or globally in a short time.</p>
+            <p>Steve Blank defines a startup as "a temporary organization designed to search for a repeatable and scalable business model." This search phase distinguishes startups from established businesses that execute known models.</p>
+
+            <h3>The Lean Startup Methodology</h3>
+            <p><strong>Eric Ries</strong> popularized the Lean Startup in 2011. Its core principle is to reduce waste by shortening product development cycles through rapid experimentation.</p>
+            <p>The engine of Lean Startup is the <strong>Build-Measure-Learn</strong> feedback loop:</p>
+            <ul>
+              <li><strong>Build:</strong> create the simplest possible version of your product (MVP) to test your assumptions.</li>
+              <li><strong>Measure:</strong> collect data on how real customers respond to the MVP.</li>
+              <li><strong>Learn:</strong> use the data to validate or invalidate your assumptions, then decide whether to persevere or pivot.</li>
+            </ul>
+            <p>The goal is to learn as fast as possible with the least resources — avoiding wasting months building a product nobody wants.</p>
+
+            <h3>Minimum Viable Product (MVP)</h3>
+            <p>An MVP is the simplest version of a product that can be released to early customers to gather validated learning. It is NOT a prototype — it is a real product (or service) that real customers can use, even if it is basic.</p>
+            <ul>
+              <li><strong>Purpose:</strong> test core assumptions with minimal investment before building the full product.</li>
+              <li><strong>Examples:</strong> Airbnb's first MVP was a simple website renting out the founders' apartment; Dropbox launched an MVP as a demo video before building the product.</li>
+              <li><strong>Key principle:</strong> the MVP must deliver the core value proposition — nothing more, nothing less.</li>
+            </ul>
+
+            <h3>Pivot</h3>
+            <p>A pivot is a structured course correction: maintaining some elements of the original plan while significantly changing strategy based on validated learning. Pivoting is not failure — it is disciplined iteration.</p>
+            <ul>
+              <li><strong>Customer segment pivot:</strong> the product stays the same, but it is targeted at a different customer group.</li>
+              <li><strong>Value capture pivot:</strong> changing how the company monetizes (e.g., from pay-per-use to subscription).</li>
+              <li><strong>Channel pivot:</strong> changing how the product reaches customers (e.g., from B2C to B2B).</li>
+              <li><strong>Product pivot:</strong> keeping the customer segment but building a different product that better solves their problem.</li>
+            </ul>
+
+            <h3>Market Sizing: TAM, SAM, SOM</h3>
+            <p>When validating a startup idea or presenting to investors, you must demonstrate that your market opportunity is real and sizeable. Build estimates <strong>Bottom-Up</strong> from specific segments and preliminary experiments — this is far more credible than the Top-Down approach of carving a vague percentage off a giant total market figure.</p>
+            <ul>
+              <li><strong>TAM (Total Addressable Market):</strong> the total global demand for your type of product or service (e.g., the entire global bakery market).</li>
+              <li><strong>SAM (Serviceable Addressable Market):</strong> the portion of the TAM you can realistically reach with your current business model (e.g., the bakery market in Italy).</li>
+              <li><strong>SOM (Serviceable Obtainable Market):</strong> your beachhead — the specific slice of the SAM you can realistically capture in the next 1–3 years (e.g., 10% of artisanal bakeries in Florence).</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="password-gate.html?to=quiz-6.html" class="assess-link">Quiz 6 — Startup</a>
+          </div>
+        </div>
     </div>
-  </div>
 
-  <!-- ── Topic 2 ── -->
-  <div id="topic-2" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">02</span>
-      <h2>The Startup Mindset</h2>
+    <!-- ── Topic 3 panel ── -->
+    <div id="panel-topic-3" class="panel" hidden>
+      <div id="topic-3" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">03</span>
+            <h2>Understanding the Customer's Problem</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Problem-Solution Fit</h3>
+            <p>Before building anything, entrepreneurs must achieve <strong>problem-solution fit</strong>: confirming that (a) a real, significant problem exists, (b) the target customers are aware of and motivated to solve this problem, and (c) the proposed solution genuinely addresses it. Many startups fail because they build solutions looking for problems rather than the reverse.</p>
+
+            <h3>Customer Discovery</h3>
+            <p>Customer discovery (Steve Blank) is the process of getting out of the building and talking to potential customers to understand their problems, needs, and behaviors — before writing code or building products.</p>
+            <ul>
+              <li><strong>Interviews:</strong> open-ended, exploratory conversations focused on understanding customer pain points, current workarounds, and desired outcomes. Avoid leading questions that confirm existing assumptions.</li>
+              <li><strong>Observation:</strong> watch customers in their natural environment to understand how they actually behave (not just what they say they do).</li>
+              <li><strong>Surveys:</strong> useful for quantifying patterns once qualitative insights have been identified, but less useful for discovering new insights.</li>
+              <li><strong>The Mom Test (Rob Fitzpatrick):</strong> ask about people's lives, not about your idea. Past behavior is more reliable than future intention ("Would you pay for this?" is an unreliable question).</li>
+            </ul>
+            <p>A key distinction in investigative interviewing is <strong>behavioral vs. hypothetical questions</strong>. Hypothetical questions ("Would you use an app that tracks your waste?") invite optimistic guessing. Behavioral questions anchor the conversation in reality:</p>
+            <ul>
+              <li><strong>Bad (hypothetical):</strong> "Would you use an app that tracks your waste?"</li>
+              <li><strong>Good (behavioral):</strong> "Tell me about the last time you had to throw away unsold stock. What did you do? How did that feel?"</li>
+            </ul>
+
+            <h3>Jobs-to-be-Done Theory</h3>
+            <p><strong>Clayton Christensen</strong> developed the Jobs-to-be-Done (JTBD) framework: customers don't buy products — they "hire" them to do a specific job in their lives. Understanding the job gives entrepreneurs insight into what truly motivates customers.</p>
+            <ul>
+              <li><strong>Functional jobs:</strong> practical tasks customers need to accomplish ("help me get from A to B quickly").</li>
+              <li><strong>Social jobs:</strong> how customers want to be perceived by others ("make me look successful").</li>
+              <li><strong>Emotional jobs:</strong> how customers want to feel ("reduce my anxiety about missing a deadline").</li>
+            </ul>
+            <p>The famous JTBD example: people who buy a drill don't want a drill — they want a hole in the wall. People who buy the hole want to hang a picture. People who hang a picture want a beautiful home. Understanding the deeper job reveals real innovation opportunities.</p>
+
+            <h3>Pain Points</h3>
+            <p>Pain points are the specific problems or frustrations that potential customers experience. Identifying pain points is key to positioning your product as a genuine solution:</p>
+            <ul>
+              <li><strong>Financial pain:</strong> solutions that cost too much, or processes that waste money.</li>
+              <li><strong>Productivity pain:</strong> tasks that take too long or are too complex.</li>
+              <li><strong>Process pain:</strong> inefficient workflows or missing steps in a process.</li>
+              <li><strong>Support pain:</strong> inadequate help or information when customers need it.</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="password-gate.html?to=quiz-7.html" class="assess-link">Quiz 7 — Customer's Problem</a>
+          </div>
+        </div>
     </div>
-    <div class="topic-body">
 
-      <h3>What Is a Startup?</h3>
-      <p>A startup is a young company founded to develop a unique product or service, bring it to market, and scale it rapidly. Unlike a traditional small business (which may serve a local market), startups are designed for growth — often aiming to achieve scale nationally or globally in a short time.</p>
-      <p>Steve Blank defines a startup as "a temporary organization designed to search for a repeatable and scalable business model." This search phase distinguishes startups from established businesses that execute known models.</p>
+    <!-- ── Topic 4 panel ── -->
+    <div id="panel-topic-4" class="panel" hidden>
+      <div id="topic-4" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">04</span>
+            <h2>Problem Definition &amp; Ideation</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>The Lean Startup Methodology</h3>
-      <p><strong>Eric Ries</strong> popularized the Lean Startup in 2011. Its core principle is to reduce waste by shortening product development cycles through rapid experimentation.</p>
-      <p>The engine of Lean Startup is the <strong>Build-Measure-Learn</strong> feedback loop:</p>
-      <ul>
-        <li><strong>Build:</strong> create the simplest possible version of your product (MVP) to test your assumptions.</li>
-        <li><strong>Measure:</strong> collect data on how real customers respond to the MVP.</li>
-        <li><strong>Learn:</strong> use the data to validate or invalidate your assumptions, then decide whether to persevere or pivot.</li>
-      </ul>
-      <p>The goal is to learn as fast as possible with the least resources — avoiding wasting months building a product nobody wants.</p>
+            <h3>Design Thinking</h3>
+            <p>Design thinking is a human-centered approach to innovation that integrates the needs of people, the possibilities of technology, and the requirements for business success. It was popularized by IDEO and the Stanford d.school.</p>
+            <p><strong>Avoid solution-bias:</strong> a common mistake is to write a problem statement that already implies your product. A proper problem description focuses on the current reality of the beneficiary — it does NOT mention causes or jump to a solution. Describe <em>who</em> is affected and <em>what</em> undesirable situation they face, not how to fix it.</p>
+            <p><strong>How to write a problem statement:</strong></p>
+            <ul>
+              <li><strong>Who:</strong> identify the specific beneficiaries.</li>
+              <li><strong>What:</strong> describe the undesirable situation they experience.</li>
+              <li><strong>Impact:</strong> explain the human or economic consequence.</li>
+            </ul>
+            <p><em>Example:</em> "Small artisanal bakers in Florence (Who) are losing 30% of their daily inventory due to unpredictable tourist foot traffic (What), leading to financial instability and food waste (Impact)."</p>
+            <p>The five stages of design thinking:</p>
+            <ul>
+              <li><strong>Empathize:</strong> deeply understand the people you are designing for. Conduct interviews, observe behavior, build empathy maps.</li>
+              <li><strong>Define:</strong> synthesize what you learned to articulate a clear, human-centered problem statement (a Point of View or "How Might We" question).</li>
+              <li><strong>Ideate:</strong> generate a wide range of possible solutions without judgment. Brainstorming, SCAMPER, and mind mapping are common ideation techniques.</li>
+              <li><strong>Prototype:</strong> build simple, low-cost representations of solutions (paper sketches, mock-ups, role plays) to test ideas quickly.</li>
+              <li><strong>Test:</strong> expose prototypes to real users, gather feedback, and iterate. Return to earlier stages as needed.</li>
+            </ul>
 
-      <h3>Minimum Viable Product (MVP)</h3>
-      <p>An MVP is the simplest version of a product that can be released to early customers to gather validated learning. It is NOT a prototype — it is a real product (or service) that real customers can use, even if it is basic.</p>
-      <ul>
-        <li><strong>Purpose:</strong> test core assumptions with minimal investment before building the full product.</li>
-        <li><strong>Examples:</strong> Airbnb's first MVP was a simple website renting out the founders' apartment; Dropbox launched an MVP as a demo video before building the product.</li>
-        <li><strong>Key principle:</strong> the MVP must deliver the core value proposition — nothing more, nothing less.</li>
-      </ul>
+            <h3>Problem Statement: "How Might We…?"</h3>
+            <p>The <strong>How Might We (HMW)</strong> format is used to frame problem statements in a way that is broad enough to allow creative solutions but narrow enough to be actionable. Example: "How might we help commuters find parking quickly near their destination?" — this frames the problem without prescribing the solution.</p>
 
-      <h3>Pivot</h3>
-      <p>A pivot is a structured course correction: maintaining some elements of the original plan while significantly changing strategy based on validated learning. Pivoting is not failure — it is disciplined iteration.</p>
-      <ul>
-        <li><strong>Customer segment pivot:</strong> the product stays the same, but it is targeted at a different customer group.</li>
-        <li><strong>Value capture pivot:</strong> changing how the company monetizes (e.g., from pay-per-use to subscription).</li>
-        <li><strong>Channel pivot:</strong> changing how the product reaches customers (e.g., from B2C to B2B).</li>
-        <li><strong>Product pivot:</strong> keeping the customer segment but building a different product that better solves their problem.</li>
-      </ul>
+            <h3>Root Cause Analysis: The 5 Whys</h3>
+            <p>The 5 Whys is a technique for identifying the root cause of a problem by repeatedly asking "Why?" — typically five times — until the fundamental cause is uncovered. Developed within Toyota's production system.</p>
+            <p><em>Example 1:</em> "Our customers are unhappy." Why? "Deliveries are late." Why? "Production is slow." Why? "We run out of components." Why? "Our supplier delivers irregularly." Why? "We have no backup supplier." → Root cause: single-source dependency.</p>
+            <p><em>Example 2 (branding):</em> "Customers aren't buying our organic soap." Why? "They think it's too expensive." Why? "They compare it to mass-market brands." Why? "They don't see the value of the organic ingredients." Why? "The packaging looks the same as cheap soap." → Root cause: visual branding fails to communicate the premium/organic value proposition.</p>
 
-      <h3>Market Sizing: TAM, SAM, SOM</h3>
-      <p>When validating a startup idea or presenting to investors, you must demonstrate that your market opportunity is real and sizeable. Build estimates <strong>Bottom-Up</strong> from specific segments and preliminary experiments — this is far more credible than the Top-Down approach of carving a vague percentage off a giant total market figure.</p>
-      <ul>
-        <li><strong>TAM (Total Addressable Market):</strong> the total global demand for your type of product or service (e.g., the entire global bakery market).</li>
-        <li><strong>SAM (Serviceable Addressable Market):</strong> the portion of the TAM you can realistically reach with your current business model (e.g., the bakery market in Italy).</li>
-        <li><strong>SOM (Serviceable Obtainable Market):</strong> your beachhead — the specific slice of the SAM you can realistically capture in the next 1–3 years (e.g., 10% of artisanal bakeries in Florence).</li>
-      </ul>
+            <h3>Value Proposition</h3>
+            <p>A value proposition is a clear statement of the unique value your product or service creates for a specific customer segment. It answers: what do you offer, for whom, and why is it better than alternatives?</p>
+            <p>The <strong>Value Proposition Canvas</strong> (Osterwalder) maps customer jobs, pains, and gains against the products/services, pain relievers, and gain creators your offering provides. A strong fit between the two sides represents a compelling value proposition.</p>
 
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="password-gate.html?to=quiz-8.html" class="assess-link">Quiz 8 — Problem Definition</a>
+          </div>
+        </div>
     </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-6.html" class="assess-link">Quiz 6 — Startup</a>
+
+    <!-- ── Topic 5 panel ── -->
+    <div id="panel-topic-5" class="panel" hidden>
+      <div id="topic-5" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">05</span>
+            <h2>Marketing for Startups &amp; SMEs</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>The Marketing Mix — 4Ps</h3>
+            <p>The 4Ps framework (McCarthy, 1960) is the foundation of marketing strategy. Every element must be aligned to serve the target customer effectively:</p>
+            <ul>
+              <li><strong>Product:</strong> what you sell — features, quality, design, branding, packaging. Must match what customers need and value.</li>
+              <li><strong>Price:</strong> what customers pay. Pricing strategies include cost-plus, value-based, penetration (low price to gain share), and skimming (high price for early adopters).</li>
+              <li><strong>Place (Distribution):</strong> how and where customers access your product. Channels include direct-to-consumer (DTC), retail, e-commerce, and marketplace platforms.</li>
+              <li><strong>Promotion:</strong> how you communicate and reach customers. Includes advertising, PR, social media, content marketing, and email.</li>
+            </ul>
+            <p>Modern extensions include the <strong>7Ps</strong> (adding People, Process, Physical Evidence) — particularly relevant for service businesses.</p>
+
+            <h3>Traditional vs. Entrepreneurial Marketing</h3>
+            <p>Traditional marketing is typically <strong>top-down</strong>: a company segments the market, selects a target, and positions its product. Entrepreneurial (SME) marketing is often <strong>bottom-up</strong>: it starts with an opportunity, builds an initial customer base through personal relationships, and is intuitive and reactive rather than structured.</p>
+            <p>The <strong>4Is Model</strong> describes how small businesses actually market themselves in practice:</p>
+            <ul>
+              <li><strong>Information:</strong> informal networking and data gathering — knowing your market through relationships, not just research reports.</li>
+              <li><strong>Innovation:</strong> focusing on the product or service itself as the primary marketing tool — let quality do the talking.</li>
+              <li><strong>Identification:</strong> finding and focusing on specific market niches where the SME can be the best option.</li>
+              <li><strong>Interaction:</strong> building direct social relationships with customers — turning buyers into advocates.</li>
+            </ul>
+
+            <h3>Digital Marketing for Startups</h3>
+            <ul>
+              <li><strong>SEO (Search Engine Optimization):</strong> optimizing your website and content to rank higher in organic search results. Key for sustainable, cost-effective traffic.</li>
+              <li><strong>Content Marketing:</strong> creating valuable content (blogs, videos, guides) to attract, engage, and convert customers. Builds trust and authority over time.</li>
+              <li><strong>Social Media Marketing:</strong> building community and brand awareness on platforms where your customers spend time (Instagram, LinkedIn, TikTok, etc.).</li>
+              <li><strong>Email Marketing:</strong> high-ROI channel for customer retention, nurturing leads, and direct offers. Average ROI: $36 for every $1 spent.</li>
+              <li><strong>Paid Advertising (PPC/SEM):</strong> Google Ads, Meta Ads — pay-per-click campaigns for rapid, targeted reach. High cost but fast results.</li>
+            </ul>
+
+            <h3>Customer Segments and Targeting</h3>
+            <ul>
+              <li><strong>B2C (Business-to-Consumer):</strong> selling directly to individual customers. Emotional factors and brand often drive purchasing decisions.</li>
+              <li><strong>B2B (Business-to-Business):</strong> selling to other companies. Purchasing decisions are typically more rational, involve multiple stakeholders, and have longer sales cycles.</li>
+              <li><strong>Market segmentation:</strong> dividing a broad market into distinct subgroups based on demographics, psychographics, behavior, or geography to target more precisely.</li>
+            </ul>
+
+            <h3>Key Marketing Metrics: CAC and LTV</h3>
+            <ul>
+              <li><strong>Customer Acquisition Cost (CAC):</strong> total marketing and sales spend divided by the number of new customers acquired. Measures the cost-efficiency of your go-to-market strategy.</li>
+              <li><strong>Customer Lifetime Value (LTV or CLV):</strong> total revenue a business can expect from a single customer account over their relationship. Calculated as: average purchase value × purchase frequency × customer lifespan.</li>
+              <li><strong>LTV:CAC ratio:</strong> a healthy startup typically aims for LTV ≥ 3× CAC. If LTV &lt; CAC, the business loses money on every customer acquired.</li>
+              <li><strong>Churn Rate:</strong> percentage of customers who stop using your product in a given period. High churn destroys LTV and signals a product or service problem.</li>
+            </ul>
+
+            <h3>Future Marketing Trends (2026)</h3>
+            <ul>
+              <li><strong>AI Fluency:</strong> the next competitive advantage is not using AI to do things faster (efficiency) but using it to do the <em>right</em> things (effectiveness) — better decisions, better targeting, better personalization.</li>
+              <li><strong>AI Transparency:</strong> consumers and regulators are demanding honesty about how brands use AI. Being transparent about AI-generated content is becoming a brand trust issue.</li>
+              <li><strong>Influencer Regulation:</strong> influencer marketing has moved into the mainstream, and formal advertising rules now apply — sponsored content must be clearly disclosed.</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="password-gate.html?to=quiz-9.html" class="assess-link">Quiz 9 — Marketing</a>
+          </div>
+        </div>
     </div>
-  </div>
 
-  <!-- ── Topic 3 ── -->
-  <div id="topic-3" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">03</span>
-      <h2>Understanding the Customer's Problem</h2>
+    <!-- ── Topic 6 panel ── -->
+    <div id="panel-topic-6" class="panel" hidden>
+      <div id="topic-6" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">06</span>
+            <h2>Business Structures — Startups &amp; Franchises</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Startup vs. Franchise</h3>
+            <p>When launching a business you must choose the right "vessel" for your idea. The two main paths are building a standalone startup or operating within an existing franchise system.</p>
+            <ul>
+              <li><strong>Startup:</strong> a new, independent organization you build from scratch. Complete creative and operational autonomy, but high risk — you carry the full burden of brand-building, systems, and customer acquisition.</li>
+              <li><strong>Franchise:</strong> a contract-based arrangement where a <strong>franchisee</strong> pays a <strong>franchisor</strong> for the right to operate under an established brand and proven business model. You trade autonomy for security.</li>
+            </ul>
+
+            <h3>Franchising — Benefits and Drawbacks</h3>
+            <p><strong>Benefits of franchising:</strong></p>
+            <ul>
+              <li>Management training and ongoing operational support from the franchisor.</li>
+              <li>Instant brand-name recognition and customer trust.</li>
+              <li>Standardized quality controls and tested operating procedures.</li>
+              <li>Site selection assistance and territorial protection.</li>
+            </ul>
+            <p><strong>Drawbacks of franchising:</strong></p>
+            <ul>
+              <li>Ongoing royalties typically ranging from <strong>1% to 11% of gross sales</strong> — a continuous cost regardless of profitability.</li>
+              <li>Strict adherence to the franchisor's standardized operations — limited flexibility to adapt to local market conditions.</li>
+              <li>Restricted product lines — you can only sell what the franchisor approves.</li>
+              <li>The brand's reputation (positive or negative) is outside your control.</li>
+            </ul>
+
+            <h3>Società Benefit (Italy)</h3>
+            <p>The <strong>Società Benefit</strong> is a modern Italian legal form for companies that pursue profit alongside an explicit "common benefit" — social or environmental goals that go beyond shareholder return. It is distinct from a traditional S.r.l. or S.p.A.</p>
+            <ul>
+              <li><strong>Pros:</strong> market differentiation (particularly powerful in Luxury and Fashion sectors), higher employee retention and attraction, and legal protection of the founder's mission against future investor pressure.</li>
+              <li><strong>Cons:</strong> must publish an annual <strong>Impact Report</strong> measuring social/environmental performance and must appoint an <strong>Impact Manager</strong> responsible for benefit goals.</li>
+            </ul>
+
+            <h3>Why Businesses Fail</h3>
+            <p>Understanding failure is as important as planning for success. Common root causes include:</p>
+            <ul>
+              <li><strong>No market need:</strong> the single most common cause — building a solution to a problem that isn't painful enough or that customers don't prioritize.</li>
+              <li><strong>Running out of cash:</strong> even profitable businesses can fail if cash flow timing is mismanaged.</li>
+              <li><strong>The Competency Trap:</strong> businesses keep doing what they are good at, even when the market changes. Past success creates inertia that prevents necessary adaptation.</li>
+            </ul>
+
+          </div>
+        </div>
     </div>
-    <div class="topic-body">
 
-      <h3>Problem-Solution Fit</h3>
-      <p>Before building anything, entrepreneurs must achieve <strong>problem-solution fit</strong>: confirming that (a) a real, significant problem exists, (b) the target customers are aware of and motivated to solve this problem, and (c) the proposed solution genuinely addresses it. Many startups fail because they build solutions looking for problems rather than the reverse.</p>
+    <!-- ── Topic 7 panel ── -->
+    <div id="panel-topic-7" class="panel" hidden>
+      <div id="topic-7" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">07</span>
+            <h2>Business Planning</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>Customer Discovery</h3>
-      <p>Customer discovery (Steve Blank) is the process of getting out of the building and talking to potential customers to understand their problems, needs, and behaviors — before writing code or building products.</p>
-      <ul>
-        <li><strong>Interviews:</strong> open-ended, exploratory conversations focused on understanding customer pain points, current workarounds, and desired outcomes. Avoid leading questions that confirm existing assumptions.</li>
-        <li><strong>Observation:</strong> watch customers in their natural environment to understand how they actually behave (not just what they say they do).</li>
-        <li><strong>Surveys:</strong> useful for quantifying patterns once qualitative insights have been identified, but less useful for discovering new insights.</li>
-        <li><strong>The Mom Test (Rob Fitzpatrick):</strong> ask about people's lives, not about your idea. Past behavior is more reliable than future intention ("Would you pay for this?" is an unreliable question).</li>
-      </ul>
-      <p>A key distinction in investigative interviewing is <strong>behavioral vs. hypothetical questions</strong>. Hypothetical questions ("Would you use an app that tracks your waste?") invite optimistic guessing. Behavioral questions anchor the conversation in reality:</p>
-      <ul>
-        <li><strong>Bad (hypothetical):</strong> "Would you use an app that tracks your waste?"</li>
-        <li><strong>Good (behavioral):</strong> "Tell me about the last time you had to throw away unsold stock. What did you do? How did that feel?"</li>
-      </ul>
+            <h3>Business Model Canvas vs. Business Plan</h3>
+            <p>Entrepreneurs use two complementary tools at different stages of development:</p>
+            <ul>
+              <li><strong>Business Model Canvas (BMC) — "The Sketch":</strong> a one-page visual chart mapping a firm's value proposition, infrastructure, customers, and finances. Used to iterate and pivot quickly during the validation phase. Each block of the BMC becomes a chapter in the full business plan.</li>
+              <li><strong>Business Plan — "The Blueprint":</strong> a 20–40 page document providing the detailed "how-to" for the ideas sketched in the BMC. It serves two distinct functions: an internal roadmap for the team and an external document to attract capital.</li>
+            </ul>
 
-      <h3>Jobs-to-be-Done Theory</h3>
-      <p><strong>Clayton Christensen</strong> developed the Jobs-to-be-Done (JTBD) framework: customers don't buy products — they "hire" them to do a specific job in their lives. Understanding the job gives entrepreneurs insight into what truly motivates customers.</p>
-      <ul>
-        <li><strong>Functional jobs:</strong> practical tasks customers need to accomplish ("help me get from A to B quickly").</li>
-        <li><strong>Social jobs:</strong> how customers want to be perceived by others ("make me look successful").</li>
-        <li><strong>Emotional jobs:</strong> how customers want to feel ("reduce my anxiety about missing a deadline").</li>
-      </ul>
-      <p>The famous JTBD example: people who buy a drill don't want a drill — they want a hole in the wall. People who buy the hole want to hang a picture. People who hang a picture want a beautiful home. Understanding the deeper job reveals real innovation opportunities.</p>
+            <h3>Two Primary Functions of a Business Plan</h3>
+            <ul>
+              <li><strong>Internal:</strong> guides the company's strategy, defines roles and milestones, and keeps the team aligned on direction and priorities.</li>
+              <li><strong>External:</strong> convinces lenders and investors that the business is viable, the team is competent, and the financial projections are realistic.</li>
+            </ul>
+            <p>A typical plan includes: an executive summary, mission statement, business and marketing strategy, organizational structure, and realistic financial forecasts.</p>
 
-      <h3>Pain Points</h3>
-      <p>Pain points are the specific problems or frustrations that potential customers experience. Identifying pain points is key to positioning your product as a genuine solution:</p>
-      <ul>
-        <li><strong>Financial pain:</strong> solutions that cost too much, or processes that waste money.</li>
-        <li><strong>Productivity pain:</strong> tasks that take too long or are too complex.</li>
-        <li><strong>Process pain:</strong> inefficient workflows or missing steps in a process.</li>
-        <li><strong>Support pain:</strong> inadequate help or information when customers need it.</li>
-      </ul>
+            <h3>The 5 Cs of Credit</h3>
+            <p>Lenders evaluate business loan applications using five criteria. Understanding these helps entrepreneurs strengthen the weakest areas of their application:</p>
+            <ul>
+              <li><strong>Character:</strong> your reputation and track record — do you honor commitments? Lenders check credit history, references, and professional background.</li>
+              <li><strong>Capacity:</strong> can the business generate enough cash flow to repay the loan? This is the most heavily weighted factor.</li>
+              <li><strong>Capital:</strong> how much of your own money ("skin in the game") are you investing? Lenders want to see you share the risk.</li>
+              <li><strong>Collateral:</strong> what assets (property, equipment, inventory) can be pledged to secure the loan if the business fails?</li>
+              <li><strong>Conditions:</strong> the external economic climate — inflation, industry trends, and the purpose of the loan all affect the lender's decision.</li>
+            </ul>
 
+            <h3>Pitching the Plan</h3>
+            <p>A business plan is only as good as your ability to present it. Key principles for a successful pitch:</p>
+            <ul>
+              <li><strong>Hook early:</strong> investors decide within minutes whether to pay attention. Lead with the customer problem and the scale of the opportunity — not with your product features.</li>
+              <li><strong>Show enthusiasm:</strong> investors back people as much as ideas. Passion and conviction are signals of resilience.</li>
+              <li><strong>Be realistic:</strong> overly optimistic financial forecasts destroy credibility. Show you understand your risks.</li>
+              <li><strong>Avoid jargon overload:</strong> use visual aids and plain language. If an investor needs a dictionary, you've lost them.</li>
+            </ul>
+
+          </div>
+        </div>
     </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-7.html" class="assess-link">Quiz 7 — Customer's Problem</a>
-    </div>
-  </div>
 
-  <!-- ── Topic 4 ── -->
-  <div id="topic-4" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">04</span>
-      <h2>Problem Definition &amp; Ideation</h2>
-    </div>
-    <div class="topic-body">
+    <!-- ── Reference panel ── -->
+    <div id="panel-reference" class="panel" hidden>
 
-      <h3>Design Thinking</h3>
-      <p>Design thinking is a human-centered approach to innovation that integrates the needs of people, the possibilities of technology, and the requirements for business success. It was popularized by IDEO and the Stanford d.school.</p>
-      <p><strong>Avoid solution-bias:</strong> a common mistake is to write a problem statement that already implies your product. A proper problem description focuses on the current reality of the beneficiary — it does NOT mention causes or jump to a solution. Describe <em>who</em> is affected and <em>what</em> undesirable situation they face, not how to fix it.</p>
-      <p><strong>How to write a problem statement:</strong></p>
-      <ul>
-        <li><strong>Who:</strong> identify the specific beneficiaries.</li>
-        <li><strong>What:</strong> describe the undesirable situation they experience.</li>
-        <li><strong>Impact:</strong> explain the human or economic consequence.</li>
-      </ul>
-      <p><em>Example:</em> "Small artisanal bakers in Florence (Who) are losing 30% of their daily inventory due to unpredictable tourist foot traffic (What), leading to financial instability and food waste (Impact)."</p>
-      <p>The five stages of design thinking:</p>
-      <ul>
-        <li><strong>Empathize:</strong> deeply understand the people you are designing for. Conduct interviews, observe behavior, build empathy maps.</li>
-        <li><strong>Define:</strong> synthesize what you learned to articulate a clear, human-centered problem statement (a Point of View or "How Might We" question).</li>
-        <li><strong>Ideate:</strong> generate a wide range of possible solutions without judgment. Brainstorming, SCAMPER, and mind mapping are common ideation techniques.</li>
-        <li><strong>Prototype:</strong> build simple, low-cost representations of solutions (paper sketches, mock-ups, role plays) to test ideas quickly.</li>
-        <li><strong>Test:</strong> expose prototypes to real users, gather feedback, and iterate. Return to earlier stages as needed.</li>
-      </ul>
+        <!-- ── Glossary ── -->
+        <div class="section">
+          <div class="section-title">Glossary of Key Terms</div>
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Term</th>
+                <th>Definition</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Lean Startup</strong></td>
+                <td>A methodology focusing on shortened product development cycles and validated learning through the Build-Measure-Learn loop.</td>
+              </tr>
+              <tr>
+                <td><strong>Pivot</strong></td>
+                <td>A structured course correction to test a new hypothesis about the product, customer segment, or strategy — based on data, not failure.</td>
+              </tr>
+              <tr>
+                <td><strong>TAM / SAM / SOM</strong></td>
+                <td>Total Addressable Market / Serviceable Addressable Market / Serviceable Obtainable Market. The three levels of market sizing, from global opportunity to realistic near-term target.</td>
+              </tr>
+              <tr>
+                <td><strong>4Is Model</strong></td>
+                <td>Information, Innovation, Identification, and Interaction — the four pillars of entrepreneurial (SME) marketing, contrasted with the traditional 4Ps.</td>
+              </tr>
+              <tr>
+                <td><strong>Società Benefit</strong></td>
+                <td>Italian legal form for companies that pursue profit and a specific public or environmental benefit, requiring an annual impact report.</td>
+              </tr>
+              <tr>
+                <td><strong>5 Cs of Credit</strong></td>
+                <td>The criteria banks use to evaluate the riskiness of a business loan: Character, Capacity, Capital, Collateral, and Conditions.</td>
+              </tr>
+              <tr>
+                <td><strong>Market Intelligence</strong></td>
+                <td>The sum of formal data and informal networking gathered to understand demand, trends, and competitors.</td>
+              </tr>
+              <tr>
+                <td><strong>Competency Trap</strong></td>
+                <td>The tendency of a business to keep doing what it is good at, even when the market changes — preventing necessary adaptation.</td>
+              </tr>
+              <tr>
+                <td><strong>Iterative Interviewing</strong></td>
+                <td>Interviewing customers repeatedly, in rounds, to progressively refine your understanding of their pains and the root cause of the problem.</td>
+              </tr>
+              <tr>
+                <td><strong>Business Model Canvas</strong></td>
+                <td>A one-page visual tool mapping a business's value proposition, infrastructure, customer relationships, and revenue streams — used for rapid iteration.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3>Problem Statement: "How Might We…?"</h3>
-      <p>The <strong>How Might We (HMW)</strong> format is used to frame problem statements in a way that is broad enough to allow creative solutions but narrow enough to be actionable. Example: "How might we help commuters find parking quickly near their destination?" — this frames the problem without prescribing the solution.</p>
+        <!-- ── Study Guide & Resources ── -->
+        <div class="section">
+          <div class="section-title">Study Guide &amp; External Resources</div>
+          <div style="background:#fff; border:1px solid var(--grigio-light); border-radius:4px; padding:28px 28px 24px;">
+            <h3 style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);font-weight:700;margin:0 0 16px;">Practice Questions</h3>
+            <ul style="padding-left:20px;margin-bottom:24px;">
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Problem vs. Solution (L7):</strong> Can you describe your business problem without mentioning your product? Write a problem statement using the Who / What / Impact framework.</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Root Cause (L7):</strong> A bakery is failing because of "low foot traffic." Use the <em>5 Whys</em> to find the root cause. Is it location, signage, or the local economy?</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>JTBD (L6):</strong> What "Job" is a customer hiring a luxury leather bag to do — "carry items" or "signal status"? How does your answer change the marketing strategy?</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Market Sizing (L6):</strong> Calculate the SOM for a new vegan gelato shop in the Oltrarno district of Florence. What data would you need?</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Marketing Mix (L8):</strong> How will your SME use "Interaction" (from the 4Is model) to replace a lack of "Promotion" budget?</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Risk Assessment (L10):</strong> Which of the "5 Cs" is your business's weakest point, and how will you address it before approaching a lender?</li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Legal Structure (L9):</strong> Would your business benefit more from an S.r.l. or a Società Benefit structure in the Italian market? What is the trade-off?</li>
+            </ul>
+            <h3 style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);font-weight:700;margin:0 0 16px;">External Resources</h3>
+            <ul style="padding-left:20px;margin-bottom:0;">
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://hbr.org/2008/01/how-to-write-a-great-business-plan" style="color:var(--oro);">Harvard Business Review — How to Write a Winning Business Plan</a></li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan" style="color:var(--oro);">SBA — Write Your Business Plan</a></li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.strategyzer.com/canvas/business-model-canvas" style="color:var(--oro);">Strategyzer — Official Business Model Canvas Template</a></li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.christenseninstitute.org/jobs-to-be-done/" style="color:var(--oro);">Clayton Christensen Institute — Jobs-to-be-Done Theory</a></li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.mindtools.com/pages/article/newTMC_5w.htm" style="color:var(--oro);">MindTools — Root Cause Analysis (5 Whys)</a></li>
+              <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.registroimprese.it/" style="color:var(--oro);">Registro Imprese — Società Benefit (Italy)</a></li>
+            </ul>
+          </div>
+        </div>
 
-      <h3>Root Cause Analysis: The 5 Whys</h3>
-      <p>The 5 Whys is a technique for identifying the root cause of a problem by repeatedly asking "Why?" — typically five times — until the fundamental cause is uncovered. Developed within Toyota's production system.</p>
-      <p><em>Example 1:</em> "Our customers are unhappy." Why? "Deliveries are late." Why? "Production is slow." Why? "We run out of components." Why? "Our supplier delivers irregularly." Why? "We have no backup supplier." → Root cause: single-source dependency.</p>
-      <p><em>Example 2 (branding):</em> "Customers aren't buying our organic soap." Why? "They think it's too expensive." Why? "They compare it to mass-market brands." Why? "They don't see the value of the organic ingredients." Why? "The packaging looks the same as cheap soap." → Root cause: visual branding fails to communicate the premium/organic value proposition.</p>
+    </div><!-- /.panel-reference -->
 
-      <h3>Value Proposition</h3>
-      <p>A value proposition is a clear statement of the unique value your product or service creates for a specific customer segment. It answers: what do you offer, for whom, and why is it better than alternatives?</p>
-      <p>The <strong>Value Proposition Canvas</strong> (Osterwalder) maps customer jobs, pains, and gains against the products/services, pain relievers, and gain creators your offering provides. A strong fit between the two sides represents a compelling value proposition.</p>
+  </main>
 
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-8.html" class="assess-link">Quiz 8 — Problem Definition</a>
-    </div>
-  </div>
+</div><!-- /.lectures-layout -->
 
-  <!-- ── Topic 5 ── -->
-  <div id="topic-5" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">05</span>
-      <h2>Marketing for Startups &amp; SMEs</h2>
-    </div>
-    <div class="topic-body">
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.sidebar-link[data-panel]');
+  var topicLinks = document.querySelectorAll('.topic-link[data-panel]');
+  var panels = document.querySelectorAll('.panel');
 
-      <h3>The Marketing Mix — 4Ps</h3>
-      <p>The 4Ps framework (McCarthy, 1960) is the foundation of marketing strategy. Every element must be aligned to serve the target customer effectively:</p>
-      <ul>
-        <li><strong>Product:</strong> what you sell — features, quality, design, branding, packaging. Must match what customers need and value.</li>
-        <li><strong>Price:</strong> what customers pay. Pricing strategies include cost-plus, value-based, penetration (low price to gain share), and skimming (high price for early adopters).</li>
-        <li><strong>Place (Distribution):</strong> how and where customers access your product. Channels include direct-to-consumer (DTC), retail, e-commerce, and marketplace platforms.</li>
-        <li><strong>Promotion:</strong> how you communicate and reach customers. Includes advertising, PR, social media, content marketing, and email.</li>
-      </ul>
-      <p>Modern extensions include the <strong>7Ps</strong> (adding People, Process, Physical Evidence) — particularly relevant for service businesses.</p>
+  function showPanel(panelId) {
+    panels.forEach(function (p) { p.hidden = true; });
+    navLinks.forEach(function (l) { l.classList.remove('is-active'); });
+    var panel = document.getElementById('panel-' + panelId);
+    if (panel) panel.hidden = false;
+    navLinks.forEach(function (l) {
+      if (l.dataset.panel === panelId) l.classList.add('is-active');
+    });
+  }
 
-      <h3>Traditional vs. Entrepreneurial Marketing</h3>
-      <p>Traditional marketing is typically <strong>top-down</strong>: a company segments the market, selects a target, and positions its product. Entrepreneurial (SME) marketing is often <strong>bottom-up</strong>: it starts with an opportunity, builds an initial customer base through personal relationships, and is intuitive and reactive rather than structured.</p>
-      <p>The <strong>4Is Model</strong> describes how small businesses actually market themselves in practice:</p>
-      <ul>
-        <li><strong>Information:</strong> informal networking and data gathering — knowing your market through relationships, not just research reports.</li>
-        <li><strong>Innovation:</strong> focusing on the product or service itself as the primary marketing tool — let quality do the talking.</li>
-        <li><strong>Identification:</strong> finding and focusing on specific market niches where the SME can be the best option.</li>
-        <li><strong>Interaction:</strong> building direct social relationships with customers — turning buyers into advocates.</li>
-      </ul>
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPanel(this.dataset.panel);
+    });
+  });
 
-      <h3>Digital Marketing for Startups</h3>
-      <ul>
-        <li><strong>SEO (Search Engine Optimization):</strong> optimizing your website and content to rank higher in organic search results. Key for sustainable, cost-effective traffic.</li>
-        <li><strong>Content Marketing:</strong> creating valuable content (blogs, videos, guides) to attract, engage, and convert customers. Builds trust and authority over time.</li>
-        <li><strong>Social Media Marketing:</strong> building community and brand awareness on platforms where your customers spend time (Instagram, LinkedIn, TikTok, etc.).</li>
-        <li><strong>Email Marketing:</strong> high-ROI channel for customer retention, nurturing leads, and direct offers. Average ROI: $36 for every $1 spent.</li>
-        <li><strong>Paid Advertising (PPC/SEM):</strong> Google Ads, Meta Ads — pay-per-click campaigns for rapid, targeted reach. High cost but fast results.</li>
-      </ul>
-
-      <h3>Customer Segments and Targeting</h3>
-      <ul>
-        <li><strong>B2C (Business-to-Consumer):</strong> selling directly to individual customers. Emotional factors and brand often drive purchasing decisions.</li>
-        <li><strong>B2B (Business-to-Business):</strong> selling to other companies. Purchasing decisions are typically more rational, involve multiple stakeholders, and have longer sales cycles.</li>
-        <li><strong>Market segmentation:</strong> dividing a broad market into distinct subgroups based on demographics, psychographics, behavior, or geography to target more precisely.</li>
-      </ul>
-
-      <h3>Key Marketing Metrics: CAC and LTV</h3>
-      <ul>
-        <li><strong>Customer Acquisition Cost (CAC):</strong> total marketing and sales spend divided by the number of new customers acquired. Measures the cost-efficiency of your go-to-market strategy.</li>
-        <li><strong>Customer Lifetime Value (LTV or CLV):</strong> total revenue a business can expect from a single customer account over their relationship. Calculated as: average purchase value × purchase frequency × customer lifespan.</li>
-        <li><strong>LTV:CAC ratio:</strong> a healthy startup typically aims for LTV ≥ 3× CAC. If LTV &lt; CAC, the business loses money on every customer acquired.</li>
-        <li><strong>Churn Rate:</strong> percentage of customers who stop using your product in a given period. High churn destroys LTV and signals a product or service problem.</li>
-      </ul>
-
-      <h3>Future Marketing Trends (2026)</h3>
-      <ul>
-        <li><strong>AI Fluency:</strong> the next competitive advantage is not using AI to do things faster (efficiency) but using it to do the <em>right</em> things (effectiveness) — better decisions, better targeting, better personalization.</li>
-        <li><strong>AI Transparency:</strong> consumers and regulators are demanding honesty about how brands use AI. Being transparent about AI-generated content is becoming a brand trust issue.</li>
-        <li><strong>Influencer Regulation:</strong> influencer marketing has moved into the mainstream, and formal advertising rules now apply — sponsored content must be clearly disclosed.</li>
-      </ul>
-
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-9.html" class="assess-link">Quiz 9 — Marketing</a>
-    </div>
-  </div>
-
-  <!-- ── Topic 6 ── -->
-  <div id="topic-6" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">06</span>
-      <h2>Business Structures — Startups &amp; Franchises</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>Startup vs. Franchise</h3>
-      <p>When launching a business you must choose the right "vessel" for your idea. The two main paths are building a standalone startup or operating within an existing franchise system.</p>
-      <ul>
-        <li><strong>Startup:</strong> a new, independent organization you build from scratch. Complete creative and operational autonomy, but high risk — you carry the full burden of brand-building, systems, and customer acquisition.</li>
-        <li><strong>Franchise:</strong> a contract-based arrangement where a <strong>franchisee</strong> pays a <strong>franchisor</strong> for the right to operate under an established brand and proven business model. You trade autonomy for security.</li>
-      </ul>
-
-      <h3>Franchising — Benefits and Drawbacks</h3>
-      <p><strong>Benefits of franchising:</strong></p>
-      <ul>
-        <li>Management training and ongoing operational support from the franchisor.</li>
-        <li>Instant brand-name recognition and customer trust.</li>
-        <li>Standardized quality controls and tested operating procedures.</li>
-        <li>Site selection assistance and territorial protection.</li>
-      </ul>
-      <p><strong>Drawbacks of franchising:</strong></p>
-      <ul>
-        <li>Ongoing royalties typically ranging from <strong>1% to 11% of gross sales</strong> — a continuous cost regardless of profitability.</li>
-        <li>Strict adherence to the franchisor's standardized operations — limited flexibility to adapt to local market conditions.</li>
-        <li>Restricted product lines — you can only sell what the franchisor approves.</li>
-        <li>The brand's reputation (positive or negative) is outside your control.</li>
-      </ul>
-
-      <h3>Società Benefit (Italy)</h3>
-      <p>The <strong>Società Benefit</strong> is a modern Italian legal form for companies that pursue profit alongside an explicit "common benefit" — social or environmental goals that go beyond shareholder return. It is distinct from a traditional S.r.l. or S.p.A.</p>
-      <ul>
-        <li><strong>Pros:</strong> market differentiation (particularly powerful in Luxury and Fashion sectors), higher employee retention and attraction, and legal protection of the founder's mission against future investor pressure.</li>
-        <li><strong>Cons:</strong> must publish an annual <strong>Impact Report</strong> measuring social/environmental performance and must appoint an <strong>Impact Manager</strong> responsible for benefit goals.</li>
-      </ul>
-
-      <h3>Why Businesses Fail</h3>
-      <p>Understanding failure is as important as planning for success. Common root causes include:</p>
-      <ul>
-        <li><strong>No market need:</strong> the single most common cause — building a solution to a problem that isn't painful enough or that customers don't prioritize.</li>
-        <li><strong>Running out of cash:</strong> even profitable businesses can fail if cash flow timing is mismanaged.</li>
-        <li><strong>The Competency Trap:</strong> businesses keep doing what they are good at, even when the market changes. Past success creates inertia that prevents necessary adaptation.</li>
-      </ul>
-
-    </div>
-  </div>
-
-  <!-- ── Topic 7 ── -->
-  <div id="topic-7" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">07</span>
-      <h2>Business Planning</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>Business Model Canvas vs. Business Plan</h3>
-      <p>Entrepreneurs use two complementary tools at different stages of development:</p>
-      <ul>
-        <li><strong>Business Model Canvas (BMC) — "The Sketch":</strong> a one-page visual chart mapping a firm's value proposition, infrastructure, customers, and finances. Used to iterate and pivot quickly during the validation phase. Each block of the BMC becomes a chapter in the full business plan.</li>
-        <li><strong>Business Plan — "The Blueprint":</strong> a 20–40 page document providing the detailed "how-to" for the ideas sketched in the BMC. It serves two distinct functions: an internal roadmap for the team and an external document to attract capital.</li>
-      </ul>
-
-      <h3>Two Primary Functions of a Business Plan</h3>
-      <ul>
-        <li><strong>Internal:</strong> guides the company's strategy, defines roles and milestones, and keeps the team aligned on direction and priorities.</li>
-        <li><strong>External:</strong> convinces lenders and investors that the business is viable, the team is competent, and the financial projections are realistic.</li>
-      </ul>
-      <p>A typical plan includes: an executive summary, mission statement, business and marketing strategy, organizational structure, and realistic financial forecasts.</p>
-
-      <h3>The 5 Cs of Credit</h3>
-      <p>Lenders evaluate business loan applications using five criteria. Understanding these helps entrepreneurs strengthen the weakest areas of their application:</p>
-      <ul>
-        <li><strong>Character:</strong> your reputation and track record — do you honor commitments? Lenders check credit history, references, and professional background.</li>
-        <li><strong>Capacity:</strong> can the business generate enough cash flow to repay the loan? This is the most heavily weighted factor.</li>
-        <li><strong>Capital:</strong> how much of your own money ("skin in the game") are you investing? Lenders want to see you share the risk.</li>
-        <li><strong>Collateral:</strong> what assets (property, equipment, inventory) can be pledged to secure the loan if the business fails?</li>
-        <li><strong>Conditions:</strong> the external economic climate — inflation, industry trends, and the purpose of the loan all affect the lender's decision.</li>
-      </ul>
-
-      <h3>Pitching the Plan</h3>
-      <p>A business plan is only as good as your ability to present it. Key principles for a successful pitch:</p>
-      <ul>
-        <li><strong>Hook early:</strong> investors decide within minutes whether to pay attention. Lead with the customer problem and the scale of the opportunity — not with your product features.</li>
-        <li><strong>Show enthusiasm:</strong> investors back people as much as ideas. Passion and conviction are signals of resilience.</li>
-        <li><strong>Be realistic:</strong> overly optimistic financial forecasts destroy credibility. Show you understand your risks.</li>
-        <li><strong>Avoid jargon overload:</strong> use visual aids and plain language. If an investor needs a dictionary, you've lost them.</li>
-      </ul>
-
-    </div>
-  </div>
-
-  <!-- ── Glossary ── -->
-  <div class="section">
-    <div class="section-title">Glossary of Key Terms</div>
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>Term</th>
-          <th>Definition</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Lean Startup</strong></td>
-          <td>A methodology focusing on shortened product development cycles and validated learning through the Build-Measure-Learn loop.</td>
-        </tr>
-        <tr>
-          <td><strong>Pivot</strong></td>
-          <td>A structured course correction to test a new hypothesis about the product, customer segment, or strategy — based on data, not failure.</td>
-        </tr>
-        <tr>
-          <td><strong>TAM / SAM / SOM</strong></td>
-          <td>Total Addressable Market / Serviceable Addressable Market / Serviceable Obtainable Market. The three levels of market sizing, from global opportunity to realistic near-term target.</td>
-        </tr>
-        <tr>
-          <td><strong>4Is Model</strong></td>
-          <td>Information, Innovation, Identification, and Interaction — the four pillars of entrepreneurial (SME) marketing, contrasted with the traditional 4Ps.</td>
-        </tr>
-        <tr>
-          <td><strong>Società Benefit</strong></td>
-          <td>Italian legal form for companies that pursue profit and a specific public or environmental benefit, requiring an annual impact report.</td>
-        </tr>
-        <tr>
-          <td><strong>5 Cs of Credit</strong></td>
-          <td>The criteria banks use to evaluate the riskiness of a business loan: Character, Capacity, Capital, Collateral, and Conditions.</td>
-        </tr>
-        <tr>
-          <td><strong>Market Intelligence</strong></td>
-          <td>The sum of formal data and informal networking gathered to understand demand, trends, and competitors.</td>
-        </tr>
-        <tr>
-          <td><strong>Competency Trap</strong></td>
-          <td>The tendency of a business to keep doing what it is good at, even when the market changes — preventing necessary adaptation.</td>
-        </tr>
-        <tr>
-          <td><strong>Iterative Interviewing</strong></td>
-          <td>Interviewing customers repeatedly, in rounds, to progressively refine your understanding of their pains and the root cause of the problem.</td>
-        </tr>
-        <tr>
-          <td><strong>Business Model Canvas</strong></td>
-          <td>A one-page visual tool mapping a business's value proposition, infrastructure, customer relationships, and revenue streams — used for rapid iteration.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ── Study Guide & Resources ── -->
-  <div class="section">
-    <div class="section-title">Study Guide &amp; External Resources</div>
-    <div style="background:#fff; border:1px solid var(--grigio-light); border-radius:4px; padding:28px 28px 24px;">
-      <h3 style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);font-weight:700;margin:0 0 16px;">Practice Questions</h3>
-      <ul style="padding-left:20px;margin-bottom:24px;">
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Problem vs. Solution (L7):</strong> Can you describe your business problem without mentioning your product? Write a problem statement using the Who / What / Impact framework.</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Root Cause (L7):</strong> A bakery is failing because of "low foot traffic." Use the <em>5 Whys</em> to find the root cause. Is it location, signage, or the local economy?</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>JTBD (L6):</strong> What "Job" is a customer hiring a luxury leather bag to do — "carry items" or "signal status"? How does your answer change the marketing strategy?</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Market Sizing (L6):</strong> Calculate the SOM for a new vegan gelato shop in the Oltrarno district of Florence. What data would you need?</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Marketing Mix (L8):</strong> How will your SME use "Interaction" (from the 4Is model) to replace a lack of "Promotion" budget?</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Risk Assessment (L10):</strong> Which of the "5 Cs" is your business's weakest point, and how will you address it before approaching a lender?</li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><strong>Legal Structure (L9):</strong> Would your business benefit more from an S.r.l. or a Società Benefit structure in the Italian market? What is the trade-off?</li>
-      </ul>
-      <h3 style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);font-weight:700;margin:0 0 16px;">External Resources</h3>
-      <ul style="padding-left:20px;margin-bottom:0;">
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://hbr.org/2008/01/how-to-write-a-great-business-plan" style="color:var(--oro);">Harvard Business Review — How to Write a Winning Business Plan</a></li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan" style="color:var(--oro);">SBA — Write Your Business Plan</a></li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.strategyzer.com/canvas/business-model-canvas" style="color:var(--oro);">Strategyzer — Official Business Model Canvas Template</a></li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.christenseninstitute.org/jobs-to-be-done/" style="color:var(--oro);">Clayton Christensen Institute — Jobs-to-be-Done Theory</a></li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.mindtools.com/pages/article/newTMC_5w.htm" style="color:var(--oro);">MindTools — Root Cause Analysis (5 Whys)</a></li>
-        <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:6px;"><a href="https://www.registroimprese.it/" style="color:var(--oro);">Registro Imprese — Società Benefit (Italy)</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <a href="../../index.html" class="back-link">← Back to course hub</a>
-
-</div><!-- /.content -->
+  topicLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      showPanel(this.dataset.panel);
+    });
+  });
+}());
+</script>
 </body>
 </html>
