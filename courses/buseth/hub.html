@@ -3,290 +3,505 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Business Ethics &amp; Corporate Conduct — Course Hub</title>
+  <title>Business Ethics &amp; Corporate Conduct &mdash; FAIR Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --nero: #1a1a1a;
-      --oro: #B8922A;
-      --panna: #FAF7F2;
-      --grigio: #6a6a6a;
-      --grigio-light: #e8e4de;
+      --nero:        #1a1a1a;
+      --oro:         #B8922A;
+      --panna:       #FAF7F2;
+      --grigio:      #6a6a6a;
+      --grigio-light:#e8e4de;
+      --sidebar-w:   264px;
+      --nav-active-bg: #fdf6ea;
     }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--panna);
-      color: var(--nero);
-      min-height: 100vh;
-    }
-    .page-header {
-      background: var(--nero);
-      padding: 32px 40px 28px;
-    }
-    .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 14px; }
-    .header-label {
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: var(--oro);
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .page-header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 4vw, 36px);
-      color: #fff;
-      font-weight: 400;
-    }
-    .page-header h1 span { color: var(--oro); font-style: italic; }
-    /* ── Two-column layout ── */
-    .hub-layout {
-      display: flex;
-      align-items: stretch;
-      min-height: calc(100vh - 110px);
-    }
-    .hub-sidebar {
-      width: 250px;
-      min-width: 250px;
-      background: #fff;
-      border-right: 1px solid var(--grigio-light);
-      padding: 24px 0 40px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar-label {
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--grigio);
-      font-weight: 700;
-      padding: 0 20px 14px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
-    .sidebar-nav li { display: block; }
-    .sidebar-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      color: var(--nero);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      line-height: 1.4;
-      border-left: 3px solid transparent;
-    }
-    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
-    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
-    .sidebar-icon { font-size: 13px; flex-shrink: 0; }
-    .sidebar-badge {
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #aaa;
-      margin-left: auto;
-    }
-    .sidebar-divider {
-      height: 1px;
-      background: var(--grigio-light);
-      margin: 8px 20px;
-    }
-    .sidebar-footer {
-      padding: 16px 20px 0;
-      border-top: 1px solid var(--grigio-light);
-      margin-top: auto;
-    }
-    .sidebar-footer a {
-      font-size: 0.78rem;
-      color: #aaa;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sidebar-footer a:hover { color: var(--nero); }
-    /* ── Main content ── */
-    .hub-main {
-      flex: 1;
-      min-width: 0;
-      padding: 40px 44px 80px;
-      max-width: 780px;
-    }
-    .hub-intro {
-      margin-bottom: 40px;
-    }
-    .hub-intro h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: var(--nero);
-      margin-bottom: 10px;
-    }
-    .hub-intro p {
-      font-size: 0.9rem;
-      color: var(--grigio);
-      line-height: 1.7;
-    }
-    .section-title {
-      font-size: 9px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--oro);
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-    .resource-card {
-      background: #fff;
-      border: 1px solid var(--grigio-light);
-      border-radius: 2px;
-      padding: 20px 22px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-      text-decoration: none;
-      color: var(--nero);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 16px rgba(184,146,42,0.12); }
-    .resource-card.disabled { pointer-events: none; opacity: 0.55; }
-    .card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-    .card-info { flex: 1; }
-    .card-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
-    .card-desc { font-size: 0.79rem; color: var(--grigio); line-height: 1.5; }
-    .card-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .badge-open { background: #edfaf4; color: #2D7A4F; }
-    .badge-soon { background: #f0ede8; color: #aaa; }
-    @media (max-width: 700px) {
-      .hub-layout { flex-direction: column; }
-      .hub-sidebar { width: 100%; min-width: 0; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
-      .hub-main { padding: 28px 20px 60px; }
-      .page-header { padding: 24px 20px 20px; }
+    html, body { height: 100%; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--panna); color: var(--nero); display: flex; min-height: 100vh; }
+
+    /* ── Sidebar ── */
+    .site-nav { width: var(--sidebar-w); min-width: var(--sidebar-w); background: #fff; border-right: 1px solid var(--grigio-light); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .nav-brand { padding: 24px 20px 18px; border-bottom: 1px solid var(--grigio-light); }
+    .nav-brand-sup { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .nav-brand-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: var(--nero); line-height: 1.3; margin-top: 5px; }
+    .nav-brand-title em { font-style: italic; color: var(--oro); }
+    .nav-section { padding: 12px 0; border-bottom: 1px solid var(--grigio-light); }
+    .nav-section:last-of-type { border-bottom: none; }
+    .nav-section-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; font-weight: 700; padding: 0 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; font-size: 0.82rem; font-weight: 500; color: #444; cursor: pointer; user-select: none; border-left: 3px solid transparent; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .nav-item:hover { background: var(--panna); color: var(--oro); }
+    .nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .nav-item.is-disabled { color: #ccc; cursor: default; pointer-events: none; }
+    .nav-item-icon { font-size: 14px; flex-shrink: 0; opacity: 0.75; }
+    .nav-soon { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; background: #f0f0f0; color: #aaa; border-radius: 3px; padding: 2px 6px; margin-left: auto; }
+    .sub-nav { list-style: none; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+    .sub-nav.is-open { max-height: 600px; }
+    .sub-nav-item { display: flex; align-items: baseline; gap: 8px; padding: 7px 20px 7px 32px; font-size: 0.78rem; font-weight: 400; color: #555; cursor: pointer; border-left: 3px solid transparent; line-height: 1.4; }
+    .sub-nav-item:hover { background: var(--panna); color: var(--oro); }
+    .sub-nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .sub-nav-num { font-size: 9px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 18px; }
+    .nav-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--grigio-light); }
+    .nav-back { font-size: 0.78rem; color: #aaa; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--nero); }
+
+    /* ── Main ── */
+    .site-main { flex: 1; min-width: 0; padding: 48px 44px 80px; overflow-y: auto; }
+    .panel[hidden] { display: none; }
+
+    /* ── Home ── */
+    .home-hero { max-width: 720px; }
+    .home-sup { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 14px; }
+    .home-sup::before { content: ''; display: block; width: 48px; height: 3px; background: var(--oro); margin-bottom: 14px; }
+    .home-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; line-height: 1.15; color: var(--nero); margin-bottom: 24px; }
+    .home-hero h1 em { font-style: italic; color: var(--oro); }
+    .home-abstract { font-size: 0.97rem; line-height: 1.85; color: #444; max-width: 620px; margin-bottom: 36px; }
+    .home-meta { display: flex; gap: 28px; flex-wrap: wrap; padding: 20px 0; border-top: 1px solid var(--grigio-light); border-bottom: 1px solid var(--grigio-light); margin-bottom: 40px; }
+    .home-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .home-meta-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #aaa; font-weight: 700; }
+    .home-meta-value { font-size: 0.87rem; font-weight: 600; color: var(--nero); }
+    .home-section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .home-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; max-width: 720px; }
+    .home-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 18px 18px 14px; cursor: pointer; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+    .home-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.12); }
+    .home-card.is-soon { opacity: 0.5; cursor: default; pointer-events: none; }
+    .home-card-icon { font-size: 20px; margin-bottom: 10px; }
+    .home-card-name { font-size: 0.85rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .home-card-sub { font-size: 0.75rem; color: var(--grigio); margin-top: 4px; }
+    .home-card-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 8px; font-weight: 700; }
+    .badge-active { background: #edfaf4; color: #2D7A4F; }
+    .badge-soon { background: #f0f0f0; color: #aaa; }
+
+    /* ── Lectures ── */
+    .section { margin-bottom: 52px; }
+    .section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .schedule-table th { text-align: left; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table td { padding: 13px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: middle; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: #faf7f2; }
+    .topic-num-cell { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; width: 48px; }
+    .topic-link { font-weight: 600; color: var(--nero); text-decoration: none; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; }
+    .topic-link:hover { color: var(--oro); text-decoration: underline; }
+    .topic-sub { font-size: 0.78rem; color: var(--grigio); margin-top: 3px; }
+    .assess-link { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: #edfaf4; color: #2D7A4F; border-radius: 4px; padding: 4px 10px; text-decoration: none; white-space: nowrap; }
+    .assess-link:hover { background: #2D7A4F; color: #fff; }
+    .assess-link + .assess-link { margin-top: 4px; display: block; }
+
+    /* ── Topic panels ── */
+    .topic-section { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; overflow: hidden; }
+    .topic-header { display: flex; align-items: center; gap: 18px; background: var(--nero); padding: 20px 28px; }
+    .topic-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--oro); flex-shrink: 0; }
+    .topic-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.4vw, 24px); color: #fff; font-weight: 400; }
+    .topic-body { padding: 28px 28px 32px; }
+    .topic-body h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin: 24px 0 12px; }
+    .topic-body h3:first-child { margin-top: 0; }
+    .topic-body p { font-size: 0.93rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
+    .topic-body ul { padding-left: 20px; margin-bottom: 12px; }
+    .topic-body li { font-size: 0.91rem; line-height: 1.7; color: #333; margin-bottom: 5px; }
+    .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
+    .topic-footer { border-top: 1px solid var(--grigio-light); padding: 14px 28px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .topic-footer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; }
+    .prev-next { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--grigio-light); flex-wrap: wrap; }
+    .prev-next-btn { font-size: 0.8rem; font-weight: 600; color: var(--grigio); cursor: pointer; background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 8px 16px; }
+    .prev-next-btn:hover { border-color: var(--oro); color: var(--oro); }
+    .glossary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .glossary-table th { text-align: left; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .glossary-table td { padding: 12px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: top; line-height: 1.6; color: #333; }
+    .glossary-table tr:last-child td { border-bottom: none; }
+    .glossary-table td:first-child { font-weight: 700; color: var(--nero); white-space: nowrap; width: 220px; }
+
+    /* ── Quizzes/Tests ── */
+    .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; max-width: 800px; }
+    .resource-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 22px 22px 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.1); }
+    .resource-card.is-soon { opacity: 0.55; pointer-events: none; }
+    .rc-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .rc-title { font-size: 1rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .rc-sub { font-size: 0.78rem; color: var(--grigio); }
+    .rc-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 4px; font-weight: 700; align-self: flex-start; }
+    .coming-soon-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; text-align: center; color: #aaa; }
+    .coming-soon-icon { font-size: 40px; margin-bottom: 18px; opacity: 0.5; }
+    .coming-soon-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 10px; color: #bbb; }
+    .coming-soon-text { font-size: 0.87rem; line-height: 1.7; max-width: 360px; }
+
+    @media (max-width: 760px) {
+      body { flex-direction: column; }
+      .site-nav { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .sub-nav.is-open { max-height: 800px; }
+      .site-main { padding: 28px 20px 60px; }
+      .home-cards { grid-template-columns: repeat(2, 1fr); }
+      .resource-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <script>
-    if (!sessionStorage.getItem('auth_buseth')) {
-      window.location.replace('password-gate.html');
-    }
-  </script>
+<script>
+  if (!sessionStorage.getItem('auth_buseth')) {
+    window.location.replace('password-gate.html');
+  }
+</script>
 
-  <div class="page-header">
-    <div class="header-label">Fair Academy · Business Ethics</div>
-    <div class="gold-line"></div>
-    <h1>Business Ethics &amp; <span>Corporate Conduct</span></h1>
+<nav class="site-nav" aria-label="Course navigation">
+  <div class="nav-brand">
+    <div class="nav-brand-sup">Fair Academy</div>
+    <div class="nav-brand-title">Business Ethics &amp; <em>Corporate Conduct</em></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-item" id="nav-home" data-target="panel-home">
+      <span class="nav-item-icon">&#127968;</span> Home
+    </div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Content</div>
+    <div class="nav-item" id="nav-lectures" data-target="panel-lectures">
+      <span class="nav-item-icon">&#128214;</span> Lectures
+    </div>
+    <ul class="sub-nav" id="lectures-sub">
+      <li class="sub-nav-item" data-target="panel-topic-1"><span class="sub-nav-num">01</span>Ethical Theories &amp; Frameworks</li>
+      <li class="sub-nav-item" data-target="panel-topic-2"><span class="sub-nav-num">02</span>Corporate Social Responsibility</li>
+      <li class="sub-nav-item" data-target="panel-topic-3"><span class="sub-nav-num">03</span>Codes of Ethics in Practice</li>
+      <li class="sub-nav-item" data-target="panel-topic-4"><span class="sub-nav-num">04</span>Corporate Governance</li>
+      <li class="sub-nav-item" data-target="panel-reference"><span class="sub-nav-num">&#8212;</span>Glossary &amp; Resources</li>
+    </ul>
+    <div class="nav-item" id="nav-quizzes" data-target="panel-quizzes">
+      <span class="nav-item-icon">&#128221;</span> Quizzes
+    </div>
+    <div class="nav-item" id="nav-tests" data-target="panel-tests">
+      <span class="nav-item-icon">&#9989;</span> Tests
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128188;</span> Cases <span class="nav-soon">Soon</span>
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128296;</span> Tools &amp; Notes <span class="nav-soon">Soon</span>
+    </div>
+  </div>
+  <div class="nav-footer">
+    <a href="../../index.html" class="nav-back">&#8592; Back to main portal</a>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <!-- HOME -->
+  <div id="panel-home" class="panel">
+    <div class="home-hero">
+      <div class="home-sup">Business Ethics &amp; CSR</div>
+      <h1>Business Ethics &amp; <em>Corporate Conduct</em></h1>
+      <p class="home-abstract">This course examines the ethical frameworks, corporate responsibility principles, and governance mechanisms that shape business conduct in the modern world. From foundational theories of ethics, through CSR and sustainability frameworks, to the real-world practice of corporate codes and governance structures, students develop the analytical tools to assess and navigate ethical challenges in business.</p>
+      <div class="home-meta">
+        <div class="home-meta-item"><span class="home-meta-label">Lectures</span><span class="home-meta-value">4 Topics</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Quizzes</span><span class="home-meta-value">2 Quizzes</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Tests</span><span class="home-meta-value">1 Active</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Language</span><span class="home-meta-value">English</span></div>
+      </div>
+      <div class="home-section-title">Navigate the course</div>
+      <div class="home-cards">
+        <div class="home-card" data-target="panel-lectures"><div class="home-card-icon">&#128214;</div><div class="home-card-name">Lectures</div><div class="home-card-sub">4 topics &middot; study notes</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-quizzes"><div class="home-card-icon">&#128221;</div><div class="home-card-name">Quizzes</div><div class="home-card-sub">2 quizzes &middot; self-assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-tests"><div class="home-card-icon">&#9989;</div><div class="home-card-name">Tests</div><div class="home-card-sub">Comprehensive assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128188;</div><div class="home-card-name">Cases</div><div class="home-card-sub">Business case studies</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128296;</div><div class="home-card-name">Tools &amp; Notes</div><div class="home-card-sub">Templates &amp; resources</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="hub-layout">
-    <!-- Sidebar -->
-    <aside class="hub-sidebar">
-      <div class="sidebar-label">Course Navigation</div>
-      <ul class="sidebar-nav">
-        <li><a href="hub.html" class="sidebar-link is-active"><span class="sidebar-icon">🏠</span> Course Overview</a></li>
-        <li><a href="lectures.html" class="sidebar-link"><span class="sidebar-icon">📚</span> Study Notes</a></li>
-        <div class="sidebar-divider"></div>
-        <li><a href="test-1.html" class="sidebar-link"><span class="sidebar-icon">✅</span> Test 1 — Ferragamo Ethics</a></li>
-        <li><a href="quiz-1.html" class="sidebar-link"><span class="sidebar-icon">📝</span> Quiz 1 — Ethical Frameworks</a></li>
-        <li><a href="quiz-2.html" class="sidebar-link"><span class="sidebar-icon">📝</span> Quiz 2 — True/False</a></li>
-        <li><a href="test-2.html" class="sidebar-link"><span class="sidebar-icon">🔜</span> Test 2 — Corporate Gov. <span class="sidebar-badge">Soon</span></a></li>
-        <div class="sidebar-divider"></div>
-        <li><a href="materials.html" class="sidebar-link"><span class="sidebar-icon">📁</span> Materials</a></li>
-      </ul>
-      <div class="sidebar-footer">
-        <a href="../../index.html">← Back to Home</a>
-      </div>
-    </aside>
+  <!-- LECTURES OVERVIEW -->
+  <div id="panel-lectures" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Course Schedule</div>
+      <table class="schedule-table">
+        <thead><tr><th>#</th><th>Topic</th><th>Assessment</th></tr></thead>
+        <tbody>
+          <tr><td class="topic-num-cell">01</td><td><span class="topic-link" data-target="panel-topic-1">Ethical Theories &amp; Frameworks</span><div class="topic-sub">Utilitarianism &middot; Deontology &middot; Virtue Ethics &middot; Stakeholder Theory</div></td><td><a href="quiz-1.html" class="assess-link">Quiz 1</a></td></tr>
+          <tr><td class="topic-num-cell">02</td><td><span class="topic-link" data-target="panel-topic-2">Corporate Social Responsibility</span><div class="topic-sub">Carroll&apos;s Pyramid &middot; Triple Bottom Line &middot; ESG</div></td><td><a href="quiz-2.html" class="assess-link">Quiz 2</a></td></tr>
+          <tr><td class="topic-num-cell">03</td><td><span class="topic-link" data-target="panel-topic-3">Codes of Ethics in Practice</span><div class="topic-sub">Corporate codes &middot; Ferragamo Code of Ethics &middot; Compliance</div></td><td><a href="test-1.html" class="assess-link">Test 1</a></td></tr>
+          <tr><td class="topic-num-cell">04</td><td><span class="topic-link" data-target="panel-topic-4">Corporate Governance</span><div class="topic-sub">Board structure &middot; Accountability &middot; Transparency</div></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <!-- Main content -->
-    <main class="hub-main">
-      <div class="hub-intro">
-        <h2>Welcome to the Course Hub</h2>
-        <p>Use the sidebar to navigate between study notes, quizzes, tests, and materials. You only need to enter your password once per session.</p>
-      </div>
-
-      <div class="section-title">Assessments</div>
-      <div class="resource-grid">
-        <a href="test-1.html" class="resource-card">
-          <div class="card-icon">✅</div>
-          <div class="card-info">
-            <div class="card-name">Test 1 — Ferragamo Code of Ethics</div>
-            <div class="card-desc">10 questions · True/False &amp; Multiple Choice</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <a href="quiz-1.html" class="resource-card">
-          <div class="card-icon">📝</div>
-          <div class="card-info">
-            <div class="card-name">Quiz 1 — Ethical Frameworks</div>
-            <div class="card-desc">20 questions · Multiple Choice &amp; True/False</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <a href="quiz-2.html" class="resource-card">
-          <div class="card-icon">📝</div>
-          <div class="card-info">
-            <div class="card-name">Quiz 2 — True/False</div>
-            <div class="card-desc">20 questions · True/False</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <div class="resource-card disabled">
-          <div class="card-icon">🔜</div>
-          <div class="card-info">
-            <div class="card-name">Test 2 — Corporate Governance</div>
-            <div class="card-desc">Coming soon</div>
-          </div>
-          <span class="card-badge badge-soon">Soon</span>
+  <!-- TOPIC 1 -->
+  <div id="panel-topic-1" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">01</span><h2>Ethical Theories &amp; Frameworks</h2></div>
+      <div class="topic-body">
+        <h3>What is Business Ethics?</h3>
+        <p>Business ethics is the application of ethical principles to business activities. It examines what is right and wrong, fair and unfair, in the way organizations and individuals conduct themselves in commercial settings. Business ethics covers issues like honesty, fairness, respect for persons, and social responsibility.</p>
+        <h3>Utilitarianism</h3>
+        <p><strong>Key idea:</strong> An action is right if it produces the greatest good for the greatest number of people. Outcomes and consequences determine the morality of an action.</p>
+        <ul>
+          <li><strong>Jeremy Bentham (1748&ndash;1832):</strong> introduced the &ldquo;felicific calculus&rdquo; &mdash; measuring pleasure and pain to choose the best action.</li>
+          <li><strong>John Stuart Mill (1806&ndash;1873):</strong> refined utilitarianism by distinguishing between higher and lower pleasures; also argued for individual rights within a utilitarian framework.</li>
+          <li><strong>Applied to business:</strong> a company might justify downsizing if it saves jobs for the majority. Cost-benefit analysis is a utilitarian tool.</li>
+          <li><strong>Limitation:</strong> can justify harming a minority if the majority benefits; ignores individual rights.</li>
+        </ul>
+        <h3>Deontology (Kantian Ethics)</h3>
+        <p><strong>Key idea:</strong> Some actions are intrinsically right or wrong, regardless of their consequences. Morality is based on duties and rules.</p>
+        <ul>
+          <li><strong>Immanuel Kant (1724&ndash;1804):</strong> proposed the Categorical Imperative &mdash; act only according to principles you would want to become universal laws.</li>
+          <li><strong>Formula of Humanity:</strong> &ldquo;Act so that you treat humanity, whether in your own person or in that of another, always as an end and never as a means only.&rdquo; Employees must not be treated merely as tools for profit.</li>
+          <li><strong>Applied to business:</strong> paying fair wages, keeping promises to customers, avoiding deceptive advertising &mdash; these are duties regardless of profit impact.</li>
+          <li><strong>Limitation:</strong> rigid; may not account for situational complexity.</li>
+        </ul>
+        <h3>Virtue Ethics</h3>
+        <p><strong>Key idea:</strong> Morality is about developing virtuous character traits rather than following rules or maximizing outcomes. A virtuous person will naturally make ethical decisions.</p>
+        <ul>
+          <li><strong>Aristotle (384&ndash;322 BC):</strong> key virtues include honesty, courage, prudence (practical wisdom), justice, and moderation.</li>
+          <li><strong>Applied to business:</strong> a business with an ethical culture develops employees of good character. Leadership integrity, honesty in communications, and fair treatment of stakeholders are virtuous behaviors.</li>
+          <li><strong>Limitation:</strong> does not always provide clear guidance in specific dilemmas.</li>
+        </ul>
+        <h3>Stakeholder Theory</h3>
+        <p><strong>Key idea:</strong> Businesses have obligations not only to shareholders but to all stakeholders &mdash; anyone affected by the company&apos;s activities.</p>
+        <ul>
+          <li><strong>R. Edward Freeman (1984):</strong> stakeholders include employees, customers, suppliers, communities, and the environment &mdash; not just investors.</li>
+          <li><strong>Contrast with Shareholder Theory (Milton Friedman, 1970):</strong> the sole social responsibility of business is to increase profits within the law. Stakeholder theory challenges this view.</li>
+          <li><strong>Applied to business:</strong> decisions consider impact on all affected parties. ESG frameworks are an expression of stakeholder theory in practice.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-lectures">&#8592; Overview</span>
+          <span class="prev-next-btn" data-target="panel-topic-2">02 Corporate Social Responsibility &#8594;</span>
         </div>
       </div>
-
-      <div class="section-title">Study &amp; Materials</div>
-      <div class="resource-grid">
-        <a href="lectures.html" class="resource-card">
-          <div class="card-icon">📚</div>
-          <div class="card-info">
-            <div class="card-name">Study Notes</div>
-            <div class="card-desc">Topic-by-topic notes, key concepts, and frameworks</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <a href="materials.html" class="resource-card">
-          <div class="card-icon">📁</div>
-          <div class="card-info">
-            <div class="card-name">Course Materials</div>
-            <div class="card-desc">Readings, case studies, and reference documents</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-      </div>
-    </main>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-1.html" class="assess-link">Quiz 1 &mdash; Ethical Frameworks</a></div>
+    </div>
   </div>
 
+  <!-- TOPIC 2 -->
+  <div id="panel-topic-2" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">02</span><h2>Corporate Social Responsibility</h2></div>
+      <div class="topic-body">
+        <h3>Defining CSR</h3>
+        <p>Corporate Social Responsibility (CSR) is the idea that companies should consider the interests of society &mdash; not just shareholders &mdash; by taking responsibility for the impact of their activities on customers, employees, communities, and the environment. CSR goes beyond legal compliance: it is about voluntary action that benefits society.</p>
+        <h3>Carroll&apos;s CSR Pyramid</h3>
+        <p>Archie Carroll (1991) organized corporate responsibilities into a four-level pyramid, from the most basic to the most aspirational:</p>
+        <ul>
+          <li><strong>Economic Responsibilities (base):</strong> be profitable. Without profit, a business cannot survive or fulfill its other responsibilities. This is the foundation of all other responsibilities.</li>
+          <li><strong>Legal Responsibilities:</strong> obey the law. Society codifies rules of acceptable behavior &mdash; companies must operate within these rules.</li>
+          <li><strong>Ethical Responsibilities:</strong> be ethical &mdash; do what is right, fair, and just, even when not legally required. Avoid harm, respect rights, and act with integrity.</li>
+          <li><strong>Philanthropic Responsibilities (apex):</strong> be a good corporate citizen. Contribute to the community through donations, volunteering, and social initiatives.</li>
+        </ul>
+        <p>The pyramid is read bottom-up: all four levels are expected simultaneously, but economic viability is the prerequisite.</p>
+        <h3>Triple Bottom Line (TBL)</h3>
+        <p>John Elkington coined the term in 1994. Businesses should measure success across three dimensions:</p>
+        <ul>
+          <li><strong>People (Social):</strong> fair wages, safe working conditions, community impact, human rights.</li>
+          <li><strong>Planet (Environmental):</strong> carbon footprint, resource use, waste, biodiversity.</li>
+          <li><strong>Profit (Economic):</strong> financial performance.</li>
+        </ul>
+        <p>The TBL encourages companies to see sustainability as a business imperative, not just philanthropy.</p>
+        <h3>ESG &mdash; Environmental, Social, Governance</h3>
+        <p>ESG is a framework used by investors and companies to evaluate non-financial performance:</p>
+        <ul>
+          <li><strong>Environmental:</strong> climate change strategy, emissions, energy efficiency, water management.</li>
+          <li><strong>Social:</strong> labor practices, diversity &amp; inclusion, human rights, supply chain conditions.</li>
+          <li><strong>Governance:</strong> board composition, executive pay, anti-corruption policies, shareholder rights.</li>
+        </ul>
+        <p>Strong ESG ratings are increasingly linked to lower risk, better reputation, and access to capital.</p>
+        <h3>ISO 26000</h3>
+        <p>ISO 26000 (2010) is the international standard providing guidance &mdash; not certification &mdash; on social responsibility. It identifies seven core subjects: organizational governance, human rights, labor practices, environment, fair operating practices, consumer issues, and community involvement.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-1">&#8592; 01 Ethical Theories &amp; Frameworks</span>
+          <span class="prev-next-btn" data-target="panel-topic-3">03 Codes of Ethics in Practice &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-2.html" class="assess-link">Quiz 2 &mdash; True/False</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 3 -->
+  <div id="panel-topic-3" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">03</span><h2>Codes of Ethics in Practice</h2></div>
+      <div class="topic-body">
+        <h3>What Is a Code of Ethics?</h3>
+        <p>A corporate code of ethics (also called a code of conduct) is a formal document that sets out the values, principles, and behavioral standards expected of everyone in an organization. It translates abstract ethical principles into concrete guidance for daily decisions.</p>
+        <p>Typical codes cover: honesty and integrity, conflicts of interest, confidentiality, anti-corruption, environmental responsibility, human rights, and whistleblowing procedures.</p>
+        <h3>Why Do Companies Adopt Codes of Ethics?</h3>
+        <ul>
+          <li><strong>Guide behavior:</strong> provides employees with clear standards when facing ethical dilemmas.</li>
+          <li><strong>Reduce misconduct:</strong> reduces the risk of fraud, bribery, and other violations.</li>
+          <li><strong>Build trust:</strong> signals to customers, suppliers, and investors that the company operates with integrity.</li>
+          <li><strong>Legal protection:</strong> demonstrates good-faith compliance efforts, which can mitigate penalties in legal proceedings.</li>
+          <li><strong>Reputation and brand:</strong> ethical companies attract and retain talented employees and loyal customers.</li>
+        </ul>
+        <h3>The Salvatore Ferragamo Code of Ethics</h3>
+        <p>The Ferragamo Code of Ethics is the foundational document governing the ethical conduct of all employees, managers, directors, and business partners of the Salvatore Ferragamo Group. It reflects the Group&apos;s commitment to responsible luxury.</p>
+        <p><strong>Key principles of the Ferragamo Code:</strong></p>
+        <ul>
+          <li><strong>Integrity and honesty:</strong> all business relationships must be conducted with fairness, transparency, and honesty.</li>
+          <li><strong>Respect for persons:</strong> the dignity of every individual &mdash; employee, partner, or customer &mdash; must be upheld.</li>
+          <li><strong>Compliance:</strong> every person within the Group must comply with applicable laws and internal regulations in every country of operation.</li>
+          <li><strong>Conflict of interest:</strong> personal interests must never interfere with the Group&apos;s interests; conflicts must be declared and managed.</li>
+          <li><strong>Confidentiality:</strong> privileged information must be protected and not used for personal gain.</li>
+          <li><strong>Environmental responsibility:</strong> the Group is committed to minimizing its environmental footprint across all operations.</li>
+          <li><strong>Anti-corruption:</strong> bribery, corruption, and facilitation payments are strictly prohibited.</li>
+        </ul>
+        <h3>Ethics Committees and Compliance Functions</h3>
+        <p>Many organizations establish an Ethics Committee or Compliance Office to oversee adherence to the code of ethics, investigate reported violations, and update the code as needed. A key mechanism is the whistleblowing channel: a confidential system through which employees can report suspected misconduct without fear of retaliation.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-2">&#8592; 02 Corporate Social Responsibility</span>
+          <span class="prev-next-btn" data-target="panel-topic-4">04 Corporate Governance &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="test-1.html" class="assess-link">Test 1 &mdash; Ferragamo Code of Ethics</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 4 -->
+  <div id="panel-topic-4" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">04</span><h2>Corporate Governance</h2></div>
+      <div class="topic-body">
+        <h3>What Is Corporate Governance?</h3>
+        <p>Corporate governance is the system of rules, practices, and processes by which a company is directed and controlled. It defines the relationships between a company&apos;s management, its board of directors, shareholders, and other stakeholders. Good governance ensures accountability, fairness, and transparency in a company&apos;s relationship with all stakeholders.</p>
+        <h3>The Board of Directors</h3>
+        <p>The Board of Directors is the primary governing body of a corporation. Its key responsibilities include:</p>
+        <ul>
+          <li><strong>Strategic oversight:</strong> approving the company&apos;s strategy and major decisions.</li>
+          <li><strong>Management accountability:</strong> appointing, evaluating, and (if necessary) removing the CEO and senior executives.</li>
+          <li><strong>Financial oversight:</strong> approving budgets, audits, and financial reporting.</li>
+          <li><strong>Risk management:</strong> ensuring appropriate risk management systems are in place.</li>
+        </ul>
+        <p><strong>Board composition:</strong> boards typically include both executive directors (company insiders) and non-executive/independent directors (outsiders). Independence is essential for effective oversight. A lead independent director or chairman may provide further balance.</p>
+        <h3>Shareholder vs. Stakeholder Model</h3>
+        <ul>
+          <li><strong>Shareholder model:</strong> the board&apos;s primary duty is to maximize shareholder value. Governance focuses on protecting and growing investor returns.</li>
+          <li><strong>Stakeholder model:</strong> boards must consider the interests of all stakeholders &mdash; employees, customers, suppliers, communities &mdash; not just shareholders. Increasingly adopted in ESG-driven governance frameworks.</li>
+        </ul>
+        <h3>Accountability and Transparency Mechanisms</h3>
+        <ul>
+          <li><strong>Annual reports and financial statements:</strong> mandatory disclosure of financial performance, audited by independent firms.</li>
+          <li><strong>Audit committees:</strong> board subcommittee overseeing internal and external audit processes and financial integrity.</li>
+          <li><strong>Remuneration committees:</strong> oversee executive pay to ensure it is linked to performance and not excessive.</li>
+          <li><strong>Governance codes:</strong> voluntary or semi-mandatory codes (e.g., UK Corporate Governance Code, Italy&apos;s Corporate Governance Code) that set best-practice standards on a &ldquo;comply or explain&rdquo; basis.</li>
+          <li><strong>Sustainability reporting:</strong> under the EU&apos;s CSRD, large companies must disclose their environmental and social impacts alongside financial results.</li>
+        </ul>
+        <h3>Key Governance Principles (OECD)</h3>
+        <p>The OECD Principles of Corporate Governance identify six pillars: ensuring the basis for an effective governance framework; rights and equitable treatment of shareholders; institutional investors and markets; the role of stakeholders; disclosure and transparency; and the responsibilities of the board.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-3">&#8592; 03 Codes of Ethics in Practice</span>
+          <span class="prev-next-btn" data-target="panel-reference">Glossary &amp; Resources &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Assessment:</span> <span style="font-size:0.82rem;color:var(--grigio);">Test 2 &mdash; Corporate Governance (coming soon)</span></div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div id="panel-reference" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Glossary of Key Terms</div>
+      <table class="glossary-table">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td>Utilitarianism</td><td>An ethical theory holding that the morally correct action is the one that produces the greatest good for the greatest number of people.</td></tr>
+          <tr><td>Deontology</td><td>An ethical approach based on duties and rules rather than outcomes. Actions are intrinsically right or wrong, regardless of their consequences (Kant).</td></tr>
+          <tr><td>Categorical Imperative</td><td>Kant&apos;s moral principle: act only according to principles you could will to become universal laws; always treat persons as ends, never merely as means.</td></tr>
+          <tr><td>Virtue Ethics</td><td>An approach to ethics that emphasizes developing virtuous character traits (honesty, prudence, justice) rather than following rules or maximizing outcomes.</td></tr>
+          <tr><td>Stakeholder Theory</td><td>The view that businesses have obligations to all stakeholders &mdash; employees, customers, suppliers, communities, and the environment &mdash; not just shareholders.</td></tr>
+          <tr><td>Shareholder Theory</td><td>Milton Friedman&apos;s view that the sole social responsibility of a business is to increase its profits within the rules of law.</td></tr>
+          <tr><td>CSR</td><td>Corporate Social Responsibility &mdash; the idea that companies should voluntarily consider their impact on society, beyond legal compliance and profit.</td></tr>
+          <tr><td>Carroll&apos;s CSR Pyramid</td><td>A four-level framework of corporate responsibilities: Economic (base), Legal, Ethical, and Philanthropic (apex).</td></tr>
+          <tr><td>Triple Bottom Line</td><td>A framework measuring business success across three dimensions: People (Social), Planet (Environmental), and Profit (Economic).</td></tr>
+          <tr><td>ESG</td><td>Environmental, Social, and Governance &mdash; a framework for evaluating a company&apos;s non-financial performance and sustainability risks.</td></tr>
+          <tr><td>ISO 26000</td><td>The international standard providing guidance on social responsibility; covers seven core subjects but does not provide certification.</td></tr>
+          <tr><td>Code of Ethics</td><td>A formal document setting out the values, principles, and behavioral standards expected of everyone in an organization.</td></tr>
+          <tr><td>Whistleblowing</td><td>The act of reporting suspected misconduct through a confidential internal or external channel; protected by law in many jurisdictions.</td></tr>
+          <tr><td>Corporate Governance</td><td>The system of rules, practices, and processes by which a company is directed and controlled, ensuring accountability to all stakeholders.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">External Resources</div>
+      <div style="background:#fff;border:1px solid var(--grigio-light);border-radius:4px;padding:28px;">
+        <ul style="padding-left:20px;">
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.oecd.org/corporate/principles-corporate-governance/" style="color:var(--oro);">OECD Principles of Corporate Governance</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.iso.org/iso-26000-social-responsibility.html" style="color:var(--oro);">ISO 26000 Social Responsibility</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://hbr.org/2006/09/what-is-business-ethics" style="color:var(--oro);">Harvard Business Review &mdash; What Is Business Ethics?</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.unglobalcompact.org/what-is-gc/mission/principles" style="color:var(--oro);">UN Global Compact &mdash; 10 Principles</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZZES -->
+  <div id="panel-quizzes" class="panel" hidden>
+    <div class="section-title">Quizzes</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Self-assessment quizzes linked to individual lectures. Complete each quiz after studying the corresponding lecture to reinforce your learning.</p>
+    <div class="resource-grid">
+      <a href="quiz-1.html" class="resource-card"><div class="rc-label">Quiz 1 &middot; Lecture 01</div><div class="rc-title">Ethical Frameworks</div><div class="rc-sub">Multiple Choice &amp; True/False</div><span class="rc-badge badge-active">Active</span></a>
+      <a href="quiz-2.html" class="resource-card"><div class="rc-label">Quiz 2 &middot; Lecture 02</div><div class="rc-title">True/False</div><div class="rc-sub">CSR &amp; sustainability</div><span class="rc-badge badge-active">Active</span></a>
+    </div>
+  </div>
+
+  <!-- TESTS -->
+  <div id="panel-tests" class="panel" hidden>
+    <div class="section-title">Tests</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Comprehensive assessments covering multiple lectures. A passing score is required to complete each test.</p>
+    <div class="resource-grid">
+      <a href="test-1.html" class="resource-card"><div class="rc-label">Test 1</div><div class="rc-title">Ferragamo Code of Ethics</div><div class="rc-sub">10 questions &middot; True/False &amp; Multiple Choice</div><span class="rc-badge badge-active">Active</span></a>
+      <div class="resource-card is-soon"><div class="rc-label">Test 2</div><div class="rc-title">Corporate Governance</div><div class="rc-sub">Coming soon</div><span class="rc-badge badge-soon">Soon</span></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var lecturesSub = document.getElementById('lectures-sub');
+  var navMap = {
+    'nav-home':     'panel-home',
+    'nav-lectures': 'panel-lectures',
+    'nav-quizzes':  'panel-quizzes',
+    'nav-tests':    'panel-tests'
+  };
+  var lectureTopics = ['panel-topic-1','panel-topic-2','panel-topic-3','panel-topic-4','panel-reference'];
+  function isLectureTopic(id) { return lectureTopics.indexOf(id) !== -1 || id === 'panel-lectures'; }
+
+  function showPanel(panelId, skipScroll) {
+    document.querySelectorAll('.panel').forEach(function(p){ p.hidden = true; });
+    var target = document.getElementById(panelId);
+    if (target) target.hidden = false;
+    document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    document.querySelectorAll('.sub-nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    if (isLectureTopic(panelId)) {
+      var lectNav = document.getElementById('nav-lectures');
+      if (lectNav) lectNav.classList.add('is-active');
+      lecturesSub.classList.add('is-open');
+      if (panelId !== 'panel-lectures') {
+        document.querySelectorAll('.sub-nav-item[data-target="' + panelId + '"]').forEach(function(el){ el.classList.add('is-active'); });
+      }
+    } else {
+      lecturesSub.classList.remove('is-open');
+      Object.keys(navMap).forEach(function(k){ if (navMap[k] === panelId) { var el = document.getElementById(k); if (el) el.classList.add('is-active'); } });
+    }
+    if (!skipScroll) window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  Object.keys(navMap).forEach(function(k){
+    var el = document.getElementById(k);
+    if (el) el.addEventListener('click', function(){ showPanel(navMap[k]); });
+  });
+  document.querySelectorAll('.sub-nav-item[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.home-card[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.topic-link[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.prev-next-btn[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+
+  showPanel('panel-home', true);
+}());
+</script>
 </body>
 </html>
