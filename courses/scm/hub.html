@@ -3,277 +3,462 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Supply Chain Management &amp; ESG — Course Hub</title>
+  <title>Supply Chain Management &amp; ESG &mdash; FAIR Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --nero: #1a1a1a;
-      --oro: #B8922A;
-      --panna: #FAF7F2;
-      --grigio: #6a6a6a;
-      --grigio-light: #e8e4de;
+      --nero:        #1a1a1a;
+      --oro:         #B8922A;
+      --panna:       #FAF7F2;
+      --grigio:      #6a6a6a;
+      --grigio-light:#e8e4de;
+      --sidebar-w:   264px;
+      --nav-active-bg: #fdf6ea;
     }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: var(--panna);
-      color: var(--nero);
-      min-height: 100vh;
-    }
-    .page-header {
-      background: var(--nero);
-      padding: 32px 40px 28px;
-    }
-    .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 14px; }
-    .header-label {
-      font-size: 10px;
-      letter-spacing: 4px;
-      color: var(--oro);
-      text-transform: uppercase;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-    .page-header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 4vw, 36px);
-      color: #fff;
-      font-weight: 400;
-    }
-    .page-header h1 span { color: var(--oro); font-style: italic; }
-    .hub-layout {
-      display: flex;
-      align-items: stretch;
-      min-height: calc(100vh - 110px);
-    }
-    .hub-sidebar {
-      width: 250px;
-      min-width: 250px;
-      background: #fff;
-      border-right: 1px solid var(--grigio-light);
-      padding: 24px 0 40px;
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    .sidebar-label {
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--grigio);
-      font-weight: 700;
-      padding: 0 20px 14px;
-      margin-bottom: 4px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
-    .sidebar-nav li { display: block; }
-    .sidebar-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      color: var(--nero);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 500;
-      line-height: 1.4;
-      border-left: 3px solid transparent;
-    }
-    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
-    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
-    .sidebar-icon { font-size: 13px; flex-shrink: 0; }
-    .sidebar-badge {
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #aaa;
-      margin-left: auto;
-    }
-    .sidebar-divider {
-      height: 1px;
-      background: var(--grigio-light);
-      margin: 8px 20px;
-    }
-    .sidebar-footer {
-      padding: 16px 20px 0;
-      border-top: 1px solid var(--grigio-light);
-      margin-top: auto;
-    }
-    .sidebar-footer a {
-      font-size: 0.78rem;
-      color: #aaa;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sidebar-footer a:hover { color: var(--nero); }
-    .hub-main {
-      flex: 1;
-      min-width: 0;
-      padding: 40px 44px 80px;
-      max-width: 780px;
-    }
-    .hub-intro {
-      margin-bottom: 40px;
-    }
-    .hub-intro h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.9rem;
-      font-weight: 400;
-      color: var(--nero);
-      margin-bottom: 10px;
-    }
-    .hub-intro p {
-      font-size: 0.9rem;
-      color: var(--grigio);
-      line-height: 1.7;
-    }
-    .section-title {
-      font-size: 9px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--oro);
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 14px;
-      margin-bottom: 40px;
-    }
-    .resource-card {
-      background: #fff;
-      border: 1px solid var(--grigio-light);
-      border-radius: 2px;
-      padding: 20px 22px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-      text-decoration: none;
-      color: var(--nero);
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 16px rgba(184,146,42,0.12); }
-    .resource-card.disabled { pointer-events: none; opacity: 0.55; }
-    .card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-    .card-info { flex: 1; }
-    .card-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
-    .card-desc { font-size: 0.79rem; color: var(--grigio); line-height: 1.5; }
-    .card-badge {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 4px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .badge-open { background: #edfaf4; color: #2D7A4F; }
-    .badge-soon { background: #f0ede8; color: #aaa; }
-    @media (max-width: 700px) {
-      .hub-layout { flex-direction: column; }
-      .hub-sidebar { width: 100%; min-width: 0; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
-      .hub-main { padding: 28px 20px 60px; }
-      .page-header { padding: 24px 20px 20px; }
+    html, body { height: 100%; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--panna); color: var(--nero); display: flex; min-height: 100vh; }
+
+    /* ── Sidebar ── */
+    .site-nav { width: var(--sidebar-w); min-width: var(--sidebar-w); background: #fff; border-right: 1px solid var(--grigio-light); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .nav-brand { padding: 24px 20px 18px; border-bottom: 1px solid var(--grigio-light); }
+    .nav-brand-sup { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .nav-brand-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: var(--nero); line-height: 1.3; margin-top: 5px; }
+    .nav-brand-title em { font-style: italic; color: var(--oro); }
+    .nav-section { padding: 12px 0; border-bottom: 1px solid var(--grigio-light); }
+    .nav-section:last-of-type { border-bottom: none; }
+    .nav-section-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; font-weight: 700; padding: 0 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; font-size: 0.82rem; font-weight: 500; color: #444; cursor: pointer; user-select: none; border-left: 3px solid transparent; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .nav-item:hover { background: var(--panna); color: var(--oro); }
+    .nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .nav-item.is-disabled { color: #ccc; cursor: default; pointer-events: none; }
+    .nav-item-icon { font-size: 14px; flex-shrink: 0; opacity: 0.75; }
+    .nav-soon { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; background: #f0f0f0; color: #aaa; border-radius: 3px; padding: 2px 6px; margin-left: auto; }
+    .sub-nav { list-style: none; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+    .sub-nav.is-open { max-height: 600px; }
+    .sub-nav-item { display: flex; align-items: baseline; gap: 8px; padding: 7px 20px 7px 32px; font-size: 0.78rem; font-weight: 400; color: #555; cursor: pointer; border-left: 3px solid transparent; line-height: 1.4; }
+    .sub-nav-item:hover { background: var(--panna); color: var(--oro); }
+    .sub-nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .sub-nav-num { font-size: 9px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 18px; }
+    .nav-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--grigio-light); }
+    .nav-back { font-size: 0.78rem; color: #aaa; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--nero); }
+
+    /* ── Main ── */
+    .site-main { flex: 1; min-width: 0; padding: 48px 44px 80px; overflow-y: auto; }
+    .panel[hidden] { display: none; }
+
+    /* ── Home ── */
+    .home-hero { max-width: 720px; }
+    .home-sup { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 14px; }
+    .home-sup::before { content: ''; display: block; width: 48px; height: 3px; background: var(--oro); margin-bottom: 14px; }
+    .home-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; line-height: 1.15; color: var(--nero); margin-bottom: 24px; }
+    .home-hero h1 em { font-style: italic; color: var(--oro); }
+    .home-abstract { font-size: 0.97rem; line-height: 1.85; color: #444; max-width: 620px; margin-bottom: 36px; }
+    .home-meta { display: flex; gap: 28px; flex-wrap: wrap; padding: 20px 0; border-top: 1px solid var(--grigio-light); border-bottom: 1px solid var(--grigio-light); margin-bottom: 40px; }
+    .home-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .home-meta-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #aaa; font-weight: 700; }
+    .home-meta-value { font-size: 0.87rem; font-weight: 600; color: var(--nero); }
+    .home-section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .home-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; max-width: 720px; }
+    .home-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 18px 18px 14px; cursor: pointer; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+    .home-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.12); }
+    .home-card.is-soon { opacity: 0.5; cursor: default; pointer-events: none; }
+    .home-card-icon { font-size: 20px; margin-bottom: 10px; }
+    .home-card-name { font-size: 0.85rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .home-card-sub { font-size: 0.75rem; color: var(--grigio); margin-top: 4px; }
+    .home-card-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 8px; font-weight: 700; }
+    .badge-active { background: #edfaf4; color: #2D7A4F; }
+    .badge-soon { background: #f0f0f0; color: #aaa; }
+
+    /* ── Lectures ── */
+    .section { margin-bottom: 52px; }
+    .section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .schedule-table th { text-align: left; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table td { padding: 13px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: middle; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: #faf7f2; }
+    .topic-num-cell { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; width: 48px; }
+    .topic-link { font-weight: 600; color: var(--nero); text-decoration: none; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; }
+    .topic-link:hover { color: var(--oro); text-decoration: underline; }
+    .topic-sub { font-size: 0.78rem; color: var(--grigio); margin-top: 3px; }
+    .assess-link { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: #edfaf4; color: #2D7A4F; border-radius: 4px; padding: 4px 10px; text-decoration: none; white-space: nowrap; }
+    .assess-link:hover { background: #2D7A4F; color: #fff; }
+    .assess-link + .assess-link { margin-top: 4px; display: block; }
+
+    /* ── Topic panels ── */
+    .topic-section { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; overflow: hidden; }
+    .topic-header { display: flex; align-items: center; gap: 18px; background: var(--nero); padding: 20px 28px; }
+    .topic-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--oro); flex-shrink: 0; }
+    .topic-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.4vw, 24px); color: #fff; font-weight: 400; }
+    .topic-body { padding: 28px 28px 32px; }
+    .topic-body h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin: 24px 0 12px; }
+    .topic-body h3:first-child { margin-top: 0; }
+    .topic-body p { font-size: 0.93rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
+    .topic-body ul { padding-left: 20px; margin-bottom: 12px; }
+    .topic-body li { font-size: 0.91rem; line-height: 1.7; color: #333; margin-bottom: 5px; }
+    .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
+    .topic-footer { border-top: 1px solid var(--grigio-light); padding: 14px 28px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .topic-footer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; }
+    .prev-next { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--grigio-light); flex-wrap: wrap; }
+    .prev-next-btn { font-size: 0.8rem; font-weight: 600; color: var(--grigio); cursor: pointer; background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 8px 16px; }
+    .prev-next-btn:hover { border-color: var(--oro); color: var(--oro); }
+    .glossary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .glossary-table th { text-align: left; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .glossary-table td { padding: 12px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: top; line-height: 1.6; color: #333; }
+    .glossary-table tr:last-child td { border-bottom: none; }
+    .glossary-table td:first-child { font-weight: 700; color: var(--nero); white-space: nowrap; width: 220px; }
+
+    /* ── Quizzes/Tests ── */
+    .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; max-width: 800px; }
+    .resource-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 22px 22px 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.1); }
+    .resource-card.is-soon { opacity: 0.55; pointer-events: none; }
+    .rc-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .rc-title { font-size: 1rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .rc-sub { font-size: 0.78rem; color: var(--grigio); }
+    .rc-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 4px; font-weight: 700; align-self: flex-start; }
+    .coming-soon-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; text-align: center; color: #aaa; }
+    .coming-soon-icon { font-size: 40px; margin-bottom: 18px; opacity: 0.5; }
+    .coming-soon-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 10px; color: #bbb; }
+    .coming-soon-text { font-size: 0.87rem; line-height: 1.7; max-width: 360px; }
+
+    @media (max-width: 760px) {
+      body { flex-direction: column; }
+      .site-nav { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .sub-nav.is-open { max-height: 800px; }
+      .site-main { padding: 28px 20px 60px; }
+      .home-cards { grid-template-columns: repeat(2, 1fr); }
+      .resource-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <script>
-    if (!sessionStorage.getItem('auth_scm')) {
-      window.location.replace('password-gate.html');
-    }
-  </script>
+<script>
+  if (!sessionStorage.getItem('auth_scm')) {
+    window.location.replace('password-gate.html');
+  }
+</script>
 
-  <div class="page-header">
-    <div class="header-label">Fair Academy · Sustainability Management</div>
-    <div class="gold-line"></div>
-    <h1>Supply Chain Management &amp; <span>ESG</span></h1>
+<nav class="site-nav" aria-label="Course navigation">
+  <div class="nav-brand">
+    <div class="nav-brand-sup">Fair Academy</div>
+    <div class="nav-brand-title">Supply Chain Management &amp; <em>ESG</em></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-item" id="nav-home" data-target="panel-home">
+      <span class="nav-item-icon">&#127968;</span> Home
+    </div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Content</div>
+    <div class="nav-item" id="nav-lectures" data-target="panel-lectures">
+      <span class="nav-item-icon">&#128214;</span> Lectures
+    </div>
+    <ul class="sub-nav" id="lectures-sub">
+      <li class="sub-nav-item" data-target="panel-topic-1"><span class="sub-nav-num">01</span>SCM Fundamentals</li>
+      <li class="sub-nav-item" data-target="panel-topic-2"><span class="sub-nav-num">02</span>Supplier Code of Conduct</li>
+      <li class="sub-nav-item" data-target="panel-topic-3"><span class="sub-nav-num">03</span>ESG, CSRD &amp; Digital Traceability</li>
+      <li class="sub-nav-item" data-target="panel-reference"><span class="sub-nav-num">&#8212;</span>Glossary &amp; Resources</li>
+    </ul>
+    <div class="nav-item" id="nav-quizzes" data-target="panel-quizzes">
+      <span class="nav-item-icon">&#128221;</span> Quizzes
+    </div>
+    <div class="nav-item" id="nav-tests" data-target="panel-tests">
+      <span class="nav-item-icon">&#9989;</span> Tests
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128188;</span> Cases <span class="nav-soon">Soon</span>
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128296;</span> Tools <span class="nav-soon">Soon</span>
+    </div>
+  </div>
+  <div class="nav-footer">
+    <a href="../../index.html" class="nav-back">&#8592; Back to main portal</a>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <!-- HOME -->
+  <div id="panel-home" class="panel">
+    <div class="home-hero">
+      <div class="home-sup">Supply Chain Management &amp; ESG</div>
+      <h1>Supply Chain Management &amp; <em>ESG</em></h1>
+      <p class="home-abstract">This course examines how companies design and manage global supply chains responsibly &mdash; from procurement and logistics fundamentals, through supplier codes of conduct and ethical sourcing, to ESG reporting, the EU Corporate Sustainability Reporting Directive (CSRD), and the emerging Digital Product Passport. Students develop the knowledge to navigate regulatory requirements and drive sustainability across complex supply networks.</p>
+      <div class="home-meta">
+        <div class="home-meta-item"><span class="home-meta-label">Lectures</span><span class="home-meta-value">3 Topics</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Quizzes</span><span class="home-meta-value">1 Quiz</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Tests</span><span class="home-meta-value">1 Active</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Language</span><span class="home-meta-value">English</span></div>
+      </div>
+      <div class="home-section-title">Navigate the course</div>
+      <div class="home-cards">
+        <div class="home-card" data-target="panel-lectures"><div class="home-card-icon">&#128214;</div><div class="home-card-name">Lectures</div><div class="home-card-sub">3 topics &middot; study notes</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-quizzes"><div class="home-card-icon">&#128221;</div><div class="home-card-name">Quizzes</div><div class="home-card-sub">1 quiz &middot; self-assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-tests"><div class="home-card-icon">&#9989;</div><div class="home-card-name">Tests</div><div class="home-card-sub">Comprehensive assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128188;</div><div class="home-card-name">Cases</div><div class="home-card-sub">Business case studies</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128296;</div><div class="home-card-name">Tools &amp; Notes</div><div class="home-card-sub">Templates &amp; resources</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+      </div>
+    </div>
   </div>
 
-  <div class="hub-layout">
-    <aside class="hub-sidebar">
-      <div class="sidebar-label">Course Navigation</div>
-      <ul class="sidebar-nav">
-        <li><a href="hub.html" class="sidebar-link is-active"><span class="sidebar-icon">🏠</span> Course Overview</a></li>
-        <li><a href="lectures.html" class="sidebar-link"><span class="sidebar-icon">📚</span> Study Notes</a></li>
-        <div class="sidebar-divider"></div>
-        <li><a href="test-1.html" class="sidebar-link"><span class="sidebar-icon">✅</span> Test 1 — Supplier Code</a></li>
-        <li><a href="quiz-1.html" class="sidebar-link"><span class="sidebar-icon">📝</span> Quiz 1 — SCM Concepts</a></li>
-        <li><a href="test-2.html" class="sidebar-link"><span class="sidebar-icon">🔜</span> Test 2 — ESG &amp; CSRD <span class="sidebar-badge">Soon</span></a></li>
-        <div class="sidebar-divider"></div>
-        <li><a href="materials.html" class="sidebar-link"><span class="sidebar-icon">📁</span> Materials</a></li>
-      </ul>
-      <div class="sidebar-footer">
-        <a href="../../index.html">← Back to Home</a>
-      </div>
-    </aside>
+  <!-- LECTURES OVERVIEW -->
+  <div id="panel-lectures" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Course Schedule</div>
+      <table class="schedule-table">
+        <thead><tr><th>#</th><th>Topic</th><th>Sub</th><th>Assessment</th></tr></thead>
+        <tbody>
+          <tr><td class="topic-num-cell">01</td><td><span class="topic-link" data-target="panel-topic-1">Supply Chain Management Fundamentals</span></td><td><div class="topic-sub">Network structure &middot; Key processes &middot; KPIs</div></td><td><a href="quiz-1.html" class="assess-link">Quiz 1</a></td></tr>
+          <tr><td class="topic-num-cell">02</td><td><span class="topic-link" data-target="panel-topic-2">Supplier Code of Conduct</span></td><td><div class="topic-sub">Labor standards &middot; Human rights &middot; Ferragamo Supplier Code</div></td><td><a href="test-1.html" class="assess-link">Test 1</a></td></tr>
+          <tr><td class="topic-num-cell">03</td><td><span class="topic-link" data-target="panel-topic-3">ESG, CSRD &amp; Digital Traceability</span></td><td><div class="topic-sub">CSRD &middot; ESRS &middot; Digital Product Passport &middot; Scope emissions</div></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <main class="hub-main">
-      <div class="hub-intro">
-        <h2>Welcome to the Course Hub</h2>
-        <p>Use the sidebar to navigate between study notes, quizzes, tests, and materials. You only need to enter your password once per session.</p>
-      </div>
-
-      <div class="section-title">Assessments</div>
-      <div class="resource-grid">
-        <a href="test-1.html" class="resource-card">
-          <div class="card-icon">✅</div>
-          <div class="card-info">
-            <div class="card-name">Test 1 — Supplier Code of Conduct</div>
-            <div class="card-desc">10 questions · True/False &amp; Multiple Choice</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <a href="quiz-1.html" class="resource-card">
-          <div class="card-icon">📝</div>
-          <div class="card-info">
-            <div class="card-name">Quiz 1 — SCM Key Concepts</div>
-            <div class="card-desc">Multiple Choice &amp; True/False</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <div class="resource-card disabled">
-          <div class="card-icon">🔜</div>
-          <div class="card-info">
-            <div class="card-name">Test 2 — ESG &amp; CSRD</div>
-            <div class="card-desc">Coming soon</div>
-          </div>
-          <span class="card-badge badge-soon">Soon</span>
+  <!-- TOPIC 1 -->
+  <div id="panel-topic-1" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">01</span><h2>Supply Chain Management Fundamentals</h2></div>
+      <div class="topic-body">
+        <h3>What Is a Supply Chain?</h3>
+        <p>A supply chain is the entire network of entities &mdash; including raw material providers, manufacturers, logistics companies, distributors, and retailers &mdash; involved in creating and delivering a product or service to the end customer. Managing this network effectively is the core challenge of supply chain management (SCM).</p>
+        <h3>Key SCM Processes</h3>
+        <ul>
+          <li><strong>Procurement / Sourcing:</strong> identifying, selecting, and managing suppliers of raw materials and components. Strategic sourcing aims for the best quality, price, and reliability.</li>
+          <li><strong>Production / Manufacturing:</strong> transforming inputs into finished goods. Operations management focuses on efficiency, quality, and flexibility.</li>
+          <li><strong>Inventory Management:</strong> balancing the cost of holding stock against the risk of stockouts. Methods include Just-in-Time (JIT), Economic Order Quantity (EOQ), and safety stock calculations.</li>
+          <li><strong>Logistics and Distribution:</strong> moving goods from production to customers efficiently. Includes transportation, warehousing, and last-mile delivery.</li>
+          <li><strong>Demand Planning:</strong> forecasting future customer demand to align production and inventory levels.</li>
+        </ul>
+        <h3>Supply Chain Performance KPIs</h3>
+        <ul>
+          <li><strong>Lead Time:</strong> time from order placement to delivery. Shorter lead times improve responsiveness.</li>
+          <li><strong>Inventory Turnover:</strong> how many times inventory is sold/replaced in a period. High turnover signals efficiency.</li>
+          <li><strong>Order Fill Rate:</strong> percentage of orders fulfilled completely and on time. Target: as close to 100% as possible.</li>
+          <li><strong>Perfect Order Rate:</strong> orders delivered on time, in full, undamaged, with correct documentation.</li>
+          <li><strong>Total Supply Chain Cost:</strong> sum of procurement, production, inventory, logistics, and customer service costs.</li>
+        </ul>
+        <h3>Supply Chain Risk and Resilience</h3>
+        <p>Supply chains face disruptions from geopolitical events, natural disasters, supplier failures, and demand shocks (e.g., COVID-19 pandemic). Resilience strategies include: supplier diversification, dual sourcing, regional supply chains, strategic stockpiles, and digital visibility tools that provide real-time tracking across the chain.</p>
+        <h3>Sustainable Supply Chains</h3>
+        <p>A sustainable supply chain integrates environmental and social considerations into procurement, production, and logistics decisions. This includes: reducing carbon emissions in transportation, ensuring ethical labor practices across all tiers of suppliers, minimizing packaging waste, and using renewable energy in warehousing and manufacturing.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-lectures">&#8592; Overview</span>
+          <span class="prev-next-btn" data-target="panel-topic-2">02 Supplier Code of Conduct &#8594;</span>
         </div>
       </div>
-
-      <div class="section-title">Study &amp; Materials</div>
-      <div class="resource-grid">
-        <a href="lectures.html" class="resource-card">
-          <div class="card-icon">📚</div>
-          <div class="card-info">
-            <div class="card-name">Study Notes</div>
-            <div class="card-desc">Topic-by-topic notes, key concepts, and frameworks</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-        <a href="materials.html" class="resource-card">
-          <div class="card-icon">📁</div>
-          <div class="card-info">
-            <div class="card-name">Course Materials</div>
-            <div class="card-desc">Readings, case studies, and reference documents</div>
-          </div>
-          <span class="card-badge badge-open">Open</span>
-        </a>
-      </div>
-    </main>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-1.html" class="assess-link">Quiz 1 &mdash; SCM Key Concepts</a></div>
+    </div>
   </div>
 
+  <!-- TOPIC 2 -->
+  <div id="panel-topic-2" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">02</span><h2>Supplier Code of Conduct</h2></div>
+      <div class="topic-body">
+        <h3>What Is a Supplier Code of Conduct?</h3>
+        <p>A Supplier Code of Conduct (SCoC) is a document that sets out the ethical, social, and environmental standards that a company requires its suppliers and business partners to meet. It is a key tool for ensuring responsible sourcing and extending a company&apos;s values throughout its supply chain.</p>
+        <p>As global supply chains grow more complex, companies face increasing regulatory and reputational pressure to ensure that labor rights, environmental standards, and anti-corruption rules are respected &mdash; not just within their own operations, but across all tiers of their supplier network.</p>
+        <h3>Core Areas of a Supplier Code of Conduct</h3>
+        <ul>
+          <li><strong>Labor Standards:</strong> suppliers must comply with minimum wage laws, reasonable working hours (typically &le; 60 hours/week including overtime), and freedom of association (right to organize and collectively bargain).</li>
+          <li><strong>No Child Labor:</strong> prohibition on employing anyone below the minimum legal working age (ILO standards: no work under age 15; no hazardous work under age 18).</li>
+          <li><strong>No Forced Labor:</strong> all work must be voluntary; no debt bondage, human trafficking, or retention of identity documents.</li>
+          <li><strong>Health &amp; Safety:</strong> suppliers must provide a safe working environment, personal protective equipment, and training to prevent occupational accidents and illness.</li>
+          <li><strong>Environmental Responsibility:</strong> compliance with environmental laws, management of hazardous substances, waste reduction, and progressively reducing environmental impact.</li>
+          <li><strong>Anti-Corruption &amp; Fair Business:</strong> no bribery, no kickbacks, no facilitation payments; compliance with anti-corruption laws (e.g., UK Bribery Act, FCPA).</li>
+          <li><strong>Data Privacy &amp; Security:</strong> protection of confidential business and personal data.</li>
+        </ul>
+        <h3>The Ferragamo Supplier Code of Conduct</h3>
+        <p>The Salvatore Ferragamo Supplier Code of Conduct sets binding requirements for all suppliers to the Group, reflecting the company&apos;s commitment to responsible luxury. Key elements include:</p>
+        <ul>
+          <li>Compliance with all applicable national and international laws and regulations.</li>
+          <li>Prohibition of child labor, forced labor, and all forms of discrimination.</li>
+          <li>Requirement for safe and healthy working conditions in all facilities.</li>
+          <li>Environmental management: suppliers must minimize pollution, manage waste responsibly, and work toward reducing their carbon footprint.</li>
+          <li>Transparency and traceability: suppliers must be willing to undergo audits and provide documentation of compliance.</li>
+          <li>Cascading obligation: suppliers are expected to apply the same standards to their own sub-suppliers.</li>
+        </ul>
+        <h3>Supplier Auditing and Verification</h3>
+        <p>Codes of conduct are only effective if compliance is verified. Auditing methods include:</p>
+        <ul>
+          <li><strong>Self-assessment questionnaires (SAQ):</strong> suppliers complete structured questionnaires about their practices.</li>
+          <li><strong>Third-party audits:</strong> independent bodies (e.g., Bureau Veritas, SGS, ELEVATE) conduct on-site inspections.</li>
+          <li><strong>Social compliance certifications:</strong> standards such as SA8000 (social accountability) or SMETA (Sedex Members Ethical Trade Audit) provide recognized frameworks.</li>
+          <li><strong>Corrective action plans:</strong> when violations are found, suppliers must implement corrective action within agreed timelines or risk losing the contract.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-1">&#8592; 01 SCM Fundamentals</span>
+          <span class="prev-next-btn" data-target="panel-topic-3">03 ESG, CSRD &amp; Digital Traceability &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="test-1.html" class="assess-link">Test 1 &mdash; Supplier Code of Conduct</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 3 -->
+  <div id="panel-topic-3" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">03</span><h2>ESG, CSRD &amp; Digital Traceability</h2></div>
+      <div class="topic-body">
+        <h3>ESG in the Supply Chain</h3>
+        <p>ESG stands for Environmental, Social, and Governance &mdash; the three pillars used to evaluate a company&apos;s non-financial performance and its impact on society. Investors, regulators, and customers increasingly use ESG scores to assess risk and sustainability credentials.</p>
+        <ul>
+          <li><strong>Environmental:</strong> greenhouse gas emissions (Scope 1, 2, 3), water consumption, energy mix, waste management, deforestation risk.</li>
+          <li><strong>Social:</strong> labor standards, living wages, diversity &amp; inclusion, community relations, health &amp; safety performance.</li>
+          <li><strong>Governance:</strong> board independence, anti-corruption policies, executive pay, tax transparency, shareholder rights.</li>
+        </ul>
+        <p>Scope 3 emissions &mdash; indirect emissions from a company&apos;s value chain (including suppliers and customers) &mdash; often account for 70&ndash;90% of a company&apos;s total carbon footprint and are therefore the central challenge of sustainable supply chains.</p>
+        <h3>CSRD &mdash; Corporate Sustainability Reporting Directive</h3>
+        <p>The CSRD is an EU regulation that entered into force in 2023, phasing in from 2024. It requires large companies (and eventually SMEs listed on EU regulated markets) to publish detailed sustainability reports covering their environmental, social, and governance impacts.</p>
+        <ul>
+          <li>Replaces and significantly expands the earlier NFRD (Non-Financial Reporting Directive).</li>
+          <li>Covers approximately 50,000 companies in the EU &mdash; a major expansion from the ~11,000 covered by the NFRD.</li>
+          <li>Reports must be audited by an independent third party.</li>
+          <li><strong>Double materiality:</strong> companies must report both on how sustainability issues affect their business (financial materiality) AND on how their business affects society and the environment (impact materiality).</li>
+        </ul>
+        <h3>ESRS &mdash; European Sustainability Reporting Standards</h3>
+        <p>The ESRS are the reporting standards developed by EFRAG (European Financial Reporting Advisory Group) to implement the CSRD. They cover:</p>
+        <ul>
+          <li><strong>Cross-cutting standards:</strong> general requirements and general disclosures.</li>
+          <li><strong>Environmental standards (E1&ndash;E5):</strong> climate change, pollution, water &amp; marine resources, biodiversity, resource use &amp; circular economy.</li>
+          <li><strong>Social standards (S1&ndash;S4):</strong> own workforce, workers in the value chain, affected communities, consumers &amp; end-users.</li>
+          <li><strong>Governance standards (G1):</strong> business conduct.</li>
+        </ul>
+        <h3>Digital Product Passport (DPP)</h3>
+        <p>The Digital Product Passport is a key element of the EU&apos;s Ecodesign for Sustainable Products Regulation (ESPR). It is a digital record that travels with a product throughout its lifecycle, containing information on:</p>
+        <ul>
+          <li>Materials composition and origin.</li>
+          <li>Manufacturing processes and locations.</li>
+          <li>Environmental performance data (carbon footprint, recyclability, repairability).</li>
+          <li>Instructions for repair, reuse, and end-of-life disposal.</li>
+        </ul>
+        <p>DPPs will be mandatory for several product categories (starting with batteries, textiles, electronics) from 2026&ndash;2030. For fashion and luxury companies, DPPs will require deep supply chain transparency and traceability &mdash; knowing where every material comes from, how it was processed, and what its environmental impact is.</p>
+        <p>Technology enablers: QR codes, RFID tags, blockchain, and cloud-based platforms are key tools for implementing DPPs at scale.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-2">&#8592; 02 Supplier Code of Conduct</span>
+          <span class="prev-next-btn" data-target="panel-reference">Glossary &amp; Resources &#8594;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div id="panel-reference" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Glossary of Key Terms</div>
+      <table class="glossary-table">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td>Supply Chain</td><td>The entire network of entities &mdash; suppliers, manufacturers, logistics providers, distributors, retailers &mdash; involved in creating and delivering a product or service.</td></tr>
+          <tr><td>SCM</td><td>Supply Chain Management &mdash; the coordination and optimization of all supply chain activities to deliver maximum value to the end customer at lowest overall cost.</td></tr>
+          <tr><td>Procurement</td><td>The process of identifying, selecting, and managing suppliers of raw materials and components. Strategic sourcing focuses on quality, cost, and reliability.</td></tr>
+          <tr><td>Lead Time</td><td>The total time from placing an order to receiving the goods. Shorter lead times improve responsiveness and reduce inventory requirements.</td></tr>
+          <tr><td>Inventory Turnover</td><td>The number of times inventory is sold and replenished in a given period. Higher turnover generally indicates efficiency.</td></tr>
+          <tr><td>Just-in-Time (JIT)</td><td>An inventory management approach where materials arrive exactly when needed for production, minimizing stock and holding costs.</td></tr>
+          <tr><td>Supplier Code of Conduct</td><td>A document setting out the ethical, social, and environmental standards a company requires its suppliers to meet.</td></tr>
+          <tr><td>SA8000</td><td>An international social accountability standard that certifies supplier compliance with labor rights, safe working conditions, and ethical management.</td></tr>
+          <tr><td>ESG</td><td>Environmental, Social, and Governance &mdash; the three pillars used to evaluate a company&apos;s non-financial sustainability performance.</td></tr>
+          <tr><td>Scope 3 Emissions</td><td>Indirect greenhouse gas emissions from a company&apos;s value chain (suppliers, customers, logistics). Often 70&ndash;90% of a company&apos;s total carbon footprint.</td></tr>
+          <tr><td>CSRD</td><td>Corporate Sustainability Reporting Directive &mdash; an EU regulation requiring large companies to publish audited sustainability reports, phasing in from 2024.</td></tr>
+          <tr><td>Double Materiality</td><td>The CSRD requirement to report both how sustainability issues affect the business (financial materiality) and how the business affects society and the environment (impact materiality).</td></tr>
+          <tr><td>ESRS</td><td>European Sustainability Reporting Standards &mdash; the technical standards developed by EFRAG to implement the CSRD.</td></tr>
+          <tr><td>Digital Product Passport (DPP)</td><td>A digital record containing a product&apos;s full lifecycle information (materials, environmental performance, repair instructions), mandatory under the EU ESPR from 2026&ndash;2030.</td></tr>
+          <tr><td>Traceability</td><td>The ability to track the origin, movement, and processing of materials and products throughout the supply chain.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">External Resources</div>
+      <div style="background:#fff;border:1px solid var(--grigio-light);border-radius:4px;padding:28px;">
+        <ul style="padding-left:20px;">
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.globalreporting.org/" style="color:var(--oro);">Global Reporting Initiative (GRI) &mdash; Sustainability Reporting Standards</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en" style="color:var(--oro);">EU CSRD Overview</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.business-humanrights.org/en/big-issues/un-guiding-principles-on-business-human-rights/" style="color:var(--oro);">UN Guiding Principles on Business and Human Rights</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.sedex.com/our-services/smeta-audits/" style="color:var(--oro);">SMETA Social Compliance Audits</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZZES -->
+  <div id="panel-quizzes" class="panel" hidden>
+    <div class="section-title">Quizzes</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Self-assessment quizzes linked to individual lectures. Complete each quiz after studying the corresponding lecture to reinforce your learning.</p>
+    <div class="resource-grid">
+      <a href="quiz-1.html" class="resource-card"><div class="rc-label">Quiz 1 &middot; Lecture 01</div><div class="rc-title">SCM Key Concepts</div><div class="rc-sub">Supply chain fundamentals &amp; KPIs</div><span class="rc-badge badge-active">Active</span></a>
+    </div>
+  </div>
+
+  <!-- TESTS -->
+  <div id="panel-tests" class="panel" hidden>
+    <div class="section-title">Tests</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Comprehensive assessments covering multiple lectures. A passing score is required to complete each test.</p>
+    <div class="resource-grid">
+      <a href="test-1.html" class="resource-card"><div class="rc-label">Test 1</div><div class="rc-title">Supplier Code of Conduct</div><div class="rc-sub">10 questions &middot; True/False &amp; Multiple Choice</div><span class="rc-badge badge-active">Active</span></a>
+      <div class="resource-card is-soon"><div class="rc-label">Test 2</div><div class="rc-title">ESG &amp; CSRD</div><div class="rc-sub">Coming soon</div><span class="rc-badge badge-soon">Soon</span></div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var lecturesSub = document.getElementById('lectures-sub');
+  var navMap = {
+    'nav-home':     'panel-home',
+    'nav-lectures': 'panel-lectures',
+    'nav-quizzes':  'panel-quizzes',
+    'nav-tests':    'panel-tests'
+  };
+  var lectureTopics = ['panel-topic-1','panel-topic-2','panel-topic-3','panel-reference'];
+  function isLectureTopic(id) { return lectureTopics.indexOf(id) !== -1 || id === 'panel-lectures'; }
+
+  function showPanel(panelId, skipScroll) {
+    document.querySelectorAll('.panel').forEach(function(p){ p.hidden = true; });
+    var target = document.getElementById(panelId);
+    if (target) target.hidden = false;
+    document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    document.querySelectorAll('.sub-nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    if (isLectureTopic(panelId)) {
+      var lectNav = document.getElementById('nav-lectures');
+      if (lectNav) lectNav.classList.add('is-active');
+      lecturesSub.classList.add('is-open');
+      if (panelId !== 'panel-lectures') {
+        document.querySelectorAll('.sub-nav-item[data-target="' + panelId + '"]').forEach(function(el){ el.classList.add('is-active'); });
+      }
+    } else {
+      lecturesSub.classList.remove('is-open');
+      Object.keys(navMap).forEach(function(k){ if (navMap[k] === panelId) { var el = document.getElementById(k); if (el) el.classList.add('is-active'); } });
+    }
+    if (!skipScroll) window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  Object.keys(navMap).forEach(function(k){
+    var el = document.getElementById(k);
+    if (el) el.addEventListener('click', function(){ showPanel(navMap[k]); });
+  });
+  document.querySelectorAll('.sub-nav-item[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.home-card[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.topic-link[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.prev-next-btn[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+
+  showPanel('panel-home', true);
+}());
+</script>
 </body>
-</html>
