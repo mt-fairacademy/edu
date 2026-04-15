@@ -46,11 +46,71 @@
       margin-top: 10px;
       letter-spacing: 1px;
     }
-    .content {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 24px 96px;
+    /* ── Two-column layout ── */
+    .lectures-layout {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - 120px);
     }
+    .lectures-sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: #fff;
+      border-right: 1px solid var(--grigio-light);
+      padding: 24px 0 40px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 700;
+      padding: 0 20px 14px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .sidebar-link {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--nero);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
+    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
+    .sidebar-link.is-active .sidebar-num { color: var(--oro); }
+    .sidebar-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--oro);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      min-width: 20px;
+    }
+    .sidebar-footer {
+      padding: 16px 20px 0;
+      border-top: 1px solid var(--grigio-light);
+      margin-top: auto;
+    }
+    .lectures-main {
+      flex: 1;
+      min-width: 0;
+      padding: 40px 36px 80px;
+    }
+    .panel[hidden] { display: none; }
     .section { margin-bottom: 56px; }
     .section-title {
       font-size: 10px;
@@ -62,6 +122,8 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--grigio-light);
     }
+
+    /* ── Schedule table ── */
     .schedule-table {
       width: 100%;
       border-collapse: collapse;
@@ -83,7 +145,7 @@
       vertical-align: middle;
     }
     .schedule-table tr:last-child td { border-bottom: none; }
-    .schedule-table tr:hover td { background: #fff; }
+    .schedule-table tr:hover td { background: #faf7f2; }
     .topic-num-cell {
       font-size: 11px;
       font-weight: 700;
@@ -95,6 +157,12 @@
       font-weight: 600;
       color: var(--nero);
       text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
     }
     .topic-link:hover { color: var(--oro); text-decoration: underline; }
     .topic-sub {
@@ -117,13 +185,13 @@
     }
     .assess-link:hover { background: #2D7A4F; color: #fff; }
     .assess-link + .assess-link { margin-top: 4px; display: block; }
+
+    /* ── Topic panels ── */
     .topic-section {
       background: #fff;
       border: 1px solid var(--grigio-light);
       border-radius: 4px;
-      margin-bottom: 32px;
       overflow: hidden;
-      scroll-margin-top: 24px;
     }
     .topic-header {
       display: flex;
@@ -174,6 +242,7 @@
       margin-bottom: 5px;
     }
     .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
     .topic-footer {
       border-top: 1px solid var(--grigio-light);
       padding: 14px 28px;
@@ -191,7 +260,6 @@
     }
     .back-link {
       display: inline-block;
-      margin-top: 32px;
       font-size: 0.83rem;
       color: #aaa;
       text-decoration: none;
@@ -216,48 +284,22 @@
     .breadcrumb-sep { color: #ccc; }
     .breadcrumb-current { color: var(--grigio); }
 
-    /* ── TABLE OF CONTENTS ── */
-    .toc-section {
-      background: #fff;
-      border: 1px solid var(--grigio-light);
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin-bottom: 40px;
-    }
-    .toc-title {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--grigio);
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list { list-style: none; padding: 0; margin: 0; }
-    .toc-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list li:last-child { border-bottom: none; }
-    .toc-num { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 24px; }
-    .toc-list a { color: var(--nero); text-decoration: none; font-size: 0.93rem; font-weight: 500; }
-    .toc-list a:hover { color: var(--oro); text-decoration: underline; }
+    /* ── Glossary ── */
+    .glossary-term { font-weight: 700; color: var(--nero); }
+    .glossary-def { font-size: 0.9rem; color: #444; margin-bottom: 10px; line-height: 1.6; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .page-header { padding: 28px 20px 24px; }
-      .content { padding: 32px 16px 60px; }
+      .lectures-layout { flex-direction: column; }
+      .lectures-sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .lectures-main { padding: 24px 16px 60px; }
       .topic-header { padding: 16px 18px; }
       .topic-body { padding: 20px 18px 24px; }
       .topic-footer { padding: 12px 18px; }
       .schedule-table th, .schedule-table td { padding: 10px 8px; }
       .breadcrumb { padding: 10px 20px; }
-      .toc-section { padding: 20px 18px; }
     }
-  </style>
+      </style>
 </head>
 <body>
 
@@ -276,20 +318,28 @@
   <span class="breadcrumb-current">Study Notes</span>
 </nav>
 
-<div class="content">
+<div class="lectures-layout">
 
-  <!-- ── Table of Contents ── -->
-  <div class="toc-section">
-    <div class="toc-title">Table of Contents</div>
-    <ul class="toc-list">
-      <li><span class="toc-num">01</span><a href="#topic-1">Operations Management Fundamentals</a></li>
-      <li><span class="toc-num">02</span><a href="#topic-2">Lean Thinking &amp; Waste Reduction</a></li>
-      <li><span class="toc-num">03</span><a href="#topic-3">Quality Management</a></li>
-      <li><span class="toc-num">04</span><a href="#topic-4">Operations Strategy &amp; Performance</a></li>
+  <!-- ── Left Sidebar ── -->
+  <nav class="lectures-sidebar" aria-label="Study notes navigation">
+    <div class="sidebar-label">Contents</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" class="sidebar-link is-active" data-panel="overview">Course Schedule</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-1"><span class="sidebar-num">01</span>Operations Management Fundamentals</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>Lean Thinking &amp; Waste Reduction</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-3"><span class="sidebar-num">03</span>Quality Management</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-4"><span class="sidebar-num">04</span>Operations Strategy &amp; Performance</a></li>
     </ul>
-  </div>
+    <div class="sidebar-footer">
+      <a href="hub.html" class="back-link">← Back to course hub</a>
+    </div>
+  </nav>
 
-  <!-- ── Schedule overview ── -->
+  <!-- ── Main content area ── -->
+  <main class="lectures-main">
+    <!-- ── Overview panel (default) ── -->
+    <div id="panel-overview" class="panel">
+      <!-- ── Schedule overview ── -->
   <div class="section">
     <div class="section-title">Course Schedule</div>
     <table class="schedule-table">
@@ -304,230 +354,271 @@
         <tr>
           <td class="topic-num-cell">01</td>
           <td>
-            <a href="#topic-1" class="topic-link">Operations Management Fundamentals</a>
+            <a data-panel="topic-1" class="topic-link">Operations Management Fundamentals</a>
             <div class="topic-sub">Process types · Efficiency &amp; effectiveness · Capacity planning</div>
           </td>
           <td>
-            <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1</a>
-            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1</a>
+            <a href="quiz-1.html" class="assess-link">Quiz 1</a>
+            <a href="test-1.html" class="assess-link">Test 1</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">02</td>
           <td>
-            <a href="#topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a>
+            <a data-panel="topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a>
             <div class="topic-sub">7 wastes (Muda) · Kaizen · Value stream mapping</div>
           </td>
           <td>
-            <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1</a>
+            <a href="quiz-1.html" class="assess-link">Quiz 1</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">03</td>
           <td>
-            <a href="#topic-3" class="topic-link">Quality Management</a>
+            <a data-panel="topic-3" class="topic-link">Quality Management</a>
             <div class="topic-sub">TQM · Six Sigma · DMAIC · ISO 9001</div>
           </td>
           <td>
-            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1</a>
+            <a href="test-1.html" class="assess-link">Test 1</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">04</td>
           <td>
-            <a href="#topic-4" class="topic-link">Operations Strategy &amp; Performance</a>
+            <a data-panel="topic-4" class="topic-link">Operations Strategy &amp; Performance</a>
             <div class="topic-sub">Competitive priorities · KPIs · Capacity &amp; bottlenecks</div>
           </td>
           <td>
-            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1</a>
+            <a href="test-1.html" class="assess-link">Test 1</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-
-  <!-- ── Topic 1 ── -->
-  <div id="topic-1" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">01</span>
-      <h2>Operations Management Fundamentals</h2>
     </div>
-    <div class="topic-body">
 
-      <h3>What Is Operations Management?</h3>
-      <p>Operations management (OM) is the administration of business practices to create the highest level of efficiency possible within an organization. It is concerned with converting materials and labor into goods and services as efficiently as possible to maximize profit — or, in public/social organizations, to maximize value delivery.</p>
-      <p>Operations management covers every activity involved in producing a product or delivering a service: design, planning, control, improvement, and strategy. It applies to both manufacturing (physical goods) and services (intangible outputs).</p>
+    <!-- ── Topic 1 panel ── -->
+    <div id="panel-topic-1" class="panel" hidden>
+      <div id="topic-1" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">01</span>
+            <h2>Operations Management Fundamentals</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>Efficiency vs. Effectiveness</h3>
-      <ul>
-        <li><strong>Efficiency</strong> (doing things right): using the minimum resources (time, money, materials) to produce a given output. Measured as output ÷ input. A highly efficient operation wastes nothing.</li>
-        <li><strong>Effectiveness</strong> (doing the right things): achieving the desired outcome or goal. An effective operation produces what customers actually want.</li>
-        <li>Good operations management pursues both: being efficient and effective simultaneously. A factory that produces 10,000 units cheaply but the wrong product is efficient but not effective.</li>
-      </ul>
+            <h3>What Is Operations Management?</h3>
+            <p>Operations management (OM) is the administration of business practices to create the highest level of efficiency possible within an organization. It is concerned with converting materials and labor into goods and services as efficiently as possible to maximize profit — or, in public/social organizations, to maximize value delivery.</p>
+            <p>Operations management covers every activity involved in producing a product or delivering a service: design, planning, control, improvement, and strategy. It applies to both manufacturing (physical goods) and services (intangible outputs).</p>
 
-      <h3>Process Types</h3>
-      <p>Operations can be classified by their process type, which determines how production is organized:</p>
-      <ul>
-        <li><strong>Project process:</strong> unique, one-off outputs, high customization (e.g., building a bridge, making a film). Long duration, high cost, complex coordination.</li>
-        <li><strong>Jobbing (job shop) process:</strong> small batches of highly customized products (e.g., bespoke tailoring, custom machine parts). Flexible but slow.</li>
-        <li><strong>Batch process:</strong> groups of similar products moved together through production stages (e.g., bakery, clothing manufacturer). Balances flexibility and efficiency.</li>
-        <li><strong>Mass (line) process:</strong> high volume, low variety, standardized products (e.g., car assembly, consumer electronics). Highly efficient, low flexibility.</li>
-        <li><strong>Continuous process:</strong> non-stop, automated production of a commodity (e.g., oil refining, electricity generation). Maximum efficiency, zero variety.</li>
-      </ul>
+            <h3>Efficiency vs. Effectiveness</h3>
+            <ul>
+              <li><strong>Efficiency</strong> (doing things right): using the minimum resources (time, money, materials) to produce a given output. Measured as output ÷ input. A highly efficient operation wastes nothing.</li>
+              <li><strong>Effectiveness</strong> (doing the right things): achieving the desired outcome or goal. An effective operation produces what customers actually want.</li>
+              <li>Good operations management pursues both: being efficient and effective simultaneously. A factory that produces 10,000 units cheaply but the wrong product is efficient but not effective.</li>
+            </ul>
 
-      <h3>Capacity Planning</h3>
-      <p>Capacity is the maximum output that a process can produce in a given time period. Capacity planning ensures that a business can meet demand without over- or under-investing in resources.</p>
-      <ul>
-        <li><strong>Design capacity:</strong> the theoretical maximum output under ideal conditions.</li>
-        <li><strong>Effective capacity:</strong> realistic maximum output accounting for maintenance, breaks, quality issues, and changeovers.</li>
-        <li><strong>Capacity utilization:</strong> actual output ÷ design capacity × 100%. Target: typically 80–90% (100% leaves no room for maintenance or demand spikes).</li>
-        <li><strong>Bottleneck:</strong> the process step with the lowest capacity, which limits overall throughput. Managing bottlenecks is central to improving operations (Theory of Constraints, Goldratt).</li>
-      </ul>
+            <h3>Process Types</h3>
+            <p>Operations can be classified by their process type, which determines how production is organized:</p>
+            <ul>
+              <li><strong>Project process:</strong> unique, one-off outputs, high customization (e.g., building a bridge, making a film). Long duration, high cost, complex coordination.</li>
+              <li><strong>Jobbing (job shop) process:</strong> small batches of highly customized products (e.g., bespoke tailoring, custom machine parts). Flexible but slow.</li>
+              <li><strong>Batch process:</strong> groups of similar products moved together through production stages (e.g., bakery, clothing manufacturer). Balances flexibility and efficiency.</li>
+              <li><strong>Mass (line) process:</strong> high volume, low variety, standardized products (e.g., car assembly, consumer electronics). Highly efficient, low flexibility.</li>
+              <li><strong>Continuous process:</strong> non-stop, automated production of a commodity (e.g., oil refining, electricity generation). Maximum efficiency, zero variety.</li>
+            </ul>
+
+            <h3>Capacity Planning</h3>
+            <p>Capacity is the maximum output that a process can produce in a given time period. Capacity planning ensures that a business can meet demand without over- or under-investing in resources.</p>
+            <ul>
+              <li><strong>Design capacity:</strong> the theoretical maximum output under ideal conditions.</li>
+              <li><strong>Effective capacity:</strong> realistic maximum output accounting for maintenance, breaks, quality issues, and changeovers.</li>
+              <li><strong>Capacity utilization:</strong> actual output ÷ design capacity × 100%. Target: typically 80–90% (100% leaves no room for maintenance or demand spikes).</li>
+              <li><strong>Bottleneck:</strong> the process step with the lowest capacity, which limits overall throughput. Managing bottlenecks is central to improving operations (Theory of Constraints, Goldratt).</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
+            <a href="test-1.html" class="assess-link">Test 1 — Fundamentals</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- ── Topic 2 panel ── -->
+    <div id="panel-topic-2" class="panel" hidden>
+      <div id="topic-2" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">02</span>
+            <h2>Lean Thinking &amp; Waste Reduction</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>What Is Lean?</h3>
+            <p>Lean thinking is a management philosophy derived from the Toyota Production System (TPS), developed in Japan after World War II. Its central idea: maximize customer value while minimizing waste. "Lean" means using fewer resources — time, space, people, materials — to create more value.</p>
+            <p>James Womack and Daniel Jones popularized lean in the West through their 1990 book <em>The Machine That Changed the World</em> and later coined the term "lean thinking."</p>
+
+            <h3>The 7 Wastes (Muda)</h3>
+            <p>In lean thinking, waste is any activity that consumes resources without creating value for the customer. Toyota identified seven types of waste (in Japanese: <em>muda</em>):</p>
+            <ul>
+              <li><strong>Transport:</strong> unnecessary movement of materials or products between locations.</li>
+              <li><strong>Inventory:</strong> excess stock (raw materials, WIP, finished goods) that is not being processed. Ties up capital and hides quality problems.</li>
+              <li><strong>Motion:</strong> unnecessary movement of people (walking, reaching, bending) in the workplace.</li>
+              <li><strong>Waiting:</strong> idle time when people, machines, or materials are waiting for the next process step.</li>
+              <li><strong>Overproduction:</strong> producing more than the customer currently needs. Considered the worst waste — it generates all others.</li>
+              <li><strong>Over-processing:</strong> doing more work or using more precision than the customer requires.</li>
+              <li><strong>Defects:</strong> products or services that do not meet quality standards, requiring rework or scrapping.</li>
+            </ul>
+            <p>A common mnemonic: <strong>TIM WOOD</strong> (Transport, Inventory, Motion, Waiting, Overproduction, Over-processing, Defects).</p>
+
+            <h3>Kaizen — Continuous Improvement</h3>
+            <p><strong>Kaizen</strong> (Japanese: "change for better") is the practice of continuous, incremental improvement involving all employees, from the CEO to frontline workers. Rather than large, infrequent overhauls, kaizen focuses on making many small improvements every day.</p>
+            <ul>
+              <li>Everyone is responsible for improvement — not just managers or engineers.</li>
+              <li>Improvements are based on data and observation, not assumptions.</li>
+              <li>Problems are seen as opportunities to improve, not failures to be hidden.</li>
+              <li><strong>PDCA cycle</strong> (Plan-Do-Check-Act): the standard kaizen improvement process. Also known as the Deming Cycle.</li>
+            </ul>
+
+            <h3>Value Stream Mapping (VSM)</h3>
+            <p>Value Stream Mapping is a lean tool used to visualize all the steps — both value-adding and non-value-adding — in a product's flow from raw material to the customer. It helps teams identify where waste occurs so that improvement efforts can be focused effectively. A VSM shows process steps, information flows, lead times, and inventory levels at each stage.</p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- ── Topic 3 panel ── -->
+    <div id="panel-topic-3" class="panel" hidden>
+      <div id="topic-3" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">03</span>
+            <h2>Quality Management</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>What Is Quality?</h3>
+            <p>In operations management, quality means consistently meeting or exceeding customer expectations. Quality can be defined from multiple perspectives: the producer's (conformance to specifications), the customer's (fitness for purpose), and the market's (value for price paid).</p>
+            <p>Poor quality has cascading costs: rework, scrap, warranty claims, customer loss, brand damage, and regulatory penalties. Prevention costs are almost always lower than failure costs.</p>
+
+            <h3>Total Quality Management (TQM)</h3>
+            <p>TQM is a management approach that involves all employees in continuously improving the quality of products, services, and internal processes. Key principles:</p>
+            <ul>
+              <li><strong>Customer focus:</strong> quality is defined by what the customer values.</li>
+              <li><strong>Employee involvement:</strong> quality is everyone's responsibility, not just the quality department.</li>
+              <li><strong>Process-centered:</strong> understanding and improving processes is the key to quality improvement.</li>
+              <li><strong>Continuous improvement:</strong> quality is never "finished" — there is always room to improve (linked to kaizen).</li>
+              <li><strong>Data-driven decisions:</strong> improvements are based on measurement and analysis, not intuition.</li>
+            </ul>
+
+            <h3>Six Sigma</h3>
+            <p>Six Sigma is a data-driven methodology for eliminating defects (aiming for fewer than 3.4 defects per million opportunities). Developed at Motorola and popularized by GE under Jack Welch in the 1990s.</p>
+            <p>Six Sigma uses the <strong>DMAIC</strong> cycle for improvement projects:</p>
+            <ul>
+              <li><strong>Define:</strong> define the problem, the goal, and the customer requirements.</li>
+              <li><strong>Measure:</strong> measure the current process performance (baseline metrics).</li>
+              <li><strong>Analyze:</strong> analyze data to identify the root causes of defects and variation.</li>
+              <li><strong>Improve:</strong> design and implement solutions to address root causes.</li>
+              <li><strong>Control:</strong> implement controls to sustain improvements and prevent regression.</li>
+            </ul>
+            <p>Six Sigma practitioners are certified at different levels: Yellow Belt, Green Belt, Black Belt, and Master Black Belt.</p>
+
+            <h3>ISO 9001 — Quality Management Systems</h3>
+            <p>ISO 9001 is the international standard for Quality Management Systems (QMS). It provides a framework of requirements that organizations must meet to demonstrate their ability to consistently provide products and services that meet customer and regulatory requirements.</p>
+            <ul>
+              <li>Based on seven quality management principles: customer focus, leadership, engagement of people, process approach, improvement, evidence-based decision making, relationship management.</li>
+              <li>Certification is awarded by accredited third-party bodies after an audit.</li>
+              <li>ISO 9001 certification is often required by customers and contracts, especially in B2B settings.</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="test-1.html" class="assess-link">Test 1 — Fundamentals</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- ── Topic 4 panel ── -->
+    <div id="panel-topic-4" class="panel" hidden>
+      <div id="topic-4" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">04</span>
+            <h2>Operations Strategy &amp; Performance</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Operations Strategy</h3>
+            <p>Operations strategy defines how an organization uses its operational resources and capabilities to support its business strategy. It answers: what should operations prioritize to help the business compete?</p>
+            <p>Operations strategy links corporate goals to operational decisions about capacity, technology, workforce, quality, and supplier relationships.</p>
+
+            <h3>Competitive Priorities</h3>
+            <p>Operations compete on four dimensions. An organization must choose which to prioritize (it is difficult to excel at all simultaneously):</p>
+            <ul>
+              <li><strong>Cost:</strong> producing goods or services at the lowest possible cost to offer competitive prices. Achieved through economies of scale, process automation, and lean practices.</li>
+              <li><strong>Quality:</strong> producing goods or services that consistently meet or exceed customer expectations. High quality reduces defects and builds brand reputation.</li>
+              <li><strong>Delivery speed &amp; reliability:</strong> getting products to customers quickly and on time. Critical in industries with short lead times (fast fashion, food, e-commerce).</li>
+              <li><strong>Flexibility:</strong> the ability to change quickly — offering a wide range of products, or responding rapidly to demand changes or custom orders.</li>
+            </ul>
+
+            <h3>Key Operations Performance Metrics</h3>
+            <ul>
+              <li><strong>Overall Equipment Effectiveness (OEE):</strong> measures machine performance as Availability × Performance × Quality. World-class OEE ≈ 85%.</li>
+              <li><strong>Throughput:</strong> units produced (or customers served) per unit of time. Maximizing throughput at the bottleneck improves overall output.</li>
+              <li><strong>Cycle time:</strong> time required to complete one unit of production from start to finish.</li>
+              <li><strong>Defect rate / First pass yield:</strong> percentage of units produced without defects on the first attempt.</li>
+              <li><strong>On-time delivery (OTD):</strong> percentage of orders fulfilled by the promised delivery date.</li>
+              <li><strong>Inventory turnover:</strong> how many times inventory is used and replenished in a period. Higher is generally better.</li>
+            </ul>
+
+            <h3>Sustainable Operations</h3>
+            <p>Modern operations management increasingly integrates sustainability into its core strategy. This includes: reducing energy consumption and greenhouse gas emissions, designing for recyclability and circular flows, minimizing water use in manufacturing, and ensuring ethical treatment of workers across the supply chain. Sustainable operations reduce costs (energy, waste), manage regulatory risk, and meet growing customer and investor expectations.</p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="test-1.html" class="assess-link">Test 1 — Fundamentals</a>
+          </div>
+        </div>
 
     </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
-      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Fundamentals</a>
-    </div>
-  </div>
 
-  <!-- ── Topic 2 ── -->
-  <div id="topic-2" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">02</span>
-      <h2>Lean Thinking &amp; Waste Reduction</h2>
-    </div>
-    <div class="topic-body">
+  </main>
 
-      <h3>What Is Lean?</h3>
-      <p>Lean thinking is a management philosophy derived from the Toyota Production System (TPS), developed in Japan after World War II. Its central idea: maximize customer value while minimizing waste. "Lean" means using fewer resources — time, space, people, materials — to create more value.</p>
-      <p>James Womack and Daniel Jones popularized lean in the West through their 1990 book <em>The Machine That Changed the World</em> and later coined the term "lean thinking."</p>
+</div><!-- /.lectures-layout -->
 
-      <h3>The 7 Wastes (Muda)</h3>
-      <p>In lean thinking, waste is any activity that consumes resources without creating value for the customer. Toyota identified seven types of waste (in Japanese: <em>muda</em>):</p>
-      <ul>
-        <li><strong>Transport:</strong> unnecessary movement of materials or products between locations.</li>
-        <li><strong>Inventory:</strong> excess stock (raw materials, WIP, finished goods) that is not being processed. Ties up capital and hides quality problems.</li>
-        <li><strong>Motion:</strong> unnecessary movement of people (walking, reaching, bending) in the workplace.</li>
-        <li><strong>Waiting:</strong> idle time when people, machines, or materials are waiting for the next process step.</li>
-        <li><strong>Overproduction:</strong> producing more than the customer currently needs. Considered the worst waste — it generates all others.</li>
-        <li><strong>Over-processing:</strong> doing more work or using more precision than the customer requires.</li>
-        <li><strong>Defects:</strong> products or services that do not meet quality standards, requiring rework or scrapping.</li>
-      </ul>
-      <p>A common mnemonic: <strong>TIM WOOD</strong> (Transport, Inventory, Motion, Waiting, Overproduction, Over-processing, Defects).</p>
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.sidebar-link[data-panel]');
+  var topicLinks = document.querySelectorAll('.topic-link[data-panel]');
+  var panels = document.querySelectorAll('.panel');
 
-      <h3>Kaizen — Continuous Improvement</h3>
-      <p><strong>Kaizen</strong> (Japanese: "change for better") is the practice of continuous, incremental improvement involving all employees, from the CEO to frontline workers. Rather than large, infrequent overhauls, kaizen focuses on making many small improvements every day.</p>
-      <ul>
-        <li>Everyone is responsible for improvement — not just managers or engineers.</li>
-        <li>Improvements are based on data and observation, not assumptions.</li>
-        <li>Problems are seen as opportunities to improve, not failures to be hidden.</li>
-        <li><strong>PDCA cycle</strong> (Plan-Do-Check-Act): the standard kaizen improvement process. Also known as the Deming Cycle.</li>
-      </ul>
+  function showPanel(panelId) {
+    panels.forEach(function (p) { p.hidden = true; });
+    navLinks.forEach(function (l) { l.classList.remove('is-active'); });
+    var panel = document.getElementById('panel-' + panelId);
+    if (panel) panel.hidden = false;
+    navLinks.forEach(function (l) {
+      if (l.dataset.panel === panelId) l.classList.add('is-active');
+    });
+  }
 
-      <h3>Value Stream Mapping (VSM)</h3>
-      <p>Value Stream Mapping is a lean tool used to visualize all the steps — both value-adding and non-value-adding — in a product's flow from raw material to the customer. It helps teams identify where waste occurs so that improvement efforts can be focused effectively. A VSM shows process steps, information flows, lead times, and inventory levels at each stage.</p>
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPanel(this.dataset.panel);
+    });
+  });
 
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
-    </div>
-  </div>
-
-  <!-- ── Topic 3 ── -->
-  <div id="topic-3" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">03</span>
-      <h2>Quality Management</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>What Is Quality?</h3>
-      <p>In operations management, quality means consistently meeting or exceeding customer expectations. Quality can be defined from multiple perspectives: the producer's (conformance to specifications), the customer's (fitness for purpose), and the market's (value for price paid).</p>
-      <p>Poor quality has cascading costs: rework, scrap, warranty claims, customer loss, brand damage, and regulatory penalties. Prevention costs are almost always lower than failure costs.</p>
-
-      <h3>Total Quality Management (TQM)</h3>
-      <p>TQM is a management approach that involves all employees in continuously improving the quality of products, services, and internal processes. Key principles:</p>
-      <ul>
-        <li><strong>Customer focus:</strong> quality is defined by what the customer values.</li>
-        <li><strong>Employee involvement:</strong> quality is everyone's responsibility, not just the quality department.</li>
-        <li><strong>Process-centered:</strong> understanding and improving processes is the key to quality improvement.</li>
-        <li><strong>Continuous improvement:</strong> quality is never "finished" — there is always room to improve (linked to kaizen).</li>
-        <li><strong>Data-driven decisions:</strong> improvements are based on measurement and analysis, not intuition.</li>
-      </ul>
-
-      <h3>Six Sigma</h3>
-      <p>Six Sigma is a data-driven methodology for eliminating defects (aiming for fewer than 3.4 defects per million opportunities). Developed at Motorola and popularized by GE under Jack Welch in the 1990s.</p>
-      <p>Six Sigma uses the <strong>DMAIC</strong> cycle for improvement projects:</p>
-      <ul>
-        <li><strong>Define:</strong> define the problem, the goal, and the customer requirements.</li>
-        <li><strong>Measure:</strong> measure the current process performance (baseline metrics).</li>
-        <li><strong>Analyze:</strong> analyze data to identify the root causes of defects and variation.</li>
-        <li><strong>Improve:</strong> design and implement solutions to address root causes.</li>
-        <li><strong>Control:</strong> implement controls to sustain improvements and prevent regression.</li>
-      </ul>
-      <p>Six Sigma practitioners are certified at different levels: Yellow Belt, Green Belt, Black Belt, and Master Black Belt.</p>
-
-      <h3>ISO 9001 — Quality Management Systems</h3>
-      <p>ISO 9001 is the international standard for Quality Management Systems (QMS). It provides a framework of requirements that organizations must meet to demonstrate their ability to consistently provide products and services that meet customer and regulatory requirements.</p>
-      <ul>
-        <li>Based on seven quality management principles: customer focus, leadership, engagement of people, process approach, improvement, evidence-based decision making, relationship management.</li>
-        <li>Certification is awarded by accredited third-party bodies after an audit.</li>
-        <li>ISO 9001 certification is often required by customers and contracts, especially in B2B settings.</li>
-      </ul>
-
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Fundamentals</a>
-    </div>
-  </div>
-
-  <!-- ── Topic 4 ── -->
-  <div id="topic-4" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">04</span>
-      <h2>Operations Strategy &amp; Performance</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>Operations Strategy</h3>
-      <p>Operations strategy defines how an organization uses its operational resources and capabilities to support its business strategy. It answers: what should operations prioritize to help the business compete?</p>
-      <p>Operations strategy links corporate goals to operational decisions about capacity, technology, workforce, quality, and supplier relationships.</p>
-
-      <h3>Competitive Priorities</h3>
-      <p>Operations compete on four dimensions. An organization must choose which to prioritize (it is difficult to excel at all simultaneously):</p>
-      <ul>
-        <li><strong>Cost:</strong> producing goods or services at the lowest possible cost to offer competitive prices. Achieved through economies of scale, process automation, and lean practices.</li>
-        <li><strong>Quality:</strong> producing goods or services that consistently meet or exceed customer expectations. High quality reduces defects and builds brand reputation.</li>
-        <li><strong>Delivery speed &amp; reliability:</strong> getting products to customers quickly and on time. Critical in industries with short lead times (fast fashion, food, e-commerce).</li>
-        <li><strong>Flexibility:</strong> the ability to change quickly — offering a wide range of products, or responding rapidly to demand changes or custom orders.</li>
-      </ul>
-
-      <h3>Key Operations Performance Metrics</h3>
-      <ul>
-        <li><strong>Overall Equipment Effectiveness (OEE):</strong> measures machine performance as Availability × Performance × Quality. World-class OEE ≈ 85%.</li>
-        <li><strong>Throughput:</strong> units produced (or customers served) per unit of time. Maximizing throughput at the bottleneck improves overall output.</li>
-        <li><strong>Cycle time:</strong> time required to complete one unit of production from start to finish.</li>
-        <li><strong>Defect rate / First pass yield:</strong> percentage of units produced without defects on the first attempt.</li>
-        <li><strong>On-time delivery (OTD):</strong> percentage of orders fulfilled by the promised delivery date.</li>
-        <li><strong>Inventory turnover:</strong> how many times inventory is used and replenished in a period. Higher is generally better.</li>
-      </ul>
-
-      <h3>Sustainable Operations</h3>
-      <p>Modern operations management increasingly integrates sustainability into its core strategy. This includes: reducing energy consumption and greenhouse gas emissions, designing for recyclability and circular flows, minimizing water use in manufacturing, and ensuring ethical treatment of workers across the supply chain. Sustainable operations reduce costs (energy, waste), manage regulatory risk, and meet growing customer and investor expectations.</p>
-
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Fundamentals</a>
-    </div>
-  </div>
-
-  <a href="../../index.html" class="back-link">← Back to course hub</a>
-
-</div><!-- /.content -->
+  topicLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      showPanel(this.dataset.panel);
+    });
+  });
+}());
+</script>
 </body>
 </html>

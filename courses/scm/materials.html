@@ -131,6 +131,7 @@
   </style>
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_scm')){window.location.replace('password-gate.html');}</script>
 
 <div class="page-header">
   <div class="header-label">Supply Chain Management &amp; ESG · Course Materials</div>
@@ -141,7 +142,7 @@
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../../index.html" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-link">Supply Chain Management &amp; ESG</span>
+  <a href="hub.html" class="breadcrumb-link">Supply Chain Management &amp; ESG</a>
   <span class="breadcrumb-sep">/</span>
   <span class="breadcrumb-current">Materials</span>
 </nav>
@@ -188,7 +189,7 @@
           <div class="material-name">Test 1 — Supplier Code of Conduct</div>
           <div class="material-desc">20 questions · Multiple Choice · Passing: 13/20</div>
         </div>
-        <a href="password-gate.html?to=test-1.html" style="text-decoration:none;">
+        <a href="test-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -198,7 +199,7 @@
           <div class="material-name">Quiz 1 — SCM Key Concepts</div>
           <div class="material-desc">4 questions · Multiple Choice &amp; True/False</div>
         </div>
-        <a href="password-gate.html?to=quiz-1.html" style="text-decoration:none;">
+        <a href="quiz-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -213,7 +214,7 @@
     </ul>
   </div>
 
-  <a href="../../index.html" class="back-link">← Back to course hub</a>
+  <a href="hub.html" class="back-link">← Back to course hub</a>
 
 </div><!-- /.content -->
 </body>
