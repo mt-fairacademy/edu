@@ -197,6 +197,56 @@
       text-decoration: none;
     }
     .back-link:hover { color: var(--nero); }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: #fff;
+      border-bottom: 1px solid var(--grigio-light);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .breadcrumb-link { color: var(--oro); text-decoration: none; }
+    .breadcrumb-link:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #ccc; }
+    .breadcrumb-current { color: var(--grigio); }
+
+    /* ── TABLE OF CONTENTS ── */
+    .toc-section {
+      background: #fff;
+      border: 1px solid var(--grigio-light);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+    }
+    .toc-title {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .toc-list li:last-child { border-bottom: none; }
+    .toc-num { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 24px; }
+    .toc-list a { color: var(--nero); text-decoration: none; font-size: 0.93rem; font-weight: 500; }
+    .toc-list a:hover { color: var(--oro); text-decoration: underline; }
+
     @media (max-width: 600px) {
       .page-header { padding: 28px 20px 24px; }
       .content { padding: 32px 16px 60px; }
@@ -204,6 +254,8 @@
       .topic-body { padding: 20px 18px 24px; }
       .topic-footer { padding: 12px 18px; }
       .schedule-table th, .schedule-table td { padding: 10px 8px; }
+      .breadcrumb { padding: 10px 20px; }
+      .toc-section { padding: 20px 18px; }
     }
   </style>
 </head>
@@ -216,7 +268,25 @@
   <p>Lecture notes and readings to prepare for quizzes and tests</p>
 </div>
 
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-link">Supply Chain Management &amp; ESG</span>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-current">Study Notes</span>
+</nav>
+
 <div class="content">
+
+  <!-- ── Table of Contents ── -->
+  <div class="toc-section">
+    <div class="toc-title">Table of Contents</div>
+    <ul class="toc-list">
+      <li><span class="toc-num">01</span><a href="#topic-1">Supply Chain Management Fundamentals</a></li>
+      <li><span class="toc-num">02</span><a href="#topic-2">Supplier Code of Conduct</a></li>
+      <li><span class="toc-num">03</span><a href="#topic-3">ESG, CSRD &amp; Digital Traceability</a></li>
+    </ul>
+  </div>
 
   <!-- ── Schedule overview ── -->
   <div class="section">
