@@ -47,10 +47,11 @@
   </style>
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_opsmgmt')){window.location.replace('password-gate.html');}</script>
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../../index.html" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-link">Operations Management</span>
+  <a href="hub.html" class="breadcrumb-link">Operations Management</a>
   <span class="breadcrumb-sep">/</span>
   <span class="breadcrumb-current">Test 2</span>
 </nav>

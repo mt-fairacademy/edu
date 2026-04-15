@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supply Chain Management &amp; ESG — Course Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --nero: #1a1a1a;
+      --oro: #B8922A;
+      --panna: #FAF7F2;
+      --grigio: #6a6a6a;
+      --grigio-light: #e8e4de;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--panna);
+      color: var(--nero);
+      min-height: 100vh;
+    }
+    .page-header {
+      background: var(--nero);
+      padding: 32px 40px 28px;
+    }
+    .gold-line { width: 60px; height: 3px; background: var(--oro); margin-bottom: 14px; }
+    .header-label {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--oro);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 4vw, 36px);
+      color: #fff;
+      font-weight: 400;
+    }
+    .page-header h1 span { color: var(--oro); font-style: italic; }
+    .hub-layout {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - 110px);
+    }
+    .hub-sidebar {
+      width: 250px;
+      min-width: 250px;
+      background: #fff;
+      border-right: 1px solid var(--grigio-light);
+      padding: 24px 0 40px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 700;
+      padding: 0 20px 14px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .sidebar-nav li { display: block; }
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--nero);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+      border-left: 3px solid transparent;
+    }
+    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
+    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
+    .sidebar-icon { font-size: 13px; flex-shrink: 0; }
+    .sidebar-badge {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-left: auto;
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: var(--grigio-light);
+      margin: 8px 20px;
+    }
+    .sidebar-footer {
+      padding: 16px 20px 0;
+      border-top: 1px solid var(--grigio-light);
+      margin-top: auto;
+    }
+    .sidebar-footer a {
+      font-size: 0.78rem;
+      color: #aaa;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sidebar-footer a:hover { color: var(--nero); }
+    .hub-main {
+      flex: 1;
+      min-width: 0;
+      padding: 40px 44px 80px;
+      max-width: 780px;
+    }
+    .hub-intro {
+      margin-bottom: 40px;
+    }
+    .hub-intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: var(--nero);
+      margin-bottom: 10px;
+    }
+    .hub-intro p {
+      font-size: 0.9rem;
+      color: var(--grigio);
+      line-height: 1.7;
+    }
+    .section-title {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--oro);
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--grigio-light);
+      border-radius: 2px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+      text-decoration: none;
+      color: var(--nero);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 16px rgba(184,146,42,0.12); }
+    .resource-card.disabled { pointer-events: none; opacity: 0.55; }
+    .card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .card-info { flex: 1; }
+    .card-name { font-weight: 600; font-size: 0.92rem; margin-bottom: 4px; }
+    .card-desc { font-size: 0.79rem; color: var(--grigio); line-height: 1.5; }
+    .card-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .badge-open { background: #edfaf4; color: #2D7A4F; }
+    .badge-soon { background: #f0ede8; color: #aaa; }
+    @media (max-width: 700px) {
+      .hub-layout { flex-direction: column; }
+      .hub-sidebar { width: 100%; min-width: 0; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .hub-main { padding: 28px 20px 60px; }
+      .page-header { padding: 24px 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    if (!sessionStorage.getItem('auth_scm')) {
+      window.location.replace('password-gate.html');
+    }
+  </script>
+
+  <div class="page-header">
+    <div class="header-label">Fair Academy · Sustainability Management</div>
+    <div class="gold-line"></div>
+    <h1>Supply Chain Management &amp; <span>ESG</span></h1>
+  </div>
+
+  <div class="hub-layout">
+    <aside class="hub-sidebar">
+      <div class="sidebar-label">Course Navigation</div>
+      <ul class="sidebar-nav">
+        <li><a href="hub.html" class="sidebar-link is-active"><span class="sidebar-icon">🏠</span> Course Overview</a></li>
+        <li><a href="lectures.html" class="sidebar-link"><span class="sidebar-icon">📚</span> Study Notes</a></li>
+        <div class="sidebar-divider"></div>
+        <li><a href="test-1.html" class="sidebar-link"><span class="sidebar-icon">✅</span> Test 1 — Supplier Code</a></li>
+        <li><a href="quiz-1.html" class="sidebar-link"><span class="sidebar-icon">📝</span> Quiz 1 — SCM Concepts</a></li>
+        <li><a href="test-2.html" class="sidebar-link"><span class="sidebar-icon">🔜</span> Test 2 — ESG &amp; CSRD <span class="sidebar-badge">Soon</span></a></li>
+        <div class="sidebar-divider"></div>
+        <li><a href="materials.html" class="sidebar-link"><span class="sidebar-icon">📁</span> Materials</a></li>
+      </ul>
+      <div class="sidebar-footer">
+        <a href="../../index.html">← Back to Home</a>
+      </div>
+    </aside>
+
+    <main class="hub-main">
+      <div class="hub-intro">
+        <h2>Welcome to the Course Hub</h2>
+        <p>Use the sidebar to navigate between study notes, quizzes, tests, and materials. You only need to enter your password once per session.</p>
+      </div>
+
+      <div class="section-title">Assessments</div>
+      <div class="resource-grid">
+        <a href="test-1.html" class="resource-card">
+          <div class="card-icon">✅</div>
+          <div class="card-info">
+            <div class="card-name">Test 1 — Supplier Code of Conduct</div>
+            <div class="card-desc">10 questions · True/False &amp; Multiple Choice</div>
+          </div>
+          <span class="card-badge badge-open">Open</span>
+        </a>
+        <a href="quiz-1.html" class="resource-card">
+          <div class="card-icon">📝</div>
+          <div class="card-info">
+            <div class="card-name">Quiz 1 — SCM Key Concepts</div>
+            <div class="card-desc">Multiple Choice &amp; True/False</div>
+          </div>
+          <span class="card-badge badge-open">Open</span>
+        </a>
+        <div class="resource-card disabled">
+          <div class="card-icon">🔜</div>
+          <div class="card-info">
+            <div class="card-name">Test 2 — ESG &amp; CSRD</div>
+            <div class="card-desc">Coming soon</div>
+          </div>
+          <span class="card-badge badge-soon">Soon</span>
+        </div>
+      </div>
+
+      <div class="section-title">Study &amp; Materials</div>
+      <div class="resource-grid">
+        <a href="lectures.html" class="resource-card">
+          <div class="card-icon">📚</div>
+          <div class="card-info">
+            <div class="card-name">Study Notes</div>
+            <div class="card-desc">Topic-by-topic notes, key concepts, and frameworks</div>
+          </div>
+          <span class="card-badge badge-open">Open</span>
+        </a>
+        <a href="materials.html" class="resource-card">
+          <div class="card-icon">📁</div>
+          <div class="card-info">
+            <div class="card-name">Course Materials</div>
+            <div class="card-desc">Readings, case studies, and reference documents</div>
+          </div>
+          <span class="card-badge badge-open">Open</span>
+        </a>
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

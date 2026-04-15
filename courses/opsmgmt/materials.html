@@ -131,6 +131,7 @@
   </style>
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_opsmgmt')){window.location.replace('password-gate.html');}</script>
 
 <div class="page-header">
   <div class="header-label">Operations Management · Course Materials</div>
@@ -141,7 +142,7 @@
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../../index.html" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-link">Operations Management</span>
+  <a href="hub.html" class="breadcrumb-link">Operations Management</a>
   <span class="breadcrumb-sep">/</span>
   <span class="breadcrumb-current">Materials</span>
 </nav>
@@ -180,7 +181,7 @@
           <div class="material-name">Test 1</div>
           <div class="material-desc">Multiple Choice · Placeholder assessment</div>
         </div>
-        <a href="password-gate.html?to=test-1.html" style="text-decoration:none;">
+        <a href="test-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -190,7 +191,7 @@
           <div class="material-name">Quiz 1</div>
           <div class="material-desc">Multiple Choice &amp; True/False · Placeholder quiz</div>
         </div>
-        <a href="password-gate.html?to=quiz-1.html" style="text-decoration:none;">
+        <a href="quiz-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -205,7 +206,7 @@
     </ul>
   </div>
 
-  <a href="../../index.html" class="back-link">← Back to course hub</a>
+  <a href="hub.html" class="back-link">← Back to course hub</a>
 
 </div><!-- /.content -->
 </body>
