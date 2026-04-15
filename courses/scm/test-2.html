@@ -47,10 +47,11 @@
   </style>
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_scm')){window.location.replace('password-gate.html');}</script>
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../../index.html" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-link">Supply Chain Management &amp; ESG</span>
+  <a href="hub.html" class="breadcrumb-link">Supply Chain Management &amp; ESG</a>
   <span class="breadcrumb-sep">/</span>
   <span class="breadcrumb-current">Test 2</span>
 </nav>

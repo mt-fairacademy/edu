@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrepreneurship &amp; Small Business Management &mdash; FAIR Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --nero:        #1a1a1a;
+      --oro:         #B8922A;
+      --panna:       #FAF7F2;
+      --grigio:      #6a6a6a;
+      --grigio-light:#e8e4de;
+      --sidebar-w:   264px;
+      --nav-active-bg: #fdf6ea;
+    }
+    html, body { height: 100%; }
+    body { font-family: 'Montserrat', sans-serif; background: var(--panna); color: var(--nero); display: flex; min-height: 100vh; }
+
+    /* ── Sidebar ── */
+    .site-nav { width: var(--sidebar-w); min-width: var(--sidebar-w); background: #fff; border-right: 1px solid var(--grigio-light); display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+    .nav-brand { padding: 24px 20px 18px; border-bottom: 1px solid var(--grigio-light); }
+    .nav-brand-sup { font-size: 9px; letter-spacing: 3.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .nav-brand-title { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; color: var(--nero); line-height: 1.3; margin-top: 5px; }
+    .nav-brand-title em { font-style: italic; color: var(--oro); }
+    .nav-section { padding: 12px 0; border-bottom: 1px solid var(--grigio-light); }
+    .nav-section:last-of-type { border-bottom: none; }
+    .nav-section-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #bbb; font-weight: 700; padding: 0 20px 8px; }
+    .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; font-size: 0.82rem; font-weight: 500; color: #444; cursor: pointer; user-select: none; border-left: 3px solid transparent; text-decoration: none; transition: background 0.15s, color 0.15s; }
+    .nav-item:hover { background: var(--panna); color: var(--oro); }
+    .nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .nav-item.is-disabled { color: #ccc; cursor: default; pointer-events: none; }
+    .nav-item-icon { font-size: 14px; flex-shrink: 0; opacity: 0.75; }
+    .nav-soon { font-size: 9px; letter-spacing: 1px; text-transform: uppercase; background: #f0f0f0; color: #aaa; border-radius: 3px; padding: 2px 6px; margin-left: auto; }
+    .sub-nav { list-style: none; overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
+    .sub-nav.is-open { max-height: 600px; }
+    .sub-nav-item { display: flex; align-items: baseline; gap: 8px; padding: 7px 20px 7px 32px; font-size: 0.78rem; font-weight: 400; color: #555; cursor: pointer; border-left: 3px solid transparent; line-height: 1.4; }
+    .sub-nav-item:hover { background: var(--panna); color: var(--oro); }
+    .sub-nav-item.is-active { border-left-color: var(--oro); color: var(--oro); background: var(--nav-active-bg); font-weight: 600; }
+    .sub-nav-num { font-size: 9px; font-weight: 700; color: var(--oro); letter-spacing: 1px; flex-shrink: 0; min-width: 18px; }
+    .nav-footer { margin-top: auto; padding: 16px 20px; border-top: 1px solid var(--grigio-light); }
+    .nav-back { font-size: 0.78rem; color: #aaa; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .nav-back:hover { color: var(--nero); }
+
+    /* ── Main ── */
+    .site-main { flex: 1; min-width: 0; padding: 48px 44px 80px; overflow-y: auto; }
+    .panel[hidden] { display: none; }
+
+    /* ── Home ── */
+    .home-hero { max-width: 720px; }
+    .home-sup { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 14px; }
+    .home-sup::before { content: ''; display: block; width: 48px; height: 3px; background: var(--oro); margin-bottom: 14px; }
+    .home-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; line-height: 1.15; color: var(--nero); margin-bottom: 24px; }
+    .home-hero h1 em { font-style: italic; color: var(--oro); }
+    .home-abstract { font-size: 0.97rem; line-height: 1.85; color: #444; max-width: 620px; margin-bottom: 36px; }
+    .home-meta { display: flex; gap: 28px; flex-wrap: wrap; padding: 20px 0; border-top: 1px solid var(--grigio-light); border-bottom: 1px solid var(--grigio-light); margin-bottom: 40px; }
+    .home-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .home-meta-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: #aaa; font-weight: 700; }
+    .home-meta-value { font-size: 0.87rem; font-weight: 600; color: var(--nero); }
+    .home-section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .home-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; max-width: 720px; }
+    .home-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 18px 18px 14px; cursor: pointer; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+    .home-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.12); }
+    .home-card.is-soon { opacity: 0.5; cursor: default; pointer-events: none; }
+    .home-card-icon { font-size: 20px; margin-bottom: 10px; }
+    .home-card-name { font-size: 0.85rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .home-card-sub { font-size: 0.75rem; color: var(--grigio); margin-top: 4px; }
+    .home-card-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 8px; font-weight: 700; }
+    .badge-active { background: #edfaf4; color: #2D7A4F; }
+    .badge-soon { background: #f0f0f0; color: #aaa; }
+
+    /* ── Lectures ── */
+    .section { margin-bottom: 52px; }
+    .section-title { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .schedule-table th { text-align: left; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .schedule-table td { padding: 13px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: middle; }
+    .schedule-table tr:last-child td { border-bottom: none; }
+    .schedule-table tr:hover td { background: #faf7f2; }
+    .topic-num-cell { font-size: 11px; font-weight: 700; color: var(--oro); letter-spacing: 1px; width: 48px; }
+    .topic-link { font-weight: 600; color: var(--nero); text-decoration: none; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; font-size: inherit; }
+    .topic-link:hover { color: var(--oro); text-decoration: underline; }
+    .topic-sub { font-size: 0.78rem; color: var(--grigio); margin-top: 3px; }
+    .assess-link { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: #edfaf4; color: #2D7A4F; border-radius: 4px; padding: 4px 10px; text-decoration: none; white-space: nowrap; }
+    .assess-link:hover { background: #2D7A4F; color: #fff; }
+    .assess-link + .assess-link { margin-top: 4px; display: block; }
+
+    /* ── Topic panels ── */
+    .topic-section { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; overflow: hidden; }
+    .topic-header { display: flex; align-items: center; gap: 18px; background: var(--nero); padding: 20px 28px; }
+    .topic-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--oro); flex-shrink: 0; }
+    .topic-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 2.4vw, 24px); color: #fff; font-weight: 400; }
+    .topic-body { padding: 28px 28px 32px; }
+    .topic-body h3 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin: 24px 0 12px; }
+    .topic-body h3:first-child { margin-top: 0; }
+    .topic-body p { font-size: 0.93rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
+    .topic-body ul { padding-left: 20px; margin-bottom: 12px; }
+    .topic-body li { font-size: 0.91rem; line-height: 1.7; color: #333; margin-bottom: 5px; }
+    .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
+    .topic-footer { border-top: 1px solid var(--grigio-light); padding: 14px 28px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .topic-footer-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; }
+    .prev-next { display: flex; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--grigio-light); flex-wrap: wrap; }
+    .prev-next-btn { font-size: 0.8rem; font-weight: 600; color: var(--grigio); cursor: pointer; background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 8px 16px; }
+    .prev-next-btn:hover { border-color: var(--oro); color: var(--oro); }
+    .glossary-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .glossary-table th { text-align: left; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--grigio); font-weight: 600; padding: 8px 14px; border-bottom: 1px solid var(--grigio-light); }
+    .glossary-table td { padding: 12px 14px; border-bottom: 1px solid var(--grigio-light); vertical-align: top; line-height: 1.6; color: #333; }
+    .glossary-table tr:last-child td { border-bottom: none; }
+    .glossary-table td:first-child { font-weight: 700; color: var(--nero); white-space: nowrap; width: 220px; }
+
+    /* ── Quizzes/Tests ── */
+    .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; max-width: 800px; }
+    .resource-card { background: #fff; border: 1px solid var(--grigio-light); border-radius: 4px; padding: 22px 22px 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; transition: border-color 0.15s, box-shadow 0.15s; }
+    .resource-card:hover { border-color: var(--oro); box-shadow: 0 2px 8px rgba(184,146,42,.1); }
+    .resource-card.is-soon { opacity: 0.55; pointer-events: none; }
+    .rc-label { font-size: 9px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--oro); font-weight: 700; }
+    .rc-title { font-size: 1rem; font-weight: 600; color: var(--nero); line-height: 1.3; }
+    .rc-sub { font-size: 0.78rem; color: var(--grigio); }
+    .rc-badge { display: inline-block; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 3px; padding: 2px 7px; margin-top: 4px; font-weight: 700; align-self: flex-start; }
+    .coming-soon-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 300px; text-align: center; color: #aaa; }
+    .coming-soon-icon { font-size: 40px; margin-bottom: 18px; opacity: 0.5; }
+    .coming-soon-title { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 400; margin-bottom: 10px; color: #bbb; }
+    .coming-soon-text { font-size: 0.87rem; line-height: 1.7; max-width: 360px; }
+
+    @media (max-width: 760px) {
+      body { flex-direction: column; }
+      .site-nav { width: 100%; min-width: unset; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .sub-nav.is-open { max-height: 800px; }
+      .site-main { padding: 28px 20px 60px; }
+      .home-cards { grid-template-columns: repeat(2, 1fr); }
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<script>
+  if (!sessionStorage.getItem('auth_entre_smb')) {
+    window.location.replace('password-gate.html');
+  }
+</script>
+
+<nav class="site-nav" aria-label="Course navigation">
+  <div class="nav-brand">
+    <div class="nav-brand-sup">Fair Academy</div>
+    <div class="nav-brand-title">Entrepreneurship &amp; <em>Small Business</em></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-item" id="nav-home" data-target="panel-home">
+      <span class="nav-item-icon">&#127968;</span> Home
+    </div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-section-label">Content</div>
+    <div class="nav-item" id="nav-lectures" data-target="panel-lectures">
+      <span class="nav-item-icon">&#128214;</span> Lectures
+    </div>
+    <ul class="sub-nav" id="lectures-sub">
+      <li class="sub-nav-item" data-target="panel-topic-1"><span class="sub-nav-num">01</span>What Is Entrepreneurship?</li>
+      <li class="sub-nav-item" data-target="panel-topic-2"><span class="sub-nav-num">02</span>The Startup Mindset</li>
+      <li class="sub-nav-item" data-target="panel-topic-3"><span class="sub-nav-num">03</span>Customer&apos;s Problem</li>
+      <li class="sub-nav-item" data-target="panel-topic-4"><span class="sub-nav-num">04</span>Problem Definition</li>
+      <li class="sub-nav-item" data-target="panel-topic-5"><span class="sub-nav-num">05</span>Marketing for SMEs</li>
+      <li class="sub-nav-item" data-target="panel-topic-6"><span class="sub-nav-num">06</span>Business Structures</li>
+      <li class="sub-nav-item" data-target="panel-topic-7"><span class="sub-nav-num">07</span>Business Planning</li>
+      <li class="sub-nav-item" data-target="panel-reference"><span class="sub-nav-num">&#8212;</span>Glossary &amp; Resources</li>
+    </ul>
+    <div class="nav-item" id="nav-quizzes" data-target="panel-quizzes">
+      <span class="nav-item-icon">&#128221;</span> Quizzes
+    </div>
+    <div class="nav-item" id="nav-tests" data-target="panel-tests">
+      <span class="nav-item-icon">&#9989;</span> Tests
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128188;</span> Cases <span class="nav-soon">Soon</span>
+    </div>
+    <div class="nav-item is-disabled">
+      <span class="nav-item-icon">&#128296;</span> Tools <span class="nav-soon">Soon</span>
+    </div>
+  </div>
+  <div class="nav-footer">
+    <a href="../../index.html" class="nav-back">&#8592; Back to main portal</a>
+  </div>
+</nav>
+
+<main class="site-main">
+
+  <!-- HOME -->
+  <div id="panel-home" class="panel">
+    <div class="home-hero">
+      <div class="home-sup">Entrepreneurship &amp; SMB</div>
+      <h1>Entrepreneurship &amp; <em>Small Business Management</em></h1>
+      <p class="home-abstract">This course explores the principles and practices of starting and growing a business in today&apos;s dynamic environment. From identifying a problem worth solving, through validating a business model, to marketing and planning for growth &mdash; students develop the entrepreneurial mindset and practical toolkit needed to launch and manage a successful venture.</p>
+      <div class="home-meta">
+        <div class="home-meta-item"><span class="home-meta-label">Lectures</span><span class="home-meta-value">7 Topics</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Quizzes</span><span class="home-meta-value">5 Quizzes</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Tests</span><span class="home-meta-value">1 Active</span></div>
+        <div class="home-meta-item"><span class="home-meta-label">Language</span><span class="home-meta-value">English</span></div>
+      </div>
+      <div class="home-section-title">Navigate the course</div>
+      <div class="home-cards">
+        <div class="home-card" data-target="panel-lectures"><div class="home-card-icon">&#128214;</div><div class="home-card-name">Lectures</div><div class="home-card-sub">7 topics &middot; study notes</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-quizzes"><div class="home-card-icon">&#128221;</div><div class="home-card-name">Quizzes</div><div class="home-card-sub">5 quizzes &middot; self-assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card" data-target="panel-tests"><div class="home-card-icon">&#9989;</div><div class="home-card-name">Tests</div><div class="home-card-sub">Comprehensive assessment</div><span class="home-card-badge badge-active">Active</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128188;</div><div class="home-card-name">Cases</div><div class="home-card-sub">Business case studies</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+        <div class="home-card is-soon"><div class="home-card-icon">&#128296;</div><div class="home-card-name">Tools &amp; Notes</div><div class="home-card-sub">Templates &amp; resources</div><span class="home-card-badge badge-soon">Coming soon</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LECTURES OVERVIEW -->
+  <div id="panel-lectures" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Course Schedule</div>
+      <table class="schedule-table">
+        <thead><tr><th>#</th><th>Topic</th><th>Assessment</th></tr></thead>
+        <tbody>
+          <tr><td class="topic-num-cell">01</td><td><span class="topic-link" data-target="panel-topic-1">What Is Entrepreneurship?</span><div class="topic-sub">Definitions &middot; Types of entrepreneur &middot; SME criteria</div></td><td><a href="quiz-1.html" class="assess-link">Quiz 1</a><a href="test-1.html" class="assess-link">Test 1</a></td></tr>
+          <tr><td class="topic-num-cell">02</td><td><span class="topic-link" data-target="panel-topic-2">The Startup Mindset</span><div class="topic-sub">Lean Startup &middot; MVP &middot; Pivot &middot; Market sizing</div></td><td><a href="quiz-6.html" class="assess-link">Quiz 6</a></td></tr>
+          <tr><td class="topic-num-cell">03</td><td><span class="topic-link" data-target="panel-topic-3">Understanding the Customer&apos;s Problem</span><div class="topic-sub">Problem-solution fit &middot; Customer discovery &middot; Jobs-to-be-done</div></td><td><a href="quiz-7.html" class="assess-link">Quiz 7</a></td></tr>
+          <tr><td class="topic-num-cell">04</td><td><span class="topic-link" data-target="panel-topic-4">Problem Definition &amp; Ideation</span><div class="topic-sub">Design thinking &middot; Value proposition &middot; Root cause analysis</div></td><td><a href="quiz-8.html" class="assess-link">Quiz 8</a></td></tr>
+          <tr><td class="topic-num-cell">05</td><td><span class="topic-link" data-target="panel-topic-5">Marketing for Startups &amp; SMEs</span><div class="topic-sub">4Ps &middot; 4Is model &middot; Digital marketing &middot; CAC &amp; LTV</div></td><td><a href="quiz-9.html" class="assess-link">Quiz 9</a></td></tr>
+          <tr><td class="topic-num-cell">06</td><td><span class="topic-link" data-target="panel-topic-6">Business Structures &mdash; Startups &amp; Franchises</span><div class="topic-sub">Franchise model &middot; Societ&agrave; Benefit &middot; Why businesses fail</div></td><td></td></tr>
+          <tr><td class="topic-num-cell">07</td><td><span class="topic-link" data-target="panel-topic-7">Business Planning</span><div class="topic-sub">Business Model Canvas &middot; 5 Cs of Credit &middot; The pitch</div></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TOPIC 1 -->
+  <div id="panel-topic-1" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">01</span><h2>What Is Entrepreneurship?</h2></div>
+      <div class="topic-body">
+        <h3>Defining Entrepreneurship</h3>
+        <p>Entrepreneurship is the process of designing, launching, and running a new business venture, typically in response to an identified opportunity, while taking on financial and personal risk in pursuit of profit, growth, or social impact.</p>
+        <p>Modern definitions emphasize <strong>value creation</strong>: entrepreneurs create value for customers, employees, and society &mdash; not merely profit for themselves.</p>
+        <h3>Types of Entrepreneur</h3>
+        <ul>
+          <li><strong>Lifestyle entrepreneur:</strong> builds a business to support a desired lifestyle rather than to scale rapidly.</li>
+          <li><strong>Serial entrepreneur:</strong> starts multiple businesses over time, often selling one venture before beginning another.</li>
+          <li><strong>Social entrepreneur:</strong> applies entrepreneurial thinking to address social or environmental problems.</li>
+          <li><strong>Intrapreneur:</strong> acts as an entrepreneur within an established organization &mdash; driving innovation from the inside.</li>
+          <li><strong>Tech/Startup entrepreneur:</strong> builds a scalable technology-driven business aimed at rapid growth.</li>
+        </ul>
+        <h3>Small and Medium-Sized Enterprises (SMEs)</h3>
+        <p>The EU defines SMEs by three criteria:</p>
+        <ul>
+          <li><strong>Micro:</strong> fewer than 10 employees; turnover or balance sheet &le; &euro;2 million.</li>
+          <li><strong>Small:</strong> fewer than 50 employees; turnover or balance sheet &le; &euro;10 million.</li>
+          <li><strong>Medium:</strong> fewer than 250 employees; turnover &le; &euro;50 million OR balance sheet &le; &euro;43 million.</li>
+        </ul>
+        <p>SMEs represent 99% of all businesses in the EU, employ about two-thirds of the private sector workforce, and generate over half of the EU&apos;s GDP.</p>
+        <h3>Innovation and Entrepreneurship</h3>
+        <p>Joseph Schumpeter described entrepreneurship as a force of <strong>&ldquo;creative destruction.&rdquo;</strong> He identified four types of innovation:</p>
+        <ul>
+          <li><strong>Product innovation:</strong> new or significantly improved goods or services.</li>
+          <li><strong>Process innovation:</strong> new or improved methods of production or delivery.</li>
+          <li><strong>Market innovation:</strong> entering new markets or repositioning existing products.</li>
+          <li><strong>Organizational innovation:</strong> new business models or management practices.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-lectures">&#8592; Overview</span>
+          <span class="prev-next-btn" data-target="panel-topic-2">02 The Startup Mindset &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-1.html" class="assess-link">Quiz 1 &mdash; Key Concepts</a><a href="test-1.html" class="assess-link">Test 1 &mdash; Fundamentals</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 2 -->
+  <div id="panel-topic-2" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">02</span><h2>The Startup Mindset</h2></div>
+      <div class="topic-body">
+        <h3>What Is a Startup?</h3>
+        <p>A startup is a young company founded to develop a unique product or service, bring it to market, and scale it rapidly. Steve Blank defines a startup as &ldquo;a temporary organization designed to search for a repeatable and scalable business model.&rdquo;</p>
+        <h3>The Lean Startup Methodology</h3>
+        <p><strong>Eric Ries</strong> popularized the Lean Startup in 2011. Its core principle is to reduce waste by shortening product development cycles through rapid experimentation via the <strong>Build-Measure-Learn</strong> feedback loop:</p>
+        <ul>
+          <li><strong>Build:</strong> create the simplest possible version of your product (MVP) to test your assumptions.</li>
+          <li><strong>Measure:</strong> collect data on how real customers respond to the MVP.</li>
+          <li><strong>Learn:</strong> use the data to validate or invalidate your assumptions, then decide whether to persevere or pivot.</li>
+        </ul>
+        <h3>Minimum Viable Product (MVP)</h3>
+        <p>An MVP is the simplest version of a product that can be released to early customers to gather validated learning &mdash; not a prototype but a real product.</p>
+        <ul>
+          <li><strong>Examples:</strong> Airbnb&apos;s first MVP was a simple website renting out the founders&apos; apartment; Dropbox launched a demo video before building the product.</li>
+          <li><strong>Key principle:</strong> the MVP must deliver the core value proposition &mdash; nothing more, nothing less.</li>
+        </ul>
+        <h3>Pivot</h3>
+        <p>A pivot is a structured course correction while maintaining some elements of the original plan. Types include: customer segment pivot, value capture pivot, channel pivot, and product pivot.</p>
+        <h3>Market Sizing: TAM, SAM, SOM</h3>
+        <ul>
+          <li><strong>TAM:</strong> total global demand for your type of product or service.</li>
+          <li><strong>SAM:</strong> the portion of TAM you can realistically reach with your current model.</li>
+          <li><strong>SOM:</strong> your beachhead &mdash; the specific slice you can realistically capture in 1&ndash;3 years.</li>
+        </ul>
+        <p>Build estimates <strong>Bottom-Up</strong> from specific segments &mdash; far more credible than carving a percentage off a giant total market figure.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-1">&#8592; 01 What Is Entrepreneurship?</span>
+          <span class="prev-next-btn" data-target="panel-topic-3">03 Customer&apos;s Problem &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-6.html" class="assess-link">Quiz 6 &mdash; Startup</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 3 -->
+  <div id="panel-topic-3" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">03</span><h2>Understanding the Customer&apos;s Problem</h2></div>
+      <div class="topic-body">
+        <h3>Problem-Solution Fit</h3>
+        <p>Before building anything, entrepreneurs must confirm that (a) a real, significant problem exists, (b) the target customers are motivated to solve it, and (c) the proposed solution genuinely addresses it. Many startups fail because they build solutions looking for problems.</p>
+        <h3>Customer Discovery</h3>
+        <p>Customer discovery (Steve Blank) is the process of talking to potential customers to understand their problems before building products.</p>
+        <ul>
+          <li><strong>Interviews:</strong> open-ended conversations focused on customer pain points and desired outcomes.</li>
+          <li><strong>Observation:</strong> watch customers in their natural environment to understand actual behavior.</li>
+          <li><strong>The Mom Test (Rob Fitzpatrick):</strong> ask about people&apos;s lives, not your idea. Past behavior is more reliable than future intention.</li>
+        </ul>
+        <p><strong>Behavioral vs. hypothetical questions:</strong></p>
+        <ul>
+          <li><strong>Bad:</strong> &ldquo;Would you use an app that tracks your waste?&rdquo;</li>
+          <li><strong>Good:</strong> &ldquo;Tell me about the last time you had to throw away unsold stock. What did you do?&rdquo;</li>
+        </ul>
+        <h3>Jobs-to-be-Done Theory</h3>
+        <p><strong>Clayton Christensen:</strong> customers don&apos;t buy products &mdash; they &ldquo;hire&rdquo; them to do a specific job. Types: <strong>functional</strong> (practical tasks), <strong>social</strong> (how they want to be perceived), <strong>emotional</strong> (how they want to feel).</p>
+        <p>The JTBD example: people who buy a drill don&apos;t want a drill &mdash; they want a hole in the wall. Understanding the deeper job reveals real innovation opportunities.</p>
+        <h3>Pain Points</h3>
+        <ul>
+          <li><strong>Financial pain:</strong> solutions that cost too much, or processes that waste money.</li>
+          <li><strong>Productivity pain:</strong> tasks that take too long or are too complex.</li>
+          <li><strong>Process pain:</strong> inefficient workflows or missing steps.</li>
+          <li><strong>Support pain:</strong> inadequate help or information when customers need it.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-2">&#8592; 02 The Startup Mindset</span>
+          <span class="prev-next-btn" data-target="panel-topic-4">04 Problem Definition &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-7.html" class="assess-link">Quiz 7 &mdash; Customer&apos;s Problem</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 4 -->
+  <div id="panel-topic-4" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">04</span><h2>Problem Definition &amp; Ideation</h2></div>
+      <div class="topic-body">
+        <h3>Design Thinking</h3>
+        <p>Design thinking is a human-centered approach to innovation popularized by IDEO and the Stanford d.school. A proper problem description focuses on the beneficiary&apos;s current reality &mdash; it does <em>not</em> jump to a solution.</p>
+        <p><strong>Problem statement structure:</strong> <em>Who</em> is affected &middot; <em>What</em> undesirable situation they face &middot; <em>Impact</em> (human or economic consequence).</p>
+        <p>Example: &ldquo;Small artisanal bakers in Florence (Who) are losing 30% of their daily inventory due to unpredictable tourist foot traffic (What), leading to financial instability and food waste (Impact).&rdquo;</p>
+        <p>The five stages: <strong>Empathize &rarr; Define &rarr; Ideate &rarr; Prototype &rarr; Test</strong> (iterative &mdash; return to earlier stages as needed).</p>
+        <h3>How Might We&hellip;?</h3>
+        <p>The <strong>HMW</strong> format frames problems broad enough to allow creative solutions but narrow enough to be actionable. Example: &ldquo;How might we help commuters find parking quickly near their destination?&rdquo;</p>
+        <h3>Root Cause Analysis: The 5 Whys</h3>
+        <p>Repeatedly ask &ldquo;Why?&rdquo; (typically five times) until the fundamental cause is uncovered. Developed within Toyota&apos;s production system.</p>
+        <p>Example: &ldquo;Customers aren&apos;t buying our organic soap.&rdquo; &rarr; They think it&apos;s too expensive &rarr; They compare to mass-market brands &rarr; They don&apos;t see the value &rarr; The packaging looks the same as cheap soap. Root cause: visual branding fails to communicate the premium value proposition.</p>
+        <h3>Value Proposition</h3>
+        <p>A clear statement of the unique value your product creates for a specific customer segment. The <strong>Value Proposition Canvas</strong> (Osterwalder) maps customer jobs, pains, and gains against pain relievers and gain creators your offering provides.</p>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-3">&#8592; 03 Customer&apos;s Problem</span>
+          <span class="prev-next-btn" data-target="panel-topic-5">05 Marketing &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-8.html" class="assess-link">Quiz 8 &mdash; Problem Definition</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 5 -->
+  <div id="panel-topic-5" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">05</span><h2>Marketing for Startups &amp; SMEs</h2></div>
+      <div class="topic-body">
+        <h3>The Marketing Mix &mdash; 4Ps</h3>
+        <ul>
+          <li><strong>Product:</strong> features, quality, design, branding, packaging.</li>
+          <li><strong>Price:</strong> cost-plus, value-based, penetration, or skimming strategies.</li>
+          <li><strong>Place (Distribution):</strong> DTC, retail, e-commerce, or marketplace platforms.</li>
+          <li><strong>Promotion:</strong> advertising, PR, social media, content marketing, email.</li>
+        </ul>
+        <p>Modern extensions include the <strong>7Ps</strong> (adding People, Process, Physical Evidence) &mdash; particularly relevant for service businesses.</p>
+        <h3>Traditional vs. Entrepreneurial Marketing &mdash; The 4Is Model</h3>
+        <ul>
+          <li><strong>Information:</strong> informal networking and data gathering through relationships.</li>
+          <li><strong>Innovation:</strong> product or service quality as the primary marketing tool.</li>
+          <li><strong>Identification:</strong> finding specific niches where the SME can be the best option.</li>
+          <li><strong>Interaction:</strong> building direct social relationships &mdash; turning buyers into advocates.</li>
+        </ul>
+        <h3>Digital Marketing for Startups</h3>
+        <ul>
+          <li><strong>SEO:</strong> optimizing content to rank higher in organic search results.</li>
+          <li><strong>Content Marketing:</strong> creating valuable content to attract, engage, and convert customers.</li>
+          <li><strong>Social Media:</strong> building community and brand awareness on key platforms.</li>
+          <li><strong>Email Marketing:</strong> high-ROI channel (average: $36 per $1 spent).</li>
+          <li><strong>Paid Advertising (PPC/SEM):</strong> rapid, targeted reach via Google Ads and Meta Ads.</li>
+        </ul>
+        <h3>Key Marketing Metrics: CAC and LTV</h3>
+        <ul>
+          <li><strong>CAC:</strong> total marketing &amp; sales spend &divide; new customers acquired.</li>
+          <li><strong>LTV:</strong> average purchase value &times; purchase frequency &times; customer lifespan.</li>
+          <li><strong>LTV:CAC ratio:</strong> healthy startups aim for LTV &ge; 3&times; CAC.</li>
+          <li><strong>Churn Rate:</strong> % of customers who stop using your product in a given period.</li>
+        </ul>
+        <h3>Future Marketing Trends (2026)</h3>
+        <ul>
+          <li><strong>AI Fluency:</strong> use AI for effectiveness (better decisions, targeting, personalization) &mdash; not just efficiency.</li>
+          <li><strong>AI Transparency:</strong> consumers demand honesty about AI-generated content.</li>
+          <li><strong>Influencer Regulation:</strong> formal advertising rules now apply &mdash; sponsored content must be clearly disclosed.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-4">&#8592; 04 Problem Definition</span>
+          <span class="prev-next-btn" data-target="panel-topic-6">06 Business Structures &#8594;</span>
+        </div>
+      </div>
+      <div class="topic-footer"><span class="topic-footer-label">Practice:</span><a href="quiz-9.html" class="assess-link">Quiz 9 &mdash; Marketing</a></div>
+    </div>
+  </div>
+
+  <!-- TOPIC 6 -->
+  <div id="panel-topic-6" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">06</span><h2>Business Structures &mdash; Startups &amp; Franchises</h2></div>
+      <div class="topic-body">
+        <h3>Startup vs. Franchise</h3>
+        <ul>
+          <li><strong>Startup:</strong> built from scratch &mdash; complete autonomy but high risk and full burden of brand-building.</li>
+          <li><strong>Franchise:</strong> the franchisee pays the franchisor for the right to operate under an established brand and proven model. Trading autonomy for security.</li>
+        </ul>
+        <h3>Franchising &mdash; Benefits and Drawbacks</h3>
+        <p><strong>Benefits:</strong> management training, instant brand recognition, standardized quality, site selection assistance.</p>
+        <p><strong>Drawbacks:</strong> ongoing royalties (1&ndash;11% of gross sales), strict adherence to standardized operations, restricted product lines, brand reputation outside your control.</p>
+        <h3>Societ&agrave; Benefit (Italy)</h3>
+        <p>An Italian legal form that pursues profit alongside an explicit &ldquo;common benefit&rdquo; &mdash; social or environmental goals beyond shareholder return.</p>
+        <ul>
+          <li><strong>Pros:</strong> market differentiation (especially in Luxury &amp; Fashion), higher employee retention, legal protection of the founder&apos;s mission.</li>
+          <li><strong>Cons:</strong> must publish an annual <strong>Impact Report</strong> and appoint an <strong>Impact Manager</strong>.</li>
+        </ul>
+        <h3>Why Businesses Fail</h3>
+        <ul>
+          <li><strong>No market need:</strong> the most common cause &mdash; building a solution to a problem that isn&apos;t painful enough.</li>
+          <li><strong>Running out of cash:</strong> even profitable businesses fail if cash flow timing is mismanaged.</li>
+          <li><strong>The Competency Trap:</strong> businesses keep doing what they&apos;re good at, even when the market changes.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-5">&#8592; 05 Marketing</span>
+          <span class="prev-next-btn" data-target="panel-topic-7">07 Business Planning &#8594;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 7 -->
+  <div id="panel-topic-7" class="panel" hidden>
+    <div class="topic-section">
+      <div class="topic-header"><span class="topic-num">07</span><h2>Business Planning</h2></div>
+      <div class="topic-body">
+        <h3>Business Model Canvas vs. Business Plan</h3>
+        <ul>
+          <li><strong>BMC &mdash; &ldquo;The Sketch&rdquo;:</strong> a one-page visual chart mapping value proposition, infrastructure, customers, and finances. Used to iterate and pivot quickly during validation.</li>
+          <li><strong>Business Plan &mdash; &ldquo;The Blueprint&rdquo;:</strong> a 20&ndash;40 page document serving as internal roadmap and external document to attract capital.</li>
+        </ul>
+        <h3>Two Primary Functions of a Business Plan</h3>
+        <ul>
+          <li><strong>Internal:</strong> guides strategy, defines roles and milestones, keeps the team aligned.</li>
+          <li><strong>External:</strong> convinces lenders and investors that the business is viable and financials are realistic.</li>
+        </ul>
+        <h3>The 5 Cs of Credit</h3>
+        <ul>
+          <li><strong>Character:</strong> your reputation and track record.</li>
+          <li><strong>Capacity:</strong> can the business generate enough cash flow to repay the loan? Most heavily weighted.</li>
+          <li><strong>Capital:</strong> how much of your own money (&ldquo;skin in the game&rdquo;) are you investing?</li>
+          <li><strong>Collateral:</strong> what assets can be pledged to secure the loan?</li>
+          <li><strong>Conditions:</strong> external climate &mdash; inflation, industry trends, loan purpose.</li>
+        </ul>
+        <h3>Pitching the Plan</h3>
+        <ul>
+          <li><strong>Hook early:</strong> lead with the customer problem and the scale of opportunity &mdash; not product features.</li>
+          <li><strong>Show enthusiasm:</strong> investors back people as much as ideas.</li>
+          <li><strong>Be realistic:</strong> overly optimistic forecasts destroy credibility.</li>
+          <li><strong>Avoid jargon overload:</strong> use visual aids and plain language.</li>
+        </ul>
+        <div class="prev-next">
+          <span class="prev-next-btn" data-target="panel-topic-6">&#8592; 06 Business Structures</span>
+          <span class="prev-next-btn" data-target="panel-reference">Glossary &amp; Resources &#8594;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div id="panel-reference" class="panel" hidden>
+    <div class="section">
+      <div class="section-title">Glossary of Key Terms</div>
+      <table class="glossary-table">
+        <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td>Lean Startup</td><td>A methodology focusing on shortened product development cycles and validated learning through the Build-Measure-Learn loop.</td></tr>
+          <tr><td>Pivot</td><td>A structured course correction to test a new hypothesis about the product, customer segment, or strategy &mdash; based on data, not failure.</td></tr>
+          <tr><td>TAM / SAM / SOM</td><td>Total Addressable Market / Serviceable Addressable Market / Serviceable Obtainable Market. The three levels of market sizing.</td></tr>
+          <tr><td>4Is Model</td><td>Information, Innovation, Identification, and Interaction &mdash; the four pillars of entrepreneurial (SME) marketing.</td></tr>
+          <tr><td>Societ&agrave; Benefit</td><td>Italian legal form for companies that pursue profit and a specific public or environmental benefit, requiring an annual impact report.</td></tr>
+          <tr><td>5 Cs of Credit</td><td>The criteria banks use to evaluate business loan applications: Character, Capacity, Capital, Collateral, and Conditions.</td></tr>
+          <tr><td>Market Intelligence</td><td>The sum of formal data and informal networking gathered to understand demand, trends, and competitors.</td></tr>
+          <tr><td>Competency Trap</td><td>The tendency of a business to keep doing what it is good at, even when the market changes &mdash; preventing necessary adaptation.</td></tr>
+          <tr><td>Iterative Interviewing</td><td>Interviewing customers repeatedly, in rounds, to progressively refine understanding of their pains and the root cause of the problem.</td></tr>
+          <tr><td>Business Model Canvas</td><td>A one-page visual tool mapping a business&apos;s value proposition, infrastructure, customer relationships, and revenue streams.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">External Resources</div>
+      <div style="background:#fff;border:1px solid var(--grigio-light);border-radius:4px;padding:28px;">
+        <ul style="padding-left:20px;">
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://hbr.org/2008/01/how-to-write-a-great-business-plan" style="color:var(--oro);">Harvard Business Review &mdash; How to Write a Winning Business Plan</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.sba.gov/business-guide/plan-your-business/write-your-business-plan" style="color:var(--oro);">SBA &mdash; Write Your Business Plan</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.strategyzer.com/canvas/business-model-canvas" style="color:var(--oro);">Strategyzer &mdash; Business Model Canvas</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.christenseninstitute.org/jobs-to-be-done/" style="color:var(--oro);">Clayton Christensen Institute &mdash; Jobs-to-be-Done Theory</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.mindtools.com/pages/article/newTMC_5w.htm" style="color:var(--oro);">MindTools &mdash; Root Cause Analysis (5 Whys)</a></li>
+          <li style="font-size:0.91rem;line-height:1.7;color:#333;margin-bottom:8px;"><a href="https://www.registroimprese.it/" style="color:var(--oro);">Registro Imprese &mdash; Societ&agrave; Benefit (Italy)</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZZES -->
+  <div id="panel-quizzes" class="panel" hidden>
+    <div class="section-title">Quizzes</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Self-assessment quizzes linked to individual lectures. Complete each quiz after studying the corresponding lecture to reinforce your learning.</p>
+    <div class="resource-grid">
+      <a href="quiz-1.html" class="resource-card"><div class="rc-label">Quiz 1 &middot; Lecture 01</div><div class="rc-title">Key Concepts</div><div class="rc-sub">Entrepreneurship fundamentals</div><span class="rc-badge badge-active">2 questions</span></a>
+      <a href="quiz-6.html" class="resource-card"><div class="rc-label">Quiz 6 &middot; Lecture 02</div><div class="rc-title">Startup</div><div class="rc-sub">Lean startup &amp; MVP</div><span class="rc-badge badge-active">Active</span></a>
+      <a href="quiz-7.html" class="resource-card"><div class="rc-label">Quiz 7 &middot; Lecture 03</div><div class="rc-title">Customer&apos;s Problem</div><div class="rc-sub">Discovery &amp; Jobs-to-be-Done</div><span class="rc-badge badge-active">Active</span></a>
+      <a href="quiz-8.html" class="resource-card"><div class="rc-label">Quiz 8 &middot; Lecture 04</div><div class="rc-title">Problem Definition</div><div class="rc-sub">Design thinking &amp; value proposition</div><span class="rc-badge badge-active">Active</span></a>
+      <a href="quiz-9.html" class="resource-card"><div class="rc-label">Quiz 9 &middot; Lecture 05</div><div class="rc-title">Marketing</div><div class="rc-sub">4Ps, 4Is, CAC &amp; LTV</div><span class="rc-badge badge-active">Active</span></a>
+    </div>
+  </div>
+
+  <!-- TESTS -->
+  <div id="panel-tests" class="panel" hidden>
+    <div class="section-title">Tests</div>
+    <p style="font-size:0.9rem;color:var(--grigio);margin-bottom:28px;line-height:1.7;">Comprehensive assessments covering multiple lectures. A passing score is required to complete each test.</p>
+    <div class="resource-grid">
+      <a href="test-1.html" class="resource-card"><div class="rc-label">Test 1</div><div class="rc-title">Fundamentals</div><div class="rc-sub">3 questions &middot; Passing: 2/3</div><span class="rc-badge badge-active">Active</span></a>
+      <div class="resource-card is-soon"><div class="rc-label">Test 2</div><div class="rc-title">Coming Soon</div><div class="rc-sub">Advanced topics</div><span class="rc-badge badge-soon">Soon</span></div>
+    </div>
+  </div>
+
+  <!-- CASES -->
+  <div id="panel-cases" class="panel" hidden>
+    <div class="coming-soon-wrap">
+      <div class="coming-soon-icon">&#128188;</div>
+      <div class="coming-soon-title">Cases &mdash; Coming Soon</div>
+      <p class="coming-soon-text">Business case studies and real-world examples will be added here. Check back soon.</p>
+    </div>
+  </div>
+
+  <!-- TOOLS -->
+  <div id="panel-tools" class="panel" hidden>
+    <div class="coming-soon-wrap">
+      <div class="coming-soon-icon">&#128296;</div>
+      <div class="coming-soon-title">Tools &amp; Notes &mdash; Coming Soon</div>
+      <p class="coming-soon-text">Templates, frameworks, and reference documents will be available here in a future update.</p>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+  var lecturesSub = document.getElementById('lectures-sub');
+  var navMap = {
+    'nav-home':     'panel-home',
+    'nav-lectures': 'panel-lectures',
+    'nav-quizzes':  'panel-quizzes',
+    'nav-tests':    'panel-tests'
+  };
+  var lectureTopics = ['panel-topic-1','panel-topic-2','panel-topic-3','panel-topic-4','panel-topic-5','panel-topic-6','panel-topic-7','panel-reference'];
+  function isLectureTopic(id) { return lectureTopics.indexOf(id) !== -1 || id === 'panel-lectures'; }
+
+  function showPanel(panelId, skipScroll) {
+    document.querySelectorAll('.panel').forEach(function(p){ p.hidden = true; });
+    var target = document.getElementById(panelId);
+    if (target) target.hidden = false;
+    document.querySelectorAll('.nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    document.querySelectorAll('.sub-nav-item').forEach(function(el){ el.classList.remove('is-active'); });
+    if (isLectureTopic(panelId)) {
+      var lectNav = document.getElementById('nav-lectures');
+      if (lectNav) lectNav.classList.add('is-active');
+      lecturesSub.classList.add('is-open');
+      if (panelId !== 'panel-lectures') {
+        document.querySelectorAll('.sub-nav-item[data-target="' + panelId + '"]').forEach(function(el){ el.classList.add('is-active'); });
+      }
+    } else {
+      lecturesSub.classList.remove('is-open');
+      Object.keys(navMap).forEach(function(k){ if (navMap[k] === panelId) { var el = document.getElementById(k); if (el) el.classList.add('is-active'); } });
+    }
+    if (!skipScroll) window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  Object.keys(navMap).forEach(function(k){
+    var el = document.getElementById(k);
+    if (el) el.addEventListener('click', function(){ showPanel(navMap[k]); });
+  });
+  document.querySelectorAll('.sub-nav-item[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.home-card[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.topic-link[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+  document.querySelectorAll('.prev-next-btn[data-target]').forEach(function(el){
+    el.addEventListener('click', function(){ showPanel(this.dataset.target); });
+  });
+
+  showPanel('panel-home', true);
+}());
+</script>
+</body>
+</html>

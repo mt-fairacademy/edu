@@ -46,11 +46,71 @@
       margin-top: 10px;
       letter-spacing: 1px;
     }
-    .content {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 48px 24px 96px;
+    /* ── Two-column layout ── */
+    .lectures-layout {
+      display: flex;
+      align-items: stretch;
+      min-height: calc(100vh - 120px);
     }
+    .lectures-sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: #fff;
+      border-right: 1px solid var(--grigio-light);
+      padding: 24px 0 40px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--grigio);
+      font-weight: 700;
+      padding: 0 20px 14px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid var(--grigio-light);
+    }
+    .sidebar-nav { list-style: none; padding: 0; margin: 0; flex: 1; }
+    .sidebar-link {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--nero);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+    .sidebar-link:hover { background: var(--panna); color: var(--oro); }
+    .sidebar-link.is-active { border-left-color: var(--oro); color: var(--oro); background: #fdf6ea; font-weight: 600; }
+    .sidebar-link.is-active .sidebar-num { color: var(--oro); }
+    .sidebar-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--oro);
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      min-width: 20px;
+    }
+    .sidebar-footer {
+      padding: 16px 20px 0;
+      border-top: 1px solid var(--grigio-light);
+      margin-top: auto;
+    }
+    .lectures-main {
+      flex: 1;
+      min-width: 0;
+      padding: 40px 36px 80px;
+    }
+    .panel[hidden] { display: none; }
     .section { margin-bottom: 56px; }
     .section-title {
       font-size: 10px;
@@ -85,7 +145,7 @@
       vertical-align: middle;
     }
     .schedule-table tr:last-child td { border-bottom: none; }
-    .schedule-table tr:hover td { background: #fff; }
+    .schedule-table tr:hover td { background: #faf7f2; }
     .topic-num-cell {
       font-size: 11px;
       font-weight: 700;
@@ -97,6 +157,12 @@
       font-weight: 600;
       color: var(--nero);
       text-decoration: none;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
     }
     .topic-link:hover { color: var(--oro); text-decoration: underline; }
     .topic-sub {
@@ -120,14 +186,12 @@
     .assess-link:hover { background: #2D7A4F; color: #fff; }
     .assess-link + .assess-link { margin-top: 4px; display: block; }
 
-    /* ── Topic study-note sections ── */
+    /* ── Topic panels ── */
     .topic-section {
       background: #fff;
       border: 1px solid var(--grigio-light);
       border-radius: 4px;
-      margin-bottom: 32px;
       overflow: hidden;
-      scroll-margin-top: 24px;
     }
     .topic-header {
       display: flex;
@@ -178,6 +242,7 @@
       margin-bottom: 5px;
     }
     .topic-body strong { color: var(--nero); }
+    .topic-body em { font-style: italic; }
     .topic-footer {
       border-top: 1px solid var(--grigio-light);
       padding: 14px 28px;
@@ -193,10 +258,8 @@
       color: var(--grigio);
       font-weight: 600;
     }
-
     .back-link {
       display: inline-block;
-      margin-top: 32px;
       font-size: 0.83rem;
       color: #aaa;
       text-decoration: none;
@@ -221,64 +284,22 @@
     .breadcrumb-sep { color: #ccc; }
     .breadcrumb-current { color: var(--grigio); }
 
-    /* ── TABLE OF CONTENTS ── */
-    .toc-section {
-      background: #fff;
-      border: 1px solid var(--grigio-light);
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin-bottom: 40px;
-    }
-    .toc-title {
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--grigio);
-      font-weight: 700;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .toc-list li {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--grigio-light);
-    }
-    .toc-list li:last-child { border-bottom: none; }
-    .toc-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--oro);
-      letter-spacing: 1px;
-      flex-shrink: 0;
-      min-width: 24px;
-    }
-    .toc-list a {
-      color: var(--nero);
-      text-decoration: none;
-      font-size: 0.93rem;
-      font-weight: 500;
-    }
-    .toc-list a:hover { color: var(--oro); text-decoration: underline; }
+    /* ── Glossary ── */
+    .glossary-term { font-weight: 700; color: var(--nero); }
+    .glossary-def { font-size: 0.9rem; color: #444; margin-bottom: 10px; line-height: 1.6; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
       .page-header { padding: 28px 20px 24px; }
-      .content { padding: 32px 16px 60px; }
+      .lectures-layout { flex-direction: column; }
+      .lectures-sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--grigio-light); }
+      .lectures-main { padding: 24px 16px 60px; }
       .topic-header { padding: 16px 18px; }
       .topic-body { padding: 20px 18px 24px; }
       .topic-footer { padding: 12px 18px; }
       .schedule-table th, .schedule-table td { padding: 10px 8px; }
       .breadcrumb { padding: 10px 20px; }
-      .toc-section { padding: 20px 18px; }
     }
-  </style>
+      </style>
 </head>
 <body>
 
@@ -312,10 +333,22 @@
       <li><span class="toc-num">06</span><a href="#topic-6">Product Ethics &amp; Liability (L9 Part 2)</a></li>
       <li><span class="toc-num">07</span><a href="#topic-7">Ethics in Business Operations (L10)</a></li>
       <li><span class="toc-num">08</span><a href="#topic-8">Frameworks, Glossary &amp; Discussion Guide</a></li>
-    </ul>
-  </div>
+<div class="lectures-layout">
 
-  <!-- ── Schedule overview (Stanford CS324-style) ── -->
+  <!-- ── Left Sidebar ── -->
+  <nav class="lectures-sidebar" aria-label="Study notes navigation">
+    <div class="sidebar-label">Contents</div>
+    <ul class="sidebar-nav">
+      <li><a href="#" class="sidebar-link is-active" data-panel="overview">Course Schedule</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-1"><span class="sidebar-num">01</span>Ethical Theories &amp; Frameworks</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>Corporate Social Responsibility</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-3"><span class="sidebar-num">03</span>Codes of Ethics in Practice</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-4"><span class="sidebar-num">04</span>Corporate Governance</a></li>
+    </ul>
+    <div class="sidebar-footer">
+      <a href="hub.html" class="back-link">← Back to course hub</a>
+    </div>
+      <!-- ── Schedule overview (Stanford CS324-style) ── -->
   <div class="section">
     <div class="section-title">Course Schedule</div>
     <table class="schedule-table">
@@ -330,41 +363,41 @@
         <tr>
           <td class="topic-num-cell">01</td>
           <td>
-            <a href="#topic-1" class="topic-link">Ethical Theories &amp; Frameworks</a>
+            <a data-panel="topic-1" class="topic-link">Ethical Theories &amp; Frameworks</a>
             <div class="topic-sub">Utilitarianism · Deontology · Virtue Ethics · Stakeholder Theory</div>
           </td>
           <td>
-            <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1</a>
+            <a href="quiz-1.html" class="assess-link">Quiz 1</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">02</td>
           <td>
-            <a href="#topic-2" class="topic-link">Corporate Social Responsibility</a>
+            <a data-panel="topic-2" class="topic-link">Corporate Social Responsibility</a>
             <div class="topic-sub">Carroll's Pyramid · Triple Bottom Line · ESG</div>
           </td>
           <td>
-            <a href="password-gate.html?to=quiz-2.html" class="assess-link">Quiz 2</a>
+            <a href="quiz-2.html" class="assess-link">Quiz 2</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">03</td>
           <td>
-            <a href="#topic-3" class="topic-link">Codes of Ethics in Practice</a>
+            <a data-panel="topic-3" class="topic-link">Codes of Ethics in Practice</a>
             <div class="topic-sub">Corporate codes · Ferragamo Code of Ethics · Compliance</div>
           </td>
           <td>
-            <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1</a>
+            <a href="test-1.html" class="assess-link">Test 1</a>
           </td>
         </tr>
         <tr>
           <td class="topic-num-cell">04</td>
           <td>
-            <a href="#topic-4" class="topic-link">Corporate Governance</a>
+            <a data-panel="topic-4" class="topic-link">Corporate Governance</a>
             <div class="topic-sub">Board structure · Accountability · Transparency</div>
           </td>
           <td>
-            <a href="password-gate.html?to=test-2.html" class="assess-link">Test 2</a>
+            <a href="test-2.html" class="assess-link">Test 2</a>
           </td>
         </tr>
         <tr>
@@ -410,190 +443,205 @@
       </tbody>
     </table>
   </div>
-
-  <!-- ── Topic 1 ── -->
-  <div id="topic-1" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">01</span>
-      <h2>Ethical Theories &amp; Frameworks</h2>
     </div>
-    <div class="topic-body">
 
-      <h3>What is Business Ethics?</h3>
-      <p>Business ethics is the application of ethical principles to business activities. It examines what is right and wrong, fair and unfair, in the way organizations and individuals conduct themselves in commercial settings. Business ethics covers issues like honesty, fairness, respect for persons, and social responsibility.</p>
+    <!-- ── Topic 1 panel ── -->
+    <div id="panel-topic-1" class="panel" hidden>
+      <div id="topic-1" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">01</span>
+            <h2>Ethical Theories &amp; Frameworks</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>Utilitarianism</h3>
-      <p><strong>Key idea:</strong> An action is right if it produces the greatest good for the greatest number of people. Outcomes and consequences determine the morality of an action.</p>
-      <ul>
-        <li><strong>Jeremy Bentham</strong> (1748–1832): introduced the "felicific calculus" — measuring pleasure and pain to choose the best action.</li>
-        <li><strong>John Stuart Mill</strong> (1806–1873): refined utilitarianism by distinguishing between higher and lower pleasures; also argued for individual rights within a utilitarian framework.</li>
-        <li><strong>Applied to business:</strong> a company might justify downsizing if it saves jobs for the majority. Cost-benefit analysis is a utilitarian tool.</li>
-        <li><strong>Limitation:</strong> can justify harming a minority if the majority benefits; ignores individual rights.</li>
-      </ul>
+            <h3>What is Business Ethics?</h3>
+            <p>Business ethics is the application of ethical principles to business activities. It examines what is right and wrong, fair and unfair, in the way organizations and individuals conduct themselves in commercial settings. Business ethics covers issues like honesty, fairness, respect for persons, and social responsibility.</p>
 
-      <h3>Deontology (Kantian Ethics)</h3>
-      <p><strong>Key idea:</strong> Some actions are intrinsically right or wrong, regardless of their consequences. Morality is based on duties and rules.</p>
-      <ul>
-        <li><strong>Immanuel Kant</strong> (1724–1804): proposed the <em>Categorical Imperative</em> — act only according to principles you would want to become universal laws.</li>
-        <li><strong>Formula of Humanity:</strong> "Act so that you treat humanity, whether in your own person or in that of another, always as an end and never as a means only." Employees must not be treated merely as tools for profit.</li>
-        <li><strong>Applied to business:</strong> paying fair wages, keeping promises to customers, avoiding deceptive advertising — these are duties regardless of profit impact.</li>
-        <li><strong>Limitation:</strong> rigid; may not account for situational complexity.</li>
-      </ul>
+            <h3>Utilitarianism</h3>
+            <p><strong>Key idea:</strong> An action is right if it produces the greatest good for the greatest number of people. Outcomes and consequences determine the morality of an action.</p>
+            <ul>
+              <li><strong>Jeremy Bentham</strong> (1748–1832): introduced the "felicific calculus" — measuring pleasure and pain to choose the best action.</li>
+              <li><strong>John Stuart Mill</strong> (1806–1873): refined utilitarianism by distinguishing between higher and lower pleasures; also argued for individual rights within a utilitarian framework.</li>
+              <li><strong>Applied to business:</strong> a company might justify downsizing if it saves jobs for the majority. Cost-benefit analysis is a utilitarian tool.</li>
+              <li><strong>Limitation:</strong> can justify harming a minority if the majority benefits; ignores individual rights.</li>
+            </ul>
 
-      <h3>Virtue Ethics</h3>
-      <p><strong>Key idea:</strong> Morality is about developing virtuous character traits rather than following rules or maximizing outcomes. A virtuous person will naturally make ethical decisions.</p>
-      <ul>
-        <li><strong>Aristotle</strong> (384–322 BC): key virtues include honesty, courage, prudence (practical wisdom), justice, and moderation.</li>
-        <li><strong>Applied to business:</strong> a business with an ethical culture develops employees of good character. Leadership integrity, honesty in communications, and fair treatment of stakeholders are virtuous behaviors.</li>
-        <li><strong>Limitation:</strong> does not always provide clear guidance in specific dilemmas.</li>
-      </ul>
+            <h3>Deontology (Kantian Ethics)</h3>
+            <p><strong>Key idea:</strong> Some actions are intrinsically right or wrong, regardless of their consequences. Morality is based on duties and rules.</p>
+            <ul>
+              <li><strong>Immanuel Kant</strong> (1724–1804): proposed the <em>Categorical Imperative</em> — act only according to principles you would want to become universal laws.</li>
+              <li><strong>Formula of Humanity:</strong> "Act so that you treat humanity, whether in your own person or in that of another, always as an end and never as a means only." Employees must not be treated merely as tools for profit.</li>
+              <li><strong>Applied to business:</strong> paying fair wages, keeping promises to customers, avoiding deceptive advertising — these are duties regardless of profit impact.</li>
+              <li><strong>Limitation:</strong> rigid; may not account for situational complexity.</li>
+            </ul>
 
-      <h3>Stakeholder Theory</h3>
-      <p><strong>Key idea:</strong> Businesses have obligations not only to shareholders but to all stakeholders — anyone affected by the company's activities.</p>
-      <ul>
-        <li><strong>R. Edward Freeman</strong> (1984): stakeholders include employees, customers, suppliers, communities, and the environment — not just investors.</li>
-        <li><strong>Contrast with Shareholder Theory</strong> (Milton Friedman, 1970): the sole social responsibility of business is to increase profits within the law. Stakeholder theory challenges this view.</li>
-        <li><strong>Applied to business:</strong> decisions consider impact on all affected parties. ESG frameworks are an expression of stakeholder theory in practice.</li>
-      </ul>
+            <h3>Virtue Ethics</h3>
+            <p><strong>Key idea:</strong> Morality is about developing virtuous character traits rather than following rules or maximizing outcomes. A virtuous person will naturally make ethical decisions.</p>
+            <ul>
+              <li><strong>Aristotle</strong> (384–322 BC): key virtues include honesty, courage, prudence (practical wisdom), justice, and moderation.</li>
+              <li><strong>Applied to business:</strong> a business with an ethical culture develops employees of good character. Leadership integrity, honesty in communications, and fair treatment of stakeholders are virtuous behaviors.</li>
+              <li><strong>Limitation:</strong> does not always provide clear guidance in specific dilemmas.</li>
+            </ul>
 
+            <h3>Stakeholder Theory</h3>
+            <p><strong>Key idea:</strong> Businesses have obligations not only to shareholders but to all stakeholders — anyone affected by the company's activities.</p>
+            <ul>
+              <li><strong>R. Edward Freeman</strong> (1984): stakeholders include employees, customers, suppliers, communities, and the environment — not just investors.</li>
+              <li><strong>Contrast with Shareholder Theory</strong> (Milton Friedman, 1970): the sole social responsibility of business is to increase profits within the law. Stakeholder theory challenges this view.</li>
+              <li><strong>Applied to business:</strong> decisions consider impact on all affected parties. ESG frameworks are an expression of stakeholder theory in practice.</li>
+            </ul>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="quiz-1.html" class="assess-link">Quiz 1 — Ethical Frameworks</a>
+          </div>
+        </div>
     </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-1.html" class="assess-link">Quiz 1 — Ethical Frameworks</a>
+
+    <!-- ── Topic 2 panel ── -->
+    <div id="panel-topic-2" class="panel" hidden>
+      <div id="topic-2" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">02</span>
+            <h2>Corporate Social Responsibility</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Defining CSR</h3>
+            <p>Corporate Social Responsibility (CSR) is the idea that companies should consider the interests of society — not just shareholders — by taking responsibility for the impact of their activities on customers, employees, communities, and the environment. CSR goes beyond legal compliance: it is about voluntary action that benefits society.</p>
+
+            <h3>Carroll's CSR Pyramid</h3>
+            <p><strong>Archie Carroll</strong> (1991) organized corporate responsibilities into a four-level pyramid, from the most basic to the most aspirational:</p>
+            <ul>
+              <li><strong>Economic Responsibilities</strong> (base): be profitable. Without profit, a business cannot survive or fulfill its other responsibilities. This is the foundation of all other responsibilities.</li>
+              <li><strong>Legal Responsibilities:</strong> obey the law. Society codifies rules of acceptable behavior — companies must operate within these rules.</li>
+              <li><strong>Ethical Responsibilities:</strong> be ethical — do what is right, fair, and just, even when not legally required. Avoid harm, respect rights, and act with integrity.</li>
+              <li><strong>Philanthropic Responsibilities</strong> (apex): be a good corporate citizen. Contribute to the community through donations, volunteering, and social initiatives.</li>
+            </ul>
+            <p>The pyramid is read bottom-up: all four levels are expected simultaneously, but economic viability is the prerequisite.</p>
+
+            <h3>Triple Bottom Line (TBL)</h3>
+            <p><strong>John Elkington</strong> coined the term in 1994. Businesses should measure success across three dimensions:</p>
+            <ul>
+              <li><strong>People</strong> (Social): fair wages, safe working conditions, community impact, human rights.</li>
+              <li><strong>Planet</strong> (Environmental): carbon footprint, resource use, waste, biodiversity.</li>
+              <li><strong>Profit</strong> (Economic): financial performance.</li>
+            </ul>
+            <p>The TBL encourages companies to see sustainability as a business imperative, not just philanthropy.</p>
+
+            <h3>ESG — Environmental, Social, Governance</h3>
+            <p>ESG is a framework used by investors and companies to evaluate non-financial performance:</p>
+            <ul>
+              <li><strong>Environmental:</strong> climate change strategy, emissions, energy efficiency, water management.</li>
+              <li><strong>Social:</strong> labor practices, diversity &amp; inclusion, human rights, supply chain conditions.</li>
+              <li><strong>Governance:</strong> board composition, executive pay, anti-corruption policies, shareholder rights.</li>
+            </ul>
+            <p>Strong ESG ratings are increasingly linked to lower risk, better reputation, and access to capital.</p>
+
+            <h3>ISO 26000</h3>
+            <p>ISO 26000 (2010) is the international standard providing guidance — not certification — on social responsibility. It identifies seven core subjects: organizational governance, human rights, labor practices, environment, fair operating practices, consumer issues, and community involvement.</p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="quiz-2.html" class="assess-link">Quiz 2 — True/False</a>
+          </div>
+        </div>
     </div>
-  </div>
 
-  <!-- ── Topic 2 ── -->
-  <div id="topic-2" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">02</span>
-      <h2>Corporate Social Responsibility</h2>
+    <!-- ── Topic 3 panel ── -->
+    <div id="panel-topic-3" class="panel" hidden>
+      <div id="topic-3" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">03</span>
+            <h2>Codes of Ethics in Practice</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>What Is a Code of Ethics?</h3>
+            <p>A corporate code of ethics (also called a code of conduct) is a formal document that sets out the values, principles, and behavioral standards expected of everyone in an organization. It translates abstract ethical principles into concrete guidance for daily decisions.</p>
+            <p>Typical codes cover: honesty and integrity, conflicts of interest, confidentiality, anti-corruption, environmental responsibility, human rights, and whistleblowing procedures.</p>
+
+            <h3>Why Do Companies Adopt Codes of Ethics?</h3>
+            <ul>
+              <li><strong>Guide behavior:</strong> provides employees with clear standards when facing ethical dilemmas.</li>
+              <li><strong>Reduce misconduct:</strong> reduces the risk of fraud, bribery, and other violations.</li>
+              <li><strong>Build trust:</strong> signals to customers, suppliers, and investors that the company operates with integrity.</li>
+              <li><strong>Legal protection:</strong> demonstrates good-faith compliance efforts, which can mitigate penalties in legal proceedings.</li>
+              <li><strong>Reputation and brand:</strong> ethical companies attract and retain talented employees and loyal customers.</li>
+            </ul>
+
+            <h3>The Salvatore Ferragamo Code of Ethics</h3>
+            <p>The Ferragamo Code of Ethics is the foundational document governing the ethical conduct of all employees, managers, directors, and business partners of the Salvatore Ferragamo Group. It reflects the Group's commitment to responsible luxury.</p>
+            <p><strong>Key principles of the Ferragamo Code:</strong></p>
+            <ul>
+              <li><strong>Integrity and honesty:</strong> all business relationships must be conducted with fairness, transparency, and honesty.</li>
+              <li><strong>Respect for persons:</strong> the dignity of every individual — employee, partner, or customer — must be upheld.</li>
+              <li><strong>Compliance:</strong> every person within the Group must comply with applicable laws and internal regulations in every country of operation.</li>
+              <li><strong>Conflict of interest:</strong> personal interests must never interfere with the Group's interests; conflicts must be declared and managed.</li>
+              <li><strong>Confidentiality:</strong> privileged information must be protected and not used for personal gain.</li>
+              <li><strong>Environmental responsibility:</strong> the Group is committed to minimizing its environmental footprint across all operations.</li>
+              <li><strong>Anti-corruption:</strong> bribery, corruption, and facilitation payments are strictly prohibited.</li>
+            </ul>
+
+            <h3>Ethics Committees and Compliance Functions</h3>
+            <p>Many organizations establish an <strong>Ethics Committee</strong> or <strong>Compliance Office</strong> to oversee adherence to the code of ethics, investigate reported violations, and update the code as needed. A key mechanism is the <strong>whistleblowing channel</strong>: a confidential system through which employees can report suspected misconduct without fear of retaliation.</p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="test-1.html" class="assess-link">Test 1 — Ferragamo Code of Ethics</a>
+          </div>
+        </div>
     </div>
-    <div class="topic-body">
 
-      <h3>Defining CSR</h3>
-      <p>Corporate Social Responsibility (CSR) is the idea that companies should consider the interests of society — not just shareholders — by taking responsibility for the impact of their activities on customers, employees, communities, and the environment. CSR goes beyond legal compliance: it is about voluntary action that benefits society.</p>
+    <!-- ── Topic 4 panel ── -->
+    <div id="panel-topic-4" class="panel" hidden>
+      <div id="topic-4" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">04</span>
+            <h2>Corporate Governance</h2>
+          </div>
+          <div class="topic-body">
 
-      <h3>Carroll's CSR Pyramid</h3>
-      <p><strong>Archie Carroll</strong> (1991) organized corporate responsibilities into a four-level pyramid, from the most basic to the most aspirational:</p>
-      <ul>
-        <li><strong>Economic Responsibilities</strong> (base): be profitable. Without profit, a business cannot survive or fulfill its other responsibilities. This is the foundation of all other responsibilities.</li>
-        <li><strong>Legal Responsibilities:</strong> obey the law. Society codifies rules of acceptable behavior — companies must operate within these rules.</li>
-        <li><strong>Ethical Responsibilities:</strong> be ethical — do what is right, fair, and just, even when not legally required. Avoid harm, respect rights, and act with integrity.</li>
-        <li><strong>Philanthropic Responsibilities</strong> (apex): be a good corporate citizen. Contribute to the community through donations, volunteering, and social initiatives.</li>
-      </ul>
-      <p>The pyramid is read bottom-up: all four levels are expected simultaneously, but economic viability is the prerequisite.</p>
+            <h3>What Is Corporate Governance?</h3>
+            <p>Corporate governance is the system of rules, practices, and processes by which a company is directed and controlled. It defines the relationships between a company's management, its board of directors, shareholders, and other stakeholders. Good governance ensures accountability, fairness, and transparency in a company's relationship with all stakeholders.</p>
 
-      <h3>Triple Bottom Line (TBL)</h3>
-      <p><strong>John Elkington</strong> coined the term in 1994. Businesses should measure success across three dimensions:</p>
-      <ul>
-        <li><strong>People</strong> (Social): fair wages, safe working conditions, community impact, human rights.</li>
-        <li><strong>Planet</strong> (Environmental): carbon footprint, resource use, waste, biodiversity.</li>
-        <li><strong>Profit</strong> (Economic): financial performance.</li>
-      </ul>
-      <p>The TBL encourages companies to see sustainability as a business imperative, not just philanthropy.</p>
+            <h3>The Board of Directors</h3>
+            <p>The Board of Directors is the primary governing body of a corporation. Its key responsibilities include:</p>
+            <ul>
+              <li><strong>Strategic oversight:</strong> approving the company's strategy and major decisions.</li>
+              <li><strong>Management accountability:</strong> appointing, evaluating, and (if necessary) removing the CEO and senior executives.</li>
+              <li><strong>Financial oversight:</strong> approving budgets, audits, and financial reporting.</li>
+              <li><strong>Risk management:</strong> ensuring appropriate risk management systems are in place.</li>
+            </ul>
+            <p><strong>Board composition:</strong> boards typically include both executive directors (company insiders) and non-executive/independent directors (outsiders). Independence is essential for effective oversight. A lead independent director or chairman may provide further balance.</p>
 
-      <h3>ESG — Environmental, Social, Governance</h3>
-      <p>ESG is a framework used by investors and companies to evaluate non-financial performance:</p>
-      <ul>
-        <li><strong>Environmental:</strong> climate change strategy, emissions, energy efficiency, water management.</li>
-        <li><strong>Social:</strong> labor practices, diversity &amp; inclusion, human rights, supply chain conditions.</li>
-        <li><strong>Governance:</strong> board composition, executive pay, anti-corruption policies, shareholder rights.</li>
-      </ul>
-      <p>Strong ESG ratings are increasingly linked to lower risk, better reputation, and access to capital.</p>
+            <h3>Shareholder vs. Stakeholder Model</h3>
+            <ul>
+              <li><strong>Shareholder model:</strong> the board's primary duty is to maximize shareholder value. Governance focuses on protecting and growing investor returns.</li>
+              <li><strong>Stakeholder model:</strong> boards must consider the interests of all stakeholders — employees, customers, suppliers, communities — not just shareholders. Increasingly adopted in ESG-driven governance frameworks.</li>
+            </ul>
 
-      <h3>ISO 26000</h3>
-      <p>ISO 26000 (2010) is the international standard providing guidance — not certification — on social responsibility. It identifies seven core subjects: organizational governance, human rights, labor practices, environment, fair operating practices, consumer issues, and community involvement.</p>
+            <h3>Accountability and Transparency Mechanisms</h3>
+            <ul>
+              <li><strong>Annual reports and financial statements:</strong> mandatory disclosure of financial performance, audited by independent firms.</li>
+              <li><strong>Audit committees:</strong> board subcommittee overseeing internal and external audit processes and financial integrity.</li>
+              <li><strong>Remuneration committees:</strong> oversee executive pay to ensure it is linked to performance and not excessive.</li>
+              <li><strong>Governance codes:</strong> voluntary or semi-mandatory codes (e.g., UK Corporate Governance Code, Italy's Corporate Governance Code) that set best-practice standards on a "comply or explain" basis.</li>
+              <li><strong>Sustainability reporting:</strong> under the EU's CSRD, large companies must disclose their environmental and social impacts alongside financial results.</li>
+            </ul>
 
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=quiz-2.html" class="assess-link">Quiz 2 — True/False</a>
-    </div>
-  </div>
+            <h3>Key Governance Principles (OECD)</h3>
+            <p>The OECD Principles of Corporate Governance identify six pillars: ensuring the basis for an effective governance framework; rights and equitable treatment of shareholders; institutional investors and markets; the role of stakeholders; disclosure and transparency; and the responsibilities of the board.</p>
 
-  <!-- ── Topic 3 ── -->
-  <div id="topic-3" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">03</span>
-      <h2>Codes of Ethics in Practice</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>What Is a Code of Ethics?</h3>
-      <p>A corporate code of ethics (also called a code of conduct) is a formal document that sets out the values, principles, and behavioral standards expected of everyone in an organization. It translates abstract ethical principles into concrete guidance for daily decisions.</p>
-      <p>Typical codes cover: honesty and integrity, conflicts of interest, confidentiality, anti-corruption, environmental responsibility, human rights, and whistleblowing procedures.</p>
-
-      <h3>Why Do Companies Adopt Codes of Ethics?</h3>
-      <ul>
-        <li><strong>Guide behavior:</strong> provides employees with clear standards when facing ethical dilemmas.</li>
-        <li><strong>Reduce misconduct:</strong> reduces the risk of fraud, bribery, and other violations.</li>
-        <li><strong>Build trust:</strong> signals to customers, suppliers, and investors that the company operates with integrity.</li>
-        <li><strong>Legal protection:</strong> demonstrates good-faith compliance efforts, which can mitigate penalties in legal proceedings.</li>
-        <li><strong>Reputation and brand:</strong> ethical companies attract and retain talented employees and loyal customers.</li>
-      </ul>
-
-      <h3>The Salvatore Ferragamo Code of Ethics</h3>
-      <p>The Ferragamo Code of Ethics is the foundational document governing the ethical conduct of all employees, managers, directors, and business partners of the Salvatore Ferragamo Group. It reflects the Group's commitment to responsible luxury.</p>
-      <p><strong>Key principles of the Ferragamo Code:</strong></p>
-      <ul>
-        <li><strong>Integrity and honesty:</strong> all business relationships must be conducted with fairness, transparency, and honesty.</li>
-        <li><strong>Respect for persons:</strong> the dignity of every individual — employee, partner, or customer — must be upheld.</li>
-        <li><strong>Compliance:</strong> every person within the Group must comply with applicable laws and internal regulations in every country of operation.</li>
-        <li><strong>Conflict of interest:</strong> personal interests must never interfere with the Group's interests; conflicts must be declared and managed.</li>
-        <li><strong>Confidentiality:</strong> privileged information must be protected and not used for personal gain.</li>
-        <li><strong>Environmental responsibility:</strong> the Group is committed to minimizing its environmental footprint across all operations.</li>
-        <li><strong>Anti-corruption:</strong> bribery, corruption, and facilitation payments are strictly prohibited.</li>
-      </ul>
-
-      <h3>Ethics Committees and Compliance Functions</h3>
-      <p>Many organizations establish an <strong>Ethics Committee</strong> or <strong>Compliance Office</strong> to oversee adherence to the code of ethics, investigate reported violations, and update the code as needed. A key mechanism is the <strong>whistleblowing channel</strong>: a confidential system through which employees can report suspected misconduct without fear of retaliation.</p>
-
-    </div>
-    <div class="topic-footer">
-      <span class="topic-footer-label">Practice:</span>
-      <a href="password-gate.html?to=test-1.html" class="assess-link">Test 1 — Ferragamo Code of Ethics</a>
-    </div>
-  </div>
-
-  <!-- ── Topic 4 ── -->
-  <div id="topic-4" class="topic-section">
-    <div class="topic-header">
-      <span class="topic-num">04</span>
-      <h2>Corporate Governance</h2>
-    </div>
-    <div class="topic-body">
-
-      <h3>What Is Corporate Governance?</h3>
-      <p>Corporate governance is the system of rules, practices, and processes by which a company is directed and controlled. It defines the relationships between a company's management, its board of directors, shareholders, and other stakeholders. Good governance ensures accountability, fairness, and transparency in a company's relationship with all stakeholders.</p>
-
-      <h3>The Board of Directors</h3>
-      <p>The Board of Directors is the primary governing body of a corporation. Its key responsibilities include:</p>
-      <ul>
-        <li><strong>Strategic oversight:</strong> approving the company's strategy and major decisions.</li>
-        <li><strong>Management accountability:</strong> appointing, evaluating, and (if necessary) removing the CEO and senior executives.</li>
-        <li><strong>Financial oversight:</strong> approving budgets, audits, and financial reporting.</li>
-        <li><strong>Risk management:</strong> ensuring appropriate risk management systems are in place.</li>
-      </ul>
-      <p><strong>Board composition:</strong> boards typically include both executive directors (company insiders) and non-executive/independent directors (outsiders). Independence is essential for effective oversight. A lead independent director or chairman may provide further balance.</p>
-
-      <h3>Shareholder vs. Stakeholder Model</h3>
-      <ul>
-        <li><strong>Shareholder model:</strong> the board's primary duty is to maximize shareholder value. Governance focuses on protecting and growing investor returns.</li>
-        <li><strong>Stakeholder model:</strong> boards must consider the interests of all stakeholders — employees, customers, suppliers, communities — not just shareholders. Increasingly adopted in ESG-driven governance frameworks.</li>
-      </ul>
-
-      <h3>Accountability and Transparency Mechanisms</h3>
-      <ul>
-        <li><strong>Annual reports and financial statements:</strong> mandatory disclosure of financial performance, audited by independent firms.</li>
-        <li><strong>Audit committees:</strong> board subcommittee overseeing internal and external audit processes and financial integrity.</li>
-        <li><strong>Remuneration committees:</strong> oversee executive pay to ensure it is linked to performance and not excessive.</li>
-        <li><strong>Governance codes:</strong> voluntary or semi-mandatory codes (e.g., UK Corporate Governance Code, Italy's Corporate Governance Code) that set best-practice standards on a "comply or explain" basis.</li>
-        <li><strong>Sustainability reporting:</strong> under the EU's CSRD, large companies must disclose their environmental and social impacts alongside financial results.</li>
-      </ul>
-
-      <h3>Key Governance Principles (OECD)</h3>
-      <p>The OECD Principles of Corporate Governance identify six pillars: ensuring the basis for an effective governance framework; rights and equitable treatment of shareholders; institutional investors and markets; the role of stakeholders; disclosure and transparency; and the responsibilities of the board.</p>
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <a href="test-2.html" class="assess-link">Test 2 — Corporate Governance</a>
+          </div>
+        </div>
 
     </div>
     <div class="topic-footer">
@@ -719,6 +767,39 @@
 
   <a href="../../index.html" class="back-link">← Back to course hub</a>
 
-</div><!-- /.content -->
+  </main>
+
+</div><!-- /.lectures-layout -->
+
+<script>
+(function () {
+  var navLinks = document.querySelectorAll('.sidebar-link[data-panel]');
+  var topicLinks = document.querySelectorAll('.topic-link[data-panel]');
+  var panels = document.querySelectorAll('.panel');
+
+  function showPanel(panelId) {
+    panels.forEach(function (p) { p.hidden = true; });
+    navLinks.forEach(function (l) { l.classList.remove('is-active'); });
+    var panel = document.getElementById('panel-' + panelId);
+    if (panel) panel.hidden = false;
+    navLinks.forEach(function (l) {
+      if (l.dataset.panel === panelId) l.classList.add('is-active');
+    });
+  }
+
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      showPanel(this.dataset.panel);
+    });
+  });
+
+  topicLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      showPanel(this.dataset.panel);
+    });
+  });
+}());
+</script>
 </body>
 </html>

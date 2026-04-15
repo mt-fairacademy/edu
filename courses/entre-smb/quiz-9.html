@@ -8,10 +8,11 @@
   <link rel="stylesheet" href="../../shared/quiz.css" />
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_entre_smb')){window.location.replace('password-gate.html');}</script>
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="../../index.html" class="breadcrumb-link">Home</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-link">Entrepreneurship &amp; Small Business</span>
+  <a href="hub.html" class="breadcrumb-link">Entrepreneurship &amp; Small Business</a>
   <span class="breadcrumb-sep">/</span>
   <span class="breadcrumb-current">Quiz 9</span>
 </nav>
