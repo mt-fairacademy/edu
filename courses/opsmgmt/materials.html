@@ -110,9 +110,28 @@
       .page-header { padding: 28px 20px 24px; }
       .content { padding: 32px 16px 60px; }
     }
+
+    /* ── BREADCRUMB ── */
+    .breadcrumb {
+      background: #fff;
+      border-bottom: 1px solid var(--grigio-light);
+      padding: 10px 40px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .breadcrumb-link { color: var(--oro); text-decoration: none; }
+    .breadcrumb-link:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: #ccc; }
+    .breadcrumb-current { color: var(--grigio); }
   </style>
 </head>
 <body>
+  <script>if(!sessionStorage.getItem('auth_opsmgmt')){window.location.replace('password-gate.html');}</script>
 
 <div class="page-header">
   <div class="header-label">Operations Management · Course Materials</div>
@@ -120,7 +139,13 @@
   <h1>Operations Management</h1>
   <p>Readings, frameworks, and reference documents</p>
 </div>
-
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-sep">/</span>
+  <a href="hub.html" class="breadcrumb-link">Operations Management</a>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-current">Materials</span>
+</nav>
 <div class="content">
 
   <a href="lectures.html" class="back-link" style="margin-top:0; color: var(--oro); font-weight:600;">📚 Study Notes →</a>
@@ -156,7 +181,7 @@
           <div class="material-name">Test 1</div>
           <div class="material-desc">Multiple Choice · Placeholder assessment</div>
         </div>
-        <a href="password-gate.html?to=test-1.html" style="text-decoration:none;">
+        <a href="test-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -166,7 +191,7 @@
           <div class="material-name">Quiz 1</div>
           <div class="material-desc">Multiple Choice &amp; True/False · Placeholder quiz</div>
         </div>
-        <a href="password-gate.html?to=quiz-1.html" style="text-decoration:none;">
+        <a href="quiz-1.html" style="text-decoration:none;">
           <span class="material-badge badge-ready">Open</span>
         </a>
       </li>
@@ -181,7 +206,7 @@
     </ul>
   </div>
 
-  <a href="../../index.html" class="back-link">← Back to course hub</a>
+  <a href="hub.html" class="back-link">← Back to course hub</a>
 
 </div><!-- /.content -->
 </body>
