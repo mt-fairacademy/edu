@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz 2 — Supply Chain Management</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../shared/quiz.css">
+</head>
+<body>
+  <script>if(!sessionStorage.getItem('auth_opsmgmt')){window.location.replace('password-gate.html');}</script>
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="../../index.html" class="breadcrumb-link">Home</a>
+  <span class="breadcrumb-sep">/</span>
+  <a href="hub.html" class="breadcrumb-link">Operations Management</a>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-current">Quiz 2</span>
+</nav>
+
+<div class="quiz-header" data-letter="Q">
+  <div class="header-label">Operations Management · Quiz</div>
+  <div class="gold-line"></div>
+  <h1>Quiz 2 &nbsp;·&nbsp; <span>Supply Chain Management</span></h1>
+  <div class="header-sub">Quiz 2 &nbsp;·&nbsp; 15 Questions &nbsp;·&nbsp; Multiple Choice &amp; True / False</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-text" id="progressText">0 / 15</div>
+</div>
+
+<div class="quiz-main">
+
+  <!-- Q1 MC -->
+  <div class="question-card active" data-q="1" data-correct="a">
+    <div class="q-badge"><div class="q-num">1</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">What is the primary focus of Supply Chain Management (SCM)?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Managing relationships and flows between a &lsquo;string&rsquo; of operations.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Minimising electricity consumption in one factory.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Designing marketing campaigns for consumers.</div></div>
+    </div>
+    <div class="feedback" id="fb1"></div>
+  </div>
+
+  <!-- Q2 MC -->
+  <div class="question-card" data-q="2" data-correct="b">
+    <div class="q-badge"><div class="q-num">2</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">Which term describes the entire web of linked operations that ultimately delivers products to end customers?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Supply Chain</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Supply Network</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Supply Logistics</div></div>
+    </div>
+    <div class="feedback" id="fb2"></div>
+  </div>
+
+  <!-- Q3 MC -->
+  <div class="question-card" data-q="3" data-correct="b">
+    <div class="q-badge"><div class="q-num">3</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">In the Kraljic matrix, &lsquo;Supply Risk&rsquo; is best defined by:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Annual purchase cost of the item.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Number of alternative suppliers available and the ease of switching between them.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Environmental impact of the sourcing decision.</div></div>
+    </div>
+    <div class="feedback" id="fb3"></div>
+  </div>
+
+  <!-- Q4 MC -->
+  <div class="question-card" data-q="4" data-correct="b">
+    <div class="q-badge"><div class="q-num">4</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">What is the &lsquo;Bullwhip Effect&rsquo;?</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Demand fluctuations are dampened as they travel upstream in the supply chain.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Small changes in consumer demand are amplified into large swings in upstream orders.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Costs decrease steadily as order volumes increase upstream.</div></div>
+    </div>
+    <div class="feedback" id="fb4"></div>
+  </div>
+
+  <!-- Q5 MC -->
+  <div class="question-card" data-q="5" data-correct="b">
+    <div class="q-badge"><div class="q-num">5</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">Sourcing the same item from two or more suppliers simultaneously is known as:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Single Sourcing</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Multi-Sourcing</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Delegated Sourcing</div></div>
+    </div>
+    <div class="feedback" id="fb5"></div>
+  </div>
+
+  <!-- Q6 MC -->
+  <div class="question-card" data-q="6" data-correct="b">
+    <div class="q-badge"><div class="q-num">6</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">A primary advantage of a supplier &lsquo;Partnership&rsquo; relationship is:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Constant price pressure on the supplier.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Increased flexibility and shared learning between buyer and supplier.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Zero legal accountability for either party.</div></div>
+    </div>
+    <div class="feedback" id="fb6"></div>
+  </div>
+
+  <!-- Q7 MC -->
+  <div class="question-card" data-q="7" data-correct="b">
+    <div class="q-badge"><div class="q-num">7</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">Global Sourcing involves:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Purchasing exclusively from local or regional suppliers.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Managing the supply of goods or services across multiple countries.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Conducting international sales campaigns.</div></div>
+    </div>
+    <div class="feedback" id="fb7"></div>
+  </div>
+
+  <!-- Q8 MC -->
+  <div class="question-card" data-q="8" data-correct="b">
+    <div class="q-badge"><div class="q-num">8</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">A &lsquo;Transactional&rsquo; supplier relationship is characterised by:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">High trust and open-book accounting between buyer and supplier.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">A focus on achieving the lowest price within specific contract terms.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Joint product development and shared R&amp;D investment.</div></div>
+    </div>
+    <div class="feedback" id="fb8"></div>
+  </div>
+
+  <!-- Q9 MC -->
+  <div class="question-card" data-q="9" data-correct="b">
+    <div class="q-badge"><div class="q-num">9</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">E-procurement primarily helps organisations eliminate:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Physical suppliers from the supply network.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Inefficiencies in administrative purchasing tasks.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The physical movement of goods between sites.</div></div>
+    </div>
+    <div class="feedback" id="fb9"></div>
+  </div>
+
+  <!-- Q10 MC -->
+  <div class="question-card" data-q="10" data-correct="b">
+    <div class="q-badge"><div class="q-num">10</div><div class="q-type mc">Multiple Choice</div></div>
+    <div class="q-text">Channel Alignment reduces the Bullwhip Effect by:</div>
+    <div class="options">
+      <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Allowing each stage to plan in isolation to maximise local efficiency.</div></div>
+      <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Standardising planning and ordering methods across the entire chain.</div></div>
+      <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Increasing safety stock levels at every stage of the supply chain.</div></div>
+    </div>
+    <div class="feedback" id="fb10"></div>
+  </div>
+
+  <!-- Q11 T/F -->
+  <div class="question-card" data-q="11" data-correct="false">
+    <div class="q-badge"><div class="q-num">11</div><div class="q-type tf">True / False</div></div>
+    <div class="q-text">Outsourcing is the same as offshoring.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb11"></div>
+  </div>
+
+  <!-- Q12 T/F -->
+  <div class="question-card" data-q="12" data-correct="false">
+    <div class="q-badge"><div class="q-num">12</div><div class="q-type tf">True / False</div></div>
+    <div class="q-text">SCM flows only move downstream (from supplier to customer).</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb12"></div>
+  </div>
+
+  <!-- Q13 T/F -->
+  <div class="question-card" data-q="13" data-correct="false">
+    <div class="q-badge"><div class="q-num">13</div><div class="q-type tf">True / False</div></div>
+    <div class="q-text">Increasing inventory at every stage of the supply chain is an effective way to stop the Bullwhip Effect.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb13"></div>
+  </div>
+
+  <!-- Q14 T/F -->
+  <div class="question-card" data-q="14" data-correct="true">
+    <div class="q-badge"><div class="q-num">14</div><div class="q-type tf">True / False</div></div>
+    <div class="q-text">Single Sourcing makes it easier to build a close, collaborative relationship with a supplier.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb14"></div>
+  </div>
+
+  <!-- Q15 T/F -->
+  <div class="question-card" data-q="15" data-correct="false">
+    <div class="q-badge"><div class="q-num">15</div><div class="q-type tf">True / False</div></div>
+    <div class="q-text">Logistics only involves the movement and storage of finished goods.</div>
+    <div class="options tf-options">
+      <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+      <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+    </div>
+    <div class="feedback" id="fb15"></div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav" id="nav">
+    <button class="btn btn-ghost" id="prevBtn" onclick="quizNavigate(-1)" disabled>← Previous</button>
+    <button class="btn btn-primary" id="nextBtn" onclick="quizNavigate(1)" disabled>Next →</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+    <div class="result-header">
+      <div class="result-score"><sup></sup><span id="scoreNum">0</span><sup>/15</sup></div>
+      <div class="result-label">Final Score</div>
+      <div class="result-verdict" id="verdict"></div>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+    <button class="btn btn-primary btn-restart" onclick="quizRestart()">↺ &nbsp; Restart Quiz</button>
+  </div>
+
+</div><!-- /.quiz-main -->
+
+<script>
+window.QUIZ_QUESTIONS = [
+  {
+    q: 1, type: 'mc', correct: 'a',
+    explanation: {
+      correct: '<strong>Correct.</strong> SCM is fundamentally about managing the relationships and flows (of materials, information, and money) between the linked operations that form a supply chain or network.',
+      wrong:   '<strong>Incorrect.</strong> SCM extends beyond a single factory or function. It focuses on managing relationships and flows across a connected &ldquo;string&rdquo; of operations from raw material to end customer.'
+    }
+  },
+  {
+    q: 2, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> A Supply Network is the entire web of all operations &mdash; suppliers, manufacturers, distributors, and retailers &mdash; that together deliver products to end customers. A supply chain is a specific strand within that network.',
+      wrong:   '<strong>Incorrect.</strong> The term for the entire web of linked operations is the <em>Supply Network</em>. A supply chain is one specific strand; supply logistics refers to transportation and storage activities.'
+    }
+  },
+  {
+    q: 3, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> In the Kraljic matrix, Supply Risk reflects how exposed a buyer is if a supplier fails &mdash; primarily determined by how many alternative suppliers exist and how easily the buyer can switch between them.',
+      wrong:   '<strong>Incorrect.</strong> Supply Risk in the Kraljic matrix is not about cost or environmental impact. It measures vulnerability: how many alternatives are available and how easy it is to switch suppliers.'
+    }
+  },
+  {
+    q: 4, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Bullwhip Effect describes how even small fluctuations in consumer demand get progressively amplified into larger and larger order swings as you move upstream through the supply chain.',
+      wrong:   '<strong>Incorrect.</strong> The Bullwhip Effect is the opposite of dampening. Small consumer demand changes are <em>amplified</em> upstream &mdash; each tier over-reacts to perceived demand signals, inflating orders further up the chain.'
+    }
+  },
+  {
+    q: 5, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Multi-Sourcing means deliberately using two or more suppliers for the same item, spreading risk and maintaining competitive pressure on each supplier.',
+      wrong:   '<strong>Incorrect.</strong> Using multiple suppliers for the same item is called <em>Multi-Sourcing</em>. Single Sourcing uses one supplier; delegated sourcing assigns sourcing responsibility to another organisation.'
+    }
+  },
+  {
+    q: 6, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Partnerships allow both parties to share knowledge, co-develop solutions, and respond flexibly to changing conditions &mdash; advantages that purely transactional relationships cannot provide.',
+      wrong:   '<strong>Incorrect.</strong> Partnership relationships are characterised by trust and mutual benefit, not constant price pressure. A key advantage is the flexibility and shared learning that close collaboration enables.'
+    }
+  },
+  {
+    q: 7, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Global Sourcing involves managing the procurement of goods or services from suppliers located across multiple countries, taking advantage of differences in cost, quality, or capability.',
+      wrong:   '<strong>Incorrect.</strong> Global Sourcing is about <em>buying</em> from international suppliers, not restricting purchases to local regions or conducting international sales.'
+    }
+  },
+  {
+    q: 8, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Transactional relationships are arm&rsquo;s-length arrangements where the primary objective is securing the lowest price under clearly defined contract terms, with little expectation of long-term collaboration.',
+      wrong:   '<strong>Incorrect.</strong> High trust and open-book accounting characterise partnerships. Joint development characterises strategic alliances. Transactional relationships are defined by their focus on lowest price and specific contract terms.'
+    }
+  },
+  {
+    q: 9, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> E-procurement automates and digitises purchasing administration &mdash; order placement, invoicing, approval workflows &mdash; removing the paper-based inefficiencies that inflate transaction costs.',
+      wrong:   '<strong>Incorrect.</strong> E-procurement does not eliminate physical suppliers or the movement of goods. Its primary benefit is removing administrative inefficiencies from the purchasing process through digital automation.'
+    }
+  },
+  {
+    q: 10, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Channel Alignment means all parties in the supply chain use standardised, coordinated planning and ordering methods, so demand signals are not distorted as they pass between stages.',
+      wrong:   '<strong>Incorrect.</strong> Isolated planning and higher inventory levels both worsen or fail to address the Bullwhip Effect. Channel Alignment works by standardising planning methods so demand information flows accurately across all stages.'
+    }
+  },
+  {
+    q: 11, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Outsourcing (contracting an external party to perform an activity previously done in-house) and offshoring (relocating an activity to another country) are distinct concepts. A firm can outsource locally or offshore internally.',
+      wrong:   '<strong>Incorrect.</strong> These are different concepts. Outsourcing means handing an activity to an external supplier. Offshoring means relocating an activity to another country. An activity can be outsourced without being offshored, and vice versa.'
+    }
+  },
+  {
+    q: 12, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> SCM manages flows in both directions. Downstream flows include products and information heading to the customer; upstream flows include returns, recycling, and feedback information travelling back to suppliers.',
+      wrong:   '<strong>Incorrect.</strong> SCM flows move in both directions. While products typically flow downstream to the customer, information (demand signals, forecasts) and returns flow upstream, making reverse logistics a key part of SCM.'
+    }
+  },
+  {
+    q: 13, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Adding more inventory at every stage does not eliminate the Bullwhip Effect &mdash; it only hides the symptoms while adding cost. The root cause (distorted demand information) must be addressed through better information sharing and channel alignment.',
+      wrong:   '<strong>Incorrect.</strong> Holding more inventory at every stage is a costly reaction to demand variability, not a cure. The Bullwhip Effect is best addressed by sharing real-time demand information and aligning planning methods across the supply chain.'
+    }
+  },
+  {
+    q: 14, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct.</strong> When a buyer commits all its volume to one supplier (single sourcing), the supplier has a stronger incentive to invest in the relationship, and the buyer can build the deeper trust and transparency needed for genuine collaboration.',
+      wrong:   '<strong>Incorrect.</strong> Single Sourcing does make close collaboration easier because the full volume commitment gives both sides a stronger incentive to invest in the relationship and build trust over time.'
+    }
+  },
+  {
+    q: 15, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct.</strong> Logistics encompasses the movement, storage, and flow of all goods &mdash; raw materials, work-in-progress, and finished goods &mdash; as well as the related information flows throughout the supply chain.',
+      wrong:   '<strong>Incorrect.</strong> Logistics covers much more than finished goods. It includes managing the movement and storage of raw materials and semi-finished goods (work-in-progress) at every stage, as well as the associated information flows.'
+    }
+  }
+];
+
+window.QUIZ_VERDICTS = [
+  [0,  5,  'Keep reviewing &mdash; revisit the SCM lecture notes before retrying.'],
+  [6,  9,  'Good effort &mdash; a solid foundation; focus on the areas you missed.'],
+  [10, 12, 'Well done &mdash; you have a strong grasp of the key SCM concepts.'],
+  [13, 15, 'Excellent &mdash; outstanding command of Supply Chain Management!']
+];
+</script>
+<script src="../../shared/quiz.js"></script>
+</body>
+</html>
