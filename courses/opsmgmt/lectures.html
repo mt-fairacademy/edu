@@ -202,8 +202,8 @@
     }
     .assess-link:hover { background: #2D7A4F; color: #fff; }
     .assess-link + .assess-link { margin-top: 4px; display: block; }
-    .assess-link.assess-link-muted { background: #f0ede8; color: #6c6c6c; }
-    .assess-link.assess-link-muted:hover { background: #f0ede8; color: #6c6c6c; }
+    .assess-link.assess-link-muted { background: #f0ede8; color: #555; }
+    .assess-link.assess-link-muted:hover { background: #f0ede8; color: #555; }
 
     /* ── Topic panels ── */
     .topic-section {
@@ -388,7 +388,7 @@
         <tr>
           <td class="topic-num-cell">01</td>
           <td>
-            <a data-panel="topic-1" class="topic-link">Operations Management Fundamentals</a>
+            <a href="#topic-1" data-panel="topic-1" class="topic-link">Operations Management Fundamentals</a>
             <div class="topic-sub">Process types · Efficiency &amp; effectiveness · Capacity planning</div>
           </td>
           <td>
@@ -399,7 +399,7 @@
         <tr>
           <td class="topic-num-cell">02</td>
           <td>
-            <a data-panel="topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a>
+            <a href="#topic-2" data-panel="topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a>
             <div class="topic-sub">7 wastes (Muda) · Kaizen · Value stream mapping</div>
           </td>
           <td>
@@ -409,7 +409,7 @@
         <tr>
           <td class="topic-num-cell">03</td>
           <td>
-            <a data-panel="topic-3" class="topic-link">Quality Management</a>
+            <a href="#topic-3" data-panel="topic-3" class="topic-link">Quality Management</a>
             <div class="topic-sub">TQM · Six Sigma · DMAIC · ISO 9001</div>
           </td>
           <td>
@@ -419,7 +419,7 @@
         <tr>
           <td class="topic-num-cell">04</td>
           <td>
-            <a data-panel="topic-4" class="topic-link">Operations Strategy &amp; Performance</a>
+            <a href="#topic-4" data-panel="topic-4" class="topic-link">Operations Strategy &amp; Performance</a>
             <div class="topic-sub">Competitive priorities · KPIs · Capacity &amp; bottlenecks</div>
           </td>
           <td>
@@ -744,8 +744,7 @@
   });
 
   topicLinks.forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
+    link.addEventListener('click', function () {
       showPanel(this.dataset.panel);
     });
   });
