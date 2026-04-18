@@ -202,6 +202,8 @@
     }
     .assess-link:hover { background: #2D7A4F; color: #fff; }
     .assess-link + .assess-link { margin-top: 4px; display: block; }
+    .assess-link.assess-link-muted { background: #f0ede8; color: #888; }
+    .assess-link.assess-link-muted:hover { background: #f0ede8; color: #888; }
 
     /* ── Topic panels ── */
     .topic-section {
@@ -360,14 +362,16 @@
     <div id="panel-overview" class="panel">
       <div class="section">
         <div class="section-title">Table of Contents</div>
-        <ul class="toc-list">
-          <li><a href="#topic-1" data-panel="topic-1" class="topic-link"><span class="topic-num-cell">01</span>Operations Management Fundamentals</a></li>
-          <li><a href="#topic-2" data-panel="topic-2" class="topic-link"><span class="topic-num-cell">02</span>Lean Thinking &amp; Waste Reduction</a></li>
-          <li><a href="#topic-3" data-panel="topic-3" class="topic-link"><span class="topic-num-cell">03</span>Quality Management</a></li>
-          <li><a href="#topic-4" data-panel="topic-4" class="topic-link"><span class="topic-num-cell">04</span>Operations Strategy &amp; Performance</a></li>
-          <li><a href="#topic-5" data-panel="topic-5" class="topic-link"><span class="topic-num-cell">05</span>Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
-          <li><a href="#topic-6" data-panel="topic-6" class="topic-link"><span class="topic-num-cell">06</span>Bullwhip Effect &amp; SCM Support Areas (L8)</a></li>
-        </ul>
+        <nav aria-label="Lecture table of contents">
+          <ul class="toc-list">
+            <li><a href="#topic-1" data-panel="topic-1" class="topic-link"><span class="topic-num-cell">01</span>Operations Management Fundamentals</a></li>
+            <li><a href="#topic-2" data-panel="topic-2" class="topic-link"><span class="topic-num-cell">02</span>Lean Thinking &amp; Waste Reduction</a></li>
+            <li><a href="#topic-3" data-panel="topic-3" class="topic-link"><span class="topic-num-cell">03</span>Quality Management</a></li>
+            <li><a href="#topic-4" data-panel="topic-4" class="topic-link"><span class="topic-num-cell">04</span>Operations Strategy &amp; Performance</a></li>
+            <li><a href="#topic-5" data-panel="topic-5" class="topic-link"><span class="topic-num-cell">05</span>Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
+            <li><a href="#topic-6" data-panel="topic-6" class="topic-link"><span class="topic-num-cell">06</span>Bullwhip Effect &amp; SCM Support Areas (L8)</a></li>
+          </ul>
+        </nav>
       </div>
       <!-- ── Schedule overview ── -->
   <div class="section">
@@ -429,7 +433,7 @@
             <div class="topic-sub">SCM definition · Supply network vs. supply chain · Strategic sourcing risks</div>
           </td>
           <td>
-            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture</span>
+            <span class="assess-link assess-link-muted">Lecture</span>
           </td>
         </tr>
         <tr>
@@ -439,7 +443,7 @@
             <div class="topic-sub">Demand amplification · Mitigation levers · Glossary, resources, and study guide</div>
           </td>
           <td>
-            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture</span>
+            <span class="assess-link assess-link-muted">Lecture</span>
           </td>
         </tr>
       </tbody>
@@ -663,7 +667,7 @@
           </div>
           <div class="topic-footer">
             <span class="topic-footer-label">Practice:</span>
-            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture Reading</span>
+            <span class="assess-link assess-link-muted">Lecture Reading</span>
           </div>
         </div>
     </div>
@@ -707,7 +711,7 @@
           </div>
           <div class="topic-footer">
             <span class="topic-footer-label">Practice:</span>
-            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture Reading</span>
+            <span class="assess-link assess-link-muted">Lecture Reading</span>
           </div>
         </div>
     </div>
