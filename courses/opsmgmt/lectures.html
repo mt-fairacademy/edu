@@ -122,6 +122,22 @@
       padding-bottom: 10px;
       border-bottom: 1px solid var(--grigio-light);
     }
+    .toc-list {
+      list-style: none;
+      margin: 0 0 20px;
+      padding: 0;
+      border: 1px solid var(--grigio-light);
+      background: #fff;
+    }
+    .toc-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--grigio-light);
+      font-size: 0.88rem;
+    }
+    .toc-list li:last-child { border-bottom: none; }
 
     /* ── Schedule table ── */
     .schedule-table {
@@ -329,6 +345,8 @@
       <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>Lean Thinking &amp; Waste Reduction</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-3"><span class="sidebar-num">03</span>Quality Management</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-4"><span class="sidebar-num">04</span>Operations Strategy &amp; Performance</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-5"><span class="sidebar-num">05</span>Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-6"><span class="sidebar-num">06</span>Bullwhip Effect &amp; SCM Support Areas (L8)</a></li>
     </ul>
     <div class="sidebar-footer">
       <a href="hub.html" class="back-link">← Back to course hub</a>
@@ -339,6 +357,17 @@
   <main class="lectures-main">
     <!-- ── Overview panel (default) ── -->
     <div id="panel-overview" class="panel">
+      <div class="section">
+        <div class="section-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><span class="topic-num-cell">01</span><a data-panel="topic-1" class="topic-link">Operations Management Fundamentals</a></li>
+          <li><span class="topic-num-cell">02</span><a data-panel="topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a></li>
+          <li><span class="topic-num-cell">03</span><a data-panel="topic-3" class="topic-link">Quality Management</a></li>
+          <li><span class="topic-num-cell">04</span><a data-panel="topic-4" class="topic-link">Operations Strategy &amp; Performance</a></li>
+          <li><span class="topic-num-cell">05</span><a data-panel="topic-5" class="topic-link">Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
+          <li><span class="topic-num-cell">06</span><a data-panel="topic-6" class="topic-link">Bullwhip Effect &amp; SCM Support Areas (L8)</a></li>
+        </ul>
+      </div>
       <!-- ── Schedule overview ── -->
   <div class="section">
     <div class="section-title">Course Schedule</div>
@@ -390,6 +419,26 @@
           </td>
           <td>
             <a href="test-1.html" class="assess-link">Test 1</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="topic-num-cell">05</td>
+          <td>
+            <a data-panel="topic-5" class="topic-link">Supply Chain vs. Network &amp; Sourcing (L7)</a>
+            <div class="topic-sub">SCM definition · Supply network vs. supply chain · Strategic sourcing risks</div>
+          </td>
+          <td>
+            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="topic-num-cell">06</td>
+          <td>
+            <a data-panel="topic-6" class="topic-link">Bullwhip Effect &amp; SCM Support Areas (L8)</a>
+            <div class="topic-sub">Demand amplification · Mitigation levers · Glossary, resources, and study guide</div>
+          </td>
+          <td>
+            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture</span>
           </td>
         </tr>
       </tbody>
@@ -584,6 +633,82 @@
           </div>
         </div>
 
+    </div>
+
+    <!-- ── Topic 5 panel ── -->
+    <div id="panel-topic-5" class="panel" hidden>
+      <div id="topic-5" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">05</span>
+            <h2>L7: Supply Chain Management (SCM) — Supply Chain vs. Network &amp; Sourcing</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Abstract</h3>
+            <p>Supply Chain Management (SCM) shifts the focus from internal operations to the holistic management of relationships and flows between a string of operations. This lecture focuses on how organizations manage the supply side through strategic sourcing, global configuration, and value creation across interconnected partners.</p>
+
+            <h3>Defining the Supply Chain vs. Network</h3>
+            <p>A <strong>supply network</strong> includes all operations linked to delivering products and services to end customers, while a <strong>supply chain</strong> is a specific strand of linked operations inside that broader network.</p>
+            <p>SCM is therefore the management of these relationships and flows to produce value for the final customer, not only the optimization of one internal function.</p>
+
+            <h3>Sourcing Strategies and Risks</h3>
+            <p>Managers must decide what to <strong>make</strong> internally and what to <strong>buy</strong> externally, and then design an appropriate supply base. Two key dimensions guide supplier strategy:</p>
+            <ul>
+              <li><strong>Supply risk:</strong> the number of alternative suppliers and the ease or difficulty of switching.</li>
+              <li><strong>Criticality:</strong> how important the supplied item is for business growth and the share of total purchasing cost.</li>
+            </ul>
+            <p>These choices shape whether firms rely on transactional relationships or build long-term partnerships with suppliers.</p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture Reading</span>
+          </div>
+        </div>
+    </div>
+
+    <!-- ── Topic 6 panel ── -->
+    <div id="panel-topic-6" class="panel" hidden>
+      <div id="topic-6" class="topic-section">
+          <div class="topic-header">
+            <span class="topic-num">06</span>
+            <h2>L8: Supply Chain Management (SCM) — Bullwhip Effect &amp; Academic Support</h2>
+          </div>
+          <div class="topic-body">
+
+            <h3>Dynamics: The Bullwhip Effect</h3>
+            <p>The <strong>bullwhip effect</strong> describes how small demand changes at the consumer end amplify into larger disturbances as information moves upstream toward suppliers.</p>
+            <p>Mitigating this effect requires better data visibility and coordination, including e-enabled networks, channel alignment, and operational efficiency across partners.</p>
+
+            <h3>Glossary of Terms</h3>
+            <ul>
+              <li><strong>SCM:</strong> management of relationships and flows between operations to produce value.</li>
+              <li><strong>Global Sourcing:</strong> identifying and configuring supply across multiple geographies.</li>
+              <li><strong>Bullwhip Effect:</strong> amplification of demand fluctuations as they move up the supply chain.</li>
+            </ul>
+
+            <h3>Resource Library</h3>
+            <ul>
+              <li><a href="L7_SupplyChain_A.pdf" target="_blank" rel="noopener noreferrer">Slide Deck: L7_SupplyChain_A.pdf</a></li>
+              <li><a href="L8_SupplyChain_B.pdf" target="_blank" rel="noopener noreferrer">Slide Deck: L8_SupplyChain_B.pdf</a></li>
+              <li>Case Study: Global Sourcing Configuration Analysis.</li>
+            </ul>
+
+            <h3>Study Guide</h3>
+            <ul>
+              <li><strong>Focus points:</strong> Why is SCM considered a holistic approach? Explain the trade-offs between transactional and partnership relationships.</li>
+              <li><strong>Next step:</strong> Use the sourcing strategy quadrants to categorize your own company's suppliers.</li>
+            </ul>
+
+            <h3>External Link</h3>
+            <p><a href="https://mitsloan.mit.edu" target="_blank" rel="noopener noreferrer">The Bullwhip Effect in Supply Chains (MIT Sloan)</a></p>
+
+          </div>
+          <div class="topic-footer">
+            <span class="topic-footer-label">Practice:</span>
+            <span class="assess-link" style="background:#f0ede8;color:#888;">Lecture Reading</span>
+          </div>
+        </div>
     </div>
 
   </main>
