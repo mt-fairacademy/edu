@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Business Ethics — The Ethical Expedition</title>
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico">
   <style>
-    /* ── Tokens ── */
     :root {
       --oro:          #b8922a;
       --nero:         #1a1a1a;
@@ -26,13 +25,12 @@
       --tile-selected: #5c5248;
       --tile-sel-fg:   #ffffff;
       --tile-radius:   8px;
-      --tile-font:     'Georgia', serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Georgia', serif;
+      font-family: Georgia, serif;
       background: var(--bg);
       color: var(--nero);
       min-height: 100vh;
@@ -46,23 +44,19 @@
       font-size: 0.75rem; letter-spacing: 0.3px; color: var(--grigio);
       background: var(--white); border-bottom: 1px solid var(--grigio-light);
     }
-    .breadcrumb-link { color: var(--grigio); text-decoration: none; }
-    .breadcrumb-link:hover { color: var(--oro); text-decoration: underline; }
+    .breadcrumb a { color: var(--grigio); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--oro); text-decoration: underline; }
     .breadcrumb-sep { color: #ccc; }
     .breadcrumb-current { color: var(--nero); font-weight: 500; }
 
     /* ── Page header ── */
     .page-header {
-      background: var(--nero);
-      color: var(--white);
-      padding: 36px 24px 30px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: var(--nero); color: var(--white);
+      padding: 36px 24px 30px; text-align: center;
+      position: relative; overflow: hidden;
     }
     .page-header::before {
-      content: '';
-      position: absolute; inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(135deg, rgba(184,146,42,.15) 0%, transparent 60%);
       pointer-events: none;
     }
@@ -72,220 +66,140 @@
       font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
       color: var(--oro); margin-bottom: 10px; font-weight: 600;
     }
-    .page-header h1 {
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 400; line-height: 1.2; margin-bottom: 10px;
-    }
+    .page-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; line-height: 1.2; margin-bottom: 10px; }
     .page-header h1 em { color: var(--oro); font-style: italic; }
     .page-header p {
       font-size: 0.88rem; color: rgba(255,255,255,.65);
       max-width: 480px; margin: 0 auto;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
+      font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6;
     }
 
-    /* ── Main layout ── */
-    .game-wrap {
-      max-width: 640px;
-      margin: 36px auto 60px;
-      padding: 0 16px;
-    }
+    /* ── Layout ── */
+    .game-wrap { max-width: 640px; margin: 36px auto 60px; padding: 0 16px; }
 
-    /* ── Mistake dots ── */
-    .mistakes-bar {
-      display: flex; align-items: center; gap: 10px;
-      justify-content: center;
-      margin-bottom: 24px;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.8rem; color: var(--grigio);
-    }
-    .mistake-dots { display: flex; gap: 6px; }
-    .mistake-dot {
-      width: 14px; height: 14px; border-radius: 50%;
-      background: #c8c2b8;
-      transition: background 0.25s, transform 0.15s;
-    }
-    .mistake-dot.used { background: #888; transform: scale(0.85); }
-
-    /* ── Solved category rows ── */
-    .solved-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; min-height: 0; }
-    .solved-row {
-      border-radius: var(--tile-radius);
-      padding: 14px 16px;
-      text-align: center;
-      animation: popIn 0.35s cubic-bezier(.34,1.56,.64,1) both;
-    }
-    .solved-row.y { background: var(--y-bg); color: var(--y-fg); }
-    .solved-row.g { background: var(--g-bg); color: var(--g-fg); }
-    .solved-row.b { background: var(--b-bg); color: var(--b-fg); }
-    .solved-row.p { background: var(--p-bg); color: var(--p-fg); }
-    .solved-category {
-      font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
-      font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .solved-words { font-size: 0.95rem; font-weight: 600; }
-
-    /* ── Tile grid ── */
-    .tile-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .tile {
-      background: var(--tile-bg);
-      border-radius: var(--tile-radius);
-      padding: 0;
-      aspect-ratio: 1 / 0.9;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--tile-font);
-      font-size: clamp(0.7rem, 2.2vw, 0.9rem);
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.25;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.15s, transform 0.1s, color 0.15s;
-      border: 2px solid transparent;
-      position: relative;
-      overflow: hidden;
-    }
-    .tile:hover:not(.selected):not(.solved-tile) { background: var(--tile-hover); transform: translateY(-1px); }
-    .tile.selected {
-      background: var(--tile-selected);
-      color: var(--tile-sel-fg);
-      transform: scale(1.04);
-    }
-    .tile.solved-tile { opacity: 0; pointer-events: none; }
-    .tile.shake { animation: shake 0.5s ease; }
-    .tile.bounce { animation: bounce 0.35s ease; }
-
-    /* ── Buttons ── */
-    .btn-row {
-      display: flex; gap: 10px; justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-    .btn {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.82rem; font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 10px 22px;
-      border-radius: 40px;
-      border: 2px solid;
-      cursor: pointer;
-      transition: background 0.15s, color 0.15s, transform 0.1s;
-    }
-    .btn:active { transform: scale(0.96); }
-    .btn-ghost {
-      background: transparent;
-      border-color: #aaa;
-      color: var(--nero);
-    }
-    .btn-ghost:hover { border-color: var(--nero); }
-    .btn-primary {
-      background: var(--nero);
-      border-color: var(--nero);
-      color: var(--white);
-    }
-    .btn-primary:hover { background: #333; }
-    .btn-primary:disabled { background: #ccc; border-color: #ccc; color: #fff; cursor: default; }
-
-    /* ── Toast / message ── */
-    .toast {
-      position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
-      background: var(--nero); color: var(--white);
-      padding: 10px 24px; border-radius: 40px;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.3px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.2s;
-      z-index: 9999;
-      white-space: nowrap;
-    }
-    .toast.show { opacity: 1; }
-
-    /* ── End screen ── */
-    .end-screen {
-      display: none;
-      text-align: center;
-      padding: 32px 16px 0;
-    }
-    .end-screen.show { display: block; }
-    .end-title {
-      font-size: 1.6rem; font-weight: 400; margin-bottom: 8px;
-      font-family: 'Georgia', serif;
-    }
-    .end-title em { color: var(--oro); font-style: italic; }
-    .end-sub {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      font-size: 0.85rem; color: var(--grigio); margin-bottom: 24px; line-height: 1.6;
-    }
-    .result-squares {
-      display: flex; flex-wrap: wrap; gap: 3px; justify-content: center;
-      margin-bottom: 24px;
-    }
-    .rs { width: 28px; height: 28px; border-radius: 4px; }
-    .rs.y { background: var(--y-bg); }
-    .rs.g { background: var(--g-bg); }
-    .rs.b { background: var(--b-bg); }
-    .rs.p { background: var(--p-bg); }
-
-    /* ── How-to note ── */
+    /* ── How to play ── */
     .how-to {
       background: var(--white); border: 1px solid var(--grigio-light);
-      border-radius: 8px; padding: 18px 22px;
-      margin-bottom: 28px;
+      border-radius: 8px; padding: 18px 22px; margin-bottom: 24px;
       font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.8rem; color: var(--grigio); line-height: 1.7;
     }
+    .how-to-title { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--oro); font-weight: 700; margin-bottom: 6px; }
     .how-to strong { color: var(--nero); }
-    .how-to-title {
-      font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
-      color: var(--oro); font-weight: 700; margin-bottom: 6px;
-    }
 
-    /* ── Category legend ── */
-    .legend {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
+    /* ── Legend pills ── */
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
     .legend-pill {
       font-family: 'Helvetica Neue', Arial, sans-serif;
       font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
-      text-transform: uppercase; border-radius: 20px;
-      padding: 4px 14px;
+      text-transform: uppercase; border-radius: 20px; padding: 4px 14px;
     }
     .legend-pill.y { background: var(--y-bg); color: var(--y-fg); }
     .legend-pill.g { background: var(--g-bg); color: var(--g-fg); }
     .legend-pill.b { background: var(--b-bg); color: var(--b-fg); }
     .legend-pill.p { background: var(--p-bg); color: var(--p-fg); }
 
+    /* ── Mistakes bar ── */
+    .mistakes-bar {
+      display: flex; align-items: center; gap: 10px; justify-content: center;
+      margin-bottom: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.8rem; color: var(--grigio);
+    }
+    .mistake-dots { display: flex; gap: 6px; }
+    .mistake-dot { width: 14px; height: 14px; border-radius: 50%; background: #c8c2b8; transition: background 0.25s, transform 0.15s; }
+    .mistake-dot.used { background: #888; transform: scale(0.85); }
+
+    /* ── Solved rows ── */
+    .solved-rows { display: flex; flex-direction: column; gap: 8px; margin-bottom: 8px; }
+    .solved-row {
+      border-radius: var(--tile-radius); padding: 14px 16px; text-align: center;
+      animation: popIn 0.35s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    .solved-row.y { background: var(--y-bg); color: var(--y-fg); }
+    .solved-row.g { background: var(--g-bg); color: var(--g-fg); }
+    .solved-row.b { background: var(--b-bg); color: var(--b-fg); }
+    .solved-row.p { background: var(--p-bg); color: var(--p-fg); }
+    .solved-category { font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 700; margin-bottom: 4px; }
+    .solved-words { font-size: 0.95rem; font-weight: 600; }
+
+    /* ── Tile grid ── */
+    .tile-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+    .tile {
+      background: var(--tile-bg);
+      border-radius: var(--tile-radius);
+      aspect-ratio: 1 / 0.9;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Georgia, serif;
+      font-size: clamp(0.7rem, 2.2vw, 0.9rem);
+      font-weight: 700; text-align: center; line-height: 1.25;
+      cursor: pointer; user-select: none;
+      transition: background 0.15s, transform 0.1s, color 0.15s;
+      border: 2px solid transparent;
+      padding: 8px;
+      color: var(--nero);
+    }
+    .tile:hover:not(.selected):not(.gone) { background: var(--tile-hover); transform: translateY(-1px); }
+    .tile.selected { background: var(--tile-selected); color: var(--tile-sel-fg); transform: scale(1.04); }
+    .tile.gone { visibility: hidden; pointer-events: none; }
+    .tile.shake { animation: shake 0.5s ease; }
+    .tile.bounce { animation: bounce 0.35s ease; }
+
+    /* ── Buttons ── */
+    .btn-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+    .btn {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.5px;
+      padding: 10px 22px; border-radius: 40px; border: 2px solid;
+      cursor: pointer; transition: background 0.15s, color 0.15s, transform 0.1s;
+    }
+    .btn:active { transform: scale(0.96); }
+    .btn-ghost { background: transparent; border-color: #aaa; color: var(--nero); }
+    .btn-ghost:hover { border-color: var(--nero); }
+    .btn-primary { background: var(--nero); border-color: var(--nero); color: var(--white); }
+    .btn-primary:hover { background: #333; }
+    .btn-primary:disabled { background: #ccc; border-color: #ccc; color: #fff; cursor: default; }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed; top: 80px; left: 50%; transform: translateX(-50%);
+      background: var(--nero); color: var(--white);
+      padding: 10px 24px; border-radius: 40px;
+      font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.82rem; font-weight: 600;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 9999;
+      white-space: nowrap;
+    }
+    .toast.show { opacity: 1; }
+
+    /* ── End screen ── */
+    .end-screen { display: none; text-align: center; padding: 32px 16px 0; }
+    .end-screen.show { display: block; }
+    .end-title { font-size: 1.6rem; font-weight: 400; margin-bottom: 8px; }
+    .end-title em { color: var(--oro); font-style: italic; }
+    .end-sub { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; color: var(--grigio); margin-bottom: 24px; line-height: 1.6; }
+    .result-squares { display: flex; flex-wrap: wrap; gap: 3px; justify-content: center; margin-bottom: 24px; }
+    .rs { width: 28px; height: 28px; border-radius: 4px; }
+    .rs.y { background: var(--y-bg); }
+    .rs.g { background: var(--g-bg); }
+    .rs.b { background: var(--b-bg); }
+    .rs.p { background: var(--p-bg); }
+
     /* ── Animations ── */
     @keyframes shake {
-      0%,100%{ transform: translateX(0); }
-      20%    { transform: translateX(-8px); }
-      40%    { transform: translateX(8px); }
-      60%    { transform: translateX(-6px); }
-      80%    { transform: translateX(6px); }
+      0%,100% { transform: translateX(0); }
+      20%     { transform: translateX(-8px); }
+      40%     { transform: translateX(8px); }
+      60%     { transform: translateX(-6px); }
+      80%     { transform: translateX(6px); }
     }
     @keyframes bounce {
-      0%,100%{ transform: scale(1); }
-      50%    { transform: scale(1.12); }
+      0%,100% { transform: scale(1); }
+      50%     { transform: scale(1.12); }
     }
     @keyframes popIn {
       from { opacity: 0; transform: scaleY(0.7); }
       to   { opacity: 1; transform: scaleY(1); }
     }
-    @keyframes flip {
-      0%   { transform: rotateX(0); }
-      50%  { transform: rotateX(-90deg); }
-      100% { transform: rotateX(0); }
-    }
 
-    /* ── Responsive ── */
     @media (max-width: 480px) {
       .tile { font-size: 0.65rem; }
       .game-wrap { padding: 0 10px; }
@@ -294,16 +208,24 @@
 </head>
 
 <body>
-  <script>if(!sessionStorage.getItem('auth_buseth')){window.location.replace('password-gate.html?from=connections.html');}</script>
 
+  <!-- Auth gate -->
+  <script>
+    if (!sessionStorage.getItem('auth_buseth')) {
+      window.location.replace('password-gate.html?from=connections.html');
+    }
+  </script>
+
+  <!-- Breadcrumb -->
   <nav class="breadcrumb" aria-label="Breadcrumb">
-    <a href="../../index.html" class="breadcrumb-link">Home</a>
+    <a href="../../index.html">Home</a>
     <span class="breadcrumb-sep">/</span>
-    <a href="hub.html" class="breadcrumb-link">Business Ethics &amp; Corporate Conduct</a>
+    <a href="hub.html">Business Ethics &amp; Corporate Conduct</a>
     <span class="breadcrumb-sep">/</span>
     <span class="breadcrumb-current">The Ethical Expedition</span>
   </nav>
 
+  <!-- Header -->
   <header class="page-header">
     <div class="gold-line"></div>
     <div class="header-label">Business Ethics &nbsp;&middot;&nbsp; Connections Game</div>
@@ -311,20 +233,19 @@
     <p>Group the 16 terms into 4 categories of 4. Each group shares a common thread from the course. You have 4 attempts.</p>
   </header>
 
+  <!-- Game -->
   <div class="game-wrap">
 
-    <!-- How to play -->
     <div class="how-to" id="howTo">
       <div class="how-to-title">How to play</div>
       <strong>Select 4 tiles</strong> that belong to the same category, then press <strong>Submit</strong>.
-      A correct guess reveals the category. The difficulty increases with color —
+      A correct guess reveals the category. Difficulty increases with colour —
       <span style="color:var(--y-fg);background:var(--y-bg);padding:1px 7px;border-radius:3px;font-size:.7rem;font-weight:700;">YELLOW</span>
       is easiest,
       <span style="color:var(--p-fg);background:var(--p-bg);padding:1px 7px;border-radius:3px;font-size:.7rem;font-weight:700;">PURPLE</span>
       is hardest.
     </div>
 
-    <!-- Difficulty legend -->
     <div class="legend" id="legend">
       <span class="legend-pill y">Straightforward</span>
       <span class="legend-pill g">Moderate</span>
@@ -332,7 +253,6 @@
       <span class="legend-pill p">Challenging</span>
     </div>
 
-    <!-- Mistake counter -->
     <div class="mistakes-bar">
       <span>Mistakes remaining:</span>
       <div class="mistake-dots">
@@ -343,310 +263,294 @@
       </div>
     </div>
 
-    <!-- Solved category rows appear here -->
     <div class="solved-rows" id="solvedRows"></div>
 
-    <!-- Tile grid -->
     <div class="tile-grid" id="tileGrid"></div>
 
-    <!-- Action buttons -->
     <div class="btn-row" id="btnRow">
-      <button class="btn btn-ghost" id="shuffleBtn" onclick="shuffleTiles()">Shuffle</button>
-      <button class="btn btn-ghost" id="deselectBtn" onclick="deselectAll()" disabled>Deselect All</button>
-      <button class="btn btn-primary" id="submitBtn" onclick="submitGuess()" disabled>Submit</button>
+      <button class="btn btn-ghost"   id="shuffleBtn"  onclick="doShuffle()">Shuffle</button>
+      <button class="btn btn-ghost"   id="deselectBtn" onclick="doDeselect()" disabled>Deselect All</button>
+      <button class="btn btn-primary" id="submitBtn"   onclick="doSubmit()"   disabled>Submit</button>
     </div>
 
-    <!-- End screen -->
     <div class="end-screen" id="endScreen">
       <div class="end-title" id="endTitle"></div>
-      <div class="end-sub" id="endSub"></div>
+      <div class="end-sub"   id="endSub"></div>
       <div class="result-squares" id="resultSquares"></div>
-      <button class="btn btn-primary" onclick="resetGame()" style="margin-bottom:16px;">Play Again</button>
+      <button class="btn btn-primary" onclick="doReset()" style="margin-bottom:16px;">Play Again</button>
     </div>
 
   </div>
 
-  <!-- Toast -->
   <div class="toast" id="toast"></div>
 
+  <!-- ═══════════════════════════════════════════════════════════════
+       GAME SCRIPT  (placed at end of body — DOM is ready)
+  ════════════════════════════════════════════════════════════════ -->
   <script>
-  /* ─────────────────────────────────────────────────────────────
-     GAME DATA
-  ───────────────────────────────────────────────────────────── */
-  var CATEGORIES = [
-    {
-      id: 'y', cls: 'y',
-      label: 'Facilitation Payment Synonyms',
-      hint: '"Speed money" — other names for grease/facilitation payments',
-      words: ['Grease', 'Facilitation', 'Guanxi', 'Speed']
-    },
-    {
-      id: 'g', cls: 'g',
-      label: 'Traits of the Old Offshoring Model',
-      hint: 'Features of the pre-2020 Just-in-Time / offshoring strategy',
-      words: ['Just-In-Time', 'Offshoring', 'Lean', 'Inflexible']
-    },
-    {
-      id: 'b', cls: 'b',
-      label: 'Labor Scandal Companies & Orgs',
-      hint: 'Companies and organisations linked to supply-chain labor abuses',
-      words: ['Foxconn', 'NLC', 'Apple', 'Nike']
-    },
-    {
-      id: 'p', cls: 'p',
-      label: 'Drivers & Goals of Re-Shoring',
-      hint: 'Factors that push companies to bring production back home',
-      words: ['COVID', 'Subcontracting', 'Control', 'Homefront']
-    }
-  ];
 
-  /* word → category lookup */
-  var WORD_MAP = {};
-  CATEGORIES.forEach(function(cat){ cat.words.forEach(function(w){ WORD_MAP[w] = cat; }); });
-
-  /* ─────────────────────────────────────────────────────────────
-     STATE
-  ───────────────────────────────────────────────────────────── */
-  var allWords    = Object.keys(WORD_MAP);
-  var tileOrder   = allWords.slice();   /* current display order */
-  var selected    = [];                 /* currently selected words */
-  var solvedCats  = [];                 /* solved category ids */
-  var mistakes    = 0;
-  var maxMistakes = 4;
-  var guessLog    = [];                 /* for result squares */
-  var gameOver    = false;
-
-  /* ─────────────────────────────────────────────────────────────
-     INIT
-  ───────────────────────────────────────────────────────────── */
-  function buildGrid() {
-    var grid = document.getElementById('tileGrid');
-    grid.innerHTML = '';
-    tileOrder.forEach(function(word) {
-      var div = document.createElement('div');
-      div.className = 'tile';
-      div.dataset.word = word;
-      /* hide if already solved */
-      var cat = WORD_MAP[word];
-      if (solvedCats.indexOf(cat.id) !== -1) { div.classList.add('solved-tile'); }
-      if (selected.indexOf(word) !== -1) { div.classList.add('selected'); }
-      div.textContent = word;
-      div.addEventListener('click', function(){ toggleTile(word, div); });
-      grid.appendChild(div);
-    });
-    updateButtons();
-  }
-
-  function resetGame() {
-    selected    = [];
-    solvedCats  = [];
-    mistakes    = 0;
-    guessLog    = [];
-    gameOver    = false;
-    tileOrder   = allWords.slice();
-    shuffleArray(tileOrder);
-    document.getElementById('solvedRows').innerHTML = '';
-    document.getElementById('endScreen').classList.remove('show');
-    document.getElementById('btnRow').style.display = '';
-    document.getElementById('legend').style.display = '';
-    document.getElementById('howTo').style.display = '';
-    for (var i = 0; i < maxMistakes; i++) {
-      document.getElementById('d' + i).classList.remove('used');
-    }
-    buildGrid();
-  }
-
-  /* ─────────────────────────────────────────────────────────────
-     TILE INTERACTION
-  ───────────────────────────────────────────────────────────── */
-  function toggleTile(word, el) {
-    if (gameOver) return;
-    var cat = WORD_MAP[word];
-    if (solvedCats.indexOf(cat.id) !== -1) return;
-    var idx = selected.indexOf(word);
-    if (idx !== -1) {
-      selected.splice(idx, 1);
-      el.classList.remove('selected');
-    } else {
-      if (selected.length >= 4) return;
-      selected.push(word);
-      el.classList.add('selected');
-      el.classList.add('bounce');
-      setTimeout(function(){ el.classList.remove('bounce'); }, 350);
-    }
-    updateButtons();
-  }
-
-  function deselectAll() {
-    selected = [];
-    document.querySelectorAll('.tile.selected').forEach(function(el){ el.classList.remove('selected'); });
-    updateButtons();
-  }
-
-  function updateButtons() {
-    var desel  = document.getElementById('deselectBtn');
-    var submit = document.getElementById('submitBtn');
-    if (desel)  desel.disabled  = selected.length === 0;
-    if (submit) submit.disabled = selected.length !== 4;
-  }
-
-  /* ─────────────────────────────────────────────────────────────
-     SHUFFLE
-  ───────────────────────────────────────────────────────────── */
-  function shuffleArray(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
-    }
-  }
-  function shuffleTiles() {
-    if (gameOver) return;
-    /* keep solved words at top, shuffle the rest */
-    var solved  = tileOrder.filter(function(w){ return solvedCats.indexOf(WORD_MAP[w].id) !== -1; });
-    var unsolved = tileOrder.filter(function(w){ return solvedCats.indexOf(WORD_MAP[w].id) === -1; });
-    shuffleArray(unsolved);
-    tileOrder = solved.concat(unsolved);
-    buildGrid();
-  }
-
-  /* ─────────────────────────────────────────────────────────────
-     SUBMIT GUESS
-  ───────────────────────────────────────────────────────────── */
-  function submitGuess() {
-    if (selected.length !== 4 || gameOver) return;
-
-    /* check all 4 belong to same category */
-    var cats = selected.map(function(w){ return WORD_MAP[w].id; });
-    var allSame = cats.every(function(c){ return c === cats[0]; });
-
-    /* log the guess (for result squares) */
-    guessLog.push(cats.slice());
-
-    if (allSame) {
-      handleCorrect(cats[0]);
-    } else {
-      /* one-away check */
-      var freq = {};
-      cats.forEach(function(c){ freq[c] = (freq[c]||0) + 1; });
-      var max = Math.max.apply(null, Object.values(freq));
-      handleWrong(max === 3);
-    }
-  }
-
-  function handleCorrect(catId) {
-    var cat = CATEGORIES.find(function(c){ return c.id === catId; });
-    solvedCats.push(catId);
-
-    /* bounce selected tiles briefly, then hide them */
-    var selectedEls = document.querySelectorAll('.tile.selected');
-    selectedEls.forEach(function(el, i){
-      setTimeout(function(){ el.classList.add('bounce'); }, i * 60);
-    });
-    setTimeout(function(){
-      selectedEls.forEach(function(el){ el.classList.add('solved-tile'); el.classList.remove('selected', 'bounce'); });
-      /* add solved row */
-      var row = document.createElement('div');
-      row.className = 'solved-row ' + cat.cls;
-      row.innerHTML =
-        '<div class="solved-category">' + escHtml(cat.label) + '</div>' +
-        '<div class="solved-words">' + cat.words.join(', ') + '</div>';
-      document.getElementById('solvedRows').appendChild(row);
-
-      selected = [];
-      updateButtons();
-      showToast(cat.label + ' ✓', 1800);
-
-      /* check win */
-      if (solvedCats.length === CATEGORIES.length) {
-        setTimeout(function(){ endGame(true); }, 600);
+    /* ── GAME DATA ──────────────────────────────────────────── */
+    var CATS = [
+      {
+        id: 'y', label: 'Facilitation Payment Synonyms',
+        words: ['Grease', 'Facilitation', 'Guanxi', 'Speed']
+      },
+      {
+        id: 'g', label: 'Traits of the Old Offshoring Model',
+        words: ['Just-In-Time', 'Offshoring', 'Lean', 'Inflexible']
+      },
+      {
+        id: 'b', label: 'Labor Scandal Companies & Orgs',
+        words: ['Foxconn', 'NLC', 'Apple', 'Nike']
+      },
+      {
+        id: 'p', label: 'Drivers & Goals of Re-Shoring',
+        words: ['COVID', 'Subcontracting', 'Control', 'Homefront']
       }
-    }, selected.length * 60 + 300);
-  }
+    ];
 
-  function handleWrong(oneAway) {
-    mistakes++;
-    if (mistakes <= maxMistakes) {
-      document.getElementById('d' + (mistakes - 1)).classList.add('used');
+    /* build word → category map */
+    var WMAP = {};
+    for (var ci = 0; ci < CATS.length; ci++) {
+      var cat = CATS[ci];
+      for (var wi = 0; wi < cat.words.length; wi++) {
+        WMAP[cat.words[wi]] = cat;
+      }
     }
-    /* shake selected tiles */
-    var selectedEls = document.querySelectorAll('.tile.selected');
-    selectedEls.forEach(function(el){
-      el.classList.add('shake');
-      setTimeout(function(){ el.classList.remove('shake'); }, 600);
-    });
-    showToast(oneAway ? 'One away…' : 'Not quite — try again!', 1800);
-    if (mistakes >= maxMistakes) {
-      setTimeout(function(){ endGame(false); }, 700);
+
+    /* ── STATE ──────────────────────────────────────────────── */
+    var order    = [];   /* current tile order */
+    var selected = [];   /* selected words */
+    var solved   = [];   /* solved category ids */
+    var mistakes = 0;
+    var MAX_ERR  = 4;
+    var log      = [];   /* guess log for result squares */
+    var over     = false;
+    var toastTmr;
+
+    /* ── UTILITIES ──────────────────────────────────────────── */
+    function shuffle(arr) {
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+      }
     }
-  }
 
-  /* ─────────────────────────────────────────────────────────────
-     END GAME
-  ───────────────────────────────────────────────────────────── */
-  function endGame(won) {
-    gameOver = true;
-    document.getElementById('btnRow').style.display = 'none';
+    function escHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
 
-    /* reveal all unsolved categories */
-    CATEGORIES.forEach(function(cat){
-      if (solvedCats.indexOf(cat.id) === -1) {
-        solvedCats.push(cat.id);
+    function toast(msg, ms) {
+      var el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(toastTmr);
+      toastTmr = setTimeout(function () { el.classList.remove('show'); }, ms || 1500);
+    }
+
+    function syncButtons() {
+      document.getElementById('deselectBtn').disabled = (selected.length === 0);
+      document.getElementById('submitBtn').disabled   = (selected.length !== 4);
+    }
+
+    /* ── GRID ───────────────────────────────────────────────── */
+    function buildGrid() {
+      var grid = document.getElementById('tileGrid');
+      grid.innerHTML = '';
+      for (var i = 0; i < order.length; i++) {
+        (function (word) {
+          var div = document.createElement('div');
+          div.className = 'tile';
+          div.textContent = word;
+          /* hide tiles already solved */
+          if (solved.indexOf(WMAP[word].id) !== -1) {
+            div.classList.add('gone');
+          }
+          /* restore selection state */
+          if (selected.indexOf(word) !== -1) {
+            div.classList.add('selected');
+          }
+          div.addEventListener('click', function () { clickTile(word, div); });
+          grid.appendChild(div);
+        }(order[i]));
+      }
+      syncButtons();
+    }
+
+    /* ── TILE CLICK ─────────────────────────────────────────── */
+    function clickTile(word, el) {
+      if (over) return;
+      if (solved.indexOf(WMAP[word].id) !== -1) return;
+      var idx = selected.indexOf(word);
+      if (idx !== -1) {
+        selected.splice(idx, 1);
+        el.classList.remove('selected');
+      } else {
+        if (selected.length >= 4) return;
+        selected.push(word);
+        el.classList.add('selected');
+        el.classList.add('bounce');
+        setTimeout(function () { el.classList.remove('bounce'); }, 350);
+      }
+      syncButtons();
+    }
+
+    /* ── SHUFFLE ────────────────────────────────────────────── */
+    function doShuffle() {
+      if (over) return;
+      var unsolved = [];
+      for (var i = 0; i < order.length; i++) {
+        if (solved.indexOf(WMAP[order[i]].id) === -1) unsolved.push(order[i]);
+      }
+      shuffle(unsolved);
+      var si = 0;
+      for (var i = 0; i < order.length; i++) {
+        if (solved.indexOf(WMAP[order[i]].id) === -1) { order[i] = unsolved[si++]; }
+      }
+      buildGrid();
+    }
+
+    /* ── DESELECT ───────────────────────────────────────────── */
+    function doDeselect() {
+      selected = [];
+      var tiles = document.querySelectorAll('.tile.selected');
+      for (var i = 0; i < tiles.length; i++) tiles[i].classList.remove('selected');
+      syncButtons();
+    }
+
+    /* ── SUBMIT ─────────────────────────────────────────────── */
+    function doSubmit() {
+      if (selected.length !== 4 || over) return;
+      var ids = [];
+      for (var i = 0; i < selected.length; i++) ids.push(WMAP[selected[i]].id);
+      log.push(ids.slice());
+
+      var allSame = true;
+      for (var i = 1; i < ids.length; i++) { if (ids[i] !== ids[0]) { allSame = false; break; } }
+
+      if (allSame) {
+        onCorrect(ids[0]);
+      } else {
+        var freq = {};
+        for (var i = 0; i < ids.length; i++) freq[ids[i]] = (freq[ids[i]] || 0) + 1;
+        var max = 0;
+        for (var k in freq) { if (freq[k] > max) max = freq[k]; }
+        onWrong(max === 3);
+      }
+    }
+
+    function onCorrect(catId) {
+      var cat;
+      for (var i = 0; i < CATS.length; i++) { if (CATS[i].id === catId) { cat = CATS[i]; break; } }
+      solved.push(catId);
+
+      var selEls = document.querySelectorAll('.tile.selected');
+      for (var i = 0; i < selEls.length; i++) {
+        (function (el, delay) {
+          setTimeout(function () { el.classList.add('bounce'); }, delay);
+        }(selEls[i], i * 60));
+      }
+
+      setTimeout(function () {
+        for (var i = 0; i < selEls.length; i++) {
+          selEls[i].classList.add('gone');
+          selEls[i].classList.remove('selected', 'bounce');
+        }
         var row = document.createElement('div');
-        row.className = 'solved-row ' + cat.cls;
+        row.className = 'solved-row ' + cat.id;
         row.innerHTML =
           '<div class="solved-category">' + escHtml(cat.label) + '</div>' +
           '<div class="solved-words">' + cat.words.join(', ') + '</div>';
         document.getElementById('solvedRows').appendChild(row);
-      }
-    });
-    document.getElementById('tileGrid').innerHTML = '';
 
-    /* result squares */
-    var sq = '';
-    guessLog.forEach(function(guess){
-      guess.forEach(function(c){ sq += '<div class="rs ' + c + '"></div>'; });
-    });
+        selected = [];
+        syncButtons();
+        toast(cat.label + ' ✓', 1800);
 
-    var endScreen = document.getElementById('endScreen');
-    var endTitle  = document.getElementById('endTitle');
-    var endSub    = document.getElementById('endSub');
-    var rsSq      = document.getElementById('resultSquares');
-
-    if (won) {
-      endTitle.innerHTML = 'Well done — <em>Expedition complete!</em>';
-      endSub.textContent = 'You grouped all four clusters correctly. These concepts are central to the course's approach to international business ethics.';
-    } else {
-      endTitle.innerHTML = 'Better luck next time!';
-      endSub.textContent = 'Review the categories above and revisit the lecture notes. The connections will start to feel natural.';
+        if (solved.length === CATS.length) {
+          setTimeout(function () { endGame(true); }, 600);
+        }
+      }, selEls.length * 60 + 300);
     }
-    rsSq.innerHTML = sq;
-    endScreen.classList.add('show');
-  }
 
-  /* ─────────────────────────────────────────────────────────────
-     TOAST
-  ───────────────────────────────────────────────────────────── */
-  var toastTimer;
-  function showToast(msg, dur) {
-    var t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, dur || 1500);
-  }
+    function onWrong(oneAway) {
+      mistakes++;
+      if (mistakes <= MAX_ERR) {
+        document.getElementById('d' + (mistakes - 1)).classList.add('used');
+      }
+      var selEls = document.querySelectorAll('.tile.selected');
+      for (var i = 0; i < selEls.length; i++) {
+        (function (el) {
+          el.classList.add('shake');
+          setTimeout(function () { el.classList.remove('shake'); }, 600);
+        }(selEls[i]));
+      }
+      toast(oneAway ? 'One away…' : 'Not quite — try again!', 1800);
+      if (mistakes >= MAX_ERR) {
+        setTimeout(function () { endGame(false); }, 700);
+      }
+    }
 
-  /* ─────────────────────────────────────────────────────────────
-     UTIL
-  ───────────────────────────────────────────────────────────── */
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
+    /* ── END GAME ───────────────────────────────────────────── */
+    function endGame(won) {
+      over = true;
+      document.getElementById('btnRow').style.display = 'none';
+      /* reveal unsolved */
+      for (var i = 0; i < CATS.length; i++) {
+        var cat = CATS[i];
+        if (solved.indexOf(cat.id) === -1) {
+          solved.push(cat.id);
+          var row = document.createElement('div');
+          row.className = 'solved-row ' + cat.id;
+          row.innerHTML =
+            '<div class="solved-category">' + escHtml(cat.label) + '</div>' +
+            '<div class="solved-words">' + cat.words.join(', ') + '</div>';
+          document.getElementById('solvedRows').appendChild(row);
+        }
+      }
+      document.getElementById('tileGrid').innerHTML = '';
+      var sq = '';
+      for (var g = 0; g < log.length; g++) {
+        for (var t = 0; t < log[g].length; t++) { sq += '<div class="rs ' + log[g][t] + '"></div>'; }
+      }
+      document.getElementById('resultSquares').innerHTML = sq;
+      document.getElementById('endTitle').innerHTML = won
+        ? 'Well done — <em>Expedition complete!</em>'
+        : 'Better luck next time!';
+      document.getElementById('endSub').textContent = won
+        ? 'You grouped all four clusters correctly. These concepts are central to the course\u2019s approach to international business ethics.'
+        : 'Review the categories above and revisit the lecture notes. The connections will start to feel natural.';
+      document.getElementById('endScreen').classList.add('show');
+    }
 
-  /* ─────────────────────────────────────────────────────────────
-     BOOT
-  ───────────────────────────────────────────────────────────── */
-  shuffleArray(tileOrder);
-  buildGrid();
+    /* ── RESET ──────────────────────────────────────────────── */
+    function doReset() {
+      selected = []; solved = []; mistakes = 0; log = []; over = false;
+      /* rebuild order from scratch */
+      order = [];
+      for (var i = 0; i < CATS.length; i++) {
+        for (var j = 0; j < CATS[i].words.length; j++) order.push(CATS[i].words[j]);
+      }
+      shuffle(order);
+      document.getElementById('solvedRows').innerHTML = '';
+      document.getElementById('endScreen').classList.remove('show');
+      document.getElementById('btnRow').style.display = '';
+      document.getElementById('legend').style.display = '';
+      document.getElementById('howTo').style.display = '';
+      for (var i = 0; i < MAX_ERR; i++) {
+        document.getElementById('d' + i).classList.remove('used');
+      }
+      buildGrid();
+    }
+
+    /* ── BOOT (runs immediately — DOM is ready at bottom of body) ── */
+    order = [];
+    for (var ci = 0; ci < CATS.length; ci++) {
+      for (var wi = 0; wi < CATS[ci].words.length; wi++) order.push(CATS[ci].words[wi]);
+    }
+    shuffle(order);
+    buildGrid();
+
   </script>
 
 </body>
