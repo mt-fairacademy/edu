@@ -294,7 +294,7 @@
 </head>
 
 <body>
-  <script>if(!sessionStorage.getItem('auth_buseth')){window.location.replace('password-gate.html');}</script>
+  <script>if(!sessionStorage.getItem('auth_buseth')){window.location.replace('password-gate.html?from=connections.html');}</script>
 
   <nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="../../index.html" class="breadcrumb-link">Home</a>
@@ -645,8 +645,10 @@
   /* ─────────────────────────────────────────────────────────────
      BOOT
   ───────────────────────────────────────────────────────────── */
-  shuffleArray(tileOrder);
-  buildGrid();
+  document.addEventListener('DOMContentLoaded', function () {
+    shuffleArray(tileOrder);
+    buildGrid();
+  });
   </script>
 
 </body>
