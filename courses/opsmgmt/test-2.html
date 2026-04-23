@@ -3,48 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test 2 — Operations Management</title>
+  <title>Final Test — Operations Management</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/quiz.css">
-  <style>
-    .coming-soon-box {
-      background: #fff;
-      border-radius: 2px;
-      padding: 60px 40px;
-      text-align: center;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      margin-bottom: 20px;
-    }
-    .coming-soon-box h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 400;
-      color: var(--nero);
-      margin-bottom: 14px;
-    }
-    .coming-soon-box p {
-      font-size: 1rem;
-      color: var(--grigio);
-      line-height: 1.7;
-      max-width: 480px;
-      margin: 0 auto 28px;
-    }
-    .btn-back {
-      display: inline-block;
-      background: var(--nero);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 13px 28px;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-    .btn-back:hover { background: var(--oro); }
-  </style>
 </head>
 <body>
   <script>if(!sessionStorage.getItem('auth_opsmgmt')){window.location.replace('password-gate.html');}</script>
@@ -53,25 +14,474 @@
   <span class="breadcrumb-sep">/</span>
   <a href="hub.html" class="breadcrumb-link">Operations Management</a>
   <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-current">Test 2</span>
+  <span class="breadcrumb-current">Final Test</span>
 </nav>
 
-<div class="quiz-header" data-letter="2">
-  <div class="header-label">Operations Management · Assessment</div>
+<div class="quiz-header" data-letter="F">
+  <div class="header-label">Operations Management · Final Exam Practice</div>
   <div class="gold-line"></div>
-  <h1>Test 2 &nbsp;·&nbsp; <span>Coming Soon</span></h1>
-  <div class="header-sub">Test 2 &nbsp;·&nbsp; Coming Soon</div>
+  <h1>Final Test &nbsp;·&nbsp; <span>Exam Practice</span></h1>
+  <div class="header-sub">Final Test &nbsp;·&nbsp; 20 Questions &nbsp;·&nbsp; Multiple Choice &amp; True / False &nbsp;·&nbsp; Passing: 14/20</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+  <div class="progress-text" id="progressText">0 / 20</div>
 </div>
 
 <div class="quiz-main">
-  <div class="coming-soon-box">
-    <h2>Test 2 is coming soon</h2>
-    <p>
-      This test is currently being developed. Check back soon for new assessments on Operations Management.
-    </p>
-    <a href="test-1.html" class="btn-back">← Back to Test 1</a>
+
+<!-- ========================= -->
+<!-- Part 1: Multiple Choice   -->
+<!-- Q1–Q15 (5 options each)   -->
+<!-- ========================= -->
+
+<!-- Q1 MC -->
+<div class="question-card active" data-q="1" data-correct="b">
+  <div class="q-badge"><div class="q-num">1</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">What is the primary focus of Supply Chain Management (SCM)?</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Minimising the number of employees in a factory.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Managing the relationships and flows between a 'string' of operations.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Maximising the speed of individual machines regardless of demand.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Reducing the marketing budget for consumer goods.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Eliminating the use of digital technology in logistics.</div></div>
   </div>
+  <div class="feedback" id="fb1"></div>
 </div>
 
+<!-- Q2 MC -->
+<div class="question-card" data-q="2" data-correct="c">
+  <div class="q-badge"><div class="q-num">2</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">In the Kraljic matrix, 'Supply Risk' is primarily determined by:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">The total annual spend on a specific item.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The geographical distance between the buyer and seller.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The number of alternative suppliers and the ease of switching.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">The weight and volume of the raw materials.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">The current stock market price of the supplier's shares.</div></div>
+  </div>
+  <div class="feedback" id="fb2"></div>
+</div>
+
+<!-- Q3 MC -->
+<div class="question-card" data-q="3" data-correct="c">
+  <div class="q-badge"><div class="q-num">3</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">The 'Bullwhip Effect' is characterised by:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Demand fluctuations being dampened as they move upstream.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">A steady, unchanging demand across the entire supply network.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Small changes at the consumer end amplifying into large disturbances upstream.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">A decrease in inventory costs as uncertainty increases.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">The immediate alignment of all production schedules via manual paperwork.</div></div>
+  </div>
+  <div class="feedback" id="fb3"></div>
+</div>
+
+<!-- Q4 MC -->
+<div class="question-card" data-q="4" data-correct="c">
+  <div class="q-badge"><div class="q-num">4</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">Which Lean concept refers specifically to the elimination of 'Waste'?</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Kaizen</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Mura</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Muda</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Muri</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Kanban</div></div>
+  </div>
+  <div class="feedback" id="fb4"></div>
+</div>
+
+<!-- Q5 MC -->
+<div class="question-card" data-q="5" data-correct="c">
+  <div class="q-badge"><div class="q-num">5</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">In a Lean 'Pull' system, production is triggered by:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">A monthly forecast generated by the head office.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The need to keep machines running at 100% capacity.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">An actual request or signal from the downstream customer.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">The arrival of raw materials at the warehouse.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">A top-down command from the operations manager.</div></div>
+  </div>
+  <div class="feedback" id="fb5"></div>
+</div>
+
+<!-- Q6 MC -->
+<div class="question-card" data-q="6" data-correct="b">
+  <div class="q-badge"><div class="q-num">6</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">The '5S' practice in Lean is designed to improve:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Shipping speeds to international markets.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Workplace organisation, cleanliness, and standardisation.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The number of shifts worked per week.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">The salary structure of senior management.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">The thickness of the raw materials used in production.</div></div>
+  </div>
+  <div class="feedback" id="fb6"></div>
+</div>
+
+<!-- Q7 MC -->
+<div class="question-card" data-q="7" data-correct="c">
+  <div class="q-badge"><div class="q-num">7</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">Total Quality Management (TQM) argues that quality is the responsibility of:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Only the specialised Quality Control department.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The CEO and the Board of Directors exclusively.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Every individual involved in the process/operation.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">The external auditors and government inspectors.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">The final customer after they receive the product.</div></div>
+  </div>
+  <div class="feedback" id="fb7"></div>
+</div>
+
+<!-- Q8 MC -->
+<div class="question-card" data-q="8" data-correct="c">
+  <div class="q-badge"><div class="q-num">8</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">What is the primary purpose of a 'Poka-Yoke' device?</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">To increase the speed of a manual assembly line.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">To provide a visual signal (light) when a machine breaks down.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">To make a process "error-proof" by preventing mistakes before they occur.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">To record the time taken by an employee to complete a task.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">To reduce the cost of electricity in the factory.</div></div>
+  </div>
+  <div class="feedback" id="fb8"></div>
+</div>
+
+<!-- Q9 MC -->
+<div class="question-card" data-q="9" data-correct="b">
+  <div class="q-badge"><div class="q-num">9</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">The EFQM Excellence Model categorises organisational excellence into:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Inputs and Outputs.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Enablers and Results.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Managers and Laborers.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Domestic and International.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Successes and Failures.</div></div>
+  </div>
+  <div class="feedback" id="fb9"></div>
+</div>
+
+<!-- Q10 MC -->
+<div class="question-card" data-q="10" data-correct="b">
+  <div class="q-badge"><div class="q-num">10</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">The 'Iron Triangle' of Project Management consists of which three constraints?</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">People, Process, and Technology.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Quality, Time, and Cost.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Marketing, Sales, and Finance.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Risk, Opportunity, and Strategy.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Start, Middle, and End.</div></div>
+  </div>
+  <div class="feedback" id="fb10"></div>
+</div>
+
+<!-- Q11 MC -->
+<div class="question-card" data-q="11" data-correct="c">
+  <div class="q-badge"><div class="q-num">11</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">A 'Programme' differs from a 'Project' because a Programme:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Has a very specific and defined end date.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Is usually much cheaper to implement.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Is an ongoing process of change without a single defined end point.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Only involves one department.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Does not require a budget.</div></div>
+  </div>
+  <div class="feedback" id="fb11"></div>
+</div>
+
+<!-- Q12 MC -->
+<div class="question-card" data-q="12" data-correct="b">
+  <div class="q-badge"><div class="q-num">12</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">'Organisational Ambidexterity' refers to the balance between:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Hiring left-handed and right-handed employees.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Exploitation (efficiency) and Exploration (innovation).</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Profitability and Non-profit activities.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Manufacturing and Service sectors.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Manual labour and Robotic automation.</div></div>
+  </div>
+  <div class="feedback" id="fb12"></div>
+</div>
+
+<!-- Q13 MC -->
+<div class="question-card" data-q="13" data-correct="b">
+  <div class="q-badge"><div class="q-num">13</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">A Pareto Diagram is used in Operations Improvement to identify:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Every single cause of a problem, no matter how small.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">The "vital few" causes that account for the majority of effects.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The name of the employee who made a mistake.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">The exact date a project will be finished.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">The cheapest supplier in the network.</div></div>
+  </div>
+  <div class="feedback" id="fb13"></div>
+</div>
+
+<!-- Q14 MC -->
+<div class="question-card" data-q="14" data-correct="c">
+  <div class="q-badge"><div class="q-num">14</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">Benchmarking is best described as:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Blindly copying the exact methods of a competitor.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Setting a fixed price for all products in a category.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">The process of learning from others by comparing performance and methods.</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Hiring consultants to fire underperforming staff.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Labelling every piece of equipment in the factory.</div></div>
+  </div>
+  <div class="feedback" id="fb14"></div>
+</div>
+
+<!-- Q15 MC -->
+<div class="question-card" data-q="15" data-correct="c">
+  <div class="q-badge"><div class="q-num">15</div><div class="q-type mc">Multiple Choice</div></div>
+  <div class="q-text">Why-Why analysis is a technique used to:</div>
+  <div class="options">
+    <div class="option" data-val="a"><div class="opt-indicator">A</div><div class="opt-label">Determine who to blame for a failure.</div></div>
+    <div class="option" data-val="b"><div class="opt-indicator">B</div><div class="opt-label">Decide whether to start a new project or not.</div></div>
+    <div class="option" data-val="c"><div class="opt-indicator">C</div><div class="opt-label">Find the root cause of a problem by repeatedly asking "Why?".</div></div>
+    <div class="option" data-val="d"><div class="opt-indicator">D</div><div class="opt-label">Compare the salaries of different managers.</div></div>
+    <div class="option" data-val="e"><div class="opt-indicator">E</div><div class="opt-label">Forecast the demand for the next fiscal year.</div></div>
+  </div>
+  <div class="feedback" id="fb15"></div>
+</div>
+
+<!-- ========================= -->
+<!-- Part 2: True / False       -->
+<!-- Q16–Q20                    -->
+<!-- ========================= -->
+
+<!-- Q16 TF -->
+<div class="question-card" data-q="16" data-correct="false">
+  <div class="q-badge"><div class="q-num">16</div><div class="q-type tf">True / False</div></div>
+  <div class="q-text">Outsourcing and Offshoring are identical terms that mean the same thing.</div>
+  <div class="options tf-options">
+    <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+    <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+  </div>
+  <div class="feedback" id="fb16"></div>
+</div>
+
+<!-- Q17 TF -->
+<div class="question-card" data-q="17" data-correct="true">
+  <div class="q-badge"><div class="q-num">17</div><div class="q-type tf">True / False</div></div>
+  <div class="q-text">In a Lean system, inventory is seen as a "waste" that can hide underlying operational problems.</div>
+  <div class="options tf-options">
+    <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+    <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+  </div>
+  <div class="feedback" id="fb17"></div>
+</div>
+
+<!-- Q18 TF -->
+<div class="question-card" data-q="18" data-correct="true">
+  <div class="q-badge"><div class="q-num">18</div><div class="q-type tf">True / False</div></div>
+  <div class="q-text">'Jidoka' refers to a system where a machine automatically stops when a defect is detected.</div>
+  <div class="options tf-options">
+    <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+    <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+  </div>
+  <div class="feedback" id="fb18"></div>
+</div>
+
+<!-- Q19 TF -->
+<div class="question-card" data-q="19" data-correct="false">
+  <div class="q-badge"><div class="q-num">19</div><div class="q-type tf">True / False</div></div>
+  <div class="q-text">A Gantt Chart is primarily used to calculate the total profit of a project.</div>
+  <div class="options tf-options">
+    <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+    <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+  </div>
+  <div class="feedback" id="fb19"></div>
+</div>
+
+<!-- Q20 TF -->
+<div class="question-card" data-q="20" data-correct="false">
+  <div class="q-badge"><div class="q-num">20</div><div class="q-type tf">True / False</div></div>
+  <div class="q-text">Continuous Improvement (Kaizen) is best used for radical, "clean-sheet" breakthrough changes.</div>
+  <div class="options tf-options">
+    <div class="option" data-val="true"><div class="tf-icon">◯</div><div class="tf-label">True</div></div>
+    <div class="option" data-val="false"><div class="tf-icon">✕</div><div class="tf-label">False</div></div>
+  </div>
+  <div class="feedback" id="fb20"></div>
+</div>
+
+  <!-- Navigation -->
+  <div class="nav" id="nav">
+    <button class="btn btn-ghost" id="prevBtn" onclick="quizNavigate(-1)" disabled>&larr; Previous</button>
+    <button class="btn btn-primary" id="nextBtn" onclick="quizNavigate(1)" disabled>Next &rarr;</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results">
+    <div class="result-header">
+      <div class="result-score"><sup></sup><span id="scoreNum">0</span><sup>/20</sup></div>
+      <div class="result-label">Final Score</div>
+      <div class="result-verdict" id="verdict"></div>
+    </div>
+    <div class="review-list" id="reviewList"></div>
+    <button class="btn btn-primary btn-restart" onclick="quizRestart()">&#8635; &nbsp; Restart Test</button>
+  </div>
+
+</div><!-- /.quiz-main -->
+
+<script>
+window.QUIZ_QUESTIONS = [
+  // -------------------------
+  // Part 1: Multiple Choice
+  // -------------------------
+  {
+    q: 1, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> SCM is about managing the relationships and flows (material, information, financial) that link a network of operations from raw material to final customer.',
+      wrong:   '<strong>Incorrect.</strong> SCM focuses on managing relationships and flows across the whole supply network, not on individual factory headcount or machine speed.'
+    }
+  },
+  {
+    q: 2, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> Supply Risk in the Kraljic matrix is determined by factors such as the number of available suppliers and the difficulty of switching — i.e., market concentration.',
+      wrong:   '<strong>Incorrect.</strong> Supply Risk relates to market vulnerability (few suppliers, hard to switch), not geographic distance or stock price.'
+    }
+  },
+  {
+    q: 3, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Bullwhip Effect describes how small demand fluctuations at the retail end become amplified into large inventory and order swings upstream in the supply chain.',
+      wrong:   '<strong>Incorrect.</strong> The Bullwhip Effect means disturbances get <em>amplified</em> upstream, not dampened or stabilised.'
+    }
+  },
+  {
+    q: 4, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> <em>Muda</em> is the Japanese term specifically for waste — any activity that consumes resources without creating value.',
+      wrong:   '<strong>Incorrect.</strong> Muda = waste. Mura = unevenness/variability. Muri = overburden. Kaizen = continuous improvement. Kanban = pull signal.'
+    }
+  },
+  {
+    q: 5, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> In a Pull system, nothing is produced until the downstream stage sends a request or Kanban signal — production is demand-driven.',
+      wrong:   '<strong>Incorrect.</strong> A Pull system is demand-driven: production starts when the next process asks for it, not on forecasts or capacity utilisation.'
+    }
+  },
+  {
+    q: 6, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> 5S (Sort, Set in order, Shine, Standardise, Sustain) is a systematic approach to workplace organisation and cleanliness that reduces waste and improves flow.',
+      wrong:   '<strong>Incorrect.</strong> 5S is about shopfloor organisation and cleanliness (not shipping speed, shift patterns, or salaries).'
+    }
+  },
+  {
+    q: 7, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> TQM explicitly rejects the idea that quality belongs only to a QC department — it is the responsibility of every person in the organisation.',
+      wrong:   '<strong>Incorrect.</strong> TQM is a whole-organisation approach: quality is everyone\'s responsibility, not just a specialist department.'
+    }
+  },
+  {
+    q: 8, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> Poka-Yoke (mistake-proofing) devices are designed to make it physically impossible or immediately obvious when an error is about to occur, preventing defects at source.',
+      wrong:   '<strong>Incorrect.</strong> Poka-Yoke = error-proofing. Andon is the visual signal system; Poka-Yoke prevents the mistake from happening in the first place.'
+    }
+  },
+  {
+    q: 9, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The EFQM model divides criteria into <em>Enablers</em> (what an organisation does) and <em>Results</em> (what it achieves).',
+      wrong:   '<strong>Incorrect.</strong> The EFQM model uses the Enablers / Results split — not Inputs/Outputs or any people-based categorisation.'
+    }
+  },
+  {
+    q: 10, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> The Iron Triangle (or Triple Constraint) of project management is Quality (Scope), Time, and Cost — you can optimise two but the third is affected.',
+      wrong:   '<strong>Incorrect.</strong> The Iron Triangle is Quality/Scope, Time, and Cost — not People/Process/Technology or financial categories.'
+    }
+  },
+  {
+    q: 11, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> A Programme is a coordinated set of related projects and changes that together deliver a strategic benefit; it does not have a single fixed end date like a project does.',
+      wrong:   '<strong>Incorrect.</strong> The key distinction is that a Programme is ongoing (no fixed end) and strategic, whereas a Project is bounded by time, scope, and budget.'
+    }
+  },
+  {
+    q: 12, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> Organisational Ambidexterity describes the ability of a firm to simultaneously <em>exploit</em> existing capabilities (efficiency) and <em>explore</em> new opportunities (innovation).',
+      wrong:   '<strong>Incorrect.</strong> Ambidexterity is the strategic balance between exploitation (current efficiency) and exploration (future innovation).'
+    }
+  },
+  {
+    q: 13, type: 'mc', correct: 'b',
+    explanation: {
+      correct: '<strong>Correct.</strong> A Pareto Diagram applies the 80/20 rule to quality problems, helping teams identify the "vital few" causes that account for most defects or failures.',
+      wrong:   '<strong>Incorrect.</strong> A Pareto Diagram prioritises the most significant causes (the vital few), not every cause equally.'
+    }
+  },
+  {
+    q: 14, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> Benchmarking is the systematic process of comparing your own performance and practices against those of leading organisations to identify improvement opportunities.',
+      wrong:   '<strong>Incorrect.</strong> Benchmarking is learning-by-comparison — understanding <em>how</em> others achieve better performance, not blindly copying or setting prices.'
+    }
+  },
+  {
+    q: 15, type: 'mc', correct: 'c',
+    explanation: {
+      correct: '<strong>Correct.</strong> Why-Why (or 5-Whys) analysis drills down to the root cause of a problem by repeatedly asking "Why?" until the fundamental cause is exposed.',
+      wrong:   '<strong>Incorrect.</strong> Why-Why analysis is a root-cause technique, not a blame allocation or forecasting tool.'
+    }
+  },
+  // -------------------------
+  // Part 2: True / False
+  // -------------------------
+  {
+    q: 16, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct — False.</strong> They are related but distinct: <em>Outsourcing</em> means contracting work to an external firm (which may still be in the same country); <em>Offshoring</em> means moving an activity to a different country (which may still be done internally).',
+      wrong:   '<strong>Incorrect.</strong> Outsourcing (external provider) ≠ Offshoring (different country). A company can outsource locally or offshore internally.'
+    }
+  },
+  {
+    q: 17, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct — True.</strong> In Lean thinking, excess inventory is one of the DOWNTIME wastes. High stock levels act like water in a river, covering "rocks" (defects, bottlenecks) and masking operational problems.',
+      wrong:   '<strong>Incorrect.</strong> Lean explicitly treats inventory as waste (the "rocks in the river" analogy) — high inventory conceals problems rather than solving them.'
+    }
+  },
+  {
+    q: 18, type: 'tf', correct: 'true',
+    explanation: {
+      correct: '<strong>Correct — True.</strong> Jidoka (Autonomation / "intelligent automation") is the principle that machines detect abnormalities and stop automatically, preventing defects from passing downstream.',
+      wrong:   '<strong>Incorrect.</strong> Jidoka is precisely the ability of a process to detect a defect and stop automatically so it can be fixed at the source.'
+    }
+  },
+  {
+    q: 19, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct — False.</strong> A Gantt Chart is a project scheduling tool — it displays tasks, durations, and dependencies on a timeline. Profit calculation is a financial accounting task, not a function of a Gantt Chart.',
+      wrong:   '<strong>Incorrect.</strong> A Gantt Chart is used to plan and track project timelines, not to calculate financial profit.'
+    }
+  },
+  {
+    q: 20, type: 'tf', correct: 'false',
+    explanation: {
+      correct: '<strong>Correct — False.</strong> Kaizen is specifically for <em>continuous, incremental</em> improvement of existing processes. Radical, breakthrough changes are the domain of Business Process Re-engineering (BPR) or Kaikaku.',
+      wrong:   '<strong>Incorrect.</strong> Kaizen = small, continuous improvements. Radical breakthrough redesign is BPR/Kaikaku — a fundamentally different approach.'
+    }
+  }
+];
+window.QUIZ_VERDICTS = [
+  [0,  9,  'Keep reviewing — revisit the core frameworks before your exam.'],
+  [10, 13, 'Good progress — focus on the weaker areas and try again.'],
+  [14, 17, 'Pass — solid understanding of Operations Management concepts.'],
+  [18, 20, 'Excellent — exam-ready command of the full course.']
+];
+</script>
+
+<script src="../../shared/quiz.js"></script>
 </body>
 </html>
