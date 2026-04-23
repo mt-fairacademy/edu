@@ -345,7 +345,7 @@
     <ul class="sidebar-nav">
       <li><a href="#" class="sidebar-link is-active" data-panel="overview">Course Schedule</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-1"><span class="sidebar-num">01</span>Operations Management Fundamentals</a></li>
-      <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>Lean Thinking &amp; Waste Reduction</a></li>
+      <li><a href="#" class="sidebar-link" data-panel="topic-2"><span class="sidebar-num">02</span>Lean Production Systems</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-3"><span class="sidebar-num">03</span>Quality Management</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-4"><span class="sidebar-num">04</span>Operations Strategy &amp; Performance</a></li>
       <li><a href="#" class="sidebar-link" data-panel="topic-5"><span class="sidebar-num">05</span>Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
@@ -367,7 +367,7 @@
         <nav aria-label="Table of Contents">
           <ul class="toc-list">
             <li><a href="#topic-1" data-panel="topic-1" class="topic-link"><span class="topic-num-cell">01</span>Operations Management Fundamentals</a></li>
-            <li><a href="#topic-2" data-panel="topic-2" class="topic-link"><span class="topic-num-cell">02</span>Lean Thinking &amp; Waste Reduction</a></li>
+            <li><a href="#topic-2" data-panel="topic-2" class="topic-link"><span class="topic-num-cell">02</span>Lean Production Systems</a></li>
             <li><a href="#topic-3" data-panel="topic-3" class="topic-link"><span class="topic-num-cell">03</span>Quality Management</a></li>
             <li><a href="#topic-4" data-panel="topic-4" class="topic-link"><span class="topic-num-cell">04</span>Operations Strategy &amp; Performance</a></li>
             <li><a href="#topic-5" data-panel="topic-5" class="topic-link"><span class="topic-num-cell">05</span>Supply Chain vs. Network &amp; Sourcing (L7)</a></li>
@@ -403,8 +403,8 @@
         <tr>
           <td class="topic-num-cell">02</td>
           <td>
-            <a href="#topic-2" data-panel="topic-2" class="topic-link">Lean Thinking &amp; Waste Reduction</a>
-            <div class="topic-sub">7 wastes (Muda) · Kaizen · Value stream mapping</div>
+            <a href="#topic-2" data-panel="topic-2" class="topic-link">Lean Production Systems</a>
+            <div class="topic-sub">Three perspectives of Lean · Pull &amp; Kanban · DOWNTIME wastes · VSM · 5S · Kaizen</div>
           </td>
           <td>
             <a href="quiz-1.html" class="assess-link">Quiz 1</a>
@@ -526,47 +526,116 @@
     <!-- ── Topic 2 panel ── -->
     <div id="panel-topic-2" class="panel" hidden>
       <div id="topic-2" class="topic-section">
-          <div class="topic-header">
-            <span class="topic-num">02</span>
-            <h2>Lean Thinking &amp; Waste Reduction</h2>
-          </div>
-          <div class="topic-body">
-
-            <h3>What Is Lean?</h3>
-            <p>Lean thinking is a management philosophy derived from the Toyota Production System (TPS), developed in Japan after World War II. Its central idea: maximize customer value while minimizing waste. "Lean" means using fewer resources — time, space, people, materials — to create more value.</p>
-            <p>James Womack and Daniel Jones popularized lean in the West through their 1990 book <em>The Machine That Changed the World</em> and later coined the term "lean thinking."</p>
-
-            <h3>The 7 Wastes (Muda)</h3>
-            <p>In lean thinking, waste is any activity that consumes resources without creating value for the customer. Toyota identified seven types of waste (in Japanese: <em>muda</em>):</p>
-            <ul>
-              <li><strong>Transport:</strong> unnecessary movement of materials or products between locations.</li>
-              <li><strong>Inventory:</strong> excess stock (raw materials, WIP, finished goods) that is not being processed. Ties up capital and hides quality problems.</li>
-              <li><strong>Motion:</strong> unnecessary movement of people (walking, reaching, bending) in the workplace.</li>
-              <li><strong>Waiting:</strong> idle time when people, machines, or materials are waiting for the next process step.</li>
-              <li><strong>Overproduction:</strong> producing more than the customer currently needs. Considered the worst waste — it generates all others.</li>
-              <li><strong>Over-processing:</strong> doing more work or using more precision than the customer requires.</li>
-              <li><strong>Defects:</strong> products or services that do not meet quality standards, requiring rework or scrapping.</li>
-            </ul>
-            <p>A common mnemonic: <strong>TIM WOOD</strong> (Transport, Inventory, Motion, Waiting, Overproduction, Over-processing, Defects).</p>
-
-            <h3>Kaizen — Continuous Improvement</h3>
-            <p><strong>Kaizen</strong> (Japanese: "change for better") is the practice of continuous, incremental improvement involving all employees, from the CEO to frontline workers. Rather than large, infrequent overhauls, kaizen focuses on making many small improvements every day.</p>
-            <ul>
-              <li>Everyone is responsible for improvement — not just managers or engineers.</li>
-              <li>Improvements are based on data and observation, not assumptions.</li>
-              <li>Problems are seen as opportunities to improve, not failures to be hidden.</li>
-              <li><strong>PDCA cycle</strong> (Plan-Do-Check-Act): the standard kaizen improvement process. Also known as the Deming Cycle.</li>
-            </ul>
-
-            <h3>Value Stream Mapping (VSM)</h3>
-            <p>Value Stream Mapping is a lean tool used to visualize all the steps — both value-adding and non-value-adding — in a product's flow from raw material to the customer. It helps teams identify where waste occurs so that improvement efforts can be focused effectively. A VSM shows process steps, information flows, lead times, and inventory levels at each stage.</p>
-
-          </div>
-          <div class="topic-footer">
-            <span class="topic-footer-label">Practice:</span>
-            <a href="quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
-          </div>
+        <div class="topic-header">
+          <span class="topic-num">02</span>
+          <h2>Lean Production Systems</h2>
         </div>
+        <div class="topic-body">
+
+          <h3>What Is Lean?</h3>
+          <p>Lean synchronization — or simply "Lean" — is a philosophy, method, and set of tools focused on delivering <strong>exactly what the customer wants, in the exact quantity, exactly when and where needed, at the lowest possible cost</strong>. It aims for rapid, smooth flow through processes by eliminating waste — defined as any activity that does not add value.</p>
+          <p>Lean can be understood through three complementary perspectives:</p>
+          <ul>
+            <li><strong>Philosophy:</strong> founded on staff involvement, continuous improvement (Kaizen), and the relentless elimination of waste. Originally derived from the Toyota Production System (TPS), developed in Japan after World War II.</li>
+            <li><strong>Method of Planning and Control:</strong> uses "pull" systems like Kanban to synchronize flow and reduce the unpredictability that generates waste.</li>
+            <li><strong>Set of Tools:</strong> includes techniques such as Value-Stream Mapping (VSM) and SMED to improve operational performance.</li>
+          </ul>
+          <p>James Womack and Daniel Jones popularized lean in the West through their 1990 book <em>The Machine That Changed the World</em> and later coined the term "lean thinking."</p>
+
+          <h3>Lean vs. Traditional Approaches</h3>
+          <p>Traditional operations use <strong>buffer inventories</strong> to insulate each stage from the one before and after it — absorbing disruptions and keeping each area running independently. Lean deliberately <strong>removes these buffers</strong>. Without buffers, problems are immediately exposed and cannot be hidden. This is intentional: exposed problems create urgency to solve them permanently rather than work around them.</p>
+          <p>The contrast in control logic is equally important:</p>
+          <ul>
+            <li><strong>Push control (traditional):</strong> each stage produces as much as possible and "pushes" output to the next stage, building up inventory in between.</li>
+            <li><strong>Pull control (lean):</strong> each stage only produces what the next stage — ultimately the customer — actually requests. Nothing is produced without a signal of demand.</li>
+          </ul>
+
+          <h3>The Logic of Lean</h3>
+          <p>Lean follows an internal logic that connects its principles:</p>
+          <ol>
+            <li><strong>Customer focus</strong> defines what "value" means — only activities the customer values count.</li>
+            <li>Customer focus drives <strong>pull</strong> — produce only in response to real demand.</li>
+            <li>Pull encourages <strong>synchronized flow</strong> — processes align tightly, reducing queues and delays.</li>
+            <li>Synchronized flow increases the <strong>motivation to expose and eliminate waste</strong> — because any disruption now halts the whole flow, problems must be solved, not buffered.</li>
+          </ol>
+
+          <h3>Waste: The DOWNTIME Framework</h3>
+          <p>Waste (<em>muda</em>) is any activity that consumes resources without creating value. While Toyota's original model identified seven wastes (remembered as <strong>TIM WOOD</strong>), the modern lean framework extends this to eight types, captured by the acronym <strong>DOWNTIME</strong>:</p>
+          <ul>
+            <li><strong>D — Defects:</strong> products or services that fail to meet quality standards, requiring rework or scrapping.</li>
+            <li><strong>O — Overproduction:</strong> producing more than the customer currently needs. Considered the worst waste — it generates all others.</li>
+            <li><strong>W — Waiting:</strong> idle time when people, machines, or materials are waiting for the next process step.</li>
+            <li><strong>N — Non-utilizing talent:</strong> failing to use the skills, knowledge, and creativity of employees. The waste of human potential.</li>
+            <li><strong>T — Transportation:</strong> unnecessary movement of materials or products between locations.</li>
+            <li><strong>I — Inventory:</strong> excess stock that is not being processed. Ties up capital, takes up space, and — critically — acts as a <em>"blanket of obscurity"</em> hiding underlying process problems.</li>
+            <li><strong>M — Motion:</strong> unnecessary movement of people (walking, reaching, bending) in the workplace.</li>
+            <li><strong>E — Extra-processing:</strong> doing more work or using more precision than the customer actually requires.</li>
+          </ul>
+
+          <h3>Kanban — Pull in Practice</h3>
+          <p><strong>Kanban</strong> (Japanese: "visual signal" or "card") is the primary tool for implementing pull control. A kanban card (or electronic equivalent) acts as an authorisation signal: a downstream stage sends a kanban upstream only when it needs more material or output. No kanban = no production. This prevents overproduction and limits work-in-progress to a defined maximum.</p>
+          <p>Key properties of a kanban system:</p>
+          <ul>
+            <li>Production is triggered by actual consumption, not by a forecast.</li>
+            <li>The number of kanbans in circulation caps the amount of inventory in the system.</li>
+            <li>Reducing the number of kanbans deliberately exposes problems — a form of continuous improvement.</li>
+          </ul>
+
+          <h3>Kaizen — Continuous Improvement</h3>
+          <p><strong>Kaizen</strong> (Japanese: "change for better") is the practice of continuous, incremental improvement involving all employees — from the CEO to frontline workers. Rather than large, infrequent overhauls, kaizen focuses on making many small improvements every day.</p>
+          <ul>
+            <li>Everyone is responsible for improvement — not just managers or engineers.</li>
+            <li>Improvements are based on data and observation, not assumptions.</li>
+            <li>Problems are seen as opportunities to improve, not failures to be hidden.</li>
+            <li><strong>PDCA cycle</strong> (Plan-Do-Check-Act): the standard kaizen improvement cycle. Also known as the Deming Cycle.</li>
+            <li><strong>Gemba Walk:</strong> managers physically visit the "actual place" (<em>gemba</em>) where work happens to observe processes firsthand, identify waste, and engage staff on improvement opportunities — rather than relying on reports.</li>
+          </ul>
+
+          <h3>Value-Stream Mapping (VSM)</h3>
+          <p>Value-Stream Mapping is a lean tool used to visualize all steps — both value-adding and non-value-adding — in a product or service flow from raw material to the customer. It reveals where waste accumulates so improvement efforts can be focused. A VSM shows process steps, information flows, lead times, and inventory levels at each stage.</p>
+          <p>The four-step VSM process:</p>
+          <ol>
+            <li><strong>Select a product family</strong> — choose the flow to map (a group of products that follow similar process steps).</li>
+            <li><strong>Draw the current-state map</strong> — document exactly how the process flows today, including all delays and inventory points.</li>
+            <li><strong>Draw the future-state map</strong> — redesign the flow to eliminate identified waste and move toward lean ideals.</li>
+            <li><strong>Create an implementation plan</strong> — define the actions, responsibilities, and timeline to close the gap between current and future states.</li>
+          </ol>
+
+          <h3>The 5S Method</h3>
+          <p>5S is a workplace organisation methodology for creating and maintaining a clean, orderly, safe, and efficient environment. Each "S" is a Japanese term with an English equivalent:</p>
+          <ul>
+            <li><strong>Sort (<em>Seiri</em>):</strong> remove everything that is not needed from the work area.</li>
+            <li><strong>Straighten (<em>Seiton</em>):</strong> organise and label what remains so everything has a designated place.</li>
+            <li><strong>Shine (<em>Seiso</em>):</strong> clean the work area thoroughly and inspect as you clean.</li>
+            <li><strong>Standardise (<em>Seiketsu</em>):</strong> establish standards and routines to maintain the first three S's consistently.</li>
+            <li><strong>Sustain (<em>Shitsuke</em>):</strong> embed 5S as a habit through discipline, audits, and cultural reinforcement.</li>
+          </ul>
+
+          <h3>Key Terms</h3>
+          <ul>
+            <li><strong>Kanban:</strong> a visual signal used to trigger movement or production based on actual downstream demand.</li>
+            <li><strong>Kaizen:</strong> the Japanese concept of small, incremental, and continuous improvement involving all staff.</li>
+            <li><strong>Gemba Walk:</strong> a practice of visiting the actual workplace to observe processes, identify waste, and find improvement opportunities firsthand.</li>
+            <li><strong>DOWNTIME:</strong> acronym for the 8 types of waste — Defects, Overproduction, Waiting, Non-utilizing talent, Transportation, Inventory, Motion, Extra-processing.</li>
+            <li><strong>VSM (Value-Stream Mapping):</strong> a lean tool to map current and future process states in order to identify and eliminate waste.</li>
+            <li><strong>5S:</strong> a housekeeping methodology — Sort, Straighten, Shine, Standardise, Sustain — for organising work areas.</li>
+            <li><strong>Pull system:</strong> a control approach in which production is authorised only by actual downstream demand.</li>
+            <li><strong>Push system:</strong> a control approach in which production is scheduled in advance and output is "pushed" to the next stage regardless of current need.</li>
+          </ul>
+
+          <h3>Critical Thinking Questions</h3>
+          <ul>
+            <li>Why does Lean describe inventory as a <em>"blanket of obscurity"</em>? What does removing inventory reveal, and why is that desirable?</li>
+            <li>How does "pull" control differ from "push" control in terms of waste generation? Which conditions favour each approach?</li>
+            <li>What are the potential drawbacks of Lean in a supply network subject to unexpected disturbances — for example, a pandemic or a natural disaster?</li>
+          </ul>
+
+        </div>
+        <div class="topic-footer">
+          <span class="topic-footer-label">Practice:</span>
+          <a href="quiz-1.html" class="assess-link">Quiz 1 — Key Concepts</a>
+        </div>
+      </div>
     </div>
 
     <!-- ── Topic 3 panel ── -->
