@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Operations Management — The Flow State</title>
+  <title>Operations Management — Connections Games</title>
   <link rel="icon" href="/favicon.ico">
   <style>
     :root {
@@ -272,8 +272,8 @@
   <header class="page-header">
     <div class="gold-line"></div>
     <div class="header-label">Operations Management &nbsp;&middot;&nbsp; Connections Game</div>
-    <h1>The <em>Flow State</em></h1>
-    <p>Three rounds of 16 terms. Group each set into 4 categories of 4. Colour signals difficulty — Yellow is easiest, Purple is hardest. You have 4 attempts per round.</p>
+    <h1>The <em>Connections Games</em></h1>
+    <p>Eight rounds of 16 terms — one per lecture. Group each set into 4 categories of 4. Colour signals difficulty — Yellow is easiest, Purple is hardest. You have 4 attempts per round.</p>
   </header>
 
   <!-- Round selector -->
@@ -281,6 +281,11 @@
     <button class="round-btn active" id="rbtn-0" onclick="selectRound(0)">Round 1 · The Flow State</button>
     <button class="round-btn"        id="rbtn-1" onclick="selectRound(1)">Round 2 · The Lean Leverage</button>
     <button class="round-btn"        id="rbtn-2" onclick="selectRound(2)">Round 3 · Signals &amp; Error-Proofing</button>
+    <button class="round-btn"        id="rbtn-3" onclick="selectRound(3)">Round 4 · Lean Production</button>
+    <button class="round-btn"        id="rbtn-4" onclick="selectRound(4)">Round 5 · Quality Management</button>
+    <button class="round-btn"        id="rbtn-5" onclick="selectRound(5)">Round 6 · Project Management</button>
+    <button class="round-btn"        id="rbtn-6" onclick="selectRound(6)">Round 7 · Operations Improvements</button>
+    <button class="round-btn"        id="rbtn-7" onclick="selectRound(7)">Round 8 · Supply Chain</button>
   </div>
 
   <!-- Game -->
@@ -343,7 +348,7 @@
   <div class="all-done" id="allDone">
     <div class="all-done-icon">🏆</div>
     <h2>All rounds <em>complete!</em></h2>
-    <p>You've worked through all three rounds of Lean &amp; Operations terms. Return to the lecture notes to consolidate the connections you've just made.</p>
+    <p>You've worked through all eight rounds covering Lean, Quality, Project Management, Operations Improvements, and Supply Chain Management. Return to the lecture notes to consolidate the connections you've just made.</p>
     <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
       <button class="btn btn-ghost" onclick="resetAll()">Start Over</button>
       <a href="hub.html" class="btn btn-primary" style="text-decoration:none;">Back to Course</a>
@@ -462,6 +467,176 @@
             words: ['Visual Control', 'Checklist', 'Counter', 'Shadow Board']
           }
         ]
+      },
+
+      /* ── Round 4: Lean Production Systems (L9) ───────────── */
+      {
+        title: 'Round 4',
+        subtitle: '"Lean Synchronisation" — <em>Lecture 9: Lean Production Systems</em>',
+        endWon: 'Solid grasp of lean fundamentals — from 5S discipline to pull-flow and levelled production.',
+        endLost: 'Revisit the groupings: 5S Steps, Lean Wastes, Japanese Concepts, and Pull &amp; Leveling.',
+        cats: [
+          {
+            id: 'y',
+            label: '5S Workplace Practice',
+            hint: 'Four of the five 5S steps for workplace organisation',
+            words: ['Sort', 'Straighten', 'Shine', 'Standardize']
+          },
+          {
+            id: 'g',
+            label: 'Lean Wastes',
+            hint: 'Four waste types from the lean DOWNTIME framework',
+            words: ['Overproduction', 'Inventory', 'Defects', 'Waiting']
+          },
+          {
+            id: 'b',
+            label: 'Japanese Lean Concepts',
+            hint: 'All four originate from Japanese lean/TPS terminology',
+            words: ['Muda', 'Mura', 'Muri', 'Kanban']
+          },
+          {
+            id: 'p',
+            label: 'Pull & Production Leveling',
+            hint: 'Concepts that govern rhythm, flow, and sustained pull production',
+            words: ['Pull', 'Heijunka', 'Leveling', 'Sustain']
+          }
+        ]
+      },
+
+      /* ── Round 5: Quality Management (L10) ──────────────── */
+      {
+        title: 'Round 5',
+        subtitle: '"Quality &amp; Excellence" — <em>Lecture 10: Quality Management</em>',
+        endWon: 'Well done — quality has many faces, from error-proofing devices to service perception and innovation.',
+        endLost: 'Focus on the four clusters: Service Quality, TQM Pillars, Error-Proofing Tools, and Types of Innovation.',
+        cats: [
+          {
+            id: 'y',
+            label: 'Service Quality Concepts',
+            hint: 'Elements of how quality is measured and perceived in services',
+            words: ['Conformance', 'Expectation', 'Perception', 'Gap Model']
+          },
+          {
+            id: 'g',
+            label: 'TQM Pillars',
+            hint: 'Core principles underpinning Total Quality Management',
+            words: ['Staff Involvement', 'Total', 'Continuous', 'Checklist']
+          },
+          {
+            id: 'b',
+            label: 'Error-Proofing & Autonomation',
+            hint: 'Devices and systems that prevent or detect defects at source',
+            words: ['Poka-Yoke', 'Jidoka', 'Fail-Safe', 'Andon']
+          },
+          {
+            id: 'p',
+            label: 'Types of Innovation',
+            hint: 'Different approaches to changing how operations work',
+            words: ['Step-change', 'Innovation', 'Radical', 'Kaizen']
+          }
+        ]
+      },
+
+      /* ── Round 6: Project Management (L11) ──────────────── */
+      {
+        title: 'Round 6',
+        subtitle: '"The Project Environment" — <em>Lecture 11: Project Management</em>',
+        endWon: 'Great work — project management spans constraints, stakeholders, planning tools, and governance.',
+        endLost: 'Revisit: Triple Constraints, Stakeholder Analysis, Planning Tools, and Project Governance.',
+        cats: [
+          {
+            id: 'y',
+            label: 'Triple Constraints (Iron Triangle)',
+            hint: 'The three (or four) fundamental constraints of any project',
+            words: ['Quality', 'Time', 'Cost', 'Scope']
+          },
+          {
+            id: 'g',
+            label: 'Stakeholder Analysis',
+            hint: 'Elements of understanding and managing project stakeholders',
+            words: ['Stakeholder', 'Power', 'Interest', 'Uncertainty']
+          },
+          {
+            id: 'b',
+            label: 'Project Planning Tools',
+            hint: 'Techniques and diagrams used to plan and schedule projects',
+            words: ['WBS', 'Gantt', 'Network', 'Milestone']
+          },
+          {
+            id: 'p',
+            label: 'Project Governance & Strategy',
+            hint: 'Frameworks that guide project direction, approval, and objectives',
+            words: ['Iron Triangle', 'Strategy', 'Objective', 'Stagegate']
+          }
+        ]
+      },
+
+      /* ── Round 7: Operations Improvements (L12) ──────────── */
+      {
+        title: 'Round 7',
+        subtitle: '"Improving Performance" — <em>Lecture 12: Operations Improvements</em>',
+        endWon: 'Excellent — improvement spans diagnosis, strategy selection, ambidexterity, and resilience.',
+        endLost: 'Focus on: Diagnostic Tools, Improvement Approaches, Ambidexterity, and Failure Management.',
+        cats: [
+          {
+            id: 'y',
+            label: 'Diagnostic & Analysis Tools',
+            hint: 'Techniques for identifying and analysing the sources of problems',
+            words: ['Pareto', 'Fishbone', 'Scatter', 'Why-Why']
+          },
+          {
+            id: 'g',
+            label: 'Improvement Approaches',
+            hint: 'Methodologies used to improve operations performance',
+            words: ['Benchmarking', 'Six Sigma', 'BPR', 'Momentum']
+          },
+          {
+            id: 'b',
+            label: 'Organisational Ambidexterity',
+            hint: 'Balancing current efficiency with future innovation',
+            words: ['Exploit', 'Explore', 'Ambidexterity', 'Resilience']
+          },
+          {
+            id: 'p',
+            label: 'Failure & Risk Management',
+            hint: 'Strategies for handling failure before, during, and after it occurs',
+            words: ['Prevention', 'Redundancy', 'Recovery', 'Mitigation']
+          }
+        ]
+      },
+
+      /* ── Round 8: Supply Chain Management ───────────────── */
+      {
+        title: 'Round 8',
+        subtitle: '"Supply Network Dynamics" — <em>Supply Chain Management</em>',
+        endWon: 'Strong understanding of supply chain structures, dynamics, and strategic sourcing decisions.',
+        endLost: 'Revisit: Bullwhip Effect, Supply Network Tiers, Sourcing Decisions, and Network Position.',
+        cats: [
+          {
+            id: 'y',
+            label: 'The Bullwhip Effect',
+            hint: 'Concepts that describe why small demand changes amplify upstream',
+            words: ['Bullwhip', 'Variability', 'Lag', 'Distortion']
+          },
+          {
+            id: 'g',
+            label: 'Supply Network Tiers',
+            hint: 'The different levels of the supply network from supplier to customer',
+            words: ['First Tier', 'Second Tier', 'Immediate', 'Customer']
+          },
+          {
+            id: 'b',
+            label: 'Sourcing & Make-or-Buy Decisions',
+            hint: 'Strategic choices about where and how operations are performed',
+            words: ['Outsourcing', 'Offshoring', 'In-house', 'Core Competency']
+          },
+          {
+            id: 'p',
+            label: 'Network Position & Flow',
+            hint: 'Directional and positional terms describing where you sit in the supply chain',
+            words: ['Upstream', 'Downstream', 'Internal', 'Supplier']
+          }
+        ]
       }
 
     ];
@@ -470,7 +645,7 @@
        STATE
     ══════════════════════════════════════════════════════════ */
     var currentRound = 0;
-    var roundsDone   = [false, false, false];
+    var roundsDone   = [false, false, false, false, false, false, false, false];
 
     /* per-round transient state */
     var CATS     = [];
@@ -533,7 +708,7 @@
     }
 
     function resetAll() {
-      roundsDone = [false, false, false];
+      roundsDone = [false, false, false, false, false, false, false, false];
       for (var i = 0; i < ROUNDS.length; i++) {
         document.getElementById('rbtn-' + i).classList.remove('done');
       }
