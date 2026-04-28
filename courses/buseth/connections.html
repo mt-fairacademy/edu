@@ -70,12 +70,42 @@
     .page-header h1 em { color: var(--oro); font-style: italic; }
     .page-header p {
       font-size: 0.88rem; color: rgba(255,255,255,.65);
-      max-width: 480px; margin: 0 auto;
+      max-width: 520px; margin: 0 auto;
       font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6;
     }
 
+    /* ── Round selector ── */
+    .round-selector {
+      display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+      padding: 18px 16px 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .round-btn {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      padding: 7px 18px; border-radius: 30px;
+      border: 2px solid var(--grigio-light);
+      background: var(--white); color: var(--grigio);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .round-btn:hover { border-color: var(--oro); color: var(--oro); }
+    .round-btn.active { background: var(--nero); border-color: var(--nero); color: var(--white); }
+    .round-btn.done   { background: #e8f5e0; border-color: #a0c35a; color: #2D5A00; }
+    .round-btn.done::after { content: ' ✓'; }
+
     /* ── Layout ── */
-    .game-wrap { max-width: 640px; margin: 36px auto 60px; padding: 0 16px; }
+    .game-wrap { max-width: 640px; margin: 24px auto 60px; padding: 0 16px; }
+
+    /* ── Round title ── */
+    .round-title {
+      text-align: center; margin-bottom: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .round-label {
+      font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--oro); font-weight: 700; display: block; margin-bottom: 4px;
+    }
+    .round-name { font-size: 1.15rem; font-weight: 400; font-family: Georgia, serif; }
+    .round-name em { font-style: italic; color: var(--oro); }
 
     /* ── How to play ── */
     .how-to {
@@ -130,7 +160,7 @@
       aspect-ratio: 1 / 0.9;
       display: flex; align-items: center; justify-content: center;
       font-family: Georgia, serif;
-      font-size: clamp(0.7rem, 2.2vw, 0.9rem);
+      font-size: clamp(0.65rem, 2.1vw, 0.85rem);
       font-weight: 700; text-align: center; line-height: 1.25;
       cursor: pointer; user-select: none;
       transition: background 0.15s, transform 0.1s, color 0.15s;
@@ -158,6 +188,8 @@
     .btn-primary { background: var(--nero); border-color: var(--nero); color: var(--white); }
     .btn-primary:hover { background: #333; }
     .btn-primary:disabled { background: #ccc; border-color: #ccc; color: #fff; cursor: default; }
+    .btn-next { background: var(--oro); border-color: var(--oro); color: var(--white); }
+    .btn-next:hover { background: #a07a22; border-color: #a07a22; }
 
     /* ── Toast ── */
     .toast {
@@ -183,6 +215,17 @@
     .rs.b { background: var(--b-bg); }
     .rs.p { background: var(--p-bg); }
 
+    /* ── All-rounds complete banner ── */
+    .all-done {
+      display: none; text-align: center; padding: 40px 16px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .all-done.show { display: block; }
+    .all-done-icon { font-size: 3rem; margin-bottom: 12px; }
+    .all-done h2 { font-family: Georgia, serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 10px; }
+    .all-done h2 em { color: var(--oro); font-style: italic; }
+    .all-done p { font-size: 0.88rem; color: var(--grigio); max-width: 420px; margin: 0 auto 24px; line-height: 1.7; }
+
     /* ── Animations ── */
     @keyframes shake {
       0%,100% { transform: translateX(0); }
@@ -201,7 +244,7 @@
     }
 
     @media (max-width: 480px) {
-      .tile { font-size: 0.65rem; }
+      .tile { font-size: 0.6rem; }
       .game-wrap { padding: 0 10px; }
     }
   </style>
@@ -230,16 +273,27 @@
     <div class="gold-line"></div>
     <div class="header-label">Business Ethics &nbsp;&middot;&nbsp; Connections Game</div>
     <h1>The <em>Ethical Expedition</em></h1>
-    <p>Group the 16 terms into 4 categories of 4. Each group shares a common thread from the course. You have 4 attempts.</p>
+    <p>Two rounds of 16 terms &mdash; group each set into 4 categories of 4. Colour signals difficulty &mdash; Yellow is easiest, Purple is hardest. You have 4 attempts per round.</p>
   </header>
 
+  <!-- Round selector -->
+  <div class="round-selector" id="roundSelector">
+    <button class="round-btn active" id="rbtn-0" onclick="selectRound(0)">Round 1 &middot; The Ethical Expedition</button>
+    <button class="round-btn"        id="rbtn-1" onclick="selectRound(1)">Round 2 &middot; The Master Ethical Expedition</button>
+  </div>
+
   <!-- Game -->
-  <div class="game-wrap">
+  <div class="game-wrap" id="gameWrap">
+
+    <div class="round-title" id="roundTitle">
+      <span class="round-label" id="roundLabel"></span>
+      <span class="round-name"  id="roundName"></span>
+    </div>
 
     <div class="how-to" id="howTo">
       <div class="how-to-title">How to play</div>
       <strong>Select 4 tiles</strong> that belong to the same category, then press <strong>Submit</strong>.
-      A correct guess reveals the category. Difficulty increases with colour —
+      A correct guess reveals the category. Difficulty increases with colour &mdash;
       <span style="color:var(--y-fg);background:var(--y-bg);padding:1px 7px;border-radius:3px;font-size:.7rem;font-weight:700;">YELLOW</span>
       is easiest,
       <span style="color:var(--p-fg);background:var(--p-bg);padding:1px 7px;border-radius:3px;font-size:.7rem;font-weight:700;">PURPLE</span>
@@ -264,8 +318,7 @@
     </div>
 
     <div class="solved-rows" id="solvedRows"></div>
-
-    <div class="tile-grid" id="tileGrid"></div>
+    <div class="tile-grid"   id="tileGrid"></div>
 
     <div class="btn-row" id="btnRow">
       <button class="btn btn-ghost"   id="shuffleBtn"  onclick="doShuffle()">Shuffle</button>
@@ -277,58 +330,182 @@
       <div class="end-title" id="endTitle"></div>
       <div class="end-sub"   id="endSub"></div>
       <div class="result-squares" id="resultSquares"></div>
-      <button class="btn btn-primary" onclick="doReset()" style="margin-bottom:16px;">Play Again</button>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;">
+        <button class="btn btn-ghost" onclick="doReset()">Play Again</button>
+        <button class="btn btn-next"  id="nextRoundBtn" onclick="doNextRound()" style="display:none;">Next Round &rarr;</button>
+      </div>
     </div>
 
+  </div>
+
+  <!-- All-rounds complete -->
+  <div class="all-done" id="allDone">
+    <div class="all-done-icon">&#127942;</div>
+    <h2>Expedition <em>complete!</em></h2>
+    <p>You&rsquo;ve worked through both rounds &mdash; from bribery gray areas and product liability law, through geopolitical strategy, to the luxury supply chain transparency crisis. Return to the lecture notes to consolidate every connection you&rsquo;ve just made.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn btn-ghost" onclick="resetAll()">Start Over</button>
+      <a href="hub.html" class="btn btn-primary" style="text-decoration:none;">Back to Course</a>
+    </div>
   </div>
 
   <div class="toast" id="toast"></div>
 
   <!-- ═══════════════════════════════════════════════════════════════
-       GAME SCRIPT  (placed at end of body — DOM is ready)
+       GAME SCRIPT
   ════════════════════════════════════════════════════════════════ -->
   <script>
 
-    /* ── GAME DATA ──────────────────────────────────────────── */
-    var CATS = [
+    /* ══════════════════════════════════════════════════════════
+       ROUNDS DATA
+    ══════════════════════════════════════════════════════════ */
+    var ROUNDS = [
+
+      /* ── Round 1: The Ethical Expedition ────────────────────── */
       {
-        id: 'y', label: 'Facilitation Payment Synonyms',
-        words: ['Grease', 'Facilitation', 'Guanxi', 'Speed']
+        title: 'Round 1',
+        subtitle: '"The Ethical Expedition"',
+        endWon: 'Perfect — you\'ve mapped the ethical landscape: payment gray areas, product liability law, the China dilemma, and the luxury supply chain crisis.',
+        endLost: 'Revisit the four clusters: bribery/payment terms, legal product liability bases, China market strategy concepts, and the Made-in-Italy transparency case.',
+        cats: [
+          {
+            id: 'y',
+            label: 'The Cost of Doing Business',
+            hint: 'All refer to payments made to bypass bureaucracy or speed up official processes',
+            words: ['Grease', 'Facilitation', 'Tipping', 'Expediting']
+          },
+          {
+            id: 'g',
+            label: 'Legal Bases for Product Liability',
+            hint: 'Legal mechanisms that create liability for companies selling defective products',
+            words: ['Strict Liability', 'UCC', 'Tort', 'Implied Warranty']
+          },
+          {
+            id: 'b',
+            label: 'China-Specific Strategy & Concepts',
+            hint: 'Terms linked to navigating or decoupling from the Chinese market',
+            words: ['Guanxi', 'Decoupling', 'Strict Auditing', 'Opt-out']
+          },
+          {
+            id: 'p',
+            label: '"Made in Italy" Case Study',
+            hint: 'Elements of the luxury supply chain ethical crisis',
+            words: ['Scandicci', 'Transparency', 'Made in Italy', 'Parallel Workshop']
+          }
+        ]
       },
+
+      /* ── Round 2: The Master Ethical Expedition ──────────────── */
       {
-        id: 'g', label: 'Traits of the Old Offshoring Model',
-        words: ['Just-In-Time', 'Offshoring', 'Lean', 'Inflexible']
-      },
-      {
-        id: 'b', label: 'Labor Scandal Companies & Orgs',
-        words: ['Foxconn', 'NLC', 'Apple', 'Nike']
-      },
-      {
-        id: 'p', label: 'Drivers & Goals of Re-Shoring',
-        words: ['COVID', 'Subcontracting', 'Control', 'Homefront']
+        title: 'Round 2',
+        subtitle: '"The Master <em>Ethical Expedition</em>"',
+        endWon: 'Excellent — you\'ve navigated all four dimensions: international payment ethics, product liability law, geopolitical strategy, and supply chain transparency.',
+        endLost: 'Review the groupings: the cost-of-doing-business payments, legal product liability pillars, China case-study strategies, and the luxury supply chain transparency crisis.',
+        cats: [
+          {
+            id: 'y',
+            label: 'The Cost of Doing Business (International Ethics)',
+            hint: '"Speed money" paid to minor officials — legally gray, ethically contested under the FCPA',
+            words: ['Grease', 'Facilitation', 'Tipping', 'Expediting']
+          },
+          {
+            id: 'g',
+            label: 'Legal Foundations of Product Liability',
+            hint: 'The four legal pillars holding manufacturers accountable for product defects and harm',
+            words: ['Strict Liability', 'UCC', 'Tort', 'Implied Warranty']
+          },
+          {
+            id: 'b',
+            label: 'The "China Case Study" Strategy',
+            hint: 'Guanxi networks, geopolitical decoupling, supply chain auditing, and employee conscience protections',
+            words: ['Guanxi', 'Decoupling', 'Strict Auditing', 'Opt-out']
+          },
+          {
+            id: 'p',
+            label: 'The Transparency Gap (Lecture 11)',
+            hint: 'The Scandicci district, parallel workshops, and the "Made in Italy" label in the transparency debate',
+            words: ['Scandicci', 'Transparency', 'Made in Italy', 'Parallel Workshop']
+          }
+        ]
       }
+
     ];
 
-    /* build word → category map */
-    var WMAP = {};
-    for (var ci = 0; ci < CATS.length; ci++) {
-      var cat = CATS[ci];
-      for (var wi = 0; wi < cat.words.length; wi++) {
-        WMAP[cat.words[wi]] = cat;
-      }
-    }
+    /* ══════════════════════════════════════════════════════════
+       STATE
+    ══════════════════════════════════════════════════════════ */
+    var currentRound = 0;
+    var roundsDone   = [false, false];
 
-    /* ── STATE ──────────────────────────────────────────────── */
-    var order    = [];   /* current tile order */
-    var selected = [];   /* selected words */
-    var solved   = [];   /* solved category ids */
+    /* per-round transient state */
+    var CATS     = [];
+    var WMAP     = {};
+    var order    = [];
+    var selected = [];
+    var solved   = [];
     var mistakes = 0;
     var MAX_ERR  = 4;
-    var log      = [];   /* guess log for result squares */
+    var log      = [];
     var over     = false;
     var toastTmr;
 
-    /* ── UTILITIES ──────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       ROUND NAVIGATION
+    ══════════════════════════════════════════════════════════ */
+    function selectRound(idx) {
+      currentRound = idx;
+      for (var i = 0; i < ROUNDS.length; i++) {
+        var btn = document.getElementById('rbtn-' + i);
+        btn.classList.remove('active');
+        if (roundsDone[i] && i !== idx) btn.classList.add('done');
+        else btn.classList.remove('done');
+      }
+      document.getElementById('rbtn-' + idx).classList.add('active');
+      document.getElementById('rbtn-' + idx).classList.remove('done');
+      document.getElementById('allDone').classList.remove('show');
+      document.getElementById('gameWrap').style.display = '';
+      initRound(idx);
+    }
+
+    function initRound(idx) {
+      var r = ROUNDS[idx];
+      CATS = r.cats;
+
+      WMAP = {};
+      for (var ci = 0; ci < CATS.length; ci++) {
+        var cat = CATS[ci];
+        for (var wi = 0; wi < cat.words.length; wi++) WMAP[cat.words[wi]] = cat;
+      }
+
+      document.getElementById('roundLabel').textContent = r.title;
+      document.getElementById('roundName').innerHTML    = r.subtitle;
+
+      doReset();
+    }
+
+    function doNextRound() {
+      var next = currentRound + 1;
+      if (next < ROUNDS.length) {
+        selectRound(next);
+      } else {
+        document.getElementById('gameWrap').style.display = 'none';
+        document.getElementById('allDone').classList.add('show');
+      }
+    }
+
+    function resetAll() {
+      roundsDone = [false, false];
+      for (var i = 0; i < ROUNDS.length; i++) {
+        document.getElementById('rbtn-' + i).classList.remove('done');
+      }
+      document.getElementById('allDone').classList.remove('show');
+      document.getElementById('gameWrap').style.display = '';
+      selectRound(0);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       UTILITIES
+    ══════════════════════════════════════════════════════════ */
     function shuffle(arr) {
       for (var i = arr.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -353,7 +530,9 @@
       document.getElementById('submitBtn').disabled   = (selected.length !== 4);
     }
 
-    /* ── GRID ───────────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       GRID
+    ══════════════════════════════════════════════════════════ */
     function buildGrid() {
       var grid = document.getElementById('tileGrid');
       grid.innerHTML = '';
@@ -362,14 +541,8 @@
           var div = document.createElement('div');
           div.className = 'tile';
           div.textContent = word;
-          /* hide tiles already solved */
-          if (solved.indexOf(WMAP[word].id) !== -1) {
-            div.classList.add('gone');
-          }
-          /* restore selection state */
-          if (selected.indexOf(word) !== -1) {
-            div.classList.add('selected');
-          }
+          if (solved.indexOf(WMAP[word].id) !== -1) div.classList.add('gone');
+          if (selected.indexOf(word) !== -1)        div.classList.add('selected');
           div.addEventListener('click', function () { clickTile(word, div); });
           grid.appendChild(div);
         }(order[i]));
@@ -377,7 +550,9 @@
       syncButtons();
     }
 
-    /* ── TILE CLICK ─────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       TILE CLICK
+    ══════════════════════════════════════════════════════════ */
     function clickTile(word, el) {
       if (over) return;
       if (solved.indexOf(WMAP[word].id) !== -1) return;
@@ -395,7 +570,9 @@
       syncButtons();
     }
 
-    /* ── SHUFFLE ────────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       SHUFFLE
+    ══════════════════════════════════════════════════════════ */
     function doShuffle() {
       if (over) return;
       var unsolved = [];
@@ -410,7 +587,9 @@
       buildGrid();
     }
 
-    /* ── DESELECT ───────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       DESELECT
+    ══════════════════════════════════════════════════════════ */
     function doDeselect() {
       selected = [];
       var tiles = document.querySelectorAll('.tile.selected');
@@ -418,7 +597,9 @@
       syncButtons();
     }
 
-    /* ── SUBMIT ─────────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       SUBMIT
+    ══════════════════════════════════════════════════════════ */
     function doSubmit() {
       if (selected.length !== 4 || over) return;
       var ids = [];
@@ -460,12 +641,12 @@
         row.className = 'solved-row ' + cat.id;
         row.innerHTML =
           '<div class="solved-category">' + escHtml(cat.label) + '</div>' +
-          '<div class="solved-words">' + cat.words.join(', ') + '</div>';
+          '<div class="solved-words">'    + cat.words.join(', ') + '</div>';
         document.getElementById('solvedRows').appendChild(row);
 
         selected = [];
         syncButtons();
-        toast(cat.label + ' ✓', 1800);
+        toast(cat.label + ' \u2713', 1800);
 
         if (solved.length === CATS.length) {
           setTimeout(function () { endGame(true); }, 600);
@@ -485,17 +666,21 @@
           setTimeout(function () { el.classList.remove('shake'); }, 600);
         }(selEls[i]));
       }
-      toast(oneAway ? 'One away…' : 'Not quite — try again!', 1800);
+      toast(oneAway ? 'One away\u2026' : 'Not quite \u2014 try again!', 1800);
       if (mistakes >= MAX_ERR) {
         setTimeout(function () { endGame(false); }, 700);
       }
     }
 
-    /* ── END GAME ───────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       END GAME
+    ══════════════════════════════════════════════════════════ */
     function endGame(won) {
       over = true;
+      roundsDone[currentRound] = true;
+
       document.getElementById('btnRow').style.display = 'none';
-      /* reveal unsolved */
+
       for (var i = 0; i < CATS.length; i++) {
         var cat = CATS[i];
         if (solved.indexOf(cat.id) === -1) {
@@ -504,52 +689,68 @@
           row.className = 'solved-row ' + cat.id;
           row.innerHTML =
             '<div class="solved-category">' + escHtml(cat.label) + '</div>' +
-            '<div class="solved-words">' + cat.words.join(', ') + '</div>';
+            '<div class="solved-words">'    + cat.words.join(', ') + '</div>';
           document.getElementById('solvedRows').appendChild(row);
         }
       }
       document.getElementById('tileGrid').innerHTML = '';
+
       var sq = '';
       for (var g = 0; g < log.length; g++) {
-        for (var t = 0; t < log[g].length; t++) { sq += '<div class="rs ' + log[g][t] + '"></div>'; }
+        for (var t = 0; t < log[g].length; t++) sq += '<div class="rs ' + log[g][t] + '"></div>';
       }
       document.getElementById('resultSquares').innerHTML = sq;
+
+      var r = ROUNDS[currentRound];
       document.getElementById('endTitle').innerHTML = won
-        ? 'Well done — <em>Expedition complete!</em>'
+        ? 'Well done \u2014 <em>Round complete!</em>'
         : 'Better luck next time!';
-      document.getElementById('endSub').textContent = won
-        ? 'You grouped all four clusters correctly. These concepts are central to the course\u2019s approach to international business ethics.'
-        : 'Review the categories above and revisit the lecture notes. The connections will start to feel natural.';
+      document.getElementById('endSub').textContent = won ? r.endWon : r.endLost;
+
+      var nrb = document.getElementById('nextRoundBtn');
+      if (currentRound < ROUNDS.length - 1) {
+        nrb.style.display = '';
+        nrb.textContent   = 'Next Round \u2192';
+      } else {
+        nrb.style.display = '';
+        nrb.textContent   = 'Finish \uD83C\uDFC6';
+      }
+
+      document.getElementById('rbtn-' + currentRound).classList.remove('active');
+      document.getElementById('rbtn-' + currentRound).classList.add('done');
+
       document.getElementById('endScreen').classList.add('show');
     }
 
-    /* ── RESET ──────────────────────────────────────────────── */
+    /* ══════════════════════════════════════════════════════════
+       RESET (current round)
+    ══════════════════════════════════════════════════════════ */
     function doReset() {
       selected = []; solved = []; mistakes = 0; log = []; over = false;
-      /* rebuild order from scratch */
+
       order = [];
       for (var i = 0; i < CATS.length; i++) {
         for (var j = 0; j < CATS[i].words.length; j++) order.push(CATS[i].words[j]);
       }
       shuffle(order);
+
       document.getElementById('solvedRows').innerHTML = '';
       document.getElementById('endScreen').classList.remove('show');
       document.getElementById('btnRow').style.display = '';
       document.getElementById('legend').style.display = '';
-      document.getElementById('howTo').style.display = '';
+      document.getElementById('howTo').style.display  = '';
+      document.getElementById('nextRoundBtn').style.display = 'none';
+
       for (var i = 0; i < MAX_ERR; i++) {
         document.getElementById('d' + i).classList.remove('used');
       }
       buildGrid();
     }
 
-    /* ── BOOT (runs immediately — DOM is ready at bottom of body) ── */
-    order = [];
-    for (var ci = 0; ci < CATS.length; ci++) {
-      for (var wi = 0; wi < CATS[ci].words.length; wi++) order.push(CATS[ci].words[wi]);
-    }
-    shuffle(order);
-    buildGrid();
+    /* ══════════════════════════════════════════════════════════
+       BOOT
+    ══════════════════════════════════════════════════════════ */
+    selectRound(0);
 
   </script>
 
